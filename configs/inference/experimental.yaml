@@ -1,0 +1,28 @@
+experimental: true
+catalogue_path: configs/catalogue/malaysia_signs.v1.json
+detector:
+  backend: deep
+  model_path: models/exported/experimental/emtd_segmenter_s30.onnx
+  image_size: 640
+  fallback_to_baseline: true
+  fallback_max_detections: 3
+  confidence_threshold: 0.25
+  nms_iou_threshold: 0.50
+classifier:
+  backend: deep
+  model_path: models/exported/experimental/emtd_classifier_efficientnet15_embedding.onnx
+  labels_path: models/exported/experimental/emtd_classifier_efficientnet15.labels.json
+  calibration_path: models/exported/experimental/emtd_classifier_efficientnet15_embedding.calibration.json
+  image_size: 192
+  confidence_threshold: 0.72
+ocr:
+  enabled: true
+  languages: [latin, chinese]
+tracking:
+  match_iou: 0.30
+  max_center_distance: 2.0
+  min_stable_frames: 3
+  max_missed_frames: 12
+semantics:
+  critical_confidence_threshold: 0.88
+  normal_confidence_threshold: 0.75

@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "sources": [
+    {
+      "source_id": "emtd_zenodo_1217105",
+      "name": "Extended Malaysian Traffic Sign Dataset",
+      "owner": "Reilly, Clancy, Foy, and Madden",
+      "publisher": "Zenodo",
+      "source_url": "https://zenodo.org/records/1217105",
+      "doi": "10.5281/zenodo.1217105",
+      "licence_name": "Creative Commons Attribution 4.0 International",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "decision": "accepted",
+      "metadata_retrieved_on": "2026-06-24",
+      "downloaded_on": null,
+      "archive_url": "https://zenodo.org/records/1217105/files/EMTD.zip?download=1",
+      "archive_size_bytes": 7472788960,
+      "expected_archive_md5": "2e718023d82dc170ed1ae08c377e08b9",
+      "archive_sha256": null,
+      "full_archive_status": "stratified_subset_downloading",
+      "local_metadata_files": [
+        "data/raw/emtd/metadata/GT.csv",
+        "data/raw/emtd/metadata/archive_index.json"
+      ],
+      "geographic_relevance": "Malaysia; 66 traffic-sign categories, 1,413 road-scene images, and 2,870 annotated instances.",
+      "class_mapping_status": "pending_manual_review",
+      "attribution": "Extended Malaysian Traffic Sign Dataset, Reilly, Clancy, Foy, and Madden, DOI 10.5281/zenodo.1217105, CC BY 4.0.",
+      "restrictions": [
+        "Credit the dataset creators and DOI 10.5281/zenodo.1217105.",
+        "Preserve original labels until the class mapping is independently reviewed."
+      ],
+      "notes": "Zenodo archive EMTD.zip; published 2018-04-11. The ground-truth CSV and ZIP central directory were extracted with verified byte ranges before the balanced image subset transfer."
+    },
+    {
+      "source_id": "roboflow_malaysia_road_sign_v1",
+      "name": "Malaysia Road Sign Dataset",
+      "owner": "Malaysia Road Sign",
+      "publisher": "Roboflow Universe",
+      "source_url": "https://universe.roboflow.com/malaysia-road-sign/malaysia-road-sign-dataset/dataset/1",
+      "doi": null,
+      "licence_name": "Creative Commons Attribution 4.0 International",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "decision": "review_required",
+      "metadata_retrieved_on": "2026-06-24",
+      "downloaded_on": null,
+      "archive_url": null,
+      "archive_size_bytes": null,
+      "expected_archive_md5": null,
+      "archive_sha256": null,
+      "full_archive_status": "blocked_on_owner_login",
+      "local_metadata_files": [],
+      "geographic_relevance": "Malaysia; public project page reports 62 classes, 9,483 original images, and a 23,068-image augmented version.",
+      "class_mapping_status": "pending_authenticated_export_and_review",
+      "attribution": "Malaysia Road Sign Dataset, Malaysia Road Sign, Roboflow Universe, CC BY 4.0.",
+      "restrictions": [
+        "The project owner must authenticate and initiate the export.",
+        "Review original versus augmented images and prevent derivative leakage across splits.",
+        "Preserve Roboflow project attribution."
+      ],
+      "notes": "Public metadata is visible, but dataset export remains behind a free-account login and has not been downloaded."
+    }
+  ]
+}

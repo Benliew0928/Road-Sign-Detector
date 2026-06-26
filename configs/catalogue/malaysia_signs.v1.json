@@ -1,0 +1,2123 @@
+{
+  "schema_version": "1.0",
+  "catalogue_version": "0.1-draft",
+  "entries": [
+    {
+      "semantic_sign_id": "stop",
+      "category": "regulatory",
+      "names": {
+        "en": "Stop",
+        "ms": "Berhenti",
+        "zh": "停车"
+      },
+      "aliases": [
+        "BERHENTI",
+        "STOP"
+      ],
+      "visual_family": "octagon",
+      "base_action": "STOP_REQUEST",
+      "severity": "critical",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "stop",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Regulatory signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "give_way",
+      "category": "regulatory",
+      "names": {
+        "en": "Give way",
+        "ms": "Beri laluan",
+        "zh": "让路"
+      },
+      "aliases": [
+        "BERI LALUAN",
+        "GIVE WAY",
+        "YIELD"
+      ],
+      "visual_family": "inverted_triangle",
+      "base_action": "YIELD",
+      "severity": "critical",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "give_way",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Regulatory signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "no_entry",
+      "category": "regulatory",
+      "names": {
+        "en": "No entry",
+        "ms": "Dilarang masuk",
+        "zh": "禁止驶入"
+      },
+      "aliases": [
+        "DILARANG MASUK",
+        "NO ENTRY"
+      ],
+      "visual_family": "circle",
+      "base_action": "PROHIBIT_ENTRY",
+      "severity": "critical",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "no_entry",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Prohibitory signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "no_left_turn",
+      "category": "regulatory",
+      "names": {
+        "en": "No left turn",
+        "ms": "Dilarang belok kiri",
+        "zh": "禁止左转"
+      },
+      "aliases": [
+        "DILARANG BELOK KIRI",
+        "NO LEFT TURN"
+      ],
+      "visual_family": "circle",
+      "base_action": "PROHIBIT_LEFT_TURN",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "left",
+      "audio_key": "no_left_turn",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Prohibitory signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "no_right_turn",
+      "category": "regulatory",
+      "names": {
+        "en": "No right turn",
+        "ms": "Dilarang belok kanan",
+        "zh": "禁止右转"
+      },
+      "aliases": [
+        "DILARANG BELOK KANAN",
+        "NO RIGHT TURN"
+      ],
+      "visual_family": "circle",
+      "base_action": "PROHIBIT_RIGHT_TURN",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "right",
+      "audio_key": "no_right_turn",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Prohibitory signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "no_u_turn",
+      "category": "regulatory",
+      "names": {
+        "en": "No U-turn",
+        "ms": "Dilarang pusingan U",
+        "zh": "禁止掉头"
+      },
+      "aliases": [
+        "DILARANG PUSINGAN U",
+        "NO U TURN"
+      ],
+      "visual_family": "circle",
+      "base_action": "PROHIBIT_U_TURN",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "u_turn",
+      "audio_key": "no_u_turn",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Prohibitory signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "no_overtaking",
+      "category": "regulatory",
+      "names": {
+        "en": "No overtaking",
+        "ms": "Dilarang memotong",
+        "zh": "禁止超车"
+      },
+      "aliases": [
+        "DILARANG MEMOTONG",
+        "NO OVERTAKING"
+      ],
+      "visual_family": "circle",
+      "base_action": "PROHIBIT_OVERTAKING",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "no_overtaking",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Prohibitory signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "no_heavy_vehicle",
+      "category": "regulatory",
+      "names": {
+        "en": "No heavy vehicles",
+        "ms": "Kenderaan berat dilarang",
+        "zh": "禁止重型车辆"
+      },
+      "aliases": [
+        "KENDERAAN BERAT DILARANG",
+        "NO HEAVY VEHICLES"
+      ],
+      "visual_family": "circle",
+      "base_action": "PROHIBIT_VEHICLE",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "no_heavy_vehicle",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Vehicle restrictions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "no_motorcycle",
+      "category": "regulatory",
+      "names": {
+        "en": "No motorcycles",
+        "ms": "Motosikal dilarang",
+        "zh": "禁止摩托车"
+      },
+      "aliases": [
+        "MOTOSIKAL DILARANG",
+        "NO MOTORCYCLES"
+      ],
+      "visual_family": "circle",
+      "base_action": "PROHIBIT_VEHICLE",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "no_motorcycle",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Vehicle restrictions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "no_bicycle",
+      "category": "regulatory",
+      "names": {
+        "en": "No bicycles",
+        "ms": "Basikal dilarang",
+        "zh": "禁止自行车"
+      },
+      "aliases": [
+        "BASIKAL DILARANG",
+        "NO BICYCLES"
+      ],
+      "visual_family": "circle",
+      "base_action": "PROHIBIT_VEHICLE",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "no_bicycle",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Vehicle restrictions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "no_pedestrian",
+      "category": "regulatory",
+      "names": {
+        "en": "No pedestrians",
+        "ms": "Pejalan kaki dilarang",
+        "zh": "禁止行人"
+      },
+      "aliases": [
+        "PEJALAN KAKI DILARANG",
+        "NO PEDESTRIANS"
+      ],
+      "visual_family": "circle",
+      "base_action": "PROHIBIT_VEHICLE",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "no_pedestrian",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Road-user restrictions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "maximum_speed",
+      "category": "regulatory",
+      "names": {
+        "en": "Maximum speed",
+        "ms": "Had laju maksimum",
+        "zh": "最高限速"
+      },
+      "aliases": [
+        "HAD LAJU",
+        "SPEED LIMIT",
+        "MAXIMUM SPEED"
+      ],
+      "visual_family": "circle",
+      "base_action": "SET_TARGET_SPEED",
+      "severity": "critical",
+      "parameter_type": "speed",
+      "default_parameter": null,
+      "audio_key": "maximum_speed",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Speed restrictions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "minimum_speed",
+      "category": "mandatory",
+      "names": {
+        "en": "Minimum speed",
+        "ms": "Had laju minimum",
+        "zh": "最低限速"
+      },
+      "aliases": [
+        "MINIMUM SPEED",
+        "HAD LAJU MINIMUM"
+      ],
+      "visual_family": "circle",
+      "base_action": "SET_TARGET_SPEED",
+      "severity": "warning",
+      "parameter_type": "speed",
+      "default_parameter": null,
+      "audio_key": "minimum_speed",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Speed restrictions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "end_speed_limit",
+      "category": "regulatory",
+      "names": {
+        "en": "End of speed limit",
+        "ms": "Tamat had laju",
+        "zh": "限速结束"
+      },
+      "aliases": [
+        "TAMAT HAD LAJU",
+        "END SPEED LIMIT"
+      ],
+      "visual_family": "circle",
+      "base_action": "INFORMATION_ONLY",
+      "severity": "information",
+      "parameter_type": "speed",
+      "default_parameter": null,
+      "audio_key": "end_speed_limit",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Speed restrictions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "height_restriction",
+      "category": "regulatory",
+      "names": {
+        "en": "Height restriction",
+        "ms": "Had ketinggian",
+        "zh": "限高"
+      },
+      "aliases": [
+        "HAD KETINGGIAN",
+        "HEIGHT LIMIT"
+      ],
+      "visual_family": "circle",
+      "base_action": "HEIGHT_RESTRICTION",
+      "severity": "critical",
+      "parameter_type": "height",
+      "default_parameter": null,
+      "audio_key": "height_restriction",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Dimension restrictions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "width_restriction",
+      "category": "regulatory",
+      "names": {
+        "en": "Width restriction",
+        "ms": "Had kelebaran",
+        "zh": "限宽"
+      },
+      "aliases": [
+        "HAD KELEBARAN",
+        "WIDTH LIMIT"
+      ],
+      "visual_family": "circle",
+      "base_action": "WIDTH_RESTRICTION",
+      "severity": "critical",
+      "parameter_type": "width",
+      "default_parameter": null,
+      "audio_key": "width_restriction",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Dimension restrictions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "weight_restriction",
+      "category": "regulatory",
+      "names": {
+        "en": "Weight restriction",
+        "ms": "Had berat",
+        "zh": "限重"
+      },
+      "aliases": [
+        "HAD BERAT",
+        "WEIGHT LIMIT"
+      ],
+      "visual_family": "circle",
+      "base_action": "WEIGHT_RESTRICTION",
+      "severity": "critical",
+      "parameter_type": "weight",
+      "default_parameter": null,
+      "audio_key": "weight_restriction",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Weight restrictions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "axle_weight_restriction",
+      "category": "regulatory",
+      "names": {
+        "en": "Axle weight restriction",
+        "ms": "Had berat gandar",
+        "zh": "轴重限制"
+      },
+      "aliases": [
+        "HAD BERAT GANDAR",
+        "AXLE WEIGHT LIMIT"
+      ],
+      "visual_family": "circle",
+      "base_action": "WEIGHT_RESTRICTION",
+      "severity": "critical",
+      "parameter_type": "axle_weight",
+      "default_parameter": null,
+      "audio_key": "axle_weight_restriction",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Weight restrictions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "no_parking",
+      "category": "regulatory",
+      "names": {
+        "en": "No parking",
+        "ms": "Dilarang meletak kereta",
+        "zh": "禁止停车"
+      },
+      "aliases": [
+        "DILARANG MELETAK KERETA",
+        "NO PARKING"
+      ],
+      "visual_family": "circle",
+      "base_action": "PROHIBIT_PARKING",
+      "severity": "information",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "no_parking",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Stopping and parking",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "no_stopping",
+      "category": "regulatory",
+      "names": {
+        "en": "No stopping",
+        "ms": "Dilarang berhenti",
+        "zh": "禁止停靠"
+      },
+      "aliases": [
+        "DILARANG BERHENTI",
+        "NO STOPPING"
+      ],
+      "visual_family": "circle",
+      "base_action": "PROHIBIT_STOPPING",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "no_stopping",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Stopping and parking",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "turn_left",
+      "category": "mandatory",
+      "names": {
+        "en": "Turn left",
+        "ms": "Belok kiri",
+        "zh": "向左转"
+      },
+      "aliases": [
+        "BELOK KIRI",
+        "TURN LEFT"
+      ],
+      "visual_family": "circle",
+      "base_action": "FOLLOW_DIRECTION",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "left",
+      "audio_key": "turn_left",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Mandatory directions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "turn_right",
+      "category": "mandatory",
+      "names": {
+        "en": "Turn right",
+        "ms": "Belok kanan",
+        "zh": "向右转"
+      },
+      "aliases": [
+        "BELOK KANAN",
+        "TURN RIGHT"
+      ],
+      "visual_family": "circle",
+      "base_action": "FOLLOW_DIRECTION",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "right",
+      "audio_key": "turn_right",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Mandatory directions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "straight_ahead",
+      "category": "mandatory",
+      "names": {
+        "en": "Straight ahead only",
+        "ms": "Terus sahaja",
+        "zh": "只准直行"
+      },
+      "aliases": [
+        "TERUS SAHAJA",
+        "STRAIGHT AHEAD ONLY"
+      ],
+      "visual_family": "circle",
+      "base_action": "FOLLOW_DIRECTION",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "straight",
+      "audio_key": "straight_ahead",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Mandatory directions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "straight_or_left",
+      "category": "mandatory",
+      "names": {
+        "en": "Straight or left",
+        "ms": "Terus atau kiri",
+        "zh": "直行或左转"
+      },
+      "aliases": [
+        "TERUS ATAU KIRI",
+        "STRAIGHT OR LEFT"
+      ],
+      "visual_family": "circle",
+      "base_action": "FOLLOW_DIRECTION",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "straight_or_left",
+      "audio_key": "straight_or_left",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Mandatory directions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "straight_or_right",
+      "category": "mandatory",
+      "names": {
+        "en": "Straight or right",
+        "ms": "Terus atau kanan",
+        "zh": "直行或右转"
+      },
+      "aliases": [
+        "TERUS ATAU KANAN",
+        "STRAIGHT OR RIGHT"
+      ],
+      "visual_family": "circle",
+      "base_action": "FOLLOW_DIRECTION",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "straight_or_right",
+      "audio_key": "straight_or_right",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Mandatory directions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "keep_left",
+      "category": "mandatory",
+      "names": {
+        "en": "Keep left",
+        "ms": "Ikut kiri",
+        "zh": "靠左行驶"
+      },
+      "aliases": [
+        "IKUT KIRI",
+        "KEEP LEFT"
+      ],
+      "visual_family": "circle",
+      "base_action": "KEEP_LEFT",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "left",
+      "audio_key": "keep_left",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Mandatory directions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "keep_right",
+      "category": "mandatory",
+      "names": {
+        "en": "Keep right",
+        "ms": "Ikut kanan",
+        "zh": "靠右行驶"
+      },
+      "aliases": [
+        "IKUT KANAN",
+        "KEEP RIGHT"
+      ],
+      "visual_family": "circle",
+      "base_action": "KEEP_RIGHT",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "right",
+      "audio_key": "keep_right",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Mandatory directions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "pass_either_side",
+      "category": "mandatory",
+      "names": {
+        "en": "Pass either side",
+        "ms": "Lalui mana-mana sisi",
+        "zh": "两侧均可通行"
+      },
+      "aliases": [
+        "PASS EITHER SIDE"
+      ],
+      "visual_family": "circle",
+      "base_action": "FOLLOW_DIRECTION",
+      "severity": "caution",
+      "parameter_type": "direction",
+      "default_parameter": "either_side",
+      "audio_key": "pass_either_side",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Mandatory directions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "roundabout_mandatory",
+      "category": "mandatory",
+      "names": {
+        "en": "Roundabout",
+        "ms": "Bulatan",
+        "zh": "环岛"
+      },
+      "aliases": [
+        "BULATAN",
+        "ROUNDABOUT"
+      ],
+      "visual_family": "circle",
+      "base_action": "YIELD",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "roundabout",
+      "audio_key": "roundabout_mandatory",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Mandatory directions",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "pedestrian_crossing",
+      "category": "warning",
+      "names": {
+        "en": "Pedestrian crossing",
+        "ms": "Lintasan pejalan kaki",
+        "zh": "人行横道"
+      },
+      "aliases": [
+        "LINTASAN PEJALAN KAKI",
+        "PEDESTRIAN CROSSING"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_PEDESTRIANS",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "pedestrian_crossing",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "children_crossing",
+      "category": "warning",
+      "names": {
+        "en": "Children crossing",
+        "ms": "Kanak-kanak melintas",
+        "zh": "儿童横穿"
+      },
+      "aliases": [
+        "KANAK KANAK MELINTAS",
+        "CHILDREN CROSSING"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_CHILDREN",
+      "severity": "critical",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "children_crossing",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "school_zone",
+      "category": "warning",
+      "names": {
+        "en": "School zone",
+        "ms": "Zon sekolah",
+        "zh": "学校区域"
+      },
+      "aliases": [
+        "ZON SEKOLAH",
+        "SEKOLAH",
+        "SCHOOL ZONE",
+        "学校"
+      ],
+      "visual_family": "text_or_diamond",
+      "base_action": "WATCH_CHILDREN",
+      "severity": "critical",
+      "parameter_type": "speed",
+      "default_parameter": 30,
+      "audio_key": "school_zone",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "School-area signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "roadworks",
+      "category": "temporary",
+      "names": {
+        "en": "Roadworks",
+        "ms": "Kerja jalan",
+        "zh": "道路施工"
+      },
+      "aliases": [
+        "KERJA JALAN",
+        "ROADWORKS",
+        "道路施工"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "roadworks",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2c_85_2017",
+        "document": "JKR ATJ 2C/85 (Pindaan 2017)",
+        "section": "Temporary signs",
+        "url": "https://epsmg.jkr.gov.my/images/e/e8/ATJ_2C85.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "traffic_signal_ahead",
+      "category": "warning",
+      "names": {
+        "en": "Traffic signals ahead",
+        "ms": "Lampu isyarat di hadapan",
+        "zh": "前方交通信号灯"
+      },
+      "aliases": [
+        "LAMPU ISYARAT",
+        "TRAFFIC SIGNALS AHEAD"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_TRAFFIC_SIGNAL",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "traffic_signal_ahead",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "crossroads",
+      "category": "warning",
+      "names": {
+        "en": "Crossroads ahead",
+        "ms": "Simpang empat di hadapan",
+        "zh": "前方十字路口"
+      },
+      "aliases": [
+        "SIMPANG EMPAT",
+        "CROSSROADS AHEAD"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "crossroads",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Junction warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "t_junction",
+      "category": "warning",
+      "names": {
+        "en": "T-junction ahead",
+        "ms": "Simpang T di hadapan",
+        "zh": "前方丁字路口"
+      },
+      "aliases": [
+        "SIMPANG T",
+        "T JUNCTION"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "t_junction",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Junction warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "side_road_left",
+      "category": "warning",
+      "names": {
+        "en": "Side road on left",
+        "ms": "Simpang di kiri",
+        "zh": "左侧支路"
+      },
+      "aliases": [
+        "SIMPANG DI KIRI",
+        "SIDE ROAD LEFT"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "caution",
+      "parameter_type": "direction",
+      "default_parameter": "left",
+      "audio_key": "side_road_left",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Junction warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "side_road_right",
+      "category": "warning",
+      "names": {
+        "en": "Side road on right",
+        "ms": "Simpang di kanan",
+        "zh": "右侧支路"
+      },
+      "aliases": [
+        "SIMPANG DI KANAN",
+        "SIDE ROAD RIGHT"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "caution",
+      "parameter_type": "direction",
+      "default_parameter": "right",
+      "audio_key": "side_road_right",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Junction warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "merge_left",
+      "category": "warning",
+      "names": {
+        "en": "Traffic merging from left",
+        "ms": "Trafik bergabung dari kiri",
+        "zh": "左侧车辆汇入"
+      },
+      "aliases": [
+        "MERGE LEFT"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "left",
+      "audio_key": "merge_left",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Merging traffic signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "merge_right",
+      "category": "warning",
+      "names": {
+        "en": "Traffic merging from right",
+        "ms": "Trafik bergabung dari kanan",
+        "zh": "右侧车辆汇入"
+      },
+      "aliases": [
+        "MERGE RIGHT"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "right",
+      "audio_key": "merge_right",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Merging traffic signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "roundabout_ahead",
+      "category": "warning",
+      "names": {
+        "en": "Roundabout ahead",
+        "ms": "Bulatan di hadapan",
+        "zh": "前方环岛"
+      },
+      "aliases": [
+        "BULATAN DI HADAPAN",
+        "ROUNDABOUT AHEAD"
+      ],
+      "visual_family": "diamond",
+      "base_action": "YIELD",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "roundabout_ahead",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Junction warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "curve_left",
+      "category": "warning",
+      "names": {
+        "en": "Left curve",
+        "ms": "Selekoh kiri",
+        "zh": "左弯"
+      },
+      "aliases": [
+        "SELEKOH KIRI",
+        "LEFT CURVE"
+      ],
+      "visual_family": "diamond",
+      "base_action": "REDUCE_SPEED",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "left",
+      "audio_key": "curve_left",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Alignment warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "curve_right",
+      "category": "warning",
+      "names": {
+        "en": "Right curve",
+        "ms": "Selekoh kanan",
+        "zh": "右弯"
+      },
+      "aliases": [
+        "SELEKOH KANAN",
+        "RIGHT CURVE"
+      ],
+      "visual_family": "diamond",
+      "base_action": "REDUCE_SPEED",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "right",
+      "audio_key": "curve_right",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Alignment warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "double_curve",
+      "category": "warning",
+      "names": {
+        "en": "Double curve",
+        "ms": "Selekoh berganda",
+        "zh": "连续弯道"
+      },
+      "aliases": [
+        "SELEKOH BERGANDA",
+        "DOUBLE CURVE"
+      ],
+      "visual_family": "diamond",
+      "base_action": "REDUCE_SPEED",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "double_curve",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Alignment warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "steep_ascent",
+      "category": "warning",
+      "names": {
+        "en": "Steep ascent",
+        "ms": "Pendakian curam",
+        "zh": "陡坡上行"
+      },
+      "aliases": [
+        "PENDAKIAN CURAM",
+        "STEEP ASCENT"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "steep_ascent",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Gradient warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "steep_descent",
+      "category": "warning",
+      "names": {
+        "en": "Steep descent",
+        "ms": "Turunan curam",
+        "zh": "陡坡下行"
+      },
+      "aliases": [
+        "TURUNAN CURAM",
+        "STEEP DESCENT"
+      ],
+      "visual_family": "diamond",
+      "base_action": "REDUCE_SPEED",
+      "severity": "critical",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "steep_descent",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Gradient warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "slippery_road",
+      "category": "warning",
+      "names": {
+        "en": "Slippery road",
+        "ms": "Jalan licin",
+        "zh": "路面湿滑"
+      },
+      "aliases": [
+        "JALAN LICIN",
+        "SLIPPERY ROAD"
+      ],
+      "visual_family": "diamond",
+      "base_action": "REDUCE_SPEED",
+      "severity": "critical",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "slippery_road",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Road condition warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "uneven_road",
+      "category": "warning",
+      "names": {
+        "en": "Uneven road",
+        "ms": "Jalan tidak rata",
+        "zh": "路面不平"
+      },
+      "aliases": [
+        "JALAN TIDAK RATA",
+        "UNEVEN ROAD"
+      ],
+      "visual_family": "diamond",
+      "base_action": "REDUCE_SPEED",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "uneven_road",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Road condition warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "road_hump",
+      "category": "warning",
+      "names": {
+        "en": "Road hump",
+        "ms": "Bonggol jalan",
+        "zh": "减速带"
+      },
+      "aliases": [
+        "BONGGOL",
+        "BONGGOL JALAN",
+        "ROAD HUMP"
+      ],
+      "visual_family": "diamond",
+      "base_action": "REDUCE_SPEED",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "road_hump",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Road condition warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "road_dip",
+      "category": "warning",
+      "names": {
+        "en": "Road dip",
+        "ms": "Lekuk jalan",
+        "zh": "路面低洼"
+      },
+      "aliases": [
+        "LEKUK JALAN",
+        "ROAD DIP"
+      ],
+      "visual_family": "diamond",
+      "base_action": "REDUCE_SPEED",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "road_dip",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Road condition warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "road_narrows_both",
+      "category": "warning",
+      "names": {
+        "en": "Road narrows",
+        "ms": "Jalan mengecil",
+        "zh": "道路变窄"
+      },
+      "aliases": [
+        "JALAN MENGECIL",
+        "ROAD NARROWS"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "road_narrows_both",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Road-width warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "road_narrows_left",
+      "category": "warning",
+      "names": {
+        "en": "Road narrows on left",
+        "ms": "Jalan mengecil di kiri",
+        "zh": "左侧道路变窄"
+      },
+      "aliases": [
+        "ROAD NARROWS LEFT"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "left",
+      "audio_key": "road_narrows_left",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Road-width warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "road_narrows_right",
+      "category": "warning",
+      "names": {
+        "en": "Road narrows on right",
+        "ms": "Jalan mengecil di kanan",
+        "zh": "右侧道路变窄"
+      },
+      "aliases": [
+        "ROAD NARROWS RIGHT"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "right",
+      "audio_key": "road_narrows_right",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Road-width warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "two_way_traffic",
+      "category": "warning",
+      "names": {
+        "en": "Two-way traffic",
+        "ms": "Trafik dua hala",
+        "zh": "双向交通"
+      },
+      "aliases": [
+        "TRAFIK DUA HALA",
+        "TWO WAY TRAFFIC"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "two_way_traffic",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Traffic movement warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "falling_rocks",
+      "category": "warning",
+      "names": {
+        "en": "Falling rocks",
+        "ms": "Batu runtuh",
+        "zh": "注意落石"
+      },
+      "aliases": [
+        "BATU RUNTUH",
+        "FALLING ROCKS"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "critical",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "falling_rocks",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Hazard warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "animal_crossing",
+      "category": "warning",
+      "names": {
+        "en": "Animals crossing",
+        "ms": "Haiwan melintas",
+        "zh": "动物横穿"
+      },
+      "aliases": [
+        "HAIWAN MELINTAS",
+        "ANIMALS CROSSING"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ANIMALS",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "animal_crossing",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Hazard warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "railway_crossing",
+      "category": "warning",
+      "names": {
+        "en": "Railway crossing",
+        "ms": "Lintasan kereta api",
+        "zh": "铁路道口"
+      },
+      "aliases": [
+        "LINTASAN KERETA API",
+        "RAILWAY CROSSING"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_RAILWAY",
+      "severity": "critical",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "railway_crossing",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Railway warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "hospital",
+      "category": "information",
+      "names": {
+        "en": "Hospital",
+        "ms": "Hospital",
+        "zh": "医院"
+      },
+      "aliases": [
+        "HOSPITAL",
+        "医院"
+      ],
+      "visual_family": "rectangle",
+      "base_action": "INFORMATION_ONLY",
+      "severity": "information",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "hospital",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Service signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "parking",
+      "category": "information",
+      "names": {
+        "en": "Parking",
+        "ms": "Tempat letak kereta",
+        "zh": "停车场"
+      },
+      "aliases": [
+        "TEMPAT LETAK KERETA",
+        "PARKING",
+        "停车场"
+      ],
+      "visual_family": "rectangle",
+      "base_action": "INFORMATION_ONLY",
+      "severity": "information",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "parking",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Service signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "bus_stop",
+      "category": "information",
+      "names": {
+        "en": "Bus stop",
+        "ms": "Perhentian bas",
+        "zh": "巴士站"
+      },
+      "aliases": [
+        "PERHENTIAN BAS",
+        "BAS",
+        "BUS STOP",
+        "巴士站"
+      ],
+      "visual_family": "rectangle",
+      "base_action": "WATCH_PEDESTRIANS",
+      "severity": "caution",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "bus_stop",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Service signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "dead_end",
+      "category": "information",
+      "names": {
+        "en": "Dead end",
+        "ms": "Jalan mati",
+        "zh": "此路不通"
+      },
+      "aliases": [
+        "JALAN MATI",
+        "DEAD END",
+        "NO THROUGH ROAD"
+      ],
+      "visual_family": "rectangle",
+      "base_action": "INFORMATION_ONLY",
+      "severity": "information",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "dead_end",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Information signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "one_way",
+      "category": "information",
+      "names": {
+        "en": "One way",
+        "ms": "Jalan sehala",
+        "zh": "单行道"
+      },
+      "aliases": [
+        "JALAN SEHALA",
+        "ONE WAY",
+        "单行道"
+      ],
+      "visual_family": "rectangle",
+      "base_action": "FOLLOW_DIRECTION",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": null,
+      "audio_key": "one_way",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Information signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "expressway",
+      "category": "information",
+      "names": {
+        "en": "Expressway",
+        "ms": "Lebuhraya",
+        "zh": "高速公路"
+      },
+      "aliases": [
+        "LEBUHRAYA",
+        "EXPRESSWAY",
+        "HIGHWAY"
+      ],
+      "visual_family": "rectangle",
+      "base_action": "INFORMATION_ONLY",
+      "severity": "information",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "expressway",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Expressway signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "end_expressway",
+      "category": "information",
+      "names": {
+        "en": "End of expressway",
+        "ms": "Tamat lebuhraya",
+        "zh": "高速公路结束"
+      },
+      "aliases": [
+        "TAMAT LEBUHRAYA",
+        "END EXPRESSWAY"
+      ],
+      "visual_family": "rectangle",
+      "base_action": "INFORMATION_ONLY",
+      "severity": "information",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "end_expressway",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Expressway signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "general_caution",
+      "category": "warning",
+      "names": {
+        "en": "General caution",
+        "ms": "Awas",
+        "zh": "注意"
+      },
+      "aliases": [
+        "AWAS",
+        "CAUTION",
+        "WARNING",
+        "注意"
+      ],
+      "visual_family": "diamond_or_text",
+      "base_action": "UNKNOWN_CAUTION",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "general_caution",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "General warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "flood_area",
+      "category": "warning",
+      "names": {
+        "en": "Flood area",
+        "ms": "Kawasan banjir",
+        "zh": "水灾区"
+      },
+      "aliases": [
+        "KAWASAN BANJIR",
+        "BANJIR",
+        "FLOOD AREA"
+      ],
+      "visual_family": "text_or_diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "critical",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "flood_area",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Hazard warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "low_clearance",
+      "category": "warning",
+      "names": {
+        "en": "Low clearance ahead",
+        "ms": "Kelegaan rendah di hadapan",
+        "zh": "前方限高"
+      },
+      "aliases": [
+        "LOW CLEARANCE",
+        "KELEGAAN RENDAH"
+      ],
+      "visual_family": "text_or_diamond",
+      "base_action": "HEIGHT_RESTRICTION",
+      "severity": "critical",
+      "parameter_type": "height",
+      "default_parameter": null,
+      "audio_key": "low_clearance",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Dimension warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "lane_ends",
+      "category": "warning",
+      "names": {
+        "en": "Lane ends",
+        "ms": "Lorong berakhir",
+        "zh": "车道结束"
+      },
+      "aliases": [
+        "LORONG BERAKHIR",
+        "LANE ENDS"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "lane_ends",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Lane warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "divided_road_begins",
+      "category": "warning",
+      "names": {
+        "en": "Divided road begins",
+        "ms": "Jalan berbahagi bermula",
+        "zh": "分隔道路开始"
+      },
+      "aliases": [
+        "DIVIDED ROAD BEGINS"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "caution",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "divided_road_begins",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Road-layout warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "divided_road_ends",
+      "category": "warning",
+      "names": {
+        "en": "Divided road ends",
+        "ms": "Jalan berbahagi berakhir",
+        "zh": "分隔道路结束"
+      },
+      "aliases": [
+        "DIVIDED ROAD ENDS"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "divided_road_ends",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Road-layout warning signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "chevron_left",
+      "category": "warning",
+      "names": {
+        "en": "Sharp direction left",
+        "ms": "Arah tajam ke kiri",
+        "zh": "急转向左"
+      },
+      "aliases": [
+        "CHEVRON LEFT"
+      ],
+      "visual_family": "rectangle",
+      "base_action": "REDUCE_SPEED",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "left",
+      "audio_key": "chevron_left",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Delineation signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "chevron_right",
+      "category": "warning",
+      "names": {
+        "en": "Sharp direction right",
+        "ms": "Arah tajam ke kanan",
+        "zh": "急转向右"
+      },
+      "aliases": [
+        "CHEVRON RIGHT"
+      ],
+      "visual_family": "rectangle",
+      "base_action": "REDUCE_SPEED",
+      "severity": "warning",
+      "parameter_type": "direction",
+      "default_parameter": "right",
+      "audio_key": "chevron_right",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Delineation signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "construction_vehicle",
+      "category": "temporary",
+      "names": {
+        "en": "Construction vehicles",
+        "ms": "Kenderaan pembinaan",
+        "zh": "工程车辆"
+      },
+      "aliases": [
+        "CONSTRUCTION VEHICLES"
+      ],
+      "visual_family": "diamond",
+      "base_action": "WATCH_ROAD_HAZARD",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "construction_vehicle",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2c_85_2017",
+        "document": "JKR ATJ 2C/85 (Pindaan 2017)",
+        "section": "Temporary signs",
+        "url": "https://epsmg.jkr.gov.my/images/e/e8/ATJ_2C85.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "flagman_ahead",
+      "category": "temporary",
+      "names": {
+        "en": "Flagman ahead",
+        "ms": "Pengawal bendera di hadapan",
+        "zh": "前方交通指挥员"
+      },
+      "aliases": [
+        "FLAGMAN AHEAD"
+      ],
+      "visual_family": "diamond",
+      "base_action": "REDUCE_SPEED",
+      "severity": "critical",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "flagman_ahead",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2c_85_2017",
+        "document": "JKR ATJ 2C/85 (Pindaan 2017)",
+        "section": "Temporary signs",
+        "url": "https://epsmg.jkr.gov.my/images/e/e8/ATJ_2C85.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "temporary_speed_limit",
+      "category": "temporary",
+      "names": {
+        "en": "Temporary speed limit",
+        "ms": "Had laju sementara",
+        "zh": "临时限速"
+      },
+      "aliases": [
+        "HAD LAJU SEMENTARA",
+        "TEMPORARY SPEED LIMIT"
+      ],
+      "visual_family": "circle_or_text",
+      "base_action": "SET_TARGET_SPEED",
+      "severity": "critical",
+      "parameter_type": "speed",
+      "default_parameter": null,
+      "audio_key": "temporary_speed_limit",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2c_85_2017",
+        "document": "JKR ATJ 2C/85 (Pindaan 2017)",
+        "section": "Temporary signs",
+        "url": "https://epsmg.jkr.gov.my/images/e/e8/ATJ_2C85.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "mosque",
+      "category": "information",
+      "names": {
+        "en": "Mosque",
+        "ms": "Masjid",
+        "zh": "清真寺"
+      },
+      "aliases": [
+        "MASJID",
+        "MOSQUE",
+        "清真寺"
+      ],
+      "visual_family": "rectangle",
+      "base_action": "INFORMATION_ONLY",
+      "severity": "information",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "mosque",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Service signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "petrol_station",
+      "category": "information",
+      "names": {
+        "en": "Petrol station",
+        "ms": "Stesen minyak",
+        "zh": "加油站"
+      },
+      "aliases": [
+        "STESEN MINYAK",
+        "PETROL STATION",
+        "GAS STATION",
+        "加油站"
+      ],
+      "visual_family": "rectangle",
+      "base_action": "INFORMATION_ONLY",
+      "severity": "information",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "petrol_station",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Service signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "rest_area",
+      "category": "information",
+      "names": {
+        "en": "Rest area",
+        "ms": "Kawasan rehat",
+        "zh": "休息区"
+      },
+      "aliases": [
+        "KAWASAN REHAT",
+        "R&R",
+        "REST AREA",
+        "休息区"
+      ],
+      "visual_family": "rectangle",
+      "base_action": "INFORMATION_ONLY",
+      "severity": "information",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "rest_area",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Service signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "emergency_phone",
+      "category": "information",
+      "names": {
+        "en": "Emergency telephone",
+        "ms": "Telefon kecemasan",
+        "zh": "紧急电话"
+      },
+      "aliases": [
+        "TELEFON KECEMASAN",
+        "EMERGENCY TELEPHONE"
+      ],
+      "visual_family": "rectangle",
+      "base_action": "INFORMATION_ONLY",
+      "severity": "information",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "emergency_phone",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Service signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "camera_enforcement",
+      "category": "information",
+      "names": {
+        "en": "Camera enforcement",
+        "ms": "Penguatkuasaan kamera",
+        "zh": "摄像执法"
+      },
+      "aliases": [
+        "AWAS CAMERA",
+        "CAMERA ENFORCEMENT"
+      ],
+      "visual_family": "rectangle",
+      "base_action": "INFORMATION_ONLY",
+      "severity": "information",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "camera_enforcement",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Enforcement information signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    },
+    {
+      "semantic_sign_id": "toll_plaza",
+      "category": "information",
+      "names": {
+        "en": "Toll plaza",
+        "ms": "Plaza tol",
+        "zh": "收费站"
+      },
+      "aliases": [
+        "PLAZA TOL",
+        "TOL",
+        "TOLL PLAZA",
+        "收费站"
+      ],
+      "visual_family": "rectangle",
+      "base_action": "REDUCE_SPEED",
+      "severity": "warning",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "toll_plaza",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Toll information signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
+    }
+  ]
+}

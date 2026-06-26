@@ -1,0 +1,4 @@
+[core]
+    remote = local-storage
+['remote "local-storage"']
+    url = C:\MiniProjectData\dvc-remote

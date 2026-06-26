@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "retrieved_on": "2026-06-24",
+  "publisher": "Jabatan Kerja Raya Malaysia",
+  "documents": [
+    {
+      "reference_id": "jkr_atj_2a_85_2019",
+      "title": "Arahan Teknik (Jalan) 2A/85 (Pindaan 2019): Manual on Traffic Control Devices - Standard Traffic Signs",
+      "source_url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf",
+      "scope": [
+        "regulatory signs",
+        "mandatory signs",
+        "warning danger signs",
+        "guide and information signs"
+      ],
+      "local_archive_status": "remote_index_verified",
+      "notes": "Official JKR host was indexed and readable through search on 2026-06-24; direct archival transfer timed out and must be retried."
+    },
+    {
+      "reference_id": "jkr_atj_2b_85_2019",
+      "title": "Arahan Teknik (Jalan) 2B/85 (Pindaan 2019): Design and Application of Traffic Signs",
+      "source_url": "https://epsmg.jkr.gov.my/images/6/6c/ATJ_2B.85_PINDAAN_2019_WM.pdf",
+      "scope": [
+        "regulatory sign application",
+        "warning sign application",
+        "guide sign application"
+      ],
+      "local_archive_status": "remote_index_verified",
+      "notes": "Use for placement and application guidance; sign artwork remains referenced to ATJ 2A/85."
+    },
+    {
+      "reference_id": "jkr_atj_2c_85_2017",
+      "title": "Arahan Teknik (Jalan) 2C/85 (Pindaan 2017): Temporary Signs and Work Zones",
+      "source_url": "https://epsmg.jkr.gov.my/images/e/e8/ATJ_2C85.pdf",
+      "scope": [
+        "temporary signs",
+        "construction and work-zone signs"
+      ],
+      "local_archive_status": "remote_index_verified",
+      "notes": "Use for the temporary-sign subset."
+    },
+    {
+      "reference_id": "jkr_road_sign_usage_2021",
+      "title": "Dokumen Rujukan Sistem Papan Tanda Jalan dan Penggunaannya",
+      "source_url": "https://epsmg.jkr.gov.my/images/f/f8/Slot_4_-_Papan_Tanda_Jalan_Dan_Penggunaannya_2021.pdf",
+      "scope": [
+        "JKR sign-system overview",
+        "road and expressway sign usage"
+      ],
+      "local_archive_status": "remote_index_verified",
+      "notes": "Supporting JKR presentation material, not a replacement for ATJ standards."
+    }
+  ]
+}
