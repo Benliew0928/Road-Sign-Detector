@@ -1,0 +1,39 @@
+preprocessing:
+  clahe_enabled: true
+  clahe_clip_limit: 2.0
+  clahe_grid_size: 8
+  gaussian_blur_size: 3
+
+colors:
+  red:
+    ranges:
+      - lower: [0, 70, 45]
+        upper: [12, 255, 255]
+      - lower: [165, 70, 45]
+        upper: [179, 255, 255]
+  blue:
+    ranges:
+      - lower: [90, 65, 40]
+        upper: [135, 255, 255]
+  yellow:
+    ranges:
+      - lower: [15, 70, 70]
+        upper: [40, 255, 255]
+
+morphology:
+  open_kernel: 3
+  close_kernel: 7
+  iterations: 1
+  background_refinement:
+    enabled: true
+    giant_contour_area_ratio: 0.70
+    saturation_floor: 130
+
+candidates:
+  min_area_ratio: 0.0005
+  max_area_ratio: 0.70
+  min_width: 8
+  min_height: 8
+  min_extent: 0.20
+  min_solidity: 0.45
+  max_aspect_ratio: 3.5

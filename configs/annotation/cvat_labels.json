@@ -1,0 +1,39 @@
+{
+  "version": "1.0",
+  "labels": [
+    {
+      "name": "traffic_sign",
+      "type": "any",
+      "attributes": [
+        {"name": "semantic_sign_id", "input_type": "text", "mutable": false},
+        {"name": "coursework_id", "input_type": "text", "mutable": false},
+        {"name": "transcript", "input_type": "text", "mutable": false},
+        {
+          "name": "script",
+          "input_type": "select",
+          "values": ["none", "latin", "chinese", "mixed", "numeric"],
+          "mutable": false
+        },
+        {
+          "name": "visibility",
+          "input_type": "select",
+          "values": ["clear", "partial", "severe_occlusion"],
+          "mutable": false
+        },
+        {
+          "name": "blur",
+          "input_type": "select",
+          "values": ["none", "mild", "strong"],
+          "mutable": false
+        },
+        {
+          "name": "lighting",
+          "input_type": "select",
+          "values": ["day", "night", "rain", "glare", "shadow"],
+          "mutable": false
+        }
+      ]
+    }
+  ]
+}
+

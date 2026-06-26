@@ -1,0 +1,93 @@
+schema: '2.0'
+stages:
+  official_manifest:
+    cmd: python -m roadsign_assist.cli inventory-official
+    deps:
+    - path: data/official/assignment_images
+      hash: md5
+      md5: 9d8ce0244f228d37c95abae2040aec8c.dir
+      size: 2848143
+      nfiles: 84
+    - path: src/roadsign_assist/datasets/official.py
+      hash: md5
+      md5: c952415de84b1f25c666b1c2a4f89067
+      size: 4826
+    outs:
+    - path: data/manifests/official_checksums.csv
+      hash: md5
+      md5: 05a37a0ba05a4f419f5f887eb1deb27a
+      size: 7760
+    - path: data/manifests/official_images.csv
+      hash: md5
+      md5: 94bfd578d2abe28df747f8baf762d604
+      size: 12742
+  validate_catalogue:
+    cmd: python -m roadsign_assist.cli validate-catalogue
+    deps:
+    - path: configs/catalogue/malaysia_signs.v1.json
+      hash: md5
+      md5: a9ffed75041a4a57dd6d8b8d5f8ad26e
+      size: 63512
+    - path: src/roadsign_assist/catalogue/models.py
+      hash: md5
+      md5: e45267f7408210208ae4b8d9ad890ee3
+      size: 5326
+    - path: src/roadsign_assist/catalogue/repository.py
+      hash: md5
+      md5: 599dd685d6930bc2b7ceb23f01e4219a
+      size: 3086
+  baseline:
+    cmd: python -m roadsign_assist.cli baseline-batch --input 
+      data/manifests/official_images.csv
+    deps:
+    - path: configs/baseline/default.yaml
+      hash: md5
+      md5: b70ae02c12f2e14b5c8c1903a3dfbbfd
+      size: 734
+    - path: data/manifests/official_images.csv
+      hash: md5
+      md5: 94bfd578d2abe28df747f8baf762d604
+      size: 12742
+    - path: src/roadsign_assist/baseline
+      hash: md5
+      md5: 5f47b1db6ba27563200ea2934cf8a874.dir
+      size: 81338
+      nfiles: 18
+    outs:
+    - path: outputs/baseline
+      hash: md5
+      md5: 209675bbd2be9f52d156b3187d588602.dir
+      size: 11466866
+      nfiles: 826
+  build_splits:
+    cmd: python -m roadsign_assist.cli build-splits
+    deps:
+    - path: data/manifests/dataset.csv
+      hash: md5
+      md5: 308680fbe425550318e2a90fa7c6d13e
+      size: 95890
+    - path: src/roadsign_assist/datasets/split.py
+      hash: md5
+      md5: a933f3305bcb6b13c43d237b63de957c
+      size: 8257
+    params:
+      params.yaml:
+        data:
+          split_seed: 2513
+          train_fraction: 0.7
+          validation_fraction: 0.15
+          test_fraction: 0.15
+          duplicate_hamming_threshold: 6
+    outs:
+    - path: data/splits/test.csv
+      hash: md5
+      md5: 5295a7a5bf8493586b6700737d87d30b
+      size: 16587
+    - path: data/splits/train.csv
+      hash: md5
+      md5: ca683cc07af6d2eca4e61c5e591b26f9
+      size: 92517
+    - path: data/splits/validation.csv
+      hash: md5
+      md5: 5890cb61cfbd451236d9cdd9d781f086
+      size: 16946

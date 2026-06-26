@@ -1,0 +1,40 @@
+seed: 2513
+
+data:
+  split_seed: 2513
+  train_fraction: 0.70
+  validation_fraction: 0.15
+  test_fraction: 0.15
+  duplicate_hamming_threshold: 6
+
+baseline:
+  config: configs/baseline/default.yaml
+
+detection:
+  image_size: 640
+  confidence_threshold: 0.25
+  nms_iou_threshold: 0.50
+  model_path: models/exported/sign_segmenter.onnx
+
+classification:
+  image_size: 224
+  confidence_threshold: 0.72
+  unknown_distance_threshold: 0.40
+  model_path: models/exported/sign_classifier.onnx
+
+ocr:
+  enabled: true
+  stable_track_frames: 4
+  cache_seconds: 8
+
+tracking:
+  match_iou: 0.30
+  max_center_distance: 2.0
+  min_stable_frames: 3
+  max_missed_frames: 12
+  duplicate_warning_seconds: 8
+
+runtime:
+  preferred_device: auto
+  max_frame_queue: 2
+  max_image_dimension: 1280

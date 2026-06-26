@@ -1,0 +1,511 @@
+sample_id,source_id,path,semantic_sign_id,group_id,route_id,session_id,physical_sign_id,has_sign,is_synthetic,annotation_status
+emtd_accf102caaa970ce,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1.jpg,maximum_speed,emtd_dup_emtd_accf102caaa970ce,,,,true,false,source_boxes_unreviewed
+emtd_cece785eb92cd643,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/10.jpg,no_heavy_vehicle,emtd_dup_emtd_cece785eb92cd643,,,,true,false,source_boxes_unreviewed
+emtd_bf46fd2a09e05bed,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1000.jpg,give_way keep_left keep_right merge_left roadworks,emtd_dup_emtd_bf46fd2a09e05bed,,,,true,false,source_boxes_unreviewed
+emtd_ed6369453cc5fd41,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1001.jpg,give_way keep_right merge_left roadworks,emtd_dup_emtd_ed6369453cc5fd41,,,,true,false,source_boxes_unreviewed
+emtd_ae4c2c00bbb95ad3,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1002.jpg,general_caution keep_right,emtd_dup_emtd_ae4c2c00bbb95ad3,,,,true,false,source_boxes_unreviewed
+emtd_9d509ede2a448da3,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1004.jpg,no_entry,emtd_dup_emtd_9d509ede2a448da3,,,,true,false,source_boxes_unreviewed
+emtd_de62579075080971,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1006.jpg,divided_road_begins height_restriction traffic_signal_ahead,emtd_dup_emtd_de62579075080971,,,,true,false,source_boxes_unreviewed
+emtd_5df46409ee99afa6,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1007.jpg,give_way keep_right maximum_speed merge_left,emtd_dup_emtd_5df46409ee99afa6,,,,true,false,source_boxes_unreviewed
+emtd_c5705399e9a25d1d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1008.jpg,give_way keep_right maximum_speed,emtd_dup_emtd_c5705399e9a25d1d,,,,true,false,source_boxes_unreviewed
+emtd_bf525f26be6b7537,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1013.jpg,divided_road_begins maximum_speed,emtd_dup_emtd_bf525f26be6b7537,,,,true,false,source_boxes_unreviewed
+emtd_df9874147187f16e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1014.jpg,maximum_speed,emtd_dup_emtd_df9874147187f16e,,,,true,false,source_boxes_unreviewed
+emtd_07fae35db1ab4cf6,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1021.jpg,keep_left maximum_speed,emtd_dup_emtd_07fae35db1ab4cf6,,,,true,false,source_boxes_unreviewed
+emtd_c5013860ca1f3895,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1024.jpg,keep_left,emtd_dup_emtd_c5013860ca1f3895,,,,true,false,source_boxes_unreviewed
+emtd_ff937d8340aa908c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1026.jpg,height_restriction road_narrows_both roadworks,emtd_dup_emtd_ff937d8340aa908c,,,,true,false,source_boxes_unreviewed
+emtd_932c4aaabb554e29,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1027.jpg,maximum_speed road_narrows_both roadworks,emtd_dup_emtd_932c4aaabb554e29,,,,true,false,source_boxes_unreviewed
+emtd_c1f70e702a101084,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1028.jpg,maximum_speed road_narrows_both,emtd_dup_emtd_c1f70e702a101084,,,,true,false,source_boxes_unreviewed
+emtd_d0b4b254dda62cf8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/103.jpg,divided_road_begins maximum_speed,emtd_dup_emtd_d0b4b254dda62cf8,,,,true,false,source_boxes_unreviewed
+emtd_f8082107503b594d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1033.jpg,general_caution height_restriction keep_right roadworks,emtd_dup_emtd_f8082107503b594d,,,,true,false,source_boxes_unreviewed
+emtd_29137c7c673163f8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1034.jpg,keep_left,emtd_dup_emtd_29137c7c673163f8,,,,true,false,source_boxes_unreviewed
+emtd_500a439573a7b739,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1035.jpg,keep_left maximum_speed roadworks,emtd_dup_emtd_500a439573a7b739,,,,true,false,source_boxes_unreviewed
+emtd_a9dfefec65487b00,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/104.jpg,,emtd_dup_emtd_a9dfefec65487b00,,,,true,false,source_boxes_unreviewed
+emtd_faead23c3a3626a7,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1044.jpg,width_restriction,emtd_dup_emtd_faead23c3a3626a7,,,,true,false,source_boxes_unreviewed
+emtd_4d21a48d4654424d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1050.jpg,maximum_speed road_hump,emtd_dup_emtd_4d21a48d4654424d,,,,true,false,source_boxes_unreviewed
+emtd_f1e47bf09aa9b0c2,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1051.jpg,maximum_speed road_hump,emtd_dup_emtd_f1e47bf09aa9b0c2,,,,true,false,source_boxes_unreviewed
+emtd_89c551fd905d27f5,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1052.jpg,,emtd_dup_emtd_89c551fd905d27f5,,,,true,false,source_boxes_unreviewed
+emtd_5e76576986d31148,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1055.jpg,keep_right roadworks,emtd_dup_emtd_5e76576986d31148,,,,true,false,source_boxes_unreviewed
+emtd_f9af889d5c2a88d0,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1056.jpg,give_way keep_left keep_right merge_left,emtd_dup_emtd_f9af889d5c2a88d0,,,,true,false,source_boxes_unreviewed
+emtd_bf30a635a938663b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1058.jpg,curve_left keep_right,emtd_dup_emtd_bf30a635a938663b,,,,true,false,source_boxes_unreviewed
+emtd_1f58241697f5553e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1059.jpg,curve_left,emtd_dup_emtd_1f58241697f5553e,,,,true,false,source_boxes_unreviewed
+emtd_6c2027e3e59351f4,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1061.jpg,keep_left,emtd_dup_emtd_6c2027e3e59351f4,,,,true,false,source_boxes_unreviewed
+emtd_11eccc3fff812c10,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1063.jpg,give_way,emtd_dup_emtd_11eccc3fff812c10,,,,true,false,source_boxes_unreviewed
+emtd_4ff9c3bc5bfd55b3,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1064.jpg,general_caution,emtd_dup_emtd_4ff9c3bc5bfd55b3,,,,true,false,source_boxes_unreviewed
+emtd_d81b8450e1f6b24c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1068.jpg,give_way keep_left keep_right merge_right,emtd_dup_emtd_d81b8450e1f6b24c,,,,true,false,source_boxes_unreviewed
+emtd_97ad7887eb642fb9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1069.jpg,give_way keep_left keep_right merge_right,emtd_dup_emtd_97ad7887eb642fb9,,,,true,false,source_boxes_unreviewed
+emtd_e3fd2a0c1babff07,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1077.jpg,general_caution no_parking,emtd_dup_emtd_e3fd2a0c1babff07,,,,true,false,source_boxes_unreviewed
+emtd_4db4c57471c78e5e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1078.jpg,no_parking,emtd_dup_emtd_4db4c57471c78e5e,,,,true,false,source_boxes_unreviewed
+emtd_ed52e1f11cc3401d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1079.jpg,height_restriction,emtd_dup_emtd_ed52e1f11cc3401d,,,,true,false,source_boxes_unreviewed
+emtd_9c561f32d7e48782,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1080.jpg,height_restriction no_u_turn,emtd_dup_emtd_9c561f32d7e48782,,,,true,false,source_boxes_unreviewed
+emtd_9123b15c355822d1,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1081.jpg,divided_road_begins no_u_turn stop,emtd_dup_emtd_9123b15c355822d1,,,,true,false,source_boxes_unreviewed
+emtd_f94025e8cb308ac7,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1084.jpg,give_way no_u_turn,emtd_dup_emtd_f94025e8cb308ac7,,,,true,false,source_boxes_unreviewed
+emtd_33d33dbf542c7559,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1085.jpg,keep_right,emtd_dup_emtd_33d33dbf542c7559,,,,true,false,source_boxes_unreviewed
+emtd_51965458ff11aa25,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1087.jpg,height_restriction road_hump,emtd_dup_emtd_51965458ff11aa25,,,,true,false,source_boxes_unreviewed
+emtd_cd5d30b8635d404f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1091.jpg,divided_road_begins height_restriction pedestrian_crossing road_hump traffic_signal_ahead,emtd_dup_emtd_cd5d30b8635d404f,,,,true,false,source_boxes_unreviewed
+emtd_05109e7fa190b843,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1092.jpg,divided_road_begins height_restriction pedestrian_crossing road_hump traffic_signal_ahead,emtd_dup_emtd_05109e7fa190b843,,,,true,false,source_boxes_unreviewed
+emtd_c95c416e6cbba497,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1094.jpg,no_parking,emtd_dup_emtd_c95c416e6cbba497,,,,true,false,source_boxes_unreviewed
+emtd_d2610180e830189d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1095.jpg,no_parking,emtd_dup_emtd_d2610180e830189d,,,,true,false,source_boxes_unreviewed
+emtd_21f1b2454de256db,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1098.jpg,pedestrian_crossing traffic_signal_ahead,emtd_dup_emtd_21f1b2454de256db,,,,true,false,source_boxes_unreviewed
+emtd_dce52a4f21d3e7b7,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1099.jpg,traffic_signal_ahead,emtd_dup_emtd_dce52a4f21d3e7b7,,,,true,false,source_boxes_unreviewed
+emtd_2229e417950c39bd,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/11.jpg,t_junction,emtd_dup_emtd_2229e417950c39bd,,,,true,false,source_boxes_unreviewed
+emtd_7dcb14ce9eda671c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1100.jpg,no_parking,emtd_dup_emtd_7dcb14ce9eda671c,,,,true,false,source_boxes_unreviewed
+emtd_3665f32430565132,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1101.jpg,height_restriction no_parking,emtd_dup_emtd_3665f32430565132,,,,true,false,source_boxes_unreviewed
+emtd_56d3fee8dff6cf13,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1102.jpg,height_restriction no_parking,emtd_dup_emtd_56d3fee8dff6cf13,,,,true,false,source_boxes_unreviewed
+emtd_6e826dab36633a41,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1103.jpg,height_restriction no_parking,emtd_dup_emtd_6e826dab36633a41,,,,true,false,source_boxes_unreviewed
+emtd_15150b2adeb95289,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1106.jpg,divided_road_begins no_entry,emtd_dup_emtd_15150b2adeb95289,,,,true,false,source_boxes_unreviewed
+emtd_eed9757fa6d6f8ad,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/1107.jpg,general_caution height_restriction,emtd_dup_emtd_eed9757fa6d6f8ad,,,,true,false,source_boxes_unreviewed
+emtd_2008f08885984e1a,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/113.jpg,keep_right roadworks,emtd_dup_emtd_2008f08885984e1a,,,,true,false,source_boxes_unreviewed
+emtd_78bafb3446dd0cc9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/114.jpg,keep_right roadworks,emtd_dup_emtd_78bafb3446dd0cc9,,,,true,false,source_boxes_unreviewed
+emtd_ed219c7640833ec8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/118.jpg,keep_left maximum_speed,emtd_dup_emtd_ed219c7640833ec8,,,,true,false,source_boxes_unreviewed
+emtd_71b97f3681cfd481,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/12.jpg,t_junction,emtd_dup_emtd_71b97f3681cfd481,,,,true,false,source_boxes_unreviewed
+emtd_8eacefb84eecce9d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/120.jpg,general_caution,emtd_dup_emtd_8eacefb84eecce9d,,,,true,false,source_boxes_unreviewed
+emtd_cd622e72d3a936e9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/121.jpg,give_way,emtd_dup_emtd_cd622e72d3a936e9,,,,true,false,source_boxes_unreviewed
+emtd_b94f0b098b8b1ea3,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/124.jpg,divided_road_begins weight_restriction,emtd_dup_emtd_b94f0b098b8b1ea3,,,,true,false,source_boxes_unreviewed
+emtd_96c840a754c9d933,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/125.jpg,height_restriction roundabout_ahead,emtd_dup_emtd_96c840a754c9d933,,,,true,false,source_boxes_unreviewed
+emtd_58066e6f9a93c166,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/128.jpg,crossroads,emtd_dup_emtd_58066e6f9a93c166,,,,true,false,source_boxes_unreviewed
+emtd_35bb92c55b4af838,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/129.jpg,crossroads,emtd_dup_emtd_35bb92c55b4af838,,,,true,false,source_boxes_unreviewed
+emtd_b96f49b701f58186,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/13.jpg,general_caution,emtd_dup_emtd_b96f49b701f58186,,,,true,false,source_boxes_unreviewed
+emtd_9bfd9ddc90d6225d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/131.jpg,road_hump weight_restriction,emtd_dup_emtd_9bfd9ddc90d6225d,,,,true,false,source_boxes_unreviewed
+emtd_ac5f6d24590a9878,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/134.jpg,children_crossing no_parking road_hump,emtd_dup_emtd_ac5f6d24590a9878,,,,true,false,source_boxes_unreviewed
+emtd_51bb564b6b10913f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/135.jpg,children_crossing maximum_speed,emtd_dup_emtd_51bb564b6b10913f,,,,true,false,source_boxes_unreviewed
+emtd_832539edd32dad0c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/139.jpg,divided_road_begins height_restriction,emtd_dup_emtd_832539edd32dad0c,,,,true,false,source_boxes_unreviewed
+emtd_d75dd4921f9f5ca9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/14.jpg,general_caution,emtd_dup_emtd_d75dd4921f9f5ca9,,,,true,false,source_boxes_unreviewed
+emtd_39b5a5c5816fadb7,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/142.jpg,keep_left keep_right,emtd_dup_emtd_39b5a5c5816fadb7,,,,true,false,source_boxes_unreviewed
+emtd_8c39ba77fbe70bfe,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/144.jpg,give_way,emtd_dup_emtd_8c39ba77fbe70bfe,,,,true,false,source_boxes_unreviewed
+emtd_1aa628691303333f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/145.jpg,road_narrows_both,emtd_dup_emtd_1aa628691303333f,,,,true,false,source_boxes_unreviewed
+emtd_176f7536713ddb1b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/146.jpg,height_restriction traffic_signal_ahead,emtd_dup_emtd_176f7536713ddb1b,,,,true,false,source_boxes_unreviewed
+emtd_9f034251bdb55aeb,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/149.jpg,width_restriction,emtd_dup_emtd_9f034251bdb55aeb,,,,true,false,source_boxes_unreviewed
+emtd_b4ff14189beb101f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/157.jpg,traffic_signal_ahead,emtd_dup_emtd_b4ff14189beb101f,,,,true,false,source_boxes_unreviewed
+emtd_08fda0244b5397e0,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/2.jpg,no_heavy_vehicle,emtd_dup_emtd_08fda0244b5397e0,,,,true,false,source_boxes_unreviewed
+emtd_178ae943fb180dbd,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/21.jpg,curve_left divided_road_begins,emtd_dup_emtd_178ae943fb180dbd,,,,true,false,source_boxes_unreviewed
+emtd_5d2552f3c147808b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/27.jpg,animal_crossing keep_left,emtd_dup_emtd_5d2552f3c147808b,,,,true,false,source_boxes_unreviewed
+emtd_3a951572a2150028,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/29.jpg,general_caution,emtd_dup_emtd_3a951572a2150028,,,,true,false,source_boxes_unreviewed
+emtd_1f995b601aba9274,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/31.jpg,maximum_speed,emtd_dup_emtd_1f995b601aba9274,,,,true,false,source_boxes_unreviewed
+emtd_174dab7e39076657,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/32.jpg,maximum_speed,emtd_dup_emtd_174dab7e39076657,,,,true,false,source_boxes_unreviewed
+emtd_f6a03683afb636ae,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/33.jpg,maximum_speed,emtd_dup_emtd_f6a03683afb636ae,,,,true,false,source_boxes_unreviewed
+emtd_f1dba46f5eb30184,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/34.jpg,maximum_speed,emtd_dup_emtd_f1dba46f5eb30184,,,,true,false,source_boxes_unreviewed
+emtd_b2d44a98fb0ab389,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/36.jpg,animal_crossing,emtd_dup_emtd_b2d44a98fb0ab389,,,,true,false,source_boxes_unreviewed
+emtd_787cd23beca8deed,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/38.jpg,animal_crossing,emtd_dup_emtd_787cd23beca8deed,,,,true,false,source_boxes_unreviewed
+emtd_9525e600c00aed34,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/41.jpg,maximum_speed,emtd_dup_emtd_9525e600c00aed34,,,,true,false,source_boxes_unreviewed
+emtd_2c5403f1cd9ee193,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/42.jpg,maximum_speed,emtd_dup_emtd_2c5403f1cd9ee193,,,,true,false,source_boxes_unreviewed
+emtd_eb823e3041592498,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/44.jpg,general_caution,emtd_dup_emtd_eb823e3041592498,,,,true,false,source_boxes_unreviewed
+emtd_d81689b9daafeb4e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/45.jpg,general_caution,emtd_dup_emtd_d81689b9daafeb4e,,,,true,false,source_boxes_unreviewed
+emtd_1622475d52a03437,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/46.jpg,general_caution,emtd_dup_emtd_1622475d52a03437,,,,true,false,source_boxes_unreviewed
+emtd_f97d5b11e515b18d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/47.jpg,t_junction,emtd_dup_emtd_f97d5b11e515b18d,,,,true,false,source_boxes_unreviewed
+emtd_8f85803226cefdc3,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/48.jpg,t_junction,emtd_dup_emtd_8f85803226cefdc3,,,,true,false,source_boxes_unreviewed
+emtd_12742049cfec34d8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/49.jpg,general_caution,emtd_dup_emtd_12742049cfec34d8,,,,true,false,source_boxes_unreviewed
+emtd_0ed1686442ac6303,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/5.jpg,roadworks,emtd_dup_emtd_0ed1686442ac6303,,,,true,false,source_boxes_unreviewed
+emtd_a1275543725065f8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/50.jpg,general_caution,emtd_dup_emtd_a1275543725065f8,,,,true,false,source_boxes_unreviewed
+emtd_bc78e3f14aabf775,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/51.jpg,maximum_speed,emtd_dup_emtd_bc78e3f14aabf775,,,,true,false,source_boxes_unreviewed
+emtd_93dd2d3be43c5e97,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/52.jpg,maximum_speed,emtd_dup_emtd_93dd2d3be43c5e97,,,,true,false,source_boxes_unreviewed
+emtd_c341a9e3e50aa1eb,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/56.jpg,road_narrows_both,emtd_dup_emtd_c341a9e3e50aa1eb,,,,true,false,source_boxes_unreviewed
+emtd_e5b24cf60326608b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/57.jpg,road_narrows_both,emtd_dup_emtd_e5b24cf60326608b,,,,true,false,source_boxes_unreviewed
+emtd_94e7a7901331db7e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/58.jpg,road_narrows_both,emtd_dup_emtd_94e7a7901331db7e,,,,true,false,source_boxes_unreviewed
+emtd_782968a1d499a863,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/59.jpg,road_narrows_both,emtd_dup_emtd_782968a1d499a863,,,,true,false,source_boxes_unreviewed
+emtd_b30ff17d14b759c0,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/6.jpg,maximum_speed,emtd_dup_emtd_b30ff17d14b759c0,,,,true,false,source_boxes_unreviewed
+emtd_5fbc85200676377a,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/62.jpg,road_narrows_both,emtd_dup_emtd_5fbc85200676377a,,,,true,false,source_boxes_unreviewed
+emtd_ba8525166863df3d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/63.jpg,road_narrows_both,emtd_dup_emtd_ba8525166863df3d,,,,true,false,source_boxes_unreviewed
+emtd_a63448bed7903b35,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/66.jpg,maximum_speed,emtd_dup_emtd_a63448bed7903b35,,,,true,false,source_boxes_unreviewed
+emtd_ac78ab3f35109d6b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/67.jpg,slippery_road,emtd_dup_emtd_ac78ab3f35109d6b,,,,true,false,source_boxes_unreviewed
+emtd_31e0fb8f0548ac71,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/68.jpg,slippery_road,emtd_dup_emtd_31e0fb8f0548ac71,,,,true,false,source_boxes_unreviewed
+emtd_701df3c5dbd195c2,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/69.jpg,maximum_speed,emtd_dup_emtd_701df3c5dbd195c2,,,,true,false,source_boxes_unreviewed
+emtd_0cab9ef2c368a7ef,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/70.jpg,maximum_speed,emtd_dup_emtd_0cab9ef2c368a7ef,,,,true,false,source_boxes_unreviewed
+emtd_872688bce44ccd84,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/72.jpg,divided_road_begins two_way_traffic,emtd_dup_emtd_872688bce44ccd84,,,,true,false,source_boxes_unreviewed
+emtd_38d2092e8a2e7e09,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/79.jpg,merge_left,emtd_dup_emtd_38d2092e8a2e7e09,,,,true,false,source_boxes_unreviewed
+emtd_6caf85fa09e06429,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/8.jpg,general_caution,emtd_dup_emtd_6caf85fa09e06429,,,,true,false,source_boxes_unreviewed
+emtd_8789278698dd14ee,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/88.jpg,animal_crossing divided_road_begins general_caution,emtd_dup_emtd_8789278698dd14ee,,,,true,false,source_boxes_unreviewed
+emtd_556fd7814f6283d8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/89.jpg,animal_crossing general_caution width_restriction,emtd_dup_emtd_556fd7814f6283d8,,,,true,false,source_boxes_unreviewed
+emtd_c0c954a3a268bfc5,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/9.jpg,general_caution,emtd_dup_emtd_c0c954a3a268bfc5,,,,true,false,source_boxes_unreviewed
+emtd_f1538f8966a8ec11,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/93.jpg,maximum_speed,emtd_dup_emtd_f1538f8966a8ec11,,,,true,false,source_boxes_unreviewed
+emtd_aadb368367681805,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/97.jpg,side_road_left,emtd_dup_emtd_aadb368367681805,,,,true,false,source_boxes_unreviewed
+emtd_3ec1f9592607cedd,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/98.jpg,side_road_left,emtd_dup_emtd_3ec1f9592607cedd,,,,true,false,source_boxes_unreviewed
+emtd_21211e33261ff19e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0101.JPG,road_hump,emtd_dup_emtd_21211e33261ff19e,,,,true,false,source_boxes_unreviewed
+emtd_9605e3695c2857bf,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0106.JPG,divided_road_begins height_restriction pedestrian_crossing,emtd_dup_emtd_9605e3695c2857bf,,,,true,false,source_boxes_unreviewed
+emtd_cd8242fc6f363eca,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0119.JPG,no_overtaking,emtd_dup_emtd_cd8242fc6f363eca,,,,true,false,source_boxes_unreviewed
+emtd_49acec27228829f3,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0120.JPG,no_overtaking,emtd_dup_emtd_49acec27228829f3,,,,true,false,source_boxes_unreviewed
+emtd_953c96b1e18f4230,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0122.JPG,side_road_right traffic_signal_ahead,emtd_dup_emtd_953c96b1e18f4230,,,,true,false,source_boxes_unreviewed
+emtd_c2a0f4313c3c9e12,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0130.JPG,height_restriction road_hump,emtd_dup_emtd_c2a0f4313c3c9e12,,,,true,false,source_boxes_unreviewed
+emtd_0bfb175c92a4bdf8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0134.JPG,divided_road_begins give_way,emtd_dup_emtd_0bfb175c92a4bdf8,,,,true,false,source_boxes_unreviewed
+emtd_3f1204a0b04a1616,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0138.JPG,side_road_right,emtd_dup_emtd_3f1204a0b04a1616,,,,true,false,source_boxes_unreviewed
+emtd_1af03976d2f4cb04,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0139.JPG,side_road_right,emtd_dup_emtd_1af03976d2f4cb04,,,,true,false,source_boxes_unreviewed
+emtd_6e96bc80088a9ebe,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0140.JPG,children_crossing,emtd_dup_emtd_6e96bc80088a9ebe,,,,true,false,source_boxes_unreviewed
+emtd_ccb893e17c2a5f32,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0142.JPG,divided_road_begins keep_right,emtd_dup_emtd_ccb893e17c2a5f32,,,,true,false,source_boxes_unreviewed
+emtd_f5f4396410d256d3,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0143.JPG,children_crossing keep_right,emtd_dup_emtd_f5f4396410d256d3,,,,true,false,source_boxes_unreviewed
+emtd_26542ab3f2cd6aee,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0147.JPG,children_crossing divided_road_begins height_restriction,emtd_dup_emtd_26542ab3f2cd6aee,,,,true,false,source_boxes_unreviewed
+emtd_d598a063e48697cc,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0151.JPG,crossroads,emtd_dup_emtd_d598a063e48697cc,,,,true,false,source_boxes_unreviewed
+emtd_b8b100778ae9835c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0152.JPG,children_crossing,emtd_dup_emtd_b8b100778ae9835c,,,,true,false,source_boxes_unreviewed
+emtd_cadb01574922b90b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0153.JPG,children_crossing,emtd_dup_emtd_cadb01574922b90b,,,,true,false,source_boxes_unreviewed
+emtd_991de370362b92de,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0325.JPG,general_caution,emtd_dup_emtd_991de370362b92de,,,,true,false,source_boxes_unreviewed
+emtd_f0f7e0e9c55974a6,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0326.JPG,t_junction,emtd_dup_emtd_f0f7e0e9c55974a6,,,,true,false,source_boxes_unreviewed
+emtd_dddb1d7e4463c695,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0328.JPG,t_junction,emtd_dup_emtd_dddb1d7e4463c695,,,,true,false,source_boxes_unreviewed
+emtd_709adf5a41b8c825,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0330.JPG,general_caution,emtd_dup_emtd_709adf5a41b8c825,,,,true,false,source_boxes_unreviewed
+emtd_b95e97340168cba4,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/DSC-0333.JPG,maximum_speed,emtd_dup_emtd_b95e97340168cba4,,,,true,false,source_boxes_unreviewed
+emtd_76e915baaa130833,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830926.JPG,divided_road_begins give_way,emtd_dup_emtd_76e915baaa130833,,,,true,false,source_boxes_unreviewed
+emtd_80715a5811ab2d3b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830927.JPG,divided_road_begins give_way,emtd_dup_emtd_80715a5811ab2d3b,,,,true,false,source_boxes_unreviewed
+emtd_8673f35e4b6971c2,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830935.JPG,give_way merge_left,emtd_dup_emtd_8673f35e4b6971c2,,,,true,false,source_boxes_unreviewed
+emtd_df679b3a4a2692a0,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830936.JPG,give_way merge_left,emtd_dup_emtd_8673f35e4b6971c2,,,,true,false,source_boxes_unreviewed
+emtd_de0ab664395b2329,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830937.JPG,give_way,emtd_dup_emtd_de0ab664395b2329,,,,true,false,source_boxes_unreviewed
+emtd_4360afab485bdcdc,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830940.JPG,divided_road_begins height_restriction,emtd_dup_emtd_4360afab485bdcdc,,,,true,false,source_boxes_unreviewed
+emtd_1f2671d8396a5778,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830942.JPG,height_restriction merge_left width_restriction,emtd_dup_emtd_1f2671d8396a5778,,,,true,false,source_boxes_unreviewed
+emtd_c6ff2feb98444e60,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830943.JPG,height_restriction width_restriction,emtd_dup_emtd_c6ff2feb98444e60,,,,true,false,source_boxes_unreviewed
+emtd_0149b935b851d2f0,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830946.JPG,width_restriction,emtd_dup_emtd_0149b935b851d2f0,,,,true,false,source_boxes_unreviewed
+emtd_29b865b3af155a72,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830948.JPG,height_restriction maximum_speed roadworks,emtd_dup_emtd_29b865b3af155a72,,,,true,false,source_boxes_unreviewed
+emtd_2b0800c50aaa1f8c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830949.JPG,height_restriction maximum_speed roadworks,emtd_dup_emtd_2b0800c50aaa1f8c,,,,true,false,source_boxes_unreviewed
+emtd_893e6128762b6154,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830950.JPG,height_restriction maximum_speed roadworks,emtd_dup_emtd_893e6128762b6154,,,,true,false,source_boxes_unreviewed
+emtd_62303011fcc9c591,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830952.JPG,divided_road_begins width_restriction,emtd_dup_emtd_62303011fcc9c591,,,,true,false,source_boxes_unreviewed
+emtd_adb352f74da847f9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830954.JPG,divided_road_begins width_restriction,emtd_dup_emtd_adb352f74da847f9,,,,true,false,source_boxes_unreviewed
+emtd_b8b559a1d5a36c1c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830956.JPG,width_restriction,emtd_dup_emtd_b8b559a1d5a36c1c,,,,true,false,source_boxes_unreviewed
+emtd_ccbea56843be030f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830957.JPG,give_way merge_left,emtd_dup_emtd_ccbea56843be030f,,,,true,false,source_boxes_unreviewed
+emtd_e74ae9087e74f4e6,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830963.JPG,divided_road_begins,emtd_dup_emtd_e74ae9087e74f4e6,,,,true,false,source_boxes_unreviewed
+emtd_28e4e221ad933605,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830970.JPG,divided_road_begins general_caution height_restriction,emtd_dup_emtd_28e4e221ad933605,,,,true,false,source_boxes_unreviewed
+emtd_0a80e5fcdaaf3765,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830975.JPG,give_way height_restriction maximum_speed,emtd_dup_emtd_0a80e5fcdaaf3765,,,,true,false,source_boxes_unreviewed
+emtd_6f9e795a68442be9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830976.JPG,give_way height_restriction,emtd_dup_emtd_6f9e795a68442be9,,,,true,false,source_boxes_unreviewed
+emtd_695985373825108d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830978.JPG,height_restriction,emtd_dup_emtd_695985373825108d,,,,true,false,source_boxes_unreviewed
+emtd_77c5279e46eb5924,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830979.JPG,no_entry,emtd_dup_emtd_77c5279e46eb5924,,,,true,false,source_boxes_unreviewed
+emtd_a6334abc6ddd06b7,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830980.JPG,no_entry stop,emtd_dup_emtd_a6334abc6ddd06b7,,,,true,false,source_boxes_unreviewed
+emtd_aa216831fbd23e7d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830981.JPG,height_restriction maximum_speed,emtd_dup_emtd_aa216831fbd23e7d,,,,true,false,source_boxes_unreviewed
+emtd_79875b1ba6aa526c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830982.JPG,height_restriction maximum_speed stop,emtd_dup_emtd_79875b1ba6aa526c,,,,true,false,source_boxes_unreviewed
+emtd_abbcc91c8b94455f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830984.JPG,height_restriction,emtd_dup_emtd_abbcc91c8b94455f,,,,true,false,source_boxes_unreviewed
+emtd_53d69a4c14418a17,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830986.JPG,roundabout_ahead,emtd_dup_emtd_53d69a4c14418a17,,,,true,false,source_boxes_unreviewed
+emtd_8bd277c271f71c15,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830990.JPG,keep_right,emtd_dup_emtd_8bd277c271f71c15,,,,true,false,source_boxes_unreviewed
+emtd_76cd6549c6400fe5,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1830994.JPG,children_crossing traffic_signal_ahead,emtd_dup_emtd_76cd6549c6400fe5,,,,true,false,source_boxes_unreviewed
+emtd_5c12524488a7c01d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840001.JPG,no_left_turn,emtd_dup_emtd_5c12524488a7c01d,,,,true,false,source_boxes_unreviewed
+emtd_347395075fda396c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840004.JPG,pedestrian_crossing,emtd_dup_emtd_347395075fda396c,,,,true,false,source_boxes_unreviewed
+emtd_4832e5835a0f1e95,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840007.JPG,divided_road_begins general_caution height_restriction pedestrian_crossing,emtd_dup_emtd_4832e5835a0f1e95,,,,true,false,source_boxes_unreviewed
+emtd_2ca5d238e28dec52,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840009.JPG,divided_road_begins general_caution pedestrian_crossing,emtd_dup_emtd_2ca5d238e28dec52,,,,true,false,source_boxes_unreviewed
+emtd_4486c2d99d3f2790,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840012.JPG,general_caution give_way height_restriction pass_either_side,emtd_dup_emtd_4486c2d99d3f2790,,,,true,false,source_boxes_unreviewed
+emtd_b7ecc0a580b2a5cc,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840015.JPG,general_caution height_restriction,emtd_dup_emtd_b7ecc0a580b2a5cc,,,,true,false,source_boxes_unreviewed
+emtd_39c6e079d27e1d71,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840019.JPG,divided_road_begins pedestrian_crossing,emtd_dup_emtd_39c6e079d27e1d71,,,,true,false,source_boxes_unreviewed
+emtd_cd039bf41616cfb8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840020.JPG,divided_road_begins,emtd_dup_emtd_cd039bf41616cfb8,,,,true,false,source_boxes_unreviewed
+emtd_4ae94de816267824,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840023.JPG,height_restriction pedestrian_crossing,emtd_dup_emtd_4ae94de816267824,,,,true,false,source_boxes_unreviewed
+emtd_81dc8b0d168f3bbb,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840024.JPG,keep_right pedestrian_crossing,emtd_dup_emtd_81dc8b0d168f3bbb,,,,true,false,source_boxes_unreviewed
+emtd_a4d82c88cae51a2b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840027.JPG,road_hump,emtd_dup_emtd_a4d82c88cae51a2b,,,,true,false,source_boxes_unreviewed
+emtd_8a6a9ccf27affcb6,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840029.JPG,road_hump,emtd_dup_emtd_8a6a9ccf27affcb6,,,,true,false,source_boxes_unreviewed
+emtd_89a43cbf62cf7d82,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840032.JPG,road_hump,emtd_dup_emtd_89a43cbf62cf7d82,,,,true,false,source_boxes_unreviewed
+emtd_7bae3457d2aa752b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840035.JPG,children_crossing maximum_speed road_hump,emtd_dup_emtd_7bae3457d2aa752b,,,,true,false,source_boxes_unreviewed
+emtd_eb07db745f1be2ba,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840037.JPG,children_crossing maximum_speed road_hump,emtd_dup_emtd_eb07db745f1be2ba,,,,true,false,source_boxes_unreviewed
+emtd_d58f34d08b4a612e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840038.JPG,maximum_speed road_hump traffic_signal_ahead,emtd_dup_emtd_d58f34d08b4a612e,,,,true,false,source_boxes_unreviewed
+emtd_c2ad9d5a930fe4e9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840043.JPG,divided_road_begins,emtd_dup_emtd_c2ad9d5a930fe4e9,,,,true,false,source_boxes_unreviewed
+emtd_3b6a8f1eafa9f748,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840045.JPG,merge_left,emtd_dup_emtd_3b6a8f1eafa9f748,,,,true,false,source_boxes_unreviewed
+emtd_88f3a3e8314f39b5,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840051.JPG,height_restriction road_hump,emtd_dup_emtd_88f3a3e8314f39b5,,,,true,false,source_boxes_unreviewed
+emtd_30d3540ab66976b8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840054.JPG,merge_left,emtd_dup_emtd_30d3540ab66976b8,,,,true,false,source_boxes_unreviewed
+emtd_466d7e7edc38e164,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840063.JPG,maximum_speed,emtd_dup_emtd_466d7e7edc38e164,,,,true,false,source_boxes_unreviewed
+emtd_e0d134836d50a02f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840069.JPG,keep_right maximum_speed,emtd_dup_emtd_e0d134836d50a02f,,,,true,false,source_boxes_unreviewed
+emtd_751450996ef5bac5,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840071.JPG,divided_road_begins maximum_speed,emtd_dup_emtd_751450996ef5bac5,,,,true,false,source_boxes_unreviewed
+emtd_20923a7ba318eb58,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840072.JPG,divided_road_begins maximum_speed merge_left,emtd_dup_emtd_20923a7ba318eb58,,,,true,false,source_boxes_unreviewed
+emtd_b330bbc32b124384,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840073.JPG,divided_road_begins maximum_speed merge_left,emtd_dup_emtd_b330bbc32b124384,,,,true,false,source_boxes_unreviewed
+emtd_e88f80e2db86cbb7,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840074.JPG,divided_road_begins maximum_speed merge_left,emtd_dup_emtd_e88f80e2db86cbb7,,,,true,false,source_boxes_unreviewed
+emtd_ce9c16ca0280d757,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840089.JPG,divided_road_begins height_restriction road_hump stop,emtd_dup_emtd_ce9c16ca0280d757,,,,true,false,source_boxes_unreviewed
+emtd_27fc894ec54867c0,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840096.JPG,give_way height_restriction,emtd_dup_emtd_27fc894ec54867c0,,,,true,false,source_boxes_unreviewed
+emtd_05c11e440bceae36,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840098.JPG,height_restriction maximum_speed,emtd_dup_emtd_05c11e440bceae36,,,,true,false,source_boxes_unreviewed
+emtd_7b1961bec90c74cc,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840099.JPG,animal_crossing divided_road_begins give_way,emtd_dup_emtd_7b1961bec90c74cc,,,,true,false,source_boxes_unreviewed
+emtd_680f6d595734dbcd,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840100.JPG,animal_crossing divided_road_begins height_restriction,emtd_dup_emtd_680f6d595734dbcd,,,,true,false,source_boxes_unreviewed
+emtd_a46a08ce2a37eddb,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840101.JPG,animal_crossing divided_road_begins pedestrian_crossing,emtd_dup_emtd_a46a08ce2a37eddb,,,,true,false,source_boxes_unreviewed
+emtd_fe3876c03658671d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840102.JPG,divided_road_begins height_restriction merge_right,emtd_dup_emtd_fe3876c03658671d,,,,true,false,source_boxes_unreviewed
+emtd_90b477b11d9c37f6,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840103.JPG,merge_right,emtd_dup_emtd_90b477b11d9c37f6,,,,true,false,source_boxes_unreviewed
+emtd_5c18f71806f7f407,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840106.JPG,height_restriction width_restriction,emtd_dup_emtd_5c18f71806f7f407,,,,true,false,source_boxes_unreviewed
+emtd_07f7bebe989a4fb2,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840108.JPG,height_restriction width_restriction,emtd_dup_emtd_07f7bebe989a4fb2,,,,true,false,source_boxes_unreviewed
+emtd_4e0edc87f7466c6a,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840111.JPG,animal_crossing divided_road_begins height_restriction merge_left,emtd_dup_emtd_4e0edc87f7466c6a,,,,true,false,source_boxes_unreviewed
+emtd_3ed7a222fd38cc5f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840113.JPG,divided_road_begins general_caution give_way height_restriction keep_right maximum_speed merge_left merge_right no_entry no_u_turn pedestrian_crossing,emtd_dup_emtd_3ed7a222fd38cc5f,,,,true,false,source_boxes_unreviewed
+emtd_9f4c563b497eb46b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840114.JPG,divided_road_begins general_caution give_way height_restriction keep_right merge_left merge_right no_entry no_u_turn pedestrian_crossing,emtd_dup_emtd_9f4c563b497eb46b,,,,true,false,source_boxes_unreviewed
+emtd_f46f86b31a823c41,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840115.JPG,divided_road_begins give_way height_restriction keep_right merge_left merge_right no_entry no_u_turn pedestrian_crossing,emtd_dup_emtd_f46f86b31a823c41,,,,true,false,source_boxes_unreviewed
+emtd_69a204a515f07cc4,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840116.JPG,divided_road_begins give_way height_restriction keep_right merge_left merge_right no_entry no_u_turn pedestrian_crossing,emtd_dup_emtd_69a204a515f07cc4,,,,true,false,source_boxes_unreviewed
+emtd_4dafc2a4b3a3316b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840117.JPG,give_way keep_right merge_left merge_right no_entry no_u_turn pedestrian_crossing,emtd_dup_emtd_4dafc2a4b3a3316b,,,,true,false,source_boxes_unreviewed
+emtd_86ce16e7b74daf8f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840118.JPG,give_way keep_right merge_right no_entry no_u_turn pedestrian_crossing,emtd_dup_emtd_86ce16e7b74daf8f,,,,true,false,source_boxes_unreviewed
+emtd_dab264437f101537,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840119.JPG,give_way keep_right no_entry pedestrian_crossing traffic_signal_ahead,emtd_dup_emtd_dab264437f101537,,,,true,false,source_boxes_unreviewed
+emtd_d4d0e8dc3fd82865,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840120.JPG,keep_right no_entry pedestrian_crossing,emtd_dup_emtd_d4d0e8dc3fd82865,,,,true,false,source_boxes_unreviewed
+emtd_40e5b319cf97adf3,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840121.JPG,keep_right no_entry pedestrian_crossing,emtd_dup_emtd_40e5b319cf97adf3,,,,true,false,source_boxes_unreviewed
+emtd_3843e3f4487fce9b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840122.JPG,crossroads keep_left,emtd_dup_emtd_3843e3f4487fce9b,,,,true,false,source_boxes_unreviewed
+emtd_71cc5f3295256e83,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840128.JPG,divided_road_begins,emtd_dup_emtd_71cc5f3295256e83,,,,true,false,source_boxes_unreviewed
+emtd_8b480e9c38f6faa1,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840133.JPG,divided_road_begins,emtd_dup_emtd_8b480e9c38f6faa1,,,,true,false,source_boxes_unreviewed
+emtd_724032002f9a00a9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840134.JPG,divided_road_begins height_restriction,emtd_dup_emtd_724032002f9a00a9,,,,true,false,source_boxes_unreviewed
+emtd_9f950e30ce7c33f1,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840138.JPG,weight_restriction,emtd_dup_emtd_9f950e30ce7c33f1,,,,true,false,source_boxes_unreviewed
+emtd_c11fa2bb0ca06974,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840139.JPG,weight_restriction,emtd_dup_emtd_c11fa2bb0ca06974,,,,true,false,source_boxes_unreviewed
+emtd_744806c4a943abab,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840140.JPG,general_caution height_restriction maximum_speed,emtd_dup_emtd_744806c4a943abab,,,,true,false,source_boxes_unreviewed
+emtd_5f7cf79a455c49f0,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840143.JPG,animal_crossing children_crossing general_caution height_restriction maximum_speed,emtd_dup_emtd_5f7cf79a455c49f0,,,,true,false,source_boxes_unreviewed
+emtd_a813151de51d2c1a,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840147.JPG,animal_crossing maximum_speed,emtd_dup_emtd_a813151de51d2c1a,,,,true,false,source_boxes_unreviewed
+emtd_df13965d41341f4c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840148.JPG,animal_crossing maximum_speed,emtd_dup_emtd_df13965d41341f4c,,,,true,false,source_boxes_unreviewed
+emtd_595647f10f1a4e3e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840150.JPG,animal_crossing height_restriction maximum_speed,emtd_dup_emtd_595647f10f1a4e3e,,,,true,false,source_boxes_unreviewed
+emtd_b2d6665dba64ebb7,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840151.JPG,animal_crossing height_restriction maximum_speed,emtd_dup_emtd_b2d6665dba64ebb7,,,,true,false,source_boxes_unreviewed
+emtd_64a6e880795ff953,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840152.JPG,animal_crossing height_restriction maximum_speed,emtd_dup_emtd_64a6e880795ff953,,,,true,false,source_boxes_unreviewed
+emtd_d7bfedd4915c52b7,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840159.JPG,no_entry,emtd_dup_emtd_d7bfedd4915c52b7,,,,true,false,source_boxes_unreviewed
+emtd_89ce925e34a6fb5f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840160.JPG,no_entry,emtd_dup_emtd_89ce925e34a6fb5f,,,,true,false,source_boxes_unreviewed
+emtd_f745139c7b9c554a,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840163.JPG,traffic_signal_ahead,emtd_dup_emtd_f745139c7b9c554a,,,,true,false,source_boxes_unreviewed
+emtd_3ee5072532a01f54,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840173.JPG,divided_road_begins height_restriction,emtd_dup_emtd_3ee5072532a01f54,,,,true,false,source_boxes_unreviewed
+emtd_7eb00623a554ebb4,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840175.JPG,,emtd_dup_emtd_7eb00623a554ebb4,,,,true,false,source_boxes_unreviewed
+emtd_a6dbba77199b2e10,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840176.JPG,,emtd_dup_emtd_a6dbba77199b2e10,,,,true,false,source_boxes_unreviewed
+emtd_515e10bb275de1b5,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840177.JPG,no_entry,emtd_dup_emtd_515e10bb275de1b5,,,,true,false,source_boxes_unreviewed
+emtd_110456139d0a1273,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840181.JPG,crossroads divided_road_begins height_restriction maximum_speed traffic_signal_ahead,emtd_dup_emtd_110456139d0a1273,,,,true,false,source_boxes_unreviewed
+emtd_6b3bad116f3adbf1,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840182.JPG,crossroads divided_road_begins height_restriction maximum_speed traffic_signal_ahead,emtd_dup_emtd_6b3bad116f3adbf1,,,,true,false,source_boxes_unreviewed
+emtd_ecf89bd784bba2e2,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840183.JPG,divided_road_begins give_way height_restriction,emtd_dup_emtd_ecf89bd784bba2e2,,,,true,false,source_boxes_unreviewed
+emtd_803a3df237414bc0,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840185.JPG,crossroads divided_road_begins height_restriction maximum_speed no_u_turn traffic_signal_ahead,emtd_dup_emtd_803a3df237414bc0,,,,true,false,source_boxes_unreviewed
+emtd_503949e4eba7fcd1,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840190.JPG,curve_left,emtd_dup_emtd_503949e4eba7fcd1,,,,true,false,source_boxes_unreviewed
+emtd_8873fa6d133de966,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840191.JPG,curve_left,emtd_dup_emtd_8873fa6d133de966,,,,true,false,source_boxes_unreviewed
+emtd_796ac12b8b80aa25,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840195.JPG,general_caution,emtd_dup_emtd_796ac12b8b80aa25,,,,true,false,source_boxes_unreviewed
+emtd_73b604f19e9cf10e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840197.JPG,general_caution,emtd_dup_emtd_73b604f19e9cf10e,,,,true,false,source_boxes_unreviewed
+emtd_f4c05b290ec60cf7,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840199.JPG,crossroads divided_road_begins height_restriction no_parking,emtd_dup_emtd_f4c05b290ec60cf7,,,,true,false,source_boxes_unreviewed
+emtd_4a175710f8d593a0,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840200.JPG,crossroads divided_road_begins height_restriction no_parking,emtd_dup_emtd_4a175710f8d593a0,,,,true,false,source_boxes_unreviewed
+emtd_f032064e939cabdc,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840201.JPG,divided_road_begins give_way height_restriction no_parking,emtd_dup_emtd_f032064e939cabdc,,,,true,false,source_boxes_unreviewed
+emtd_2f159e69b7244de0,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840211.JPG,side_road_right,emtd_dup_emtd_2f159e69b7244de0,,,,true,false,source_boxes_unreviewed
+emtd_e15af3011f552187,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840213.JPG,road_hump,emtd_dup_emtd_e15af3011f552187,,,,true,false,source_boxes_unreviewed
+emtd_3888248c925e9c81,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840217.JPG,height_restriction no_u_turn,emtd_dup_emtd_3888248c925e9c81,,,,true,false,source_boxes_unreviewed
+emtd_1feebc48a8305db0,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840221.JPG,keep_right,emtd_dup_emtd_1feebc48a8305db0,,,,true,false,source_boxes_unreviewed
+emtd_708372d6389e4d17,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840223.JPG,no_u_turn,emtd_dup_emtd_708372d6389e4d17,,,,true,false,source_boxes_unreviewed
+emtd_f9420e678ece056e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840224.JPG,no_u_turn,emtd_dup_emtd_f9420e678ece056e,,,,true,false,source_boxes_unreviewed
+emtd_4ade1ccf5fa86554,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840236.JPG,divided_road_begins weight_restriction,emtd_dup_emtd_4ade1ccf5fa86554,,,,true,false,source_boxes_unreviewed
+emtd_2939e5d95a102852,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840237.JPG,divided_road_begins,emtd_dup_emtd_2939e5d95a102852,,,,true,false,source_boxes_unreviewed
+emtd_606776c64a392220,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840241.JPG,give_way merge_left,emtd_dup_emtd_606776c64a392220,,,,true,false,source_boxes_unreviewed
+emtd_933751dd497d8cee,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840244.JPG,height_restriction pedestrian_crossing,emtd_dup_emtd_933751dd497d8cee,,,,true,false,source_boxes_unreviewed
+emtd_4813a93ebfc648c0,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840249.JPG,crossroads,emtd_dup_emtd_4813a93ebfc648c0,,,,true,false,source_boxes_unreviewed
+emtd_6e44994598059afd,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840250.JPG,weight_restriction,emtd_dup_emtd_6e44994598059afd,,,,true,false,source_boxes_unreviewed
+emtd_ce60a44828235c6d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840252.JPG,pass_either_side,emtd_dup_emtd_ce60a44828235c6d,,,,true,false,source_boxes_unreviewed
+emtd_69f1dbc4bc0ec4ec,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840270.JPG,pass_either_side,emtd_dup_emtd_69f1dbc4bc0ec4ec,,,,true,false,source_boxes_unreviewed
+emtd_53c525ee0daae4f9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840272.JPG,no_u_turn side_road_left,emtd_dup_emtd_53c525ee0daae4f9,,,,true,false,source_boxes_unreviewed
+emtd_38cf0bbf0e297237,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840275.JPG,give_way no_u_turn side_road_right,emtd_dup_emtd_38cf0bbf0e297237,,,,true,false,source_boxes_unreviewed
+emtd_d6f5077a58192e9d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840276.JPG,give_way side_road_right,emtd_dup_emtd_d6f5077a58192e9d,,,,true,false,source_boxes_unreviewed
+emtd_d88c81accb5618cf,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840281.JPG,maximum_speed traffic_signal_ahead,emtd_dup_emtd_d88c81accb5618cf,,,,true,false,source_boxes_unreviewed
+emtd_6bb201df112580c6,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840286.JPG,curve_left,emtd_dup_emtd_6bb201df112580c6,,,,true,false,source_boxes_unreviewed
+emtd_72bd7f9ef5c1e9fa,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840287.JPG,double_curve general_caution,emtd_dup_emtd_72bd7f9ef5c1e9fa,,,,true,false,source_boxes_unreviewed
+emtd_c27e3f01068bc4b5,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840288.JPG,double_curve general_caution,emtd_dup_emtd_c27e3f01068bc4b5,,,,true,false,source_boxes_unreviewed
+emtd_6a090bef0dd3c4b7,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840289.JPG,double_curve general_caution,emtd_dup_emtd_6a090bef0dd3c4b7,,,,true,false,source_boxes_unreviewed
+emtd_49d6c89a15cbdc9c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840291.JPG,keep_right no_parking,emtd_dup_emtd_49d6c89a15cbdc9c,,,,true,false,source_boxes_unreviewed
+emtd_cb2c89b8be2fc7f6,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840294.JPG,divided_road_begins side_road_left traffic_signal_ahead,emtd_dup_emtd_cb2c89b8be2fc7f6,,,,true,false,source_boxes_unreviewed
+emtd_009e580a009c7377,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840303.JPG,divided_road_begins maximum_speed no_parking,emtd_dup_emtd_009e580a009c7377,,,,true,false,source_boxes_unreviewed
+emtd_eda240d27c65057d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840305.JPG,pedestrian_crossing,emtd_dup_emtd_eda240d27c65057d,,,,true,false,source_boxes_unreviewed
+emtd_f8aa8d8aca2a99f3,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840313.JPG,,emtd_dup_emtd_f8aa8d8aca2a99f3,,,,true,false,source_boxes_unreviewed
+emtd_b3518542b54528f8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840318.JPG,no_entry,emtd_dup_emtd_b3518542b54528f8,,,,true,false,source_boxes_unreviewed
+emtd_690e01bc15464b84,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840319.JPG,no_entry,emtd_dup_emtd_690e01bc15464b84,,,,true,false,source_boxes_unreviewed
+emtd_5274ccefb955c386,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840322.JPG,traffic_signal_ahead,emtd_dup_emtd_5274ccefb955c386,,,,true,false,source_boxes_unreviewed
+emtd_571cc3e850a927e5,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840324.JPG,roundabout_ahead,emtd_dup_emtd_571cc3e850a927e5,,,,true,false,source_boxes_unreviewed
+emtd_48f98f76fb82a42d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840335.JPG,pass_either_side,emtd_dup_emtd_48f98f76fb82a42d,,,,true,false,source_boxes_unreviewed
+emtd_bae61e844d444d82,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840345.JPG,give_way,emtd_dup_emtd_bae61e844d444d82,,,,true,false,source_boxes_unreviewed
+emtd_d70de6bc8f0470fc,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840348.JPG,height_restriction road_hump stop,emtd_dup_emtd_d70de6bc8f0470fc,,,,true,false,source_boxes_unreviewed
+emtd_cf0b187577f8749f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840355.JPG,maximum_speed,emtd_dup_emtd_cf0b187577f8749f,,,,true,false,source_boxes_unreviewed
+emtd_2c81d981741c93c6,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840356.JPG,height_restriction maximum_speed roadworks,emtd_dup_emtd_2c81d981741c93c6,,,,true,false,source_boxes_unreviewed
+emtd_5975b4f591e8f67c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840357.JPG,height_restriction maximum_speed roadworks,emtd_dup_emtd_5975b4f591e8f67c,,,,true,false,source_boxes_unreviewed
+emtd_1c1e5ba67f0a4144,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840360.JPG,width_restriction,emtd_dup_emtd_1c1e5ba67f0a4144,,,,true,false,source_boxes_unreviewed
+emtd_eaa3a5700074c9fb,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840361.JPG,,emtd_dup_emtd_eaa3a5700074c9fb,,,,true,false,source_boxes_unreviewed
+emtd_b3fb9e331dafeb85,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840362.JPG,,emtd_dup_emtd_b3fb9e331dafeb85,,,,true,false,source_boxes_unreviewed
+emtd_ade5e4cb73268bc1,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840368.JPG,merge_left,emtd_dup_emtd_ade5e4cb73268bc1,,,,true,false,source_boxes_unreviewed
+emtd_65e9002f35db15b4,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840369.JPG,merge_left,emtd_dup_emtd_65e9002f35db15b4,,,,true,false,source_boxes_unreviewed
+emtd_198b0f979552448d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840375.JPG,divided_road_begins,emtd_dup_emtd_198b0f979552448d,,,,true,false,source_boxes_unreviewed
+emtd_9a05047d034ac941,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840377.JPG,,emtd_dup_emtd_9a05047d034ac941,,,,true,false,source_boxes_unreviewed
+emtd_42acc3c7177ad062,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840387.JPG,maximum_speed weight_restriction,emtd_dup_emtd_42acc3c7177ad062,,,,true,false,source_boxes_unreviewed
+emtd_d955c359e29c7e39,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840393.JPG,divided_road_begins,emtd_dup_emtd_d955c359e29c7e39,,,,true,false,source_boxes_unreviewed
+emtd_0cfb42c3e68f1bb8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840394.JPG,pedestrian_crossing,emtd_dup_emtd_0cfb42c3e68f1bb8,,,,true,false,source_boxes_unreviewed
+emtd_a565a209b2d389ef,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840398.JPG,divided_road_begins,emtd_dup_emtd_a565a209b2d389ef,,,,true,false,source_boxes_unreviewed
+emtd_a43547dc72a7e0a2,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840403.JPG,,emtd_dup_emtd_a43547dc72a7e0a2,,,,true,false,source_boxes_unreviewed
+emtd_e968b703a29148d9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840409.JPG,children_crossing divided_road_begins merge_left,emtd_dup_emtd_e968b703a29148d9,,,,true,false,source_boxes_unreviewed
+emtd_0c571b3b7d5bcf8d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840414.JPG,children_crossing height_restriction no_parking,emtd_dup_emtd_0c571b3b7d5bcf8d,,,,true,false,source_boxes_unreviewed
+emtd_5959063e85e67c7b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840426.JPG,height_restriction merge_left width_restriction,emtd_dup_emtd_5959063e85e67c7b,,,,true,false,source_boxes_unreviewed
+emtd_48a573b4c9147735,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840435.JPG,pass_either_side,emtd_dup_emtd_48a573b4c9147735,,,,true,false,source_boxes_unreviewed
+emtd_02dd6505496dfd91,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840436.JPG,pass_either_side,emtd_dup_emtd_02dd6505496dfd91,,,,true,false,source_boxes_unreviewed
+emtd_ccf1a71ae83670a5,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840437.JPG,pass_either_side,emtd_dup_emtd_ccf1a71ae83670a5,,,,true,false,source_boxes_unreviewed
+emtd_d235b581fa497e34,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840445.JPG,height_restriction merge_left,emtd_dup_emtd_d235b581fa497e34,,,,true,false,source_boxes_unreviewed
+emtd_3b8f7e5391e2ece8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840453.JPG,maximum_speed,emtd_dup_emtd_3b8f7e5391e2ece8,,,,true,false,source_boxes_unreviewed
+emtd_1ec87425fce92b2f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840462.JPG,merge_left,emtd_dup_emtd_1ec87425fce92b2f,,,,true,false,source_boxes_unreviewed
+emtd_c3d38bed31c1181e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840467.JPG,no_left_turn,emtd_dup_emtd_c3d38bed31c1181e,,,,true,false,source_boxes_unreviewed
+emtd_db153285b514101e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840468.JPG,no_left_turn,emtd_dup_emtd_db153285b514101e,,,,true,false,source_boxes_unreviewed
+emtd_3de2dfc2f06abff9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840471.JPG,no_left_turn,emtd_dup_emtd_3de2dfc2f06abff9,,,,true,false,source_boxes_unreviewed
+emtd_e40caa8f305a57cb,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840472.JPG,no_left_turn,emtd_dup_emtd_e40caa8f305a57cb,,,,true,false,source_boxes_unreviewed
+emtd_b1d343f30ca62a77,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840475.JPG,maximum_speed,emtd_dup_emtd_b1d343f30ca62a77,,,,true,false,source_boxes_unreviewed
+emtd_6212f2e24a038fe4,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840476.JPG,maximum_speed,emtd_dup_emtd_6212f2e24a038fe4,,,,true,false,source_boxes_unreviewed
+emtd_0fee531f9fe6d8b3,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840477.JPG,maximum_speed,emtd_dup_emtd_0fee531f9fe6d8b3,,,,true,false,source_boxes_unreviewed
+emtd_405f8f4128f06953,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840484.JPG,,emtd_dup_emtd_405f8f4128f06953,,,,true,false,source_boxes_unreviewed
+emtd_3d6522832eaf57b8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840485.JPG,,emtd_dup_emtd_3d6522832eaf57b8,,,,true,false,source_boxes_unreviewed
+emtd_acc78e7af2b84b6a,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840488.JPG,divided_road_begins give_way,emtd_dup_emtd_acc78e7af2b84b6a,,,,true,false,source_boxes_unreviewed
+emtd_76b83678743ddcdc,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840489.JPG,give_way,emtd_dup_emtd_76b83678743ddcdc,,,,true,false,source_boxes_unreviewed
+emtd_c3bcb355d2735c58,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840496.JPG,roundabout_ahead traffic_signal_ahead,emtd_dup_emtd_c3bcb355d2735c58,,,,true,false,source_boxes_unreviewed
+emtd_3d8c52fd447232ed,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840503.JPG,maximum_speed,emtd_dup_emtd_3d8c52fd447232ed,,,,true,false,source_boxes_unreviewed
+emtd_04128cdf51be3987,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840505.JPG,children_crossing height_restriction maximum_speed,emtd_dup_emtd_04128cdf51be3987,,,,true,false,source_boxes_unreviewed
+emtd_f1d810bfae44d65f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840514.JPG,,emtd_dup_emtd_f1d810bfae44d65f,,,,true,false,source_boxes_unreviewed
+emtd_085a7bb4a14b599a,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840515.JPG,divided_road_begins,emtd_dup_emtd_085a7bb4a14b599a,,,,true,false,source_boxes_unreviewed
+emtd_87bab5cdd65d5821,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840519.JPG,give_way,emtd_dup_emtd_87bab5cdd65d5821,,,,true,false,source_boxes_unreviewed
+emtd_5fce6e09bed7a483,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840522.JPG,give_way merge_left width_restriction,emtd_dup_emtd_5fce6e09bed7a483,,,,true,false,source_boxes_unreviewed
+emtd_5a4e8392ee9c9023,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840535.JPG,maximum_speed,emtd_dup_emtd_5a4e8392ee9c9023,,,,true,false,source_boxes_unreviewed
+emtd_87c4ff9c0476aab1,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840540.JPG,road_narrows_both,emtd_dup_emtd_87c4ff9c0476aab1,,,,true,false,source_boxes_unreviewed
+emtd_9cc07a10f4ce9727,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840558.JPG,maximum_speed,emtd_dup_emtd_9cc07a10f4ce9727,,,,true,false,source_boxes_unreviewed
+emtd_0929558fd62d9d44,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840559.JPG,divided_road_begins maximum_speed width_restriction,emtd_dup_emtd_0929558fd62d9d44,,,,true,false,source_boxes_unreviewed
+emtd_83c81868dff163c0,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840560.JPG,divided_road_begins maximum_speed width_restriction,emtd_dup_emtd_83c81868dff163c0,,,,true,false,source_boxes_unreviewed
+emtd_fe5cbb142e7065f9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840561.JPG,maximum_speed,emtd_dup_emtd_fe5cbb142e7065f9,,,,true,false,source_boxes_unreviewed
+emtd_be374659503ea7c6,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840562.JPG,maximum_speed,emtd_dup_emtd_be374659503ea7c6,,,,true,false,source_boxes_unreviewed
+emtd_77b5ce71feac4f10,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840563.JPG,maximum_speed,emtd_dup_emtd_77b5ce71feac4f10,,,,true,false,source_boxes_unreviewed
+emtd_1c232a342ab753dc,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840566.JPG,divided_road_begins,emtd_dup_emtd_1c232a342ab753dc,,,,true,false,source_boxes_unreviewed
+emtd_027baf8a52bbc0e7,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840577.JPG,height_restriction keep_right,emtd_dup_emtd_027baf8a52bbc0e7,,,,true,false,source_boxes_unreviewed
+emtd_35c25a0c7de858ca,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840586.JPG,road_hump,emtd_dup_emtd_35c25a0c7de858ca,,,,true,false,source_boxes_unreviewed
+emtd_85bc42e11dc2f8e8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840592.JPG,road_hump,emtd_dup_emtd_85bc42e11dc2f8e8,,,,true,false,source_boxes_unreviewed
+emtd_e9ec60ee0cc922c7,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840597.JPG,pedestrian_crossing weight_restriction,emtd_dup_emtd_e9ec60ee0cc922c7,,,,true,false,source_boxes_unreviewed
+emtd_0e7c200cc0562811,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840598.JPG,pedestrian_crossing weight_restriction,emtd_dup_emtd_0e7c200cc0562811,,,,true,false,source_boxes_unreviewed
+emtd_3cd200f20793dfbe,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840604.JPG,height_restriction maximum_speed,emtd_dup_emtd_3cd200f20793dfbe,,,,true,false,source_boxes_unreviewed
+emtd_f0d9cd2579e041da,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1840605.JPG,height_restriction,emtd_dup_emtd_f0d9cd2579e041da,,,,true,false,source_boxes_unreviewed
+emtd_33a20d48faf93e4d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860040.JPG,general_caution,emtd_dup_emtd_33a20d48faf93e4d,,,,true,false,source_boxes_unreviewed
+emtd_ae4608b739584ec1,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860043.JPG,general_caution,emtd_dup_emtd_ae4608b739584ec1,,,,true,false,source_boxes_unreviewed
+emtd_f0d4a2e0bbd454e1,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860046.JPG,children_crossing maximum_speed no_parking road_hump,emtd_dup_emtd_f0d4a2e0bbd454e1,,,,true,false,source_boxes_unreviewed
+emtd_2eb3432fe6d8822d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860047.JPG,children_crossing road_hump,emtd_dup_emtd_2eb3432fe6d8822d,,,,true,false,source_boxes_unreviewed
+emtd_1837b8eee3ead324,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860048.JPG,children_crossing maximum_speed road_hump,emtd_dup_emtd_1837b8eee3ead324,,,,true,false,source_boxes_unreviewed
+emtd_9c1138b7995fcf5a,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860049.JPG,children_crossing maximum_speed no_parking road_hump,emtd_dup_emtd_9c1138b7995fcf5a,,,,true,false,source_boxes_unreviewed
+emtd_02a0d43461c2e28f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860051.JPG,general_caution,emtd_dup_emtd_02a0d43461c2e28f,,,,true,false,source_boxes_unreviewed
+emtd_70bd0695872cffd9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860054.JPG,road_hump,emtd_dup_emtd_70bd0695872cffd9,,,,true,false,source_boxes_unreviewed
+emtd_cfedb6a9ec2e7bac,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860055.JPG,weight_restriction,emtd_dup_emtd_cfedb6a9ec2e7bac,,,,true,false,source_boxes_unreviewed
+emtd_dc3530a41813727d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860056.JPG,weight_restriction,emtd_dup_emtd_dc3530a41813727d,,,,true,false,source_boxes_unreviewed
+emtd_ed0f014a564195aa,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860059.JPG,road_hump traffic_signal_ahead,emtd_dup_emtd_ed0f014a564195aa,,,,true,false,source_boxes_unreviewed
+emtd_5bf857844918003a,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860060.JPG,road_hump t_junction traffic_signal_ahead,emtd_dup_emtd_5bf857844918003a,,,,true,false,source_boxes_unreviewed
+emtd_28acb8c62542e205,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860061.JPG,road_hump t_junction traffic_signal_ahead,emtd_dup_emtd_28acb8c62542e205,,,,true,false,source_boxes_unreviewed
+emtd_1e28dff0ebb63e11,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860062.JPG,road_hump t_junction traffic_signal_ahead,emtd_dup_emtd_1e28dff0ebb63e11,,,,true,false,source_boxes_unreviewed
+emtd_45eb6e4ef59fa5f5,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860064.JPG,maximum_speed traffic_signal_ahead,emtd_dup_emtd_45eb6e4ef59fa5f5,,,,true,false,source_boxes_unreviewed
+emtd_a099ceb90cfeb69c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860068.JPG,curve_left maximum_speed,emtd_dup_emtd_a099ceb90cfeb69c,,,,true,false,source_boxes_unreviewed
+emtd_d010ca8f179a2740,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860069.JPG,double_curve general_caution,emtd_dup_emtd_d010ca8f179a2740,,,,true,false,source_boxes_unreviewed
+emtd_f1896b0d6c3429df,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860071.JPG,crossroads no_parking traffic_signal_ahead,emtd_dup_emtd_f1896b0d6c3429df,,,,true,false,source_boxes_unreviewed
+emtd_c778fe83acf5738d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860073.JPG,divided_road_begins side_road_left traffic_signal_ahead,emtd_dup_emtd_c778fe83acf5738d,,,,true,false,source_boxes_unreviewed
+emtd_daf8786588506c1b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860079.JPG,maximum_speed no_parking,emtd_dup_emtd_daf8786588506c1b,,,,true,false,source_boxes_unreviewed
+emtd_cb56fe2eabb7b14f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860084.JPG,maximum_speed no_entry,emtd_dup_emtd_cb56fe2eabb7b14f,,,,true,false,source_boxes_unreviewed
+emtd_e88a6cbfc3b37e6b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860090.JPG,maximum_speed weight_restriction,emtd_dup_emtd_e88a6cbfc3b37e6b,,,,true,false,source_boxes_unreviewed
+emtd_63e5f42d48da207d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860091.JPG,weight_restriction,emtd_dup_emtd_63e5f42d48da207d,,,,true,false,source_boxes_unreviewed
+emtd_0b141c3e31b24328,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860092.JPG,weight_restriction,emtd_dup_emtd_0b141c3e31b24328,,,,true,false,source_boxes_unreviewed
+emtd_214262c5339b209c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860093.JPG,height_restriction,emtd_dup_emtd_214262c5339b209c,,,,true,false,source_boxes_unreviewed
+emtd_78323ccd16efe861,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860094.JPG,divided_road_begins give_way keep_right roadworks,emtd_dup_emtd_78323ccd16efe861,,,,true,false,source_boxes_unreviewed
+emtd_025171261ec41ce4,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860102.JPG,,emtd_dup_emtd_025171261ec41ce4,,,,true,false,source_boxes_unreviewed
+emtd_31c43eb56fd8e08a,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860107.JPG,keep_right road_narrows_both,emtd_dup_emtd_31c43eb56fd8e08a,,,,true,false,source_boxes_unreviewed
+emtd_ce46c238751f1b72,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860110.JPG,divided_road_begins weight_restriction,emtd_dup_emtd_ce46c238751f1b72,,,,true,false,source_boxes_unreviewed
+emtd_527982e4f86d8262,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860111.JPG,weight_restriction,emtd_dup_emtd_527982e4f86d8262,,,,true,false,source_boxes_unreviewed
+emtd_a1facd63173fa897,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860112.JPG,height_restriction maximum_speed,emtd_dup_emtd_a1facd63173fa897,,,,true,false,source_boxes_unreviewed
+emtd_8b84acee490ad60d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860113.JPG,height_restriction maximum_speed,emtd_dup_emtd_8b84acee490ad60d,,,,true,false,source_boxes_unreviewed
+emtd_d0b42d939c0bba2f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860277.JPG,no_heavy_vehicle,emtd_dup_emtd_d0b42d939c0bba2f,,,,true,false,source_boxes_unreviewed
+emtd_1ce62fadeb705de6,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860279.JPG,no_heavy_vehicle,emtd_dup_emtd_1ce62fadeb705de6,,,,true,false,source_boxes_unreviewed
+emtd_576aa01f8ed15bc9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860280.JPG,no_heavy_vehicle,emtd_dup_emtd_576aa01f8ed15bc9,,,,true,false,source_boxes_unreviewed
+emtd_db4cdfda57a77fbc,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860331.JPG,weight_restriction,emtd_dup_emtd_db4cdfda57a77fbc,,,,true,false,source_boxes_unreviewed
+emtd_cff2d69cb499619b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860348.JPG,divided_road_begins,emtd_dup_emtd_cff2d69cb499619b,,,,true,false,source_boxes_unreviewed
+emtd_0df3316ab0aea7d1,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860355.JPG,divided_road_begins give_way,emtd_dup_emtd_0df3316ab0aea7d1,,,,true,false,source_boxes_unreviewed
+emtd_1c495cb762c2b681,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860360.JPG,width_restriction,emtd_dup_emtd_1c495cb762c2b681,,,,true,false,source_boxes_unreviewed
+emtd_72ca33f1c1e1c9c8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860371.JPG,children_crossing pass_either_side,emtd_dup_emtd_72ca33f1c1e1c9c8,,,,true,false,source_boxes_unreviewed
+emtd_d85b67a2e74c36f4,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860394.JPG,no_entry,emtd_dup_emtd_d85b67a2e74c36f4,,,,true,false,source_boxes_unreviewed
+emtd_c6165ae8361d22d1,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860398.JPG,give_way,emtd_dup_emtd_c6165ae8361d22d1,,,,true,false,source_boxes_unreviewed
+emtd_1a05ea3a6f431838,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860409.JPG,pass_either_side,emtd_dup_emtd_1a05ea3a6f431838,,,,true,false,source_boxes_unreviewed
+emtd_2a0a0b2cfe0ac666,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860411.JPG,pass_either_side,emtd_dup_emtd_2a0a0b2cfe0ac666,,,,true,false,source_boxes_unreviewed
+emtd_00a30adde56da653,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860413.JPG,general_caution,emtd_dup_emtd_00a30adde56da653,,,,true,false,source_boxes_unreviewed
+emtd_a68bcea7bd15df10,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860416.JPG,,emtd_dup_emtd_a68bcea7bd15df10,,,,true,false,source_boxes_unreviewed
+emtd_b2e71399904be6c2,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860639.JPG,keep_left,emtd_dup_emtd_b2e71399904be6c2,,,,true,false,source_boxes_unreviewed
+emtd_030c8af46287be06,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/P1860642.JPG,merge_left,emtd_dup_emtd_030c8af46287be06,,,,true,false,source_boxes_unreviewed
+emtd_45d54815138e523e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (101).png,divided_road_begins keep_left,emtd_dup_emtd_45d54815138e523e,,,,true,false,source_boxes_unreviewed
+emtd_ae3c2d8d4035e435,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (102).png,height_restriction maximum_speed no_entry,emtd_dup_emtd_ae3c2d8d4035e435,,,,true,false,source_boxes_unreviewed
+emtd_4979f8f85583d8ec,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (103).png,height_restriction maximum_speed no_entry,emtd_dup_emtd_4979f8f85583d8ec,,,,true,false,source_boxes_unreviewed
+emtd_777aaf4b9aca3408,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (105).png,maximum_speed,emtd_dup_emtd_777aaf4b9aca3408,,,,true,false,source_boxes_unreviewed
+emtd_20f4efa9359fe143,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (109).png,maximum_speed,emtd_dup_emtd_20f4efa9359fe143,,,,true,false,source_boxes_unreviewed
+emtd_e3e5946f3e2a82fc,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (110).png,maximum_speed,emtd_dup_emtd_20f4efa9359fe143,,,,true,false,source_boxes_unreviewed
+emtd_00988f3171828f27,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (114).png,height_restriction maximum_speed stop,emtd_dup_emtd_00988f3171828f27,,,,true,false,source_boxes_unreviewed
+emtd_94fa340a0d670ea6,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (116).png,divided_road_begins pedestrian_crossing,emtd_dup_emtd_94fa340a0d670ea6,,,,true,false,source_boxes_unreviewed
+emtd_be9e2270d0628bba,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (118).png,divided_road_begins pedestrian_crossing road_hump,emtd_dup_emtd_be9e2270d0628bba,,,,true,false,source_boxes_unreviewed
+emtd_bb096ba63805df6e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (119).png,stop,emtd_dup_emtd_bb096ba63805df6e,,,,true,false,source_boxes_unreviewed
+emtd_0869c9a0920be1d3,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (12).png,stop t_junction,emtd_dup_emtd_0869c9a0920be1d3,,,,true,false,source_boxes_unreviewed
+emtd_b409273072eb02b8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (122).png,,emtd_dup_emtd_b409273072eb02b8,,,,true,false,source_boxes_unreviewed
+emtd_2a7d1087c1552c6f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (124).png,,emtd_dup_emtd_2a7d1087c1552c6f,,,,true,false,source_boxes_unreviewed
+emtd_3cf774064801236e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (126).png,pedestrian_crossing,emtd_dup_emtd_3cf774064801236e,,,,true,false,source_boxes_unreviewed
+emtd_dbfac1521a4da677,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (128).png,road_hump,emtd_dup_emtd_dbfac1521a4da677,,,,true,false,source_boxes_unreviewed
+emtd_e7a965ae8755681e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (13).png,stop t_junction,emtd_dup_emtd_e7a965ae8755681e,,,,true,false,source_boxes_unreviewed
+emtd_df521cafd2e7f940,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (137).png,side_road_right,emtd_dup_emtd_df521cafd2e7f940,,,,true,false,source_boxes_unreviewed
+emtd_96f733d50c7f5130,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (139).png,curve_left road_hump,emtd_dup_emtd_96f733d50c7f5130,,,,true,false,source_boxes_unreviewed
+emtd_63f92938c22973ad,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (140).png,curve_left maximum_speed no_entry road_hump,emtd_dup_emtd_63f92938c22973ad,,,,true,false,source_boxes_unreviewed
+emtd_bf89734a07e9f9a8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (15).png,stop t_junction,emtd_dup_emtd_bf89734a07e9f9a8,,,,true,false,source_boxes_unreviewed
+emtd_68dd202b20299614,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (154).png,side_road_left,emtd_dup_emtd_68dd202b20299614,,,,true,false,source_boxes_unreviewed
+emtd_a0294037bca66aa9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (156).png,crossroads,emtd_dup_emtd_a0294037bca66aa9,,,,true,false,source_boxes_unreviewed
+emtd_a38b0961a70badc9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (16).png,no_heavy_vehicle,emtd_dup_emtd_a38b0961a70badc9,,,,true,false,source_boxes_unreviewed
+emtd_c93e477731dc68aa,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (167).png,side_road_right,emtd_dup_emtd_c93e477731dc68aa,,,,true,false,source_boxes_unreviewed
+emtd_9b609598d3644b81,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (17).png,no_heavy_vehicle,emtd_dup_emtd_9b609598d3644b81,,,,true,false,source_boxes_unreviewed
+emtd_c50e37646cd064ca,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (171).png,side_road_left,emtd_dup_emtd_c50e37646cd064ca,,,,true,false,source_boxes_unreviewed
+emtd_f064bdcb26a6bd99,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (18).png,no_heavy_vehicle,emtd_dup_emtd_f064bdcb26a6bd99,,,,true,false,source_boxes_unreviewed
+emtd_db66c26b36cd8103,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (182).png,crossroads road_hump,emtd_dup_emtd_db66c26b36cd8103,,,,true,false,source_boxes_unreviewed
+emtd_3d12b7340c82d0f2,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (183).png,crossroads,emtd_dup_emtd_3d12b7340c82d0f2,,,,true,false,source_boxes_unreviewed
+emtd_6c4265f9b9ce9e34,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (184).png,crossroads,emtd_dup_emtd_6c4265f9b9ce9e34,,,,true,false,source_boxes_unreviewed
+emtd_0f05a1cb8eeac810,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (19).png,no_heavy_vehicle,emtd_dup_emtd_0f05a1cb8eeac810,,,,true,false,source_boxes_unreviewed
+emtd_5b73c017d8b7c322,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (190).png,no_overtaking traffic_signal_ahead,emtd_dup_emtd_5b73c017d8b7c322,,,,true,false,source_boxes_unreviewed
+emtd_47e028962db99dbd,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (191).png,no_overtaking traffic_signal_ahead,emtd_dup_emtd_47e028962db99dbd,,,,true,false,source_boxes_unreviewed
+emtd_24bf9498f00b0acf,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (192).png,curve_left,emtd_dup_emtd_24bf9498f00b0acf,,,,true,false,source_boxes_unreviewed
+emtd_92beb7fbc9890a1a,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (195).png,curve_left no_overtaking,emtd_dup_emtd_92beb7fbc9890a1a,,,,true,false,source_boxes_unreviewed
+emtd_3b7eba9b00e311f6,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (196).png,two_way_traffic,emtd_dup_emtd_3b7eba9b00e311f6,,,,true,false,source_boxes_unreviewed
+emtd_febf1639bee47442,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (197).png,two_way_traffic,emtd_dup_emtd_febf1639bee47442,,,,true,false,source_boxes_unreviewed
+emtd_98dfbf1a980c3ff4,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (199).png,two_way_traffic,emtd_dup_emtd_98dfbf1a980c3ff4,,,,true,false,source_boxes_unreviewed
+emtd_7230b53e389dfa64,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (200).png,two_way_traffic,emtd_dup_emtd_7230b53e389dfa64,,,,true,false,source_boxes_unreviewed
+emtd_d7eed066ee575544,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (201).png,no_overtaking traffic_signal_ahead,emtd_dup_emtd_d7eed066ee575544,,,,true,false,source_boxes_unreviewed
+emtd_e87b5b252d4f1ec3,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (202).png,no_overtaking traffic_signal_ahead,emtd_dup_emtd_e87b5b252d4f1ec3,,,,true,false,source_boxes_unreviewed
+emtd_e84f3544a854f151,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (203).png,no_overtaking traffic_signal_ahead,emtd_dup_emtd_e84f3544a854f151,,,,true,false,source_boxes_unreviewed
+emtd_9e17581883b923ed,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (208).png,t_junction,emtd_dup_emtd_9e17581883b923ed,,,,true,false,source_boxes_unreviewed
+emtd_7e0bff5cf9d55cdf,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (210).png,stop t_junction,emtd_dup_emtd_7e0bff5cf9d55cdf,,,,true,false,source_boxes_unreviewed
+emtd_8ce131fcb2c8fed8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (215).png,curve_left,emtd_dup_emtd_8ce131fcb2c8fed8,,,,true,false,source_boxes_unreviewed
+emtd_2487eb09bc887a80,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (22).png,stop,emtd_dup_emtd_2487eb09bc887a80,,,,true,false,source_boxes_unreviewed
+emtd_8041763ff898dd78,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (220).png,no_u_turn,emtd_dup_emtd_8041763ff898dd78,,,,true,false,source_boxes_unreviewed
+emtd_ecaf1f64ed132b6c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (224).png,divided_road_begins no_u_turn,emtd_dup_emtd_ecaf1f64ed132b6c,,,,true,false,source_boxes_unreviewed
+emtd_4dfe51e40d7b9547,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (225).png,divided_road_begins no_u_turn roadworks stop,emtd_dup_emtd_4dfe51e40d7b9547,,,,true,false,source_boxes_unreviewed
+emtd_50915fb50cc7d488,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (226).png,divided_road_begins keep_right t_junction,emtd_dup_emtd_50915fb50cc7d488,,,,true,false,source_boxes_unreviewed
+emtd_4d3922230fab2996,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (227).png,keep_right t_junction,emtd_dup_emtd_4d3922230fab2996,,,,true,false,source_boxes_unreviewed
+emtd_4b28b89f22b47f59,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (23).png,road_hump,emtd_dup_emtd_4b28b89f22b47f59,,,,true,false,source_boxes_unreviewed
+emtd_3211db382f189ec9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (230).png,side_road_right,emtd_dup_emtd_3211db382f189ec9,,,,true,false,source_boxes_unreviewed
+emtd_061532bf31fe4c30,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (238).png,children_crossing crossroads,emtd_dup_emtd_061532bf31fe4c30,,,,true,false,source_boxes_unreviewed
+emtd_3d79936293a10dd7,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (239).png,children_crossing,emtd_dup_emtd_3d79936293a10dd7,,,,true,false,source_boxes_unreviewed
+emtd_80b3750c3ad531d3,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (242).png,crossroads,emtd_dup_emtd_80b3750c3ad531d3,,,,true,false,source_boxes_unreviewed
+emtd_26b004f004482943,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (246).png,keep_left maximum_speed,emtd_dup_emtd_26b004f004482943,,,,true,false,source_boxes_unreviewed
+emtd_f6a087ef05c79e28,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (25).png,stop,emtd_dup_emtd_f6a087ef05c79e28,,,,true,false,source_boxes_unreviewed
+emtd_8af82c9799b0a794,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (250).png,keep_left,emtd_dup_emtd_8af82c9799b0a794,,,,true,false,source_boxes_unreviewed
+emtd_41cc1cfbb8691933,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (254).png,side_road_left,emtd_dup_emtd_41cc1cfbb8691933,,,,true,false,source_boxes_unreviewed
+emtd_4e99621c3f915b6f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (256).png,side_road_left,emtd_dup_emtd_4e99621c3f915b6f,,,,true,false,source_boxes_unreviewed
+emtd_a8b9cba0d160dc08,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (257).png,side_road_right,emtd_dup_emtd_a8b9cba0d160dc08,,,,true,false,source_boxes_unreviewed
+emtd_14cc12b1e20c19bd,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (261).png,side_road_right,emtd_dup_emtd_14cc12b1e20c19bd,,,,true,false,source_boxes_unreviewed
+emtd_406756c35d6da334,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (265).png,children_crossing,emtd_dup_emtd_406756c35d6da334,,,,true,false,source_boxes_unreviewed
+emtd_018e51e9ae23a3ba,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (267).png,children_crossing general_caution give_way roundabout_ahead,emtd_dup_emtd_018e51e9ae23a3ba,,,,true,false,source_boxes_unreviewed
+emtd_643de76a68d374e0,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (268).png,children_crossing general_caution give_way roundabout_ahead,emtd_dup_emtd_643de76a68d374e0,,,,true,false,source_boxes_unreviewed
+emtd_63b2ecc242ac30fd,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (271).png,children_crossing,emtd_dup_emtd_63b2ecc242ac30fd,,,,true,false,source_boxes_unreviewed
+emtd_392c33456a68caa2,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (277).png,stop,emtd_dup_emtd_392c33456a68caa2,,,,true,false,source_boxes_unreviewed
+emtd_08487605f8d07bdc,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (278).png,no_entry stop,emtd_dup_emtd_08487605f8d07bdc,,,,true,false,source_boxes_unreviewed
+emtd_f83fa3e37bd383db,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (279).png,divided_road_begins give_way roundabout_ahead,emtd_dup_emtd_f83fa3e37bd383db,,,,true,false,source_boxes_unreviewed
+emtd_c77f07884f3b0afd,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (280).png,divided_road_begins give_way roundabout_ahead,emtd_dup_emtd_c77f07884f3b0afd,,,,true,false,source_boxes_unreviewed
+emtd_abb6d92eae09fd8e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (281).png,give_way roundabout_ahead,emtd_dup_emtd_abb6d92eae09fd8e,,,,true,false,source_boxes_unreviewed
+emtd_8f7e798bef8b857c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (287).png,keep_right no_overtaking side_road_left,emtd_dup_emtd_8f7e798bef8b857c,,,,true,false,source_boxes_unreviewed
+emtd_f13d801ad7d2b152,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (288).png,keep_right no_overtaking side_road_left,emtd_dup_emtd_f13d801ad7d2b152,,,,true,false,source_boxes_unreviewed
+emtd_72f8f76c91ead88a,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (289).png,keep_right no_entry no_overtaking,emtd_dup_emtd_72f8f76c91ead88a,,,,true,false,source_boxes_unreviewed
+emtd_9aa7dca4b8a09a1d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (291).png,give_way merge_right,emtd_dup_emtd_9aa7dca4b8a09a1d,,,,true,false,source_boxes_unreviewed
+emtd_1db3d5c40c201627,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (292).png,give_way merge_right,emtd_dup_emtd_1db3d5c40c201627,,,,true,false,source_boxes_unreviewed
+emtd_6c6336a4fe5b9a86,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (293).png,give_way merge_right,emtd_dup_emtd_6c6336a4fe5b9a86,,,,true,false,source_boxes_unreviewed
+emtd_7d2a6d47d511cc58,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (295).png,general_caution road_narrows_both,emtd_dup_emtd_0b135d5452fca1bc,,,,true,false,source_boxes_unreviewed
+emtd_0b135d5452fca1bc,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (296).png,general_caution road_narrows_both,emtd_dup_emtd_0b135d5452fca1bc,,,,true,false,source_boxes_unreviewed
+emtd_fa60124cff855c75,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (298).png,general_caution road_narrows_both,emtd_dup_emtd_fa60124cff855c75,,,,true,false,source_boxes_unreviewed
+emtd_cc2aa98984715850,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (31).png,stop,emtd_dup_emtd_cc2aa98984715850,,,,true,false,source_boxes_unreviewed
+emtd_04cd3b9d54d92b46,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (311).png,no_u_turn,emtd_dup_emtd_04cd3b9d54d92b46,,,,true,false,source_boxes_unreviewed
+emtd_c828ea59252aebaf,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (313).png,roundabout_ahead,emtd_dup_emtd_c828ea59252aebaf,,,,true,false,source_boxes_unreviewed
+emtd_d255ff9967c36226,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (314).png,maximum_speed side_road_right,emtd_dup_emtd_d255ff9967c36226,,,,true,false,source_boxes_unreviewed
+emtd_2cff2f6c6a799f5e,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (315).png,maximum_speed side_road_right,emtd_dup_emtd_2cff2f6c6a799f5e,,,,true,false,source_boxes_unreviewed
+emtd_205cc2c8e60c9eaa,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (319).png,side_road_right,emtd_dup_emtd_205cc2c8e60c9eaa,,,,true,false,source_boxes_unreviewed
+emtd_32a998418f1dabd2,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (321).png,roundabout_ahead,emtd_dup_emtd_32a998418f1dabd2,,,,true,false,source_boxes_unreviewed
+emtd_e7fc40b17400844d,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (322).png,roundabout_ahead,emtd_dup_emtd_e7fc40b17400844d,,,,true,false,source_boxes_unreviewed
+emtd_ea5d8e6a127f40c9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (328).png,road_narrows_both,emtd_dup_emtd_ea5d8e6a127f40c9,,,,true,false,source_boxes_unreviewed
+emtd_aedd5ece83e2d8e8,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (329).png,road_narrows_both,emtd_dup_emtd_aedd5ece83e2d8e8,,,,true,false,source_boxes_unreviewed
+emtd_a518ac992ac1d5a0,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (331).png,road_narrows_both,emtd_dup_emtd_a518ac992ac1d5a0,,,,true,false,source_boxes_unreviewed
+emtd_f2308c0aaaf857e1,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (332).png,road_narrows_both,emtd_dup_emtd_f2308c0aaaf857e1,,,,true,false,source_boxes_unreviewed
+emtd_7a4c6513c9fc2183,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (39).png,road_hump,emtd_dup_emtd_7a4c6513c9fc2183,,,,true,false,source_boxes_unreviewed
+emtd_b18ae704b64d62c0,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (41).png,pedestrian_crossing,emtd_dup_emtd_b18ae704b64d62c0,,,,true,false,source_boxes_unreviewed
+emtd_b983516b549c0ada,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (49).png,maximum_speed road_narrows_both stop,emtd_dup_emtd_b983516b549c0ada,,,,true,false,source_boxes_unreviewed
+emtd_e1b6bada8aa26482,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (50).png,maximum_speed stop,emtd_dup_emtd_e1b6bada8aa26482,,,,true,false,source_boxes_unreviewed
+emtd_fc7291ba39fbe0d5,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (60).png,no_left_turn,emtd_dup_emtd_fc7291ba39fbe0d5,,,,true,false,source_boxes_unreviewed
+emtd_cdfc9e454086f3ed,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (61).png,no_left_turn,emtd_dup_emtd_cdfc9e454086f3ed,,,,true,false,source_boxes_unreviewed
+emtd_a4649379d63ad5e7,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (62).png,no_left_turn,emtd_dup_emtd_a4649379d63ad5e7,,,,true,false,source_boxes_unreviewed
+emtd_cf60f2c266a67940,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (63).png,side_road_left,emtd_dup_emtd_cf60f2c266a67940,,,,true,false,source_boxes_unreviewed
+emtd_9db7498b37a2b392,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (69).png,stop,emtd_dup_emtd_9db7498b37a2b392,,,,true,false,source_boxes_unreviewed
+emtd_b0523d29fb4605bf,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (7).png,,emtd_dup_emtd_b0523d29fb4605bf,,,,true,false,source_boxes_unreviewed
+emtd_db2c56c851f1f24b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (73).png,height_restriction maximum_speed,emtd_dup_emtd_db2c56c851f1f24b,,,,true,false,source_boxes_unreviewed
+emtd_f6db5430fa1dbf04,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (74).png,maximum_speed,emtd_dup_emtd_f6db5430fa1dbf04,,,,true,false,source_boxes_unreviewed
+emtd_6d12917d23d39d65,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (75).png,maximum_speed,emtd_dup_emtd_6d12917d23d39d65,,,,true,false,source_boxes_unreviewed
+emtd_40de39938cbd8ff9,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (76).png,divided_road_begins maximum_speed,emtd_dup_emtd_40de39938cbd8ff9,,,,true,false,source_boxes_unreviewed
+emtd_254b3cede5da9e7c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (77).png,divided_road_begins give_way maximum_speed,emtd_dup_emtd_254b3cede5da9e7c,,,,true,false,source_boxes_unreviewed
+emtd_cd231db70a144662,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (8).png,,emtd_dup_emtd_cd231db70a144662,,,,true,false,source_boxes_unreviewed
+emtd_fec5286f2348d2f4,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (81).png,height_restriction weight_restriction,emtd_dup_emtd_fec5286f2348d2f4,,,,true,false,source_boxes_unreviewed
+emtd_51280e73c48fa304,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (83).png,side_road_left,emtd_dup_emtd_51280e73c48fa304,,,,true,false,source_boxes_unreviewed
+emtd_32c4edc13ca9cb80,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (85).png,keep_left maximum_speed no_left_turn stop,emtd_dup_emtd_32c4edc13ca9cb80,,,,true,false,source_boxes_unreviewed
+emtd_50151c3e117edc65,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (86).png,keep_left maximum_speed no_left_turn stop,emtd_dup_emtd_50151c3e117edc65,,,,true,false,source_boxes_unreviewed
+emtd_ecfd881435d99808,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (88).png,keep_left maximum_speed no_left_turn stop,emtd_dup_emtd_ecfd881435d99808,,,,true,false,source_boxes_unreviewed
+emtd_2cb555f1a6b6025a,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (89).png,height_restriction keep_left,emtd_dup_emtd_2cb555f1a6b6025a,,,,true,false,source_boxes_unreviewed
+emtd_1ca24f39588a3df5,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (9).png,road_narrows_both,emtd_dup_emtd_1ca24f39588a3df5,,,,true,false,source_boxes_unreviewed
+emtd_e922be64f6c9a29b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (91).png,height_restriction two_way_traffic,emtd_dup_emtd_e922be64f6c9a29b,,,,true,false,source_boxes_unreviewed
+emtd_f43403930d9e849f,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (92).png,height_restriction two_way_traffic,emtd_dup_emtd_f43403930d9e849f,,,,true,false,source_boxes_unreviewed
+emtd_a2bb22296a921e05,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (93).png,height_restriction two_way_traffic,emtd_dup_emtd_a2bb22296a921e05,,,,true,false,source_boxes_unreviewed
+emtd_a9c7a00e38611f7b,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (94).png,height_restriction side_road_left,emtd_dup_emtd_a9c7a00e38611f7b,,,,true,false,source_boxes_unreviewed
+emtd_baeca3a8a8d9bd1c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (95).png,height_restriction side_road_left,emtd_dup_emtd_baeca3a8a8d9bd1c,,,,true,false,source_boxes_unreviewed
+emtd_cdcdc9af83fcd27c,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (98).png,keep_left maximum_speed,emtd_dup_emtd_cdcdc9af83fcd27c,,,,true,false,source_boxes_unreviewed
+emtd_c3a3012aa501b819,emtd_zenodo_1217105,C:/MiniProject/data/raw/emtd/images/Screenshot (99).png,keep_left maximum_speed,emtd_dup_emtd_c3a3012aa501b819,,,,true,false,source_boxes_unreviewed

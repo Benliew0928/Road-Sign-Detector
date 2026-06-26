@@ -1,0 +1,37 @@
+stages:
+  official_manifest:
+    cmd: python -m roadsign_assist.cli inventory-official
+    deps:
+      - data/official/assignment_images
+      - src/roadsign_assist/datasets/official.py
+    outs:
+      - data/manifests/official_images.csv
+      - data/manifests/official_checksums.csv
+
+  validate_catalogue:
+    cmd: python -m roadsign_assist.cli validate-catalogue
+    deps:
+      - configs/catalogue/malaysia_signs.v1.json
+      - src/roadsign_assist/catalogue/models.py
+      - src/roadsign_assist/catalogue/repository.py
+
+  build_splits:
+    cmd: python -m roadsign_assist.cli build-splits
+    deps:
+      - data/manifests/dataset.csv
+      - src/roadsign_assist/datasets/split.py
+    params:
+      - data
+    outs:
+      - data/splits/train.csv
+      - data/splits/validation.csv
+      - data/splits/test.csv
+
+  baseline:
+    cmd: python -m roadsign_assist.cli baseline-batch --input data/manifests/official_images.csv
+    deps:
+      - data/manifests/official_images.csv
+      - configs/baseline/default.yaml
+      - src/roadsign_assist/baseline
+    outs:
+      - outputs/baseline
