@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "created_on": "2026-06-27",
+  "purpose": "New semantic classes discovered during Stage C Roboflow import. These are kept separate from the approved catalogue until final review/integration.",
+  "entries": [
+    {
+      "semantic_sign_id": "disabled_parking",
+      "name_en": "Disabled/OKU parking",
+      "reason": "Distinct parking sign for accessible/OKU parking; not the same as generic parking.",
+      "source_labels": ["OKU Parking"],
+      "status": "stage_c_candidate"
+    },
+    {
+      "semantic_sign_id": "narrow_bridge",
+      "name_en": "Narrow bridge",
+      "reason": "Bridge-specific warning sign; not the same as general road narrows.",
+      "source_labels": ["Narrow bridge"],
+      "status": "stage_c_candidate"
+    },
+    {
+      "semantic_sign_id": "motorcycles_only",
+      "name_en": "Motorcycles only",
+      "reason": "Blue mandatory motorcycle-only sign; not the same as no motorcycles or motor vehicles only.",
+      "source_labels": ["Motorcycles only"],
+      "status": "stage_c_candidate"
+    },
+    {
+      "semantic_sign_id": "lane_merges_left",
+      "name_en": "Lane merges left",
+      "reason": "Lane/traffic merges toward the left; different from traffic merging from the left.",
+      "source_labels": ["Traffic merging to the left"],
+      "status": "stage_c_candidate"
+    },
+    {
+      "semantic_sign_id": "roadway_diverges",
+      "name_en": "Roadway diverges",
+      "reason": "Diverging carriageway/route split sign; visually and semantically different from divided road begins.",
+      "source_labels": ["Roadway diverges"],
+      "status": "promoted_to_catalogue"
+    },
+    {
+      "semantic_sign_id": "tow_away_zone",
+      "name_en": "Tow-away / towing zone",
+      "reason": "Towing/tow-away restriction sign; not the same as no parking or no stopping.",
+      "source_labels": ["Towing area"],
+      "status": "stage_c_candidate"
+    }
+  ],
+  "excluded_source_labels": [
+    {
+      "source_label": "Road cones",
+      "reason": "Traffic cone object, not a road sign class."
+    },
+    {
+      "source_label": "Selekoh",
+      "reason": "Classification source mixes left and right chevron boards under one direction-losing label."
+    }
+  ]
+}
