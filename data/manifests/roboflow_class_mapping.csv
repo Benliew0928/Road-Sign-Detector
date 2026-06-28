@@ -1,0 +1,97 @@
+﻿source_id,task_type,source_label,source_class_index,semantic_sign_id,mapping_action,mapping_confidence,reason
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,Bumper,,road_hump,map_existing,high,Same road hump/bump warning.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,Bumper 2,,road_hump,map_existing,high,Same road hump/bump warning.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,Give Way,,give_way,map_existing,high,Same give-way sign.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,Give Way 2,,give_way,map_existing,high,Same give-way sign with Bahasa text.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,Height Limit,,height_restriction,map_existing,high,Same height restriction sign.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,Height Limit 2,,height_restriction,map_existing,high,Same height restriction sign.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,Narrow Road,,road_narrows_both,map_existing,high,Generic road-narrows warning.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,Narrow Road 2,,road_narrows_both,map_existing,medium,Generic road-narrows warning; non-Malaysian illustration retained as public mixed source.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,No Entry,,no_entry,map_existing,high,Same no-entry sign.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,No Honking,,no_horn,map_existing,high,Same no-horn prohibition.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,No Left Turn,,no_left_turn,map_existing,high,Same no-left-turn prohibition.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,No Lorry,,no_heavy_vehicle,map_existing,high,Same no-heavy-vehicle/no-lorry sign.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,No Motorcycle,,no_motorcycle,map_existing,high,Same no-motorcycle prohibition.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,No Overtake,,no_overtaking,map_existing,high,Same no-overtaking sign.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,No Parking,,no_parking,map_existing,high,Same no-parking sign.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,No Right Turn,,no_right_turn,map_existing,high,Same no-right-turn prohibition.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,No Stop,,no_stopping,map_existing,high,Same no-stopping prohibition.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,No U-Turn,,no_u_turn,map_existing,high,Same no-U-turn prohibition.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,OKU Parking,,disabled_parking,new_class_candidate,high,Accessible/OKU parking is distinct from generic parking.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,One Way,,one_way,map_existing,high,Same one-way sign.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,Parking,,parking,map_existing,high,Same parking information sign.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,Pedestrian Crossing,,pedestrian_crossing,map_existing,high,Same pedestrian crossing warning.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,Roadwork,,roadworks,map_existing,high,Same roadworks warning.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,Roundabout,,roundabout_ahead,map_existing,medium,"Yellow roundabout warning, not the blue mandatory roundabout sign."
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,Selekoh,,,exclude_ambiguous_direction,high,"Class mixes left and right chevron boards, losing the required direction."
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,Slippery Road,,slippery_road,map_existing,high,Same slippery-road warning.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,Speed Limit,,maximum_speed,map_existing,high,Same maximum-speed sign; numeric value remains OCR/parameter work.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,Stop,,stop,map_existing,high,Same stop sign.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,Traffic Light,,traffic_signal_ahead,map_existing,high,Traffic-signal-ahead warning.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,U-Turn,,permitted_u_turn,map_existing,high,Permitted U-turn sign.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,cattleCrossing,,animal_crossing,map_existing,high,Animal/cattle crossing warning.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,cattleCrossing2,,animal_crossing,map_existing,high,Animal/cattle crossing warning.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,crossroad,,crossroads,map_existing,high,Same crossroads warning.
+roboflow_dr_samsudin_malaysia_road_sign,classification_folder,deadEnd,,dead_end,map_existing,high,Same dead-end sign.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Bicycle lane,0,bicycles_only,map_existing,medium,Blue bicycle-only/lane sign is visually closest to existing bicycles_only.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Bumps,1,road_hump,map_existing,high,Same road hump/bump warning meaning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Bumps ahead,2,road_hump,map_existing,high,Same road hump/bump warning meaning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Bus stop,3,bus_stop,map_existing,high,Same informational bus stop sign.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Camera operation zone,4,camera_enforcement,map_existing,high,Same enforcement camera warning/information sign.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Chevron -left-,5,chevron_left,map_existing,high,Left chevron alignment marker.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Chevron -right-,6,chevron_right,map_existing,high,Right chevron alignment marker.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Children,7,children_crossing,map_existing,high,Children/school crossing warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Construction sign,8,roadworks,map_existing,medium,Temporary construction/roadworks sign.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Cow nearby,9,animal_crossing,map_existing,high,Animal/cattle crossing warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Crossroad,10,crossroads,map_existing,high,Crossroads warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Crossroad on the left,11,side_road_left,map_existing,medium,Side/cross road entering from left.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Crossroad on the right,12,side_road_right,map_existing,medium,Side/cross road entering from right.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Crosswind area,13,crosswind,map_existing,high,Crosswind warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Double Bend to Left Ahead,14,double_curve,map_existing,medium,Existing catalogue keeps double-curve as one semantic class.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Double Bend to Right Ahead,15,double_curve,map_existing,medium,Existing catalogue keeps double-curve as one semantic class.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Expressway signs 1,16,expressway,map_existing,medium,Expressway information/direction sign family.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Expressway signs 2,17,expressway,map_existing,medium,Expressway information/direction sign family.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Flagman ahead,18,flagman_ahead,map_existing,high,Same temporary flagman warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Give way,19,give_way,map_existing,high,Same give-way sign.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Height limit,20,height_restriction,map_existing,high,Same height restriction sign.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Horn Prohibited,21,no_horn,map_existing,high,Same no-horn prohibition.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Left Bend Ahead,22,curve_left,map_existing,high,Left curve warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Level crossing with gates ahead,23,railway_crossing,map_existing,high,Railway/level crossing warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Motorcycles only,24,motorcycles_only,new_class_candidate,high,Mandatory motorcycles-only sign is not in the approved catalogue.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Narrow bridge,25,narrow_bridge,new_class_candidate,high,Bridge-specific narrow warning is distinct from generic road narrows.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,No Stopping,26,no_stopping,map_existing,high,Same no-stopping prohibition.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,No U-turns,27,no_u_turn,map_existing,high,Same no-U-turn prohibition.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,No entry,28,no_entry,map_existing,high,Same no-entry sign.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,No left turn,29,no_left_turn,map_existing,high,Same no-left-turn prohibition.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,No overtaking,30,no_overtaking,map_existing,high,Same no-overtaking sign.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,No parking,31,no_stopping,map_existing,medium,"Source crops show the red-X no-stopping style sign, not a single-slash no-parking sign."
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,No right turn,32,no_right_turn,map_existing,high,Same no-right-turn prohibition.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Obstruction,33,obstruction_ahead,map_existing,high,Same obstruction-ahead warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Other dangers nearby,34,general_caution,map_existing,high,General caution/other danger warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Parking area,35,parking,map_existing,high,Same parking information sign; known outlier filenames are filtered.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Pass either side,36,,exclude_noisy_mixed_source,high,Source class mixes speed-limit signs and pass-either-side signs.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Pass on the left,37,keep_left,map_existing,high,Mandatory pass/keep left.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Pass on the right,38,keep_right,map_existing,high,Mandatory pass/keep right.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Right Bend Ahead,39,curve_right,map_existing,high,Right curve warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Road cones,40,,exclude_non_sign,high,"Traffic cone object, not a road sign class."
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Road narrows on the left,41,road_narrows_left,map_existing,high,Same road-narrows-left warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Road narrows on the right,42,road_narrows_right,map_existing,high,Same road-narrows-right warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Road work,43,roadworks,map_existing,high,Same roadworks warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Roadway diverges,44,,exclude_noisy_mixed_source,high,Source class is visually mixed with obstruction/caution signs.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Roundabout ahead,45,roundabout_ahead,map_existing,high,Same roundabout-ahead warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Slippery road,46,slippery_road,map_existing,high,Same slippery-road warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Speed limit,47,maximum_speed,map_existing,high,Same maximum-speed sign; numeric value remains OCR/parameter work.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Stop,48,stop,map_existing,high,Same stop sign.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,T-junction,49,t_junction,map_existing,high,Same T-junction warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Towing area,50,tow_away_zone,new_class_candidate,medium,Tow-away/towing zone sign is distinct from no parking/no stopping.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Traffic from Left Merges Ahead,51,merge_left,map_existing,medium,Traffic merging from left.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Traffic from Right Merges Ahead,52,merge_right,map_existing,medium,Traffic merging from right.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Traffic merging from the left,53,merge_left,map_existing,high,Same merge-left warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Traffic merging from the right,54,merge_right,map_existing,high,Same merge-right warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Traffic merging to the left,55,lane_merges_left,new_class_candidate,medium,"Lane merges left, direction differs from traffic merging from left."
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Traffic signals ahead,56,traffic_signal_ahead,map_existing,high,Same traffic-signal-ahead warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Train Gate,57,railway_crossing,map_existing,high,Railway gate/crossing warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,U turn,58,permitted_u_turn,map_existing,high,Permitted U-turn sign; known speed-limit outlier filenames are filtered.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Weight limit,59,weight_restriction,map_existing,high,Same weight restriction sign.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,Zebra crossing,60,pedestrian_crossing,map_existing,high,Same pedestrian/zebra crossing warning.
+roboflow_malaysia_road_sign_v1,yolov8_detection_crops,pedestrian crossing opt1,61,pedestrian_crossing,map_existing,high,Same pedestrian crossing warning.

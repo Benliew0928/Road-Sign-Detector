@@ -16,6 +16,7 @@ test-results/
 data/raw/
 data/annotations/
 data/processed/
+data/staging/
 data/splits/
 models/checkpoints/
 models/exported/

@@ -1,74 +1,404 @@
 {
   "schema_version": "0.1-draft",
   "reviewer_1": "codex_visual_review",
-  "reviewer_2": null,
-  "review_status": "draft_single_review",
+  "reviewer_2": "owner",
+  "review_status": "p5_partial_owner_review",
   "classes": {
-    "1": {"semantic_sign_id": null, "parameter_value": null, "confidence": 0.95, "notes": "Permitted U-turn; catalogue class pending."},
-    "2": {"semantic_sign_id": "keep_left", "parameter_value": null, "confidence": 0.95, "notes": "Keep/pass left."},
-    "3": {"semantic_sign_id": "keep_right", "parameter_value": null, "confidence": 0.95, "notes": "Keep/pass right."},
-    "4": {"semantic_sign_id": "pass_either_side", "parameter_value": null, "confidence": 0.96, "notes": "Pass either side of obstruction."},
-    "5": {"semantic_sign_id": null, "parameter_value": null, "confidence": 0.70, "notes": "Motorcycle-related mandatory sign; exact meaning requires review."},
-    "6": {"semantic_sign_id": "stop", "parameter_value": null, "confidence": 0.99, "notes": "Stop."},
-    "7": {"semantic_sign_id": "no_left_turn", "parameter_value": null, "confidence": 0.92, "notes": "No left turn."},
-    "8": {"semantic_sign_id": null, "parameter_value": null, "confidence": 0.90, "notes": "No straight ahead; catalogue class pending."},
-    "9": {"semantic_sign_id": "no_u_turn", "parameter_value": null, "confidence": 0.96, "notes": "No U-turn."},
-    "10": {"semantic_sign_id": "no_entry", "parameter_value": null, "confidence": 0.99, "notes": "No entry."},
-    "11": {"semantic_sign_id": "weight_restriction", "parameter_value": 5, "confidence": 0.97, "notes": "Five-tonne weight restriction."},
-    "12": {"semantic_sign_id": "weight_restriction", "parameter_value": 30, "confidence": 0.99, "notes": "Thirty-tonne weight restriction."},
-    "13": {"semantic_sign_id": "height_restriction", "parameter_value": 2.5, "confidence": 0.99, "notes": "2.5 m height restriction."},
-    "14": {"semantic_sign_id": "height_restriction", "parameter_value": 3.0, "confidence": 0.99, "notes": "3.0 m height restriction."},
-    "15": {"semantic_sign_id": "give_way", "parameter_value": null, "confidence": 0.99, "notes": "Give way."},
-    "16": {"semantic_sign_id": "height_restriction", "parameter_value": 5.4, "confidence": 0.98, "notes": "5.4 m height restriction."},
-    "17": {"semantic_sign_id": "height_restriction", "parameter_value": 6.0, "confidence": 0.99, "notes": "6.0 m height restriction."},
-    "18": {"semantic_sign_id": "maximum_speed", "parameter_value": 20, "confidence": 0.99, "notes": "20 km/h maximum speed."},
-    "19": {"semantic_sign_id": "maximum_speed", "parameter_value": 30, "confidence": 0.99, "notes": "30 km/h maximum speed."},
-    "20": {"semantic_sign_id": "maximum_speed", "parameter_value": 40, "confidence": 0.99, "notes": "40 km/h maximum speed."},
-    "21": {"semantic_sign_id": "maximum_speed", "parameter_value": 50, "confidence": 0.99, "notes": "50 km/h maximum speed."},
-    "22": {"semantic_sign_id": "maximum_speed", "parameter_value": 60, "confidence": 0.99, "notes": "60 km/h maximum speed."},
-    "23": {"semantic_sign_id": "maximum_speed", "parameter_value": 70, "confidence": 0.99, "notes": "70 km/h maximum speed."},
-    "24": {"semantic_sign_id": "width_restriction", "parameter_value": 5.4, "confidence": 0.86, "notes": "Opposing horizontal arrows indicate width restriction."},
-    "25": {"semantic_sign_id": "maximum_speed", "parameter_value": 90, "confidence": 0.99, "notes": "90 km/h maximum speed."},
-    "26": {"semantic_sign_id": "maximum_speed", "parameter_value": 110, "confidence": 0.86, "notes": "Blurred numeric maximum-speed sign; second review required."},
-    "27": {"semantic_sign_id": "weight_restriction", "parameter_value": 5, "confidence": 0.88, "notes": "Time-qualified goods-vehicle restriction over 5 tonnes."},
-    "28": {"semantic_sign_id": "no_heavy_vehicle", "parameter_value": null, "confidence": 0.88, "notes": "Heavy/commercial vehicle restriction."},
-    "29": {"semantic_sign_id": "no_parking", "parameter_value": null, "confidence": 0.94, "notes": "No parking."},
-    "30": {"semantic_sign_id": "height_restriction", "parameter_value": 4.5, "confidence": 0.99, "notes": "4.5 m height restriction."},
-    "31": {"semantic_sign_id": "give_way", "parameter_value": null, "confidence": 0.97, "notes": "Give way."},
-    "32": {"semantic_sign_id": "width_restriction", "parameter_value": 3.5, "confidence": 0.98, "notes": "3.5 m width restriction."},
-    "33": {"semantic_sign_id": "no_overtaking", "parameter_value": null, "confidence": 0.98, "notes": "No overtaking."},
-    "34": {"semantic_sign_id": "roadworks", "parameter_value": null, "confidence": 0.65, "notes": "Blurred works-related warning; requires second review."},
-    "35": {"semantic_sign_id": "animal_crossing", "parameter_value": null, "confidence": 0.60, "notes": "Blurred animal-related warning; requires second review."},
-    "36": {"semantic_sign_id": "general_caution", "parameter_value": null, "confidence": 0.90, "notes": "Crosswind/windsock hazard; dedicated class pending."},
-    "37": {"semantic_sign_id": "road_hump", "parameter_value": null, "confidence": 0.99, "notes": "Road hump."},
-    "38": {"semantic_sign_id": "road_hump", "parameter_value": null, "confidence": 0.97, "notes": "Road hump with directional arrow."},
-    "39": {"semantic_sign_id": "general_caution", "parameter_value": null, "confidence": 0.82, "notes": "Vehicle collision hazard."},
-    "40": {"semantic_sign_id": "curve_left", "parameter_value": null, "confidence": 0.72, "notes": "Blurred left-curve warning."},
-    "41": {"semantic_sign_id": "slippery_road", "parameter_value": null, "confidence": 0.99, "notes": "Slippery road."},
-    "42": {"semantic_sign_id": "pedestrian_crossing", "parameter_value": null, "confidence": 0.95, "notes": "Pedestrian warning."},
-    "43": {"semantic_sign_id": "pedestrian_crossing", "parameter_value": null, "confidence": 0.99, "notes": "Pedestrian crossing."},
-    "44": {"semantic_sign_id": "children_crossing", "parameter_value": null, "confidence": 0.97, "notes": "Children crossing."},
-    "45": {"semantic_sign_id": "children_crossing", "parameter_value": null, "confidence": 0.96, "notes": "Children/school crossing."},
-    "46": {"semantic_sign_id": "general_caution", "parameter_value": null, "confidence": 0.99, "notes": "Other danger/general caution."},
-    "47": {"semantic_sign_id": "road_narrows_both", "parameter_value": null, "confidence": 0.82, "notes": "Road narrows; blurred representative."},
-    "48": {"semantic_sign_id": "traffic_signal_ahead", "parameter_value": null, "confidence": 0.99, "notes": "Traffic signals ahead."},
-    "49": {"semantic_sign_id": null, "parameter_value": null, "confidence": 0.10, "notes": "Pictogram is not legible in selected sample."},
-    "50": {"semantic_sign_id": "crossroads", "parameter_value": null, "confidence": 0.78, "notes": "Staggered junction represented by generic crossroads class."},
-    "51": {"semantic_sign_id": "t_junction", "parameter_value": null, "confidence": 0.99, "notes": "T-junction."},
-    "52": {"semantic_sign_id": "side_road_right", "parameter_value": null, "confidence": 0.98, "notes": "Side road on right."},
-    "53": {"semantic_sign_id": "side_road_left", "parameter_value": null, "confidence": 0.98, "notes": "Side road on left."},
-    "54": {"semantic_sign_id": null, "parameter_value": null, "confidence": 0.65, "notes": "Angled junction configuration requires second review."},
-    "55": {"semantic_sign_id": "crossroads", "parameter_value": null, "confidence": 0.99, "notes": "Crossroads."},
-    "56": {"semantic_sign_id": "merge_right", "parameter_value": null, "confidence": 0.72, "notes": "Right-side merge/junction; requires second review."},
-    "57": {"semantic_sign_id": "merge_left", "parameter_value": null, "confidence": 0.72, "notes": "Left-side merge/junction; requires second review."},
-    "58": {"semantic_sign_id": null, "parameter_value": null, "confidence": 0.45, "notes": "Blurred angled junction configuration requires second review."},
-    "59": {"semantic_sign_id": "t_junction", "parameter_value": null, "confidence": 0.80, "notes": "T-junction/road terminates ahead."},
-    "60": {"semantic_sign_id": "roundabout_ahead", "parameter_value": null, "confidence": 0.99, "notes": "Roundabout ahead."},
-    "61": {"semantic_sign_id": "road_narrows_both", "parameter_value": null, "confidence": 0.95, "notes": "Road narrows."},
-    "62": {"semantic_sign_id": "divided_road_begins", "parameter_value": null, "confidence": 0.80, "notes": "Traffic separates around a divider."},
-    "63": {"semantic_sign_id": "two_way_traffic", "parameter_value": null, "confidence": 0.99, "notes": "Two-way traffic."},
-    "64": {"semantic_sign_id": "divided_road_begins", "parameter_value": null, "confidence": 0.84, "notes": "Divided road/island begins."},
-    "65": {"semantic_sign_id": "double_curve", "parameter_value": null, "confidence": 0.97, "notes": "Double curve."},
-    "66": {"semantic_sign_id": null, "parameter_value": null, "confidence": 0.90, "notes": "Y-junction; dedicated catalogue class pending."}
+    "1": {
+      "semantic_sign_id": null,
+      "parameter_value": null,
+      "confidence": 0.95,
+      "notes": "Permitted U-turn; catalogue class pending."
+    },
+    "2": {
+      "semantic_sign_id": "keep_right",
+      "parameter_value": null,
+      "confidence": 0.95,
+      "notes": "Owner P5 review on 2026-06-27: EMTD source class 2 crops are keep right signs, not keep left."
+    },
+    "3": {
+      "semantic_sign_id": "keep_left",
+      "parameter_value": null,
+      "confidence": 0.95,
+      "notes": "Owner P5 review on 2026-06-27: EMTD source class 3 crops are keep left signs, not keep right."
+    },
+    "4": {
+      "semantic_sign_id": "pass_either_side",
+      "parameter_value": null,
+      "confidence": 0.96,
+      "notes": "Pass either side of obstruction."
+    },
+    "5": {
+      "semantic_sign_id": null,
+      "parameter_value": null,
+      "confidence": 0.7,
+      "notes": "Motorcycle-related mandatory sign; exact meaning requires review."
+    },
+    "6": {
+      "semantic_sign_id": "stop",
+      "parameter_value": null,
+      "confidence": 0.99,
+      "notes": "Stop."
+    },
+    "7": {
+      "semantic_sign_id": "no_left_turn",
+      "parameter_value": null,
+      "confidence": 0.92,
+      "notes": "No left turn."
+    },
+    "8": {
+      "semantic_sign_id": null,
+      "parameter_value": null,
+      "confidence": 0.9,
+      "notes": "No straight ahead; catalogue class pending."
+    },
+    "9": {
+      "semantic_sign_id": "no_u_turn",
+      "parameter_value": null,
+      "confidence": 0.96,
+      "notes": "No U-turn."
+    },
+    "10": {
+      "semantic_sign_id": "no_entry",
+      "parameter_value": null,
+      "confidence": 0.99,
+      "notes": "No entry."
+    },
+    "11": {
+      "semantic_sign_id": "weight_restriction",
+      "parameter_value": 5,
+      "confidence": 0.97,
+      "notes": "Five-tonne weight restriction."
+    },
+    "12": {
+      "semantic_sign_id": "weight_restriction",
+      "parameter_value": 30,
+      "confidence": 0.99,
+      "notes": "Thirty-tonne weight restriction."
+    },
+    "13": {
+      "semantic_sign_id": "height_restriction",
+      "parameter_value": 2.5,
+      "confidence": 0.99,
+      "notes": "2.5 m height restriction."
+    },
+    "14": {
+      "semantic_sign_id": "height_restriction",
+      "parameter_value": 3.0,
+      "confidence": 0.99,
+      "notes": "3.0 m height restriction."
+    },
+    "15": {
+      "semantic_sign_id": "height_restriction",
+      "parameter_value": null,
+      "confidence": 0.94,
+      "notes": "Owner P5 review on 2026-06-27: source class 15 is mostly height restriction signs, not give way; crop-level exceptions are handled by the P5 correction manifest."
+    },
+    "16": {
+      "semantic_sign_id": "height_restriction",
+      "parameter_value": 5.4,
+      "confidence": 0.98,
+      "notes": "5.4 m height restriction."
+    },
+    "17": {
+      "semantic_sign_id": "height_restriction",
+      "parameter_value": 6.0,
+      "confidence": 0.99,
+      "notes": "6.0 m height restriction."
+    },
+    "18": {
+      "semantic_sign_id": "maximum_speed",
+      "parameter_value": 20,
+      "confidence": 0.99,
+      "notes": "20 km/h maximum speed."
+    },
+    "19": {
+      "semantic_sign_id": "maximum_speed",
+      "parameter_value": 30,
+      "confidence": 0.99,
+      "notes": "30 km/h maximum speed."
+    },
+    "20": {
+      "semantic_sign_id": "maximum_speed",
+      "parameter_value": 40,
+      "confidence": 0.99,
+      "notes": "40 km/h maximum speed."
+    },
+    "21": {
+      "semantic_sign_id": "maximum_speed",
+      "parameter_value": 50,
+      "confidence": 0.99,
+      "notes": "50 km/h maximum speed."
+    },
+    "22": {
+      "semantic_sign_id": "maximum_speed",
+      "parameter_value": 60,
+      "confidence": 0.99,
+      "notes": "60 km/h maximum speed."
+    },
+    "23": {
+      "semantic_sign_id": "maximum_speed",
+      "parameter_value": 70,
+      "confidence": 0.99,
+      "notes": "70 km/h maximum speed."
+    },
+    "24": {
+      "semantic_sign_id": "maximum_speed",
+      "parameter_value": null,
+      "confidence": 0.92,
+      "notes": "Owner P5 review on 2026-06-27: source class 24 is mostly maximum-speed signs, not width restriction; crop-level height exceptions are handled by the P5 correction manifest."
+    },
+    "25": {
+      "semantic_sign_id": "maximum_speed",
+      "parameter_value": 90,
+      "confidence": 0.99,
+      "notes": "90 km/h maximum speed."
+    },
+    "26": {
+      "semantic_sign_id": "maximum_speed",
+      "parameter_value": 110,
+      "confidence": 0.86,
+      "notes": "Blurred numeric maximum-speed sign; second review required."
+    },
+    "27": {
+      "semantic_sign_id": "weight_restriction",
+      "parameter_value": 5,
+      "confidence": 0.88,
+      "notes": "Time-qualified goods-vehicle restriction over 5 tonnes."
+    },
+    "28": {
+      "semantic_sign_id": "no_heavy_vehicle",
+      "parameter_value": null,
+      "confidence": 0.88,
+      "notes": "Heavy/commercial vehicle restriction."
+    },
+    "29": {
+      "semantic_sign_id": "no_parking",
+      "parameter_value": null,
+      "confidence": 0.94,
+      "notes": "No parking."
+    },
+    "30": {
+      "semantic_sign_id": "height_restriction",
+      "parameter_value": 4.5,
+      "confidence": 0.99,
+      "notes": "4.5 m height restriction."
+    },
+    "31": {
+      "semantic_sign_id": "give_way",
+      "parameter_value": null,
+      "confidence": 0.97,
+      "notes": "Give way."
+    },
+    "32": {
+      "semantic_sign_id": "width_restriction",
+      "parameter_value": 3.5,
+      "confidence": 0.98,
+      "notes": "3.5 m width restriction."
+    },
+    "33": {
+      "semantic_sign_id": "no_overtaking",
+      "parameter_value": null,
+      "confidence": 0.98,
+      "notes": "No overtaking."
+    },
+    "34": {
+      "semantic_sign_id": "roadworks",
+      "parameter_value": null,
+      "confidence": 0.65,
+      "notes": "Blurred works-related warning; requires second review."
+    },
+    "35": {
+      "semantic_sign_id": "camera_enforcement",
+      "parameter_value": null,
+      "confidence": 0.98,
+      "notes": "Owner P5 review on 2026-06-26: EMTD source class 35 crops are camera enforcement signs, not animal crossing."
+    },
+    "36": {
+      "semantic_sign_id": "crosswind",
+      "parameter_value": null,
+      "confidence": 0.96,
+      "notes": "Owner P5 review on 2026-06-27: crosswind/windsock hazard separated from generic general caution."
+    },
+    "37": {
+      "semantic_sign_id": "road_hump",
+      "parameter_value": null,
+      "confidence": 0.99,
+      "notes": "Road hump."
+    },
+    "38": {
+      "semantic_sign_id": "road_hump",
+      "parameter_value": null,
+      "confidence": 0.97,
+      "notes": "Road hump with directional arrow."
+    },
+    "39": {
+      "semantic_sign_id": "vehicle_collision_hazard",
+      "parameter_value": null,
+      "confidence": 0.96,
+      "notes": "Owner P5 review on 2026-06-27: vehicle collision hazard separated from generic general caution."
+    },
+    "40": {
+      "semantic_sign_id": "curve_left",
+      "parameter_value": null,
+      "confidence": 0.72,
+      "notes": "Blurred left-curve warning."
+    },
+    "41": {
+      "semantic_sign_id": "slippery_road",
+      "parameter_value": null,
+      "confidence": 0.99,
+      "notes": "Slippery road."
+    },
+    "42": {
+      "semantic_sign_id": "pedestrian_crossing",
+      "parameter_value": null,
+      "confidence": 0.95,
+      "notes": "Pedestrian warning."
+    },
+    "43": {
+      "semantic_sign_id": "pedestrian_crossing",
+      "parameter_value": null,
+      "confidence": 0.99,
+      "notes": "Pedestrian crossing."
+    },
+    "44": {
+      "semantic_sign_id": "children_crossing",
+      "parameter_value": null,
+      "confidence": 0.97,
+      "notes": "Children crossing."
+    },
+    "45": {
+      "semantic_sign_id": "children_crossing",
+      "parameter_value": null,
+      "confidence": 0.96,
+      "notes": "Children/school crossing."
+    },
+    "46": {
+      "semantic_sign_id": "general_caution",
+      "parameter_value": null,
+      "confidence": 0.99,
+      "notes": "Other danger/general caution."
+    },
+    "47": {
+      "semantic_sign_id": "road_narrows_both",
+      "parameter_value": null,
+      "confidence": 0.82,
+      "notes": "Road narrows; blurred representative."
+    },
+    "48": {
+      "semantic_sign_id": "traffic_signal_ahead",
+      "parameter_value": null,
+      "confidence": 0.99,
+      "notes": "Traffic signals ahead."
+    },
+    "49": {
+      "semantic_sign_id": null,
+      "parameter_value": null,
+      "confidence": 0.1,
+      "notes": "Pictogram is not legible in selected sample."
+    },
+    "50": {
+      "semantic_sign_id": "staggered_junction",
+      "parameter_value": null,
+      "confidence": 0.98,
+      "notes": "Owner P5 review on 2026-06-27: EMTD source class 50 crops are staggered junction signs, not generic crossroads signs."
+    },
+    "51": {
+      "semantic_sign_id": "t_junction",
+      "parameter_value": null,
+      "confidence": 0.99,
+      "notes": "T-junction."
+    },
+    "52": {
+      "semantic_sign_id": "side_road_right",
+      "parameter_value": null,
+      "confidence": 0.98,
+      "notes": "Side road on right."
+    },
+    "53": {
+      "semantic_sign_id": "side_road_left",
+      "parameter_value": null,
+      "confidence": 0.98,
+      "notes": "Side road on left."
+    },
+    "54": {
+      "semantic_sign_id": null,
+      "parameter_value": null,
+      "confidence": 0.65,
+      "notes": "Angled junction configuration requires second review."
+    },
+    "55": {
+      "semantic_sign_id": "crossroads",
+      "parameter_value": null,
+      "confidence": 0.99,
+      "notes": "Crossroads."
+    },
+    "56": {
+      "semantic_sign_id": "side_road_right",
+      "parameter_value": null,
+      "confidence": 0.94,
+      "notes": "Owner P5 review on 2026-06-27: EMTD source class 56 is side road right, not traffic merging right; individual crop exceptions still require P5 correction."
+    },
+    "57": {
+      "semantic_sign_id": "side_road_left",
+      "parameter_value": null,
+      "confidence": 0.94,
+      "notes": "Owner P5 review on 2026-06-27: EMTD source class 57 is side road left, not traffic merging left; individual crop exceptions still require P5 correction."
+    },
+    "58": {
+      "semantic_sign_id": null,
+      "parameter_value": null,
+      "confidence": 0.45,
+      "notes": "Blurred angled junction configuration requires second review."
+    },
+    "59": {
+      "semantic_sign_id": "animal_crossing",
+      "parameter_value": null,
+      "confidence": 0.98,
+      "notes": "Owner P5 review on 2026-06-27: EMTD source class 59 crops are cow/animal crossing signs, not T-junction signs."
+    },
+    "60": {
+      "semantic_sign_id": "roundabout_ahead",
+      "parameter_value": null,
+      "confidence": 0.99,
+      "notes": "Roundabout ahead."
+    },
+    "61": {
+      "semantic_sign_id": "road_narrows_both",
+      "parameter_value": null,
+      "confidence": 0.95,
+      "notes": "Road narrows."
+    },
+    "62": {
+      "semantic_sign_id": "divided_road_begins",
+      "parameter_value": null,
+      "confidence": 0.8,
+      "notes": "Traffic separates around a divider."
+    },
+    "63": {
+      "semantic_sign_id": "two_way_traffic",
+      "parameter_value": null,
+      "confidence": 0.99,
+      "notes": "Two-way traffic."
+    },
+    "64": {
+      "semantic_sign_id": "divided_road_begins",
+      "parameter_value": null,
+      "confidence": 0.84,
+      "notes": "Divided road/island begins."
+    },
+    "65": {
+      "semantic_sign_id": "double_curve",
+      "parameter_value": null,
+      "confidence": 0.97,
+      "notes": "Double curve."
+    },
+    "66": {
+      "semantic_sign_id": null,
+      "parameter_value": null,
+      "confidence": 0.9,
+      "notes": "Y-junction; dedicated catalogue class pending."
+    }
   }
 }

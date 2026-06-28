@@ -44,16 +44,21 @@ class ActionCode(StrEnum):
     PROHIBIT_LEFT_TURN = "PROHIBIT_LEFT_TURN"
     PROHIBIT_RIGHT_TURN = "PROHIBIT_RIGHT_TURN"
     PROHIBIT_U_TURN = "PROHIBIT_U_TURN"
+    PROHIBIT_DIRECTION = "PROHIBIT_DIRECTION"
+    PROHIBIT_LANE_CHANGE = "PROHIBIT_LANE_CHANGE"
     PROHIBIT_ENTRY = "PROHIBIT_ENTRY"
     PROHIBIT_OVERTAKING = "PROHIBIT_OVERTAKING"
     PROHIBIT_VEHICLE = "PROHIBIT_VEHICLE"
     PROHIBIT_PARKING = "PROHIBIT_PARKING"
     PROHIBIT_STOPPING = "PROHIBIT_STOPPING"
+    PROHIBIT_HORN = "PROHIBIT_HORN"
     KEEP_LEFT = "KEEP_LEFT"
     KEEP_RIGHT = "KEEP_RIGHT"
     FOLLOW_DIRECTION = "FOLLOW_DIRECTION"
+    SOUND_HORN = "SOUND_HORN"
     WATCH_PEDESTRIANS = "WATCH_PEDESTRIANS"
     WATCH_CHILDREN = "WATCH_CHILDREN"
+    WATCH_CYCLISTS = "WATCH_CYCLISTS"
     WATCH_ROAD_HAZARD = "WATCH_ROAD_HAZARD"
     WATCH_TRAFFIC_SIGNAL = "WATCH_TRAFFIC_SIGNAL"
     WATCH_RAILWAY = "WATCH_RAILWAY"
@@ -63,6 +68,12 @@ class ActionCode(StrEnum):
     WEIGHT_RESTRICTION = "WEIGHT_RESTRICTION"
     INFORMATION_ONLY = "INFORMATION_ONLY"
     UNKNOWN_CAUTION = "UNKNOWN_CAUTION"
+
+
+class ReviewStatus(StrEnum):
+    DRAFT = "draft"
+    REVIEWED = "reviewed"
+    APPROVED = "approved"
 
 
 class LocalizedText(BaseModel):
@@ -90,6 +101,9 @@ class StandardDocument(BaseModel):
     source_url: HttpUrl
     scope: list[str] = Field(min_length=1)
     local_archive_status: str = Field(min_length=2)
+    local_archive_path: str | None = None
+    local_archive_sha256: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
+    local_archive_bytes: int | None = Field(default=None, gt=0)
     notes: str = ""
 
 
@@ -123,7 +137,7 @@ class SignDefinition(BaseModel):
     default_parameter: float | str | None = None
     audio_key: str
     standard_reference: StandardReference
-    review_status: str = "draft"
+    review_status: ReviewStatus = ReviewStatus.DRAFT
 
     @field_validator("semantic_sign_id", "audio_key")
     @classmethod

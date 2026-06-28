@@ -1,0 +1,1065 @@
+split,current_label,file,instance_id,source_class_id,filename,width,height,area,tiny_crop
+test,animal_crossing,data/processed/emtd_classification/test/animal_crossing/emtd_f97d5b11e515b18d_001.jpg,emtd_f97d5b11e515b18d_001,59,47.jpg,52,48,2496,false
+test,camera_enforcement,data/processed/emtd_classification/test/camera_enforcement/emtd_5d2552f3c147808b_002.jpg,emtd_5d2552f3c147808b_002,35,27.jpg,35,31,1085,true
+test,camera_enforcement,data/processed/emtd_classification/test/camera_enforcement/emtd_5f7cf79a455c49f0_005.jpg,emtd_5f7cf79a455c49f0_005,35,P1840143.JPG,46,46,2116,false
+test,camera_enforcement,data/processed/emtd_classification/test/camera_enforcement/emtd_a46a08ce2a37eddb_001.jpg,emtd_a46a08ce2a37eddb_001,35,P1840101.JPG,173,175,30275,false
+test,children_crossing,data/processed/emtd_classification/test/children_crossing/emtd_018e51e9ae23a3ba_002.jpg,emtd_018e51e9ae23a3ba_002,44,Screenshot (267).png,54,49,2646,false
+test,children_crossing,data/processed/emtd_classification/test/children_crossing/emtd_5f7cf79a455c49f0_007.jpg,emtd_5f7cf79a455c49f0_007,44,P1840143.JPG,107,107,11449,false
+test,children_crossing,data/processed/emtd_classification/test/children_crossing/emtd_72ca33f1c1e1c9c8_002.jpg,emtd_72ca33f1c1e1c9c8_002,44,P1860371.JPG,403,393,158379,false
+test,children_crossing,data/processed/emtd_classification/test/children_crossing/emtd_76cd6549c6400fe5_001.jpg,emtd_76cd6549c6400fe5_001,44,P1830994.JPG,96,96,9216,false
+test,children_crossing,data/processed/emtd_classification/test/children_crossing/emtd_9c1138b7995fcf5a_004.jpg,emtd_9c1138b7995fcf5a_004,45,P1860049.JPG,291,284,82644,false
+test,crossroads,data/processed/emtd_classification/test/crossroads/emtd_4a175710f8d593a0_005.jpg,emtd_4a175710f8d593a0_005,55,P1840200.JPG,361,359,129599,false
+test,crossroads,data/processed/emtd_classification/test/crossroads/emtd_6b3bad116f3adbf1_007.jpg,emtd_6b3bad116f3adbf1_007,55,P1840182.JPG,444,431,191364,false
+test,crosswind,data/processed/emtd_classification/test/crosswind/emtd_709adf5a41b8c825_001.jpg,emtd_709adf5a41b8c825_001,36,DSC-0330.JPG,146,145,21170,false
+test,curve_left,data/processed/emtd_classification/test/curve_left/emtd_63f92938c22973ad_005.jpg,emtd_63f92938c22973ad_005,40,Screenshot (140).png,116,222,25752,false
+test,curve_left,data/processed/emtd_classification/test/curve_left/emtd_a099ceb90cfeb69c_002.jpg,emtd_a099ceb90cfeb69c_002,40,P1860068.JPG,200,201,40200,false
+test,divided_road_begins,data/processed/emtd_classification/test/divided_road_begins/emtd_085a7bb4a14b599a_001.jpg,emtd_085a7bb4a14b599a_001,62,P1840515.JPG,60,57,3420,false
+test,divided_road_begins,data/processed/emtd_classification/test/divided_road_begins/emtd_2ca5d238e28dec52_004.jpg,emtd_2ca5d238e28dec52_004,62,P1840009.JPG,185,183,33855,false
+test,divided_road_begins,data/processed/emtd_classification/test/divided_road_begins/emtd_3ed7a222fd38cc5f_004.jpg,emtd_3ed7a222fd38cc5f_004,10,P1840113.JPG,32,33,1056,false
+test,divided_road_begins,data/processed/emtd_classification/test/divided_road_begins/emtd_40de39938cbd8ff9_002.jpg,emtd_40de39938cbd8ff9_002,62,Screenshot (76).png,21,21,441,true
+test,divided_road_begins,data/processed/emtd_classification/test/divided_road_begins/emtd_4a175710f8d593a0_006.jpg,emtd_4a175710f8d593a0_006,62,P1840200.JPG,103,102,10506,false
+test,divided_road_begins,data/processed/emtd_classification/test/divided_road_begins/emtd_69a204a515f07cc4_013.jpg,emtd_69a204a515f07cc4_013,62,P1840116.JPG,446,450,200700,false
+test,divided_road_begins,data/processed/emtd_classification/test/divided_road_begins/emtd_6b3bad116f3adbf1_008.jpg,emtd_6b3bad116f3adbf1_008,62,P1840182.JPG,64,56,3584,false
+test,divided_road_begins,data/processed/emtd_classification/test/divided_road_begins/emtd_724032002f9a00a9_003.jpg,emtd_724032002f9a00a9_003,62,P1840134.JPG,184,189,34776,false
+test,divided_road_begins,data/processed/emtd_classification/test/divided_road_begins/emtd_78323ccd16efe861_005.jpg,emtd_78323ccd16efe861_005,62,P1860094.JPG,44,46,2024,false
+test,divided_road_begins,data/processed/emtd_classification/test/divided_road_begins/emtd_9123b15c355822d1_004.jpg,emtd_9123b15c355822d1_004,62,1081.jpg,27,29,783,true
+test,divided_road_begins,data/processed/emtd_classification/test/divided_road_begins/emtd_a46a08ce2a37eddb_003.jpg,emtd_a46a08ce2a37eddb_003,62,P1840101.JPG,78,84,6552,false
+test,divided_road_begins,data/processed/emtd_classification/test/divided_road_begins/emtd_b94f0b098b8b1ea3_003.jpg,emtd_b94f0b098b8b1ea3_003,62,124.jpg,27,26,702,true
+test,divided_road_begins,data/processed/emtd_classification/test/divided_road_begins/emtd_bf525f26be6b7537_003.jpg,emtd_bf525f26be6b7537_003,62,1013.jpg,14,16,224,true
+test,divided_road_begins,data/processed/emtd_classification/test/divided_road_begins/emtd_c778fe83acf5738d_005.jpg,emtd_c778fe83acf5738d_005,62,P1860073.JPG,277,277,76729,false
+test,divided_road_begins,data/processed/emtd_classification/test/divided_road_begins/emtd_f032064e939cabdc_005.jpg,emtd_f032064e939cabdc_005,62,P1840201.JPG,259,257,66563,false
+test,divided_road_begins,data/processed/emtd_classification/test/divided_road_begins/emtd_f83fa3e37bd383db_004.jpg,emtd_f83fa3e37bd383db_004,62,Screenshot (279).png,14,14,196,true
+test,divided_road_begins,data/processed/emtd_classification/test/divided_road_begins/emtd_fe3876c03658671d_005.jpg,emtd_fe3876c03658671d_005,62,P1840102.JPG,343,381,130683,false
+test,double_curve,data/processed/emtd_classification/test/double_curve/emtd_6a090bef0dd3c4b7_002.jpg,emtd_6a090bef0dd3c4b7_002,65,P1840289.JPG,444,444,197136,false
+test,general_caution,data/processed/emtd_classification/test/general_caution/emtd_018e51e9ae23a3ba_003.jpg,emtd_018e51e9ae23a3ba_003,46,Screenshot (267).png,27,31,837,true
+test,general_caution,data/processed/emtd_classification/test/general_caution/emtd_3ed7a222fd38cc5f_007.jpg,emtd_3ed7a222fd38cc5f_007,19,P1840113.JPG,179,178,31862,false
+test,general_caution,data/processed/emtd_classification/test/general_caution/emtd_f8082107503b594d_004.jpg,emtd_f8082107503b594d_004,46,1033.jpg,29,31,899,true
+test,general_caution,data/processed/emtd_classification/test/general_caution/emtd_f8082107503b594d_005.jpg,emtd_f8082107503b594d_005,46,1033.jpg,26,26,676,true
+test,give_way,data/processed/emtd_classification/test/give_way/emtd_018e51e9ae23a3ba_001.jpg,emtd_018e51e9ae23a3ba_001,31,Screenshot (267).png,12,12,144,true
+test,give_way,data/processed/emtd_classification/test/give_way/emtd_3ed7a222fd38cc5f_015.jpg,emtd_3ed7a222fd38cc5f_015,62,P1840113.JPG,55,47,2585,false
+test,give_way,data/processed/emtd_classification/test/give_way/emtd_69a204a515f07cc4_012.jpg,emtd_69a204a515f07cc4_012,57,P1840116.JPG,191,161,30751,false
+test,give_way,data/processed/emtd_classification/test/give_way/emtd_78323ccd16efe861_002.jpg,emtd_78323ccd16efe861_002,31,P1860094.JPG,85,122,10370,false
+test,give_way,data/processed/emtd_classification/test/give_way/emtd_bf46fd2a09e05bed_005.jpg,emtd_bf46fd2a09e05bed_005,31,1000.jpg,19,20,380,true
+test,give_way,data/processed/emtd_classification/test/give_way/emtd_f032064e939cabdc_001.jpg,emtd_f032064e939cabdc_001,29,P1840201.JPG,45,69,3105,false
+test,give_way,data/processed/emtd_classification/test/give_way/emtd_f83fa3e37bd383db_001.jpg,emtd_f83fa3e37bd383db_001,31,Screenshot (279).png,12,12,144,true
+test,height_restriction,data/processed/emtd_classification/test/height_restriction/emtd_05c11e440bceae36_002.jpg,emtd_05c11e440bceae36_002,21,P1840098.JPG,60,59,3540,false
+test,height_restriction,data/processed/emtd_classification/test/height_restriction/emtd_1f2671d8396a5778_001.jpg,emtd_1f2671d8396a5778_001,16,P1830942.JPG,46,43,1978,false
+test,height_restriction,data/processed/emtd_classification/test/height_restriction/emtd_3ed7a222fd38cc5f_013.jpg,emtd_3ed7a222fd38cc5f_013,56,P1840113.JPG,38,60,2280,false
+test,height_restriction,data/processed/emtd_classification/test/height_restriction/emtd_5959063e85e67c7b_001.jpg,emtd_5959063e85e67c7b_001,16,P1840426.JPG,131,140,18340,false
+test,height_restriction,data/processed/emtd_classification/test/height_restriction/emtd_5c18f71806f7f407_002.jpg,emtd_5c18f71806f7f407_002,24,P1840106.JPG,203,204,41412,false
+test,height_restriction,data/processed/emtd_classification/test/height_restriction/emtd_5f7cf79a455c49f0_001.jpg,emtd_5f7cf79a455c49f0_001,16,P1840143.JPG,70,69,4830,false
+test,height_restriction,data/processed/emtd_classification/test/height_restriction/emtd_5f7cf79a455c49f0_004.jpg,emtd_5f7cf79a455c49f0_004,21,P1840143.JPG,226,220,49720,false
+test,height_restriction,data/processed/emtd_classification/test/height_restriction/emtd_69a204a515f07cc4_005.jpg,emtd_69a204a515f07cc4_005,16,P1840116.JPG,270,259,69930,false
+test,height_restriction,data/processed/emtd_classification/test/height_restriction/emtd_76b83678743ddcdc_001.jpg,emtd_76b83678743ddcdc_001,15,P1840489.JPG,130,135,17550,false
+test,height_restriction,data/processed/emtd_classification/test/height_restriction/emtd_76b83678743ddcdc_002.jpg,emtd_76b83678743ddcdc_002,15,P1840489.JPG,125,133,16625,false
+test,height_restriction,data/processed/emtd_classification/test/height_restriction/emtd_a1facd63173fa897_001.jpg,emtd_a1facd63173fa897_001,13,P1860112.JPG,231,230,53130,false
+test,height_restriction,data/processed/emtd_classification/test/height_restriction/emtd_c6ff2feb98444e60_002.jpg,emtd_c6ff2feb98444e60_002,24,P1830943.JPG,70,71,4970,false
+test,height_restriction,data/processed/emtd_classification/test/height_restriction/emtd_db2c56c851f1f24b_001.jpg,emtd_db2c56c851f1f24b_001,13,Screenshot (73).png,40,45,1800,false
+test,height_restriction,data/processed/emtd_classification/test/height_restriction/emtd_f0d9cd2579e041da_001.jpg,emtd_f0d9cd2579e041da_001,14,P1840605.JPG,93,122,11346,false
+test,height_restriction,data/processed/emtd_classification/test/height_restriction/emtd_fe3876c03658671d_001.jpg,emtd_fe3876c03658671d_001,13,P1840102.JPG,100,100,10000,false
+test,keep_left,data/processed/emtd_classification/test/keep_left/emtd_3ed7a222fd38cc5f_006.jpg,emtd_3ed7a222fd38cc5f_006,16,P1840113.JPG,26,26,676,true
+test,keep_left,data/processed/emtd_classification/test/keep_left/emtd_69a204a515f07cc4_006.jpg,emtd_69a204a515f07cc4_006,31,P1840116.JPG,46,45,2070,false
+test,keep_left,data/processed/emtd_classification/test/keep_left/emtd_72f8f76c91ead88a_001.jpg,emtd_72f8f76c91ead88a_001,3,Screenshot (289).png,23,22,506,true
+test,keep_left,data/processed/emtd_classification/test/keep_left/emtd_72f8f76c91ead88a_002.jpg,emtd_72f8f76c91ead88a_002,3,Screenshot (289).png,12,13,156,true
+test,keep_left,data/processed/emtd_classification/test/keep_left/emtd_78323ccd16efe861_001.jpg,emtd_78323ccd16efe861_001,3,P1860094.JPG,31,32,992,true
+test,keep_left,data/processed/emtd_classification/test/keep_left/emtd_8f7e798bef8b857c_001.jpg,emtd_8f7e798bef8b857c_001,3,Screenshot (287).png,15,14,210,true
+test,keep_left,data/processed/emtd_classification/test/keep_left/emtd_8f7e798bef8b857c_002.jpg,emtd_8f7e798bef8b857c_002,3,Screenshot (287).png,10,11,110,true
+test,keep_left,data/processed/emtd_classification/test/keep_left/emtd_bf46fd2a09e05bed_002.jpg,emtd_bf46fd2a09e05bed_002,3,1000.jpg,22,23,506,true
+test,keep_left,data/processed/emtd_classification/test/keep_left/emtd_f8082107503b594d_001.jpg,emtd_f8082107503b594d_001,3,1033.jpg,125,104,13000,false
+test,keep_right,data/processed/emtd_classification/test/keep_right/emtd_29137c7c673163f8_001.jpg,emtd_29137c7c673163f8_001,2,1034.jpg,60,47,2820,false
+test,keep_right,data/processed/emtd_classification/test/keep_right/emtd_29137c7c673163f8_002.jpg,emtd_29137c7c673163f8_002,2,1034.jpg,23,20,460,true
+test,keep_right,data/processed/emtd_classification/test/keep_right/emtd_50151c3e117edc65_001.jpg,emtd_50151c3e117edc65_001,2,Screenshot (86).png,24,21,504,true
+test,keep_right,data/processed/emtd_classification/test/keep_right/emtd_50151c3e117edc65_002.jpg,emtd_50151c3e117edc65_002,2,Screenshot (86).png,33,34,1122,false
+test,keep_right,data/processed/emtd_classification/test/keep_right/emtd_5d2552f3c147808b_001.jpg,emtd_5d2552f3c147808b_001,2,27.jpg,25,22,550,true
+test,keep_right,data/processed/emtd_classification/test/keep_right/emtd_bf46fd2a09e05bed_001.jpg,emtd_bf46fd2a09e05bed_001,2,1000.jpg,91,90,8190,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_05c11e440bceae36_001.jpg,emtd_05c11e440bceae36_001,16,P1840098.JPG,230,222,51060,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_0cab9ef2c368a7ef_001.jpg,emtd_0cab9ef2c368a7ef_001,19,70.jpg,39,38,1482,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_0fee531f9fe6d8b3_001.jpg,emtd_0fee531f9fe6d8b3_001,23,P1840477.JPG,527,534,281418,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_1f2671d8396a5778_002.jpg,emtd_1f2671d8396a5778_002,24,P1830942.JPG,35,34,1190,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_40de39938cbd8ff9_001.jpg,emtd_40de39938cbd8ff9_001,18,Screenshot (76).png,41,41,1681,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_4d21a48d4654424d_001.jpg,emtd_4d21a48d4654424d_001,23,1050.jpg,87,90,7830,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_4d21a48d4654424d_002.jpg,emtd_4d21a48d4654424d_002,23,1050.jpg,93,97,9021,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_50151c3e117edc65_006.jpg,emtd_50151c3e117edc65_006,22,Screenshot (86).png,31,33,1023,true
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_5959063e85e67c7b_002.jpg,emtd_5959063e85e67c7b_002,24,P1840426.JPG,246,238,58548,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_5c18f71806f7f407_001.jpg,emtd_5c18f71806f7f407_001,16,P1840106.JPG,125,125,15625,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_5f7cf79a455c49f0_002.jpg,emtd_5f7cf79a455c49f0_002,16,P1840143.JPG,54,54,2916,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_5f7cf79a455c49f0_003.jpg,emtd_5f7cf79a455c49f0_003,19,P1840143.JPG,116,116,13456,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_63f92938c22973ad_002.jpg,emtd_63f92938c22973ad_002,19,Screenshot (140).png,41,35,1435,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_6b3bad116f3adbf1_001.jpg,emtd_6b3bad116f3adbf1_001,21,P1840182.JPG,32,31,992,true
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_701df3c5dbd195c2_001.jpg,emtd_701df3c5dbd195c2_001,19,69.jpg,23,23,529,true
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_77b5ce71feac4f10_001.jpg,emtd_77b5ce71feac4f10_001,25,P1840563.JPG,465,465,216225,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_9c1138b7995fcf5a_001.jpg,emtd_9c1138b7995fcf5a_001,19,P1860049.JPG,285,280,79800,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_a099ceb90cfeb69c_001.jpg,emtd_a099ceb90cfeb69c_001,22,P1860068.JPG,313,328,102664,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_a1facd63173fa897_002.jpg,emtd_a1facd63173fa897_002,18,P1860112.JPG,227,229,51983,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_accf102caaa970ce_001.jpg,emtd_accf102caaa970ce_001,22,1.jpg,23,21,483,true
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_accf102caaa970ce_002.jpg,emtd_accf102caaa970ce_002,22,1.jpg,18,18,324,true
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_bf525f26be6b7537_001.jpg,emtd_bf525f26be6b7537_001,21,1013.jpg,33,34,1122,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_c1f70e702a101084_001.jpg,emtd_c1f70e702a101084_001,19,1028.jpg,18,24,432,true
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_c6ff2feb98444e60_001.jpg,emtd_c6ff2feb98444e60_001,16,P1830943.JPG,46,46,2116,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_d255ff9967c36226_001.jpg,emtd_d255ff9967c36226_001,25,Screenshot (314).png,34,34,1156,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_d58f34d08b4a612e_001.jpg,emtd_d58f34d08b4a612e_001,19,P1840038.JPG,256,249,63744,false
+test,maximum_speed,data/processed/emtd_classification/test/maximum_speed/emtd_db2c56c851f1f24b_002.jpg,emtd_db2c56c851f1f24b_002,20,Screenshot (73).png,27,27,729,true
+test,merge_left,data/processed/emtd_classification/test/merge_left/emtd_1f2671d8396a5778_003.jpg,emtd_1f2671d8396a5778_003,57,P1830942.JPG,548,548,300304,false
+test,merge_left,data/processed/emtd_classification/test/merge_left/emtd_3ed7a222fd38cc5f_014.jpg,emtd_3ed7a222fd38cc5f_014,57,P1840113.JPG,76,77,5852,false
+test,merge_left,data/processed/emtd_classification/test/merge_left/emtd_5959063e85e67c7b_003.jpg,emtd_5959063e85e67c7b_003,57,P1840426.JPG,130,131,17030,false
+test,merge_left,data/processed/emtd_classification/test/merge_left/emtd_69a204a515f07cc4_003.jpg,emtd_69a204a515f07cc4_003,10,P1840116.JPG,426,421,179346,false
+test,merge_left,data/processed/emtd_classification/test/merge_left/emtd_69a204a515f07cc4_004.jpg,emtd_69a204a515f07cc4_004,10,P1840116.JPG,136,135,18360,false
+test,merge_left,data/processed/emtd_classification/test/merge_left/emtd_bf46fd2a09e05bed_007.jpg,emtd_bf46fd2a09e05bed_007,57,1000.jpg,43,43,1849,false
+test,merge_right,data/processed/emtd_classification/test/merge_right/emtd_3ed7a222fd38cc5f_002.jpg,emtd_3ed7a222fd38cc5f_002,3,P1840113.JPG,59,61,3599,false
+test,merge_right,data/processed/emtd_classification/test/merge_right/emtd_69a204a515f07cc4_001.jpg,emtd_69a204a515f07cc4_001,3,P1840116.JPG,192,186,35712,false
+test,merge_right,data/processed/emtd_classification/test/merge_right/emtd_fe3876c03658671d_004.jpg,emtd_fe3876c03658671d_004,56,P1840102.JPG,112,130,14560,false
+test,no_entry,data/processed/emtd_classification/test/no_entry/emtd_3ed7a222fd38cc5f_009.jpg,emtd_3ed7a222fd38cc5f_009,42,P1840113.JPG,31,32,992,true
+test,no_entry,data/processed/emtd_classification/test/no_entry/emtd_63f92938c22973ad_001.jpg,emtd_63f92938c22973ad_001,10,Screenshot (140).png,34,23,782,true
+test,no_entry,data/processed/emtd_classification/test/no_entry/emtd_69a204a515f07cc4_007.jpg,emtd_69a204a515f07cc4_007,42,P1840116.JPG,34,54,1836,false
+test,no_entry,data/processed/emtd_classification/test/no_entry/emtd_72f8f76c91ead88a_003.jpg,emtd_72f8f76c91ead88a_003,10,Screenshot (289).png,10,12,120,true
+test,no_heavy_vehicle,data/processed/emtd_classification/test/no_heavy_vehicle/emtd_f064bdcb26a6bd99_001.jpg,emtd_f064bdcb26a6bd99_001,28,Screenshot (18).png,38,34,1292,false
+test,no_left_turn,data/processed/emtd_classification/test/no_left_turn/emtd_50151c3e117edc65_005.jpg,emtd_50151c3e117edc65_005,7,Screenshot (86).png,32,34,1088,false
+test,no_left_turn,data/processed/emtd_classification/test/no_left_turn/emtd_e40caa8f305a57cb_001.jpg,emtd_e40caa8f305a57cb_001,7,P1840472.JPG,273,267,72891,false
+test,no_overtaking,data/processed/emtd_classification/test/no_overtaking/emtd_72f8f76c91ead88a_004.jpg,emtd_72f8f76c91ead88a_004,33,Screenshot (289).png,107,91,9737,false
+test,no_overtaking,data/processed/emtd_classification/test/no_overtaking/emtd_8f7e798bef8b857c_003.jpg,emtd_8f7e798bef8b857c_003,33,Screenshot (287).png,25,22,550,true
+test,no_parking,data/processed/emtd_classification/test/no_parking/emtd_4a175710f8d593a0_002.jpg,emtd_4a175710f8d593a0_002,29,P1840200.JPG,34,49,1666,false
+test,no_parking,data/processed/emtd_classification/test/no_parking/emtd_4a175710f8d593a0_003.jpg,emtd_4a175710f8d593a0_003,30,P1840200.JPG,122,204,24888,false
+test,no_parking,data/processed/emtd_classification/test/no_parking/emtd_9c1138b7995fcf5a_002.jpg,emtd_9c1138b7995fcf5a_002,29,P1860049.JPG,214,303,64842,false
+test,no_parking,data/processed/emtd_classification/test/no_parking/emtd_f032064e939cabdc_003.jpg,emtd_f032064e939cabdc_003,31,P1840201.JPG,52,70,3640,false
+test,no_stopping,data/processed/emtd_classification/test/no_stopping/emtd_4a175710f8d593a0_001.jpg,emtd_4a175710f8d593a0_001,29,P1840200.JPG,40,48,1920,false
+test,no_stopping,data/processed/emtd_classification/test/no_stopping/emtd_6b3bad116f3adbf1_002.jpg,emtd_6b3bad116f3adbf1_002,30,P1840182.JPG,29,29,841,true
+test,no_stopping,data/processed/emtd_classification/test/no_stopping/emtd_724032002f9a00a9_001.jpg,emtd_724032002f9a00a9_001,30,P1840134.JPG,98,98,9604,false
+test,no_stopping,data/processed/emtd_classification/test/no_stopping/emtd_f032064e939cabdc_002.jpg,emtd_f032064e939cabdc_002,30,P1840201.JPG,110,110,12100,false
+test,no_stopping,data/processed/emtd_classification/test/no_stopping/emtd_f43403930d9e849f_001.jpg,emtd_f43403930d9e849f_001,30,Screenshot (92).png,57,57,3249,false
+test,no_stopping,data/processed/emtd_classification/test/no_stopping/emtd_f8082107503b594d_002.jpg,emtd_f8082107503b594d_002,30,1033.jpg,23,23,529,true
+test,no_stopping,data/processed/emtd_classification/test/no_stopping/emtd_fe3876c03658671d_002.jpg,emtd_fe3876c03658671d_002,30,P1840102.JPG,126,148,18648,false
+test,no_stopping,data/processed/emtd_classification/test/no_stopping/emtd_ff937d8340aa908c_001.jpg,emtd_ff937d8340aa908c_001,30,1026.jpg,117,78,9126,false
+test,no_u_turn,data/processed/emtd_classification/test/no_u_turn/emtd_69a204a515f07cc4_010.jpg,emtd_69a204a515f07cc4_010,56,P1840116.JPG,136,160,21760,false
+test,no_u_turn,data/processed/emtd_classification/test/no_u_turn/emtd_9123b15c355822d1_002.jpg,emtd_9123b15c355822d1_002,9,1081.jpg,44,43,1892,false
+test,obstruction_ahead,data/processed/emtd_classification/test/obstruction_ahead/emtd_3ed7a222fd38cc5f_003.jpg,emtd_3ed7a222fd38cc5f_003,9,P1840113.JPG,35,38,1330,false
+test,obstruction_ahead,data/processed/emtd_classification/test/obstruction_ahead/emtd_3ed7a222fd38cc5f_005.jpg,emtd_3ed7a222fd38cc5f_005,16,P1840113.JPG,78,76,5928,false
+test,obstruction_ahead,data/processed/emtd_classification/test/obstruction_ahead/emtd_69a204a515f07cc4_002.jpg,emtd_69a204a515f07cc4_002,9,P1840116.JPG,433,449,194417,false
+test,pass_either_side,data/processed/emtd_classification/test/pass_either_side/emtd_69f1dbc4bc0ec4ec_001.jpg,emtd_69f1dbc4bc0ec4ec_001,4,P1840270.JPG,336,304,102144,false
+test,pass_either_side,data/processed/emtd_classification/test/pass_either_side/emtd_72ca33f1c1e1c9c8_001.jpg,emtd_72ca33f1c1e1c9c8_001,4,P1860371.JPG,158,154,24332,false
+test,pedestrian_crossing,data/processed/emtd_classification/test/pedestrian_crossing/emtd_0e7c200cc0562811_002.jpg,emtd_0e7c200cc0562811_002,43,P1840598.JPG,140,154,21560,false
+test,pedestrian_crossing,data/processed/emtd_classification/test/pedestrian_crossing/emtd_2ca5d238e28dec52_002.jpg,emtd_2ca5d238e28dec52_002,43,P1840009.JPG,247,262,64714,false
+test,pedestrian_crossing,data/processed/emtd_classification/test/pedestrian_crossing/emtd_3ed7a222fd38cc5f_008.jpg,emtd_3ed7a222fd38cc5f_008,31,P1840113.JPG,78,76,5928,false
+test,pedestrian_crossing,data/processed/emtd_classification/test/pedestrian_crossing/emtd_69a204a515f07cc4_011.jpg,emtd_69a204a515f07cc4_011,57,P1840116.JPG,54,57,3078,false
+test,pedestrian_crossing,data/processed/emtd_classification/test/pedestrian_crossing/emtd_a46a08ce2a37eddb_002.jpg,emtd_a46a08ce2a37eddb_002,42,P1840101.JPG,59,81,4779,false
+test,permitted_u_turn,data/processed/emtd_classification/test/permitted_u_turn/emtd_3ed7a222fd38cc5f_010.jpg,emtd_3ed7a222fd38cc5f_010,46,P1840113.JPG,82,122,10004,false
+test,road_hump,data/processed/emtd_classification/test/road_hump/emtd_1e28dff0ebb63e11_001.jpg,emtd_1e28dff0ebb63e11_001,37,P1860062.JPG,197,194,38218,false
+test,road_hump,data/processed/emtd_classification/test/road_hump/emtd_1e28dff0ebb63e11_002.jpg,emtd_1e28dff0ebb63e11_002,38,P1860062.JPG,337,339,114243,false
+test,road_hump,data/processed/emtd_classification/test/road_hump/emtd_4d21a48d4654424d_003.jpg,emtd_4d21a48d4654424d_003,37,1050.jpg,48,48,2304,false
+test,road_hump,data/processed/emtd_classification/test/road_hump/emtd_4d21a48d4654424d_004.jpg,emtd_4d21a48d4654424d_004,37,1050.jpg,28,29,812,true
+test,road_hump,data/processed/emtd_classification/test/road_hump/emtd_4d21a48d4654424d_005.jpg,emtd_4d21a48d4654424d_005,37,1050.jpg,25,24,600,true
+test,road_hump,data/processed/emtd_classification/test/road_hump/emtd_63f92938c22973ad_003.jpg,emtd_63f92938c22973ad_003,37,Screenshot (140).png,55,45,2475,false
+test,road_hump,data/processed/emtd_classification/test/road_hump/emtd_63f92938c22973ad_004.jpg,emtd_63f92938c22973ad_004,38,Screenshot (140).png,40,30,1200,true
+test,road_hump,data/processed/emtd_classification/test/road_hump/emtd_9bfd9ddc90d6225d_002.jpg,emtd_9bfd9ddc90d6225d_002,37,131.jpg,75,91,6825,false
+test,road_hump,data/processed/emtd_classification/test/road_hump/emtd_9c1138b7995fcf5a_003.jpg,emtd_9c1138b7995fcf5a_003,37,P1860049.JPG,365,361,131765,false
+test,road_hump,data/processed/emtd_classification/test/road_hump/emtd_d58f34d08b4a612e_002.jpg,emtd_d58f34d08b4a612e_002,37,P1840038.JPG,328,324,106272,false
+test,road_narrows_both,data/processed/emtd_classification/test/road_narrows_both/emtd_c1f70e702a101084_002.jpg,emtd_c1f70e702a101084_002,47,1028.jpg,84,77,6468,false
+test,road_narrows_both,data/processed/emtd_classification/test/road_narrows_both/emtd_c341a9e3e50aa1eb_001.jpg,emtd_c341a9e3e50aa1eb_001,61,56.jpg,24,24,576,true
+test,road_narrows_both,data/processed/emtd_classification/test/road_narrows_both/emtd_ff937d8340aa908c_003.jpg,emtd_ff937d8340aa908c_003,47,1026.jpg,32,25,800,true
+test,roadworks,data/processed/emtd_classification/test/roadworks/emtd_78323ccd16efe861_003.jpg,emtd_78323ccd16efe861_003,34,P1860094.JPG,78,76,5928,false
+test,roadworks,data/processed/emtd_classification/test/roadworks/emtd_bf46fd2a09e05bed_006.jpg,emtd_bf46fd2a09e05bed_006,34,1000.jpg,38,39,1482,false
+test,roadworks,data/processed/emtd_classification/test/roadworks/emtd_f8082107503b594d_003.jpg,emtd_f8082107503b594d_003,34,1033.jpg,15,18,270,true
+test,roadworks,data/processed/emtd_classification/test/roadworks/emtd_ff937d8340aa908c_002.jpg,emtd_ff937d8340aa908c_002,34,1026.jpg,41,32,1312,false
+test,roundabout_ahead,data/processed/emtd_classification/test/roundabout_ahead/emtd_018e51e9ae23a3ba_004.jpg,emtd_018e51e9ae23a3ba_004,60,Screenshot (267).png,23,23,529,true
+test,roundabout_ahead,data/processed/emtd_classification/test/roundabout_ahead/emtd_f83fa3e37bd383db_003.jpg,emtd_f83fa3e37bd383db_003,60,Screenshot (279).png,45,46,2070,false
+test,side_road_left,data/processed/emtd_classification/test/side_road_left/emtd_68dd202b20299614_001.jpg,emtd_68dd202b20299614_001,53,Screenshot (154).png,25,25,625,true
+test,side_road_left,data/processed/emtd_classification/test/side_road_left/emtd_8f7e798bef8b857c_004.jpg,emtd_8f7e798bef8b857c_004,53,Screenshot (287).png,39,33,1287,false
+test,side_road_left,data/processed/emtd_classification/test/side_road_left/emtd_c778fe83acf5738d_004.jpg,emtd_c778fe83acf5738d_004,53,P1860073.JPG,71,75,5325,false
+test,side_road_right,data/processed/emtd_classification/test/side_road_right/emtd_d255ff9967c36226_002.jpg,emtd_d255ff9967c36226_002,52,Screenshot (314).png,16,16,256,true
+test,staggered_junction,data/processed/emtd_classification/test/staggered_junction/emtd_6b3bad116f3adbf1_006.jpg,emtd_6b3bad116f3adbf1_006,50,P1840182.JPG,39,39,1521,false
+test,stop,data/processed/emtd_classification/test/stop/emtd_50151c3e117edc65_004.jpg,emtd_50151c3e117edc65_004,6,Screenshot (86).png,42,44,1848,false
+test,stop,data/processed/emtd_classification/test/stop/emtd_9123b15c355822d1_001.jpg,emtd_9123b15c355822d1_001,6,1081.jpg,68,69,4692,false
+test,stop,data/processed/emtd_classification/test/stop/emtd_9db7498b37a2b392_002.jpg,emtd_9db7498b37a2b392_002,6,Screenshot (69).png,53,56,2968,false
+test,stop,data/processed/emtd_classification/test/stop/emtd_bf89734a07e9f9a8_001.jpg,emtd_bf89734a07e9f9a8_001,6,Screenshot (15).png,97,86,8342,false
+test,t_junction,data/processed/emtd_classification/test/t_junction/emtd_1e28dff0ebb63e11_004.jpg,emtd_1e28dff0ebb63e11_004,51,P1860062.JPG,324,310,100440,false
+test,t_junction,data/processed/emtd_classification/test/t_junction/emtd_bf89734a07e9f9a8_002.jpg,emtd_bf89734a07e9f9a8_002,51,Screenshot (15).png,135,119,16065,false
+test,traffic_signal_ahead,data/processed/emtd_classification/test/traffic_signal_ahead/emtd_1e28dff0ebb63e11_003.jpg,emtd_1e28dff0ebb63e11_003,48,P1860062.JPG,315,317,99855,false
+test,traffic_signal_ahead,data/processed/emtd_classification/test/traffic_signal_ahead/emtd_6b3bad116f3adbf1_003.jpg,emtd_6b3bad116f3adbf1_003,48,P1840182.JPG,439,433,190087,false
+test,traffic_signal_ahead,data/processed/emtd_classification/test/traffic_signal_ahead/emtd_6b3bad116f3adbf1_004.jpg,emtd_6b3bad116f3adbf1_004,48,P1840182.JPG,42,41,1722,false
+test,traffic_signal_ahead,data/processed/emtd_classification/test/traffic_signal_ahead/emtd_76cd6549c6400fe5_002.jpg,emtd_76cd6549c6400fe5_002,48,P1830994.JPG,315,307,96705,false
+test,traffic_signal_ahead,data/processed/emtd_classification/test/traffic_signal_ahead/emtd_c778fe83acf5738d_002.jpg,emtd_c778fe83acf5738d_002,48,P1860073.JPG,72,75,5400,false
+test,traffic_signal_ahead,data/processed/emtd_classification/test/traffic_signal_ahead/emtd_d58f34d08b4a612e_003.jpg,emtd_d58f34d08b4a612e_003,48,P1840038.JPG,263,246,64698,false
+test,two_way_traffic,data/processed/emtd_classification/test/two_way_traffic/emtd_f43403930d9e849f_002.jpg,emtd_f43403930d9e849f_002,63,Screenshot (92).png,67,69,4623,false
+test,vehicle_collision_hazard,data/processed/emtd_classification/test/vehicle_collision_hazard/emtd_2ca5d238e28dec52_001.jpg,emtd_2ca5d238e28dec52_001,39,P1840009.JPG,316,313,98908,false
+test,vehicle_collision_hazard,data/processed/emtd_classification/test/vehicle_collision_hazard/emtd_5f7cf79a455c49f0_006.jpg,emtd_5f7cf79a455c49f0_006,39,P1840143.JPG,143,194,27742,false
+test,vehicle_collision_hazard,data/processed/emtd_classification/test/vehicle_collision_hazard/emtd_6a090bef0dd3c4b7_001.jpg,emtd_6a090bef0dd3c4b7_001,39,P1840289.JPG,131,133,17423,false
+test,weight_restriction,data/processed/emtd_classification/test/weight_restriction/emtd_0e7c200cc0562811_001.jpg,emtd_0e7c200cc0562811_001,27,P1840598.JPG,293,344,100792,false
+test,weight_restriction,data/processed/emtd_classification/test/weight_restriction/emtd_9bfd9ddc90d6225d_001.jpg,emtd_9bfd9ddc90d6225d_001,27,131.jpg,64,69,4416,false
+test,weight_restriction,data/processed/emtd_classification/test/weight_restriction/emtd_b94f0b098b8b1ea3_001.jpg,emtd_b94f0b098b8b1ea3_001,11,124.jpg,30,31,930,true
+test,weight_restriction,data/processed/emtd_classification/test/weight_restriction/emtd_b94f0b098b8b1ea3_002.jpg,emtd_b94f0b098b8b1ea3_002,11,124.jpg,22,22,484,true
+train,animal_crossing,data/processed/emtd_classification/train/animal_crossing/emtd_2229e417950c39bd_001.jpg,emtd_2229e417950c39bd_001,59,11.jpg,34,31,1054,true
+train,animal_crossing,data/processed/emtd_classification/train/animal_crossing/emtd_71b97f3681cfd481_001.jpg,emtd_71b97f3681cfd481_001,59,12.jpg,64,58,3712,false
+train,animal_crossing,data/processed/emtd_classification/train/animal_crossing/emtd_8f85803226cefdc3_001.jpg,emtd_8f85803226cefdc3_001,59,48.jpg,26,24,624,true
+train,animal_crossing,data/processed/emtd_classification/train/animal_crossing/emtd_f0f7e0e9c55974a6_001.jpg,emtd_f0f7e0e9c55974a6_001,59,DSC-0326.JPG,229,218,49922,false
+train,camera_enforcement,data/processed/emtd_classification/train/camera_enforcement/emtd_595647f10f1a4e3e_004.jpg,emtd_595647f10f1a4e3e_004,35,P1840150.JPG,150,148,22200,false
+train,camera_enforcement,data/processed/emtd_classification/train/camera_enforcement/emtd_64a6e880795ff953_004.jpg,emtd_64a6e880795ff953_004,35,P1840152.JPG,315,310,97650,false
+train,camera_enforcement,data/processed/emtd_classification/train/camera_enforcement/emtd_680f6d595734dbcd_002.jpg,emtd_680f6d595734dbcd_002,35,P1840100.JPG,93,91,8463,false
+train,camera_enforcement,data/processed/emtd_classification/train/camera_enforcement/emtd_787cd23beca8deed_001.jpg,emtd_787cd23beca8deed_001,35,38.jpg,24,22,528,true
+train,camera_enforcement,data/processed/emtd_classification/train/camera_enforcement/emtd_7b1961bec90c74cc_003.jpg,emtd_7b1961bec90c74cc_003,35,P1840099.JPG,276,273,75348,false
+train,camera_enforcement,data/processed/emtd_classification/train/camera_enforcement/emtd_7b1961bec90c74cc_004.jpg,emtd_7b1961bec90c74cc_004,35,P1840099.JPG,69,68,4692,false
+train,camera_enforcement,data/processed/emtd_classification/train/camera_enforcement/emtd_8789278698dd14ee_001.jpg,emtd_8789278698dd14ee_001,35,88.jpg,19,16,304,true
+train,camera_enforcement,data/processed/emtd_classification/train/camera_enforcement/emtd_a813151de51d2c1a_002.jpg,emtd_a813151de51d2c1a_002,35,P1840147.JPG,119,119,14161,false
+train,camera_enforcement,data/processed/emtd_classification/train/camera_enforcement/emtd_a813151de51d2c1a_003.jpg,emtd_a813151de51d2c1a_003,35,P1840147.JPG,52,52,2704,false
+train,camera_enforcement,data/processed/emtd_classification/train/camera_enforcement/emtd_b2d44a98fb0ab389_001.jpg,emtd_b2d44a98fb0ab389_001,35,36.jpg,23,22,506,true
+train,camera_enforcement,data/processed/emtd_classification/train/camera_enforcement/emtd_b2d6665dba64ebb7_004.jpg,emtd_b2d6665dba64ebb7_004,35,P1840151.JPG,209,205,42845,false
+train,camera_enforcement,data/processed/emtd_classification/train/camera_enforcement/emtd_df13965d41341f4c_002.jpg,emtd_df13965d41341f4c_002,35,P1840148.JPG,62,60,3720,false
+train,camera_enforcement,data/processed/emtd_classification/train/camera_enforcement/emtd_df13965d41341f4c_003.jpg,emtd_df13965d41341f4c_003,35,P1840148.JPG,174,170,29580,false
+train,children_crossing,data/processed/emtd_classification/train/children_crossing/emtd_04128cdf51be3987_003.jpg,emtd_04128cdf51be3987_003,44,P1840505.JPG,477,475,226575,false
+train,children_crossing,data/processed/emtd_classification/train/children_crossing/emtd_061532bf31fe4c30_001.jpg,emtd_061532bf31fe4c30_001,44,Screenshot (238).png,56,53,2968,false
+train,children_crossing,data/processed/emtd_classification/train/children_crossing/emtd_0c571b3b7d5bcf8d_004.jpg,emtd_0c571b3b7d5bcf8d_004,44,P1840414.JPG,100,135,13500,false
+train,children_crossing,data/processed/emtd_classification/train/children_crossing/emtd_26542ab3f2cd6aee_002.jpg,emtd_26542ab3f2cd6aee_002,44,DSC-0147.JPG,30,39,1170,true
+train,children_crossing,data/processed/emtd_classification/train/children_crossing/emtd_2eb3432fe6d8822d_002.jpg,emtd_2eb3432fe6d8822d_002,45,P1860047.JPG,93,89,8277,false
+train,children_crossing,data/processed/emtd_classification/train/children_crossing/emtd_3d79936293a10dd7_001.jpg,emtd_3d79936293a10dd7_001,44,Screenshot (239).png,121,111,13431,false
+train,children_crossing,data/processed/emtd_classification/train/children_crossing/emtd_406756c35d6da334_001.jpg,emtd_406756c35d6da334_001,44,Screenshot (265).png,84,84,7056,false
+train,children_crossing,data/processed/emtd_classification/train/children_crossing/emtd_51bb564b6b10913f_002.jpg,emtd_51bb564b6b10913f_002,45,135.jpg,84,75,6300,false
+train,children_crossing,data/processed/emtd_classification/train/children_crossing/emtd_63b2ecc242ac30fd_001.jpg,emtd_63b2ecc242ac30fd_001,44,Screenshot (271).png,105,110,11550,false
+train,children_crossing,data/processed/emtd_classification/train/children_crossing/emtd_6e96bc80088a9ebe_001.jpg,emtd_6e96bc80088a9ebe_001,45,DSC-0140.JPG,63,63,3969,false
+train,children_crossing,data/processed/emtd_classification/train/children_crossing/emtd_7bae3457d2aa752b_003.jpg,emtd_7bae3457d2aa752b_003,44,P1840035.JPG,328,328,107584,false
+train,children_crossing,data/processed/emtd_classification/train/children_crossing/emtd_ac5f6d24590a9878_003.jpg,emtd_ac5f6d24590a9878_003,44,134.jpg,90,82,7380,false
+train,children_crossing,data/processed/emtd_classification/train/children_crossing/emtd_b8b100778ae9835c_002.jpg,emtd_b8b100778ae9835c_002,45,DSC-0152.JPG,84,84,7056,false
+train,children_crossing,data/processed/emtd_classification/train/children_crossing/emtd_cadb01574922b90b_002.jpg,emtd_cadb01574922b90b_002,45,DSC-0153.JPG,130,131,17030,false
+train,children_crossing,data/processed/emtd_classification/train/children_crossing/emtd_e968b703a29148d9_001.jpg,emtd_e968b703a29148d9_001,45,P1840409.JPG,98,98,9604,false
+train,children_crossing,data/processed/emtd_classification/train/children_crossing/emtd_f5f4396410d256d3_002.jpg,emtd_f5f4396410d256d3_002,44,DSC-0143.JPG,40,35,1400,false
+train,crossroads,data/processed/emtd_classification/train/crossroads/emtd_061532bf31fe4c30_002.jpg,emtd_061532bf31fe4c30_002,55,Screenshot (238).png,88,90,7920,false
+train,crossroads,data/processed/emtd_classification/train/crossroads/emtd_110456139d0a1273_007.jpg,emtd_110456139d0a1273_007,55,P1840181.JPG,303,295,89385,false
+train,crossroads,data/processed/emtd_classification/train/crossroads/emtd_35bb92c55b4af838_001.jpg,emtd_35bb92c55b4af838_001,55,129.jpg,77,77,5929,false
+train,crossroads,data/processed/emtd_classification/train/crossroads/emtd_3843e3f4487fce9b_002.jpg,emtd_3843e3f4487fce9b_002,55,P1840122.JPG,299,250,74750,false
+train,crossroads,data/processed/emtd_classification/train/crossroads/emtd_4813a93ebfc648c0_001.jpg,emtd_4813a93ebfc648c0_001,55,P1840249.JPG,433,421,182293,false
+train,crossroads,data/processed/emtd_classification/train/crossroads/emtd_58066e6f9a93c166_001.jpg,emtd_58066e6f9a93c166_001,55,128.jpg,39,39,1521,false
+train,crossroads,data/processed/emtd_classification/train/crossroads/emtd_80b3750c3ad531d3_001.jpg,emtd_80b3750c3ad531d3_001,55,Screenshot (242).png,47,48,2256,false
+train,crossroads,data/processed/emtd_classification/train/crossroads/emtd_a0294037bca66aa9_001.jpg,emtd_a0294037bca66aa9_001,55,Screenshot (156).png,38,35,1330,false
+train,crossroads,data/processed/emtd_classification/train/crossroads/emtd_d598a063e48697cc_001.jpg,emtd_d598a063e48697cc_001,55,DSC-0151.JPG,83,81,6723,false
+train,crosswind,data/processed/emtd_classification/train/crosswind/emtd_12742049cfec34d8_001.jpg,emtd_12742049cfec34d8_001,36,49.jpg,28,25,700,true
+train,crosswind,data/processed/emtd_classification/train/crosswind/emtd_1622475d52a03437_001.jpg,emtd_1622475d52a03437_001,36,46.jpg,38,32,1216,false
+train,crosswind,data/processed/emtd_classification/train/crosswind/emtd_991de370362b92de_001.jpg,emtd_991de370362b92de_001,36,DSC-0325.JPG,117,120,14040,false
+train,crosswind,data/processed/emtd_classification/train/crosswind/emtd_a1275543725065f8_001.jpg,emtd_a1275543725065f8_001,36,50.jpg,57,43,2451,false
+train,crosswind,data/processed/emtd_classification/train/crosswind/emtd_b96f49b701f58186_001.jpg,emtd_b96f49b701f58186_001,36,13.jpg,41,35,1435,false
+train,crosswind,data/processed/emtd_classification/train/crosswind/emtd_c0c954a3a268bfc5_001.jpg,emtd_c0c954a3a268bfc5_001,36,9.jpg,54,47,2538,false
+train,crosswind,data/processed/emtd_classification/train/crosswind/emtd_d81689b9daafeb4e_001.jpg,emtd_d81689b9daafeb4e_001,36,45.jpg,68,64,4352,false
+train,curve_left,data/processed/emtd_classification/train/curve_left/emtd_178ae943fb180dbd_001.jpg,emtd_178ae943fb180dbd_001,40,21.jpg,59,54,3186,false
+train,curve_left,data/processed/emtd_classification/train/curve_left/emtd_1f58241697f5553e_001.jpg,emtd_1f58241697f5553e_001,40,1059.jpg,53,48,2544,false
+train,curve_left,data/processed/emtd_classification/train/curve_left/emtd_24bf9498f00b0acf_001.jpg,emtd_24bf9498f00b0acf_001,40,Screenshot (192).png,56,53,2968,false
+train,curve_left,data/processed/emtd_classification/train/curve_left/emtd_503949e4eba7fcd1_001.jpg,emtd_503949e4eba7fcd1_001,40,P1840190.JPG,275,264,72600,false
+train,curve_left,data/processed/emtd_classification/train/curve_left/emtd_6bb201df112580c6_001.jpg,emtd_6bb201df112580c6_001,40,P1840286.JPG,304,305,92720,false
+train,curve_left,data/processed/emtd_classification/train/curve_left/emtd_8873fa6d133de966_001.jpg,emtd_8873fa6d133de966_001,40,P1840191.JPG,411,407,167277,false
+train,curve_left,data/processed/emtd_classification/train/curve_left/emtd_8ce131fcb2c8fed8_001.jpg,emtd_8ce131fcb2c8fed8_001,40,Screenshot (215).png,43,41,1763,false
+train,curve_left,data/processed/emtd_classification/train/curve_left/emtd_96f733d50c7f5130_003.jpg,emtd_96f733d50c7f5130_003,40,Screenshot (139).png,114,103,11742,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_009e580a009c7377_005.jpg,emtd_009e580a009c7377_005,62,P1840303.JPG,490,498,244020,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_05109e7fa190b843_008.jpg,emtd_05109e7fa190b843_008,62,1092.jpg,47,45,2115,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_0929558fd62d9d44_004.jpg,emtd_0929558fd62d9d44_004,62,P1840559.JPG,350,345,120750,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_0bfb175c92a4bdf8_003.jpg,emtd_0bfb175c92a4bdf8_003,62,DSC-0134.JPG,62,64,3968,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_0df3316ab0aea7d1_004.jpg,emtd_0df3316ab0aea7d1_004,62,P1860355.JPG,136,142,19312,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_110456139d0a1273_008.jpg,emtd_110456139d0a1273_008,62,P1840181.JPG,60,44,2640,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_15150b2adeb95289_002.jpg,emtd_15150b2adeb95289_002,62,1106.jpg,52,49,2548,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_15150b2adeb95289_003.jpg,emtd_15150b2adeb95289_003,62,1106.jpg,73,52,3796,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_178ae943fb180dbd_002.jpg,emtd_178ae943fb180dbd_002,62,21.jpg,18,17,306,true
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_1c232a342ab753dc_002.jpg,emtd_1c232a342ab753dc_002,62,P1840566.JPG,281,280,78680,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_20923a7ba318eb58_005.jpg,emtd_20923a7ba318eb58_005,62,P1840072.JPG,238,241,57358,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_254b3cede5da9e7c_003.jpg,emtd_254b3cede5da9e7c_003,62,Screenshot (77).png,23,22,506,true
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_26542ab3f2cd6aee_004.jpg,emtd_26542ab3f2cd6aee_004,62,DSC-0147.JPG,93,93,8649,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_28e4e221ad933605_005.jpg,emtd_28e4e221ad933605_005,62,P1830970.JPG,136,135,18360,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_2939e5d95a102852_002.jpg,emtd_2939e5d95a102852_002,62,P1840237.JPG,209,197,41173,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_39c6e079d27e1d71_002.jpg,emtd_39c6e079d27e1d71_002,62,P1840019.JPG,203,207,42021,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_3ee5072532a01f54_003.jpg,emtd_3ee5072532a01f54_003,62,P1840173.JPG,465,470,218550,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_45d54815138e523e_003.jpg,emtd_45d54815138e523e_003,62,Screenshot (101).png,17,17,289,true
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_680f6d595734dbcd_003.jpg,emtd_680f6d595734dbcd_003,62,P1840100.JPG,59,57,3363,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_71cc5f3295256e83_002.jpg,emtd_71cc5f3295256e83_002,62,P1840128.JPG,89,89,7921,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_751450996ef5bac5_005.jpg,emtd_751450996ef5bac5_005,62,P1840071.JPG,144,148,21312,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_76e915baaa130833_004.jpg,emtd_76e915baaa130833_004,62,P1830926.JPG,33,33,1089,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_7b1961bec90c74cc_005.jpg,emtd_7b1961bec90c74cc_005,62,P1840099.JPG,48,47,2256,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_80715a5811ab2d3b_004.jpg,emtd_80715a5811ab2d3b_004,62,P1830927.JPG,145,144,20880,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_832539edd32dad0c_003.jpg,emtd_832539edd32dad0c_003,62,139.jpg,59,56,3304,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_83c81868dff163c0_004.jpg,emtd_83c81868dff163c0_004,62,P1840560.JPG,491,484,237644,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_8789278698dd14ee_004.jpg,emtd_8789278698dd14ee_004,62,88.jpg,30,25,750,true
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_8789278698dd14ee_005.jpg,emtd_8789278698dd14ee_005,62,88.jpg,22,19,418,true
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_8b480e9c38f6faa1_003.jpg,emtd_8b480e9c38f6faa1_003,62,P1840133.JPG,259,258,66822,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_94fa340a0d670ea6_002.jpg,emtd_94fa340a0d670ea6_002,62,Screenshot (116).png,113,101,11413,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_9605e3695c2857bf_005.jpg,emtd_9605e3695c2857bf_005,62,DSC-0106.JPG,71,71,5041,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_a565a209b2d389ef_002.jpg,emtd_a565a209b2d389ef_002,62,P1840398.JPG,217,213,46221,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_adb352f74da847f9_003.jpg,emtd_adb352f74da847f9_003,62,P1830954.JPG,231,231,53361,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_be9e2270d0628bba_005.jpg,emtd_be9e2270d0628bba_005,62,Screenshot (118).png,38,39,1482,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_c2ad9d5a930fe4e9_002.jpg,emtd_c2ad9d5a930fe4e9_002,62,P1840043.JPG,294,294,86436,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_ccb893e17c2a5f32_004.jpg,emtd_ccb893e17c2a5f32_004,62,DSC-0142.JPG,21,20,420,true
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_cd039bf41616cfb8_001.jpg,emtd_cd039bf41616cfb8_001,62,P1840020.JPG,702,705,494910,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_cd5d30b8635d404f_008.jpg,emtd_cd5d30b8635d404f_008,62,1091.jpg,89,83,7387,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_ce46c238751f1b72_003.jpg,emtd_ce46c238751f1b72_003,62,P1860110.JPG,151,150,22650,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_ce9c16ca0280d757_006.jpg,emtd_ce9c16ca0280d757_006,62,P1840089.JPG,74,86,6364,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_cff2d69cb499619b_002.jpg,emtd_cff2d69cb499619b_002,62,P1860348.JPG,294,334,98196,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_d0b4b254dda62cf8_003.jpg,emtd_d0b4b254dda62cf8_003,62,103.jpg,48,54,2592,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_d955c359e29c7e39_002.jpg,emtd_d955c359e29c7e39_002,62,P1840393.JPG,317,309,97953,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_de62579075080971_004.jpg,emtd_de62579075080971_004,62,1006.jpg,11,12,132,true
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_e74ae9087e74f4e6_002.jpg,emtd_e74ae9087e74f4e6_002,62,P1830963.JPG,231,227,52437,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_e88f80e2db86cbb7_004.jpg,emtd_e88f80e2db86cbb7_004,62,P1840074.JPG,636,643,408948,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_e968b703a29148d9_004.jpg,emtd_e968b703a29148d9_004,62,P1840409.JPG,111,134,14874,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_ecaf1f64ed132b6c_002.jpg,emtd_ecaf1f64ed132b6c_002,62,Screenshot (224).png,34,43,1462,false
+train,divided_road_begins,data/processed/emtd_classification/train/divided_road_begins/emtd_ecf89bd784bba2e2_004.jpg,emtd_ecf89bd784bba2e2_004,62,P1840183.JPG,258,257,66306,false
+train,double_curve,data/processed/emtd_classification/train/double_curve/emtd_72bd7f9ef5c1e9fa_002.jpg,emtd_72bd7f9ef5c1e9fa_002,65,P1840287.JPG,216,215,46440,false
+train,double_curve,data/processed/emtd_classification/train/double_curve/emtd_c27e3f01068bc4b5_002.jpg,emtd_c27e3f01068bc4b5_002,65,P1840288.JPG,305,303,92415,false
+train,general_caution,data/processed/emtd_classification/train/general_caution/emtd_00a30adde56da653_001.jpg,emtd_00a30adde56da653_001,46,P1860413.JPG,227,231,52437,false
+train,general_caution,data/processed/emtd_classification/train/general_caution/emtd_0b135d5452fca1bc_001.jpg,emtd_0b135d5452fca1bc_001,46,Screenshot (296).png,30,31,930,true
+train,general_caution,data/processed/emtd_classification/train/general_caution/emtd_3a951572a2150028_001.jpg,emtd_3a951572a2150028_001,46,29.jpg,25,23,575,true
+train,general_caution,data/processed/emtd_classification/train/general_caution/emtd_3a951572a2150028_002.jpg,emtd_3a951572a2150028_002,46,29.jpg,18,19,342,true
+train,general_caution,data/processed/emtd_classification/train/general_caution/emtd_4ff9c3bc5bfd55b3_002.jpg,emtd_4ff9c3bc5bfd55b3_002,46,1064.jpg,21,22,462,true
+train,general_caution,data/processed/emtd_classification/train/general_caution/emtd_4ff9c3bc5bfd55b3_003.jpg,emtd_4ff9c3bc5bfd55b3_003,46,1064.jpg,23,21,483,true
+train,general_caution,data/processed/emtd_classification/train/general_caution/emtd_6caf85fa09e06429_001.jpg,emtd_6caf85fa09e06429_001,46,8.jpg,17,17,289,true
+train,general_caution,data/processed/emtd_classification/train/general_caution/emtd_73b604f19e9cf10e_001.jpg,emtd_73b604f19e9cf10e_001,46,P1840197.JPG,444,447,198468,false
+train,general_caution,data/processed/emtd_classification/train/general_caution/emtd_796ac12b8b80aa25_001.jpg,emtd_796ac12b8b80aa25_001,46,P1840195.JPG,164,171,28044,false
+train,general_caution,data/processed/emtd_classification/train/general_caution/emtd_7d2a6d47d511cc58_001.jpg,emtd_7d2a6d47d511cc58_001,46,Screenshot (295).png,25,24,600,true
+train,general_caution,data/processed/emtd_classification/train/general_caution/emtd_8789278698dd14ee_002.jpg,emtd_8789278698dd14ee_002,46,88.jpg,19,16,304,true
+train,general_caution,data/processed/emtd_classification/train/general_caution/emtd_ae4c2c00bbb95ad3_003.jpg,emtd_ae4c2c00bbb95ad3_003,46,1002.jpg,40,41,1640,false
+train,general_caution,data/processed/emtd_classification/train/general_caution/emtd_eb823e3041592498_001.jpg,emtd_eb823e3041592498_001,46,44.jpg,52,45,2340,false
+train,general_caution,data/processed/emtd_classification/train/general_caution/emtd_fa60124cff855c75_001.jpg,emtd_fa60124cff855c75_001,46,Screenshot (298).png,57,56,3192,false
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_0bfb175c92a4bdf8_001.jpg,emtd_0bfb175c92a4bdf8_001,31,DSC-0134.JPG,58,53,3074,false
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_1db3d5c40c201627_001.jpg,emtd_1db3d5c40c201627_001,31,Screenshot (292).png,32,26,832,true
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_254b3cede5da9e7c_002.jpg,emtd_254b3cede5da9e7c_002,31,Screenshot (77).png,15,12,180,true
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_27fc894ec54867c0_001.jpg,emtd_27fc894ec54867c0_001,15,P1840096.JPG,107,106,11342,false
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_38cf0bbf0e297237_002.jpg,emtd_38cf0bbf0e297237_002,9,P1840275.JPG,105,92,9660,false
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_4dafc2a4b3a3316b_003.jpg,emtd_4dafc2a4b3a3316b_003,10,P1840117.JPG,279,237,66123,false
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_5df46409ee99afa6_005.jpg,emtd_5df46409ee99afa6_005,31,1007.jpg,23,21,483,true
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_5df46409ee99afa6_006.jpg,emtd_5df46409ee99afa6_006,31,1007.jpg,15,19,285,true
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_5fce6e09bed7a483_002.jpg,emtd_5fce6e09bed7a483_002,31,P1840522.JPG,42,38,1596,false
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_606776c64a392220_001.jpg,emtd_606776c64a392220_001,31,P1840241.JPG,68,62,4216,false
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_6c6336a4fe5b9a86_001.jpg,emtd_6c6336a4fe5b9a86_001,31,Screenshot (293).png,44,35,1540,false
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_6f9e795a68442be9_002.jpg,emtd_6f9e795a68442be9_002,31,P1830976.JPG,234,203,47502,false
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_86ce16e7b74daf8f_005.jpg,emtd_86ce16e7b74daf8f_005,31,P1840118.JPG,42,39,1638,false
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_87bab5cdd65d5821_001.jpg,emtd_87bab5cdd65d5821_001,31,P1840519.JPG,333,286,95238,false
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_8c39ba77fbe70bfe_001.jpg,emtd_8c39ba77fbe70bfe_001,31,144.jpg,45,41,1845,false
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_97ad7887eb642fb9_005.jpg,emtd_97ad7887eb642fb9_005,31,1069.jpg,16,18,288,true
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_9aa7dca4b8a09a1d_001.jpg,emtd_9aa7dca4b8a09a1d_001,31,Screenshot (291).png,26,23,598,true
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_abb6d92eae09fd8e_001.jpg,emtd_abb6d92eae09fd8e_001,31,Screenshot (281).png,15,15,225,true
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_c5705399e9a25d1d_005.jpg,emtd_c5705399e9a25d1d_005,31,1008.jpg,33,38,1254,false
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_c5705399e9a25d1d_006.jpg,emtd_c5705399e9a25d1d_006,31,1008.jpg,16,22,352,true
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_ccbea56843be030f_001.jpg,emtd_ccbea56843be030f_001,31,P1830957.JPG,58,54,3132,false
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_cd622e72d3a936e9_001.jpg,emtd_cd622e72d3a936e9_001,31,121.jpg,24,23,552,true
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_d6f5077a58192e9d_002.jpg,emtd_d6f5077a58192e9d_002,31,P1840276.JPG,169,156,26364,false
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_dab264437f101537_003.jpg,emtd_dab264437f101537_003,31,P1840119.JPG,70,62,4340,false
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_ecf89bd784bba2e2_001.jpg,emtd_ecf89bd784bba2e2_001,30,P1840183.JPG,62,89,5518,false
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_f94025e8cb308ac7_002.jpg,emtd_f94025e8cb308ac7_002,31,1084.jpg,24,22,528,true
+train,give_way,data/processed/emtd_classification/train/give_way/emtd_f9af889d5c2a88d0_005.jpg,emtd_f9af889d5c2a88d0_005,31,1056.jpg,47,46,2162,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_00988f3171828f27_002.jpg,emtd_00988f3171828f27_002,16,Screenshot (114).png,23,19,437,true
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_027baf8a52bbc0e7_002.jpg,emtd_027baf8a52bbc0e7_002,16,P1840577.JPG,141,142,20022,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_04128cdf51be3987_002.jpg,emtd_04128cdf51be3987_002,21,P1840505.JPG,294,288,84672,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_05109e7fa190b843_002.jpg,emtd_05109e7fa190b843_002,13,1092.jpg,54,48,2592,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_0c571b3b7d5bcf8d_002.jpg,emtd_0c571b3b7d5bcf8d_002,14,P1840414.JPG,67,140,9380,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_0c571b3b7d5bcf8d_003.jpg,emtd_0c571b3b7d5bcf8d_003,29,P1840414.JPG,73,144,10512,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_0df3316ab0aea7d1_001.jpg,emtd_0df3316ab0aea7d1_001,15,P1860355.JPG,155,154,23870,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_0df3316ab0aea7d1_002.jpg,emtd_0df3316ab0aea7d1_002,15,P1860355.JPG,156,156,24336,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_11eccc3fff812c10_001.jpg,emtd_11eccc3fff812c10_001,15,1063.jpg,52,54,2808,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_176f7536713ddb1b_001.jpg,emtd_176f7536713ddb1b_001,16,146.jpg,38,33,1254,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_26542ab3f2cd6aee_001.jpg,emtd_26542ab3f2cd6aee_001,16,DSC-0147.JPG,47,46,2162,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_27fc894ec54867c0_002.jpg,emtd_27fc894ec54867c0_002,30,P1840096.JPG,467,355,165785,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_28e4e221ad933605_002.jpg,emtd_28e4e221ad933605_002,16,P1830970.JPG,83,83,6889,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_29b865b3af155a72_001.jpg,emtd_29b865b3af155a72_001,16,P1830948.JPG,106,110,11660,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_2b0800c50aaa1f8c_002.jpg,emtd_2b0800c50aaa1f8c_002,20,P1830949.JPG,162,163,26406,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_2c81d981741c93c6_001.jpg,emtd_2c81d981741c93c6_001,16,P1840356.JPG,147,144,21168,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_2cb555f1a6b6025a_003.jpg,emtd_2cb555f1a6b6025a_003,14,Screenshot (89).png,38,44,1672,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_3665f32430565132_002.jpg,emtd_3665f32430565132_002,13,1101.jpg,61,57,3477,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_3888248c925e9c81_002.jpg,emtd_3888248c925e9c81_002,30,P1840217.JPG,188,197,37036,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_3ee5072532a01f54_001.jpg,emtd_3ee5072532a01f54_001,16,P1840173.JPG,203,202,41006,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_4ae94de816267824_001.jpg,emtd_4ae94de816267824_001,16,P1840023.JPG,244,241,58804,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_56d3fee8dff6cf13_002.jpg,emtd_56d3fee8dff6cf13_002,13,1102.jpg,47,43,2021,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_595647f10f1a4e3e_003.jpg,emtd_595647f10f1a4e3e_003,21,P1840150.JPG,49,49,2401,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_64a6e880795ff953_002.jpg,emtd_64a6e880795ff953_002,16,P1840152.JPG,60,60,3600,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_6e826dab36633a41_002.jpg,emtd_6e826dab36633a41_002,13,1103.jpg,28,27,756,true
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_76e915baaa130833_001.jpg,emtd_76e915baaa130833_001,15,P1830926.JPG,44,45,1980,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_76e915baaa130833_002.jpg,emtd_76e915baaa130833_002,15,P1830926.JPG,45,45,2025,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_79875b1ba6aa526c_002.jpg,emtd_79875b1ba6aa526c_002,14,P1830982.JPG,42,60,2520,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_80715a5811ab2d3b_001.jpg,emtd_80715a5811ab2d3b_001,15,P1830927.JPG,112,112,12544,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_80715a5811ab2d3b_002.jpg,emtd_80715a5811ab2d3b_002,15,P1830927.JPG,113,113,12769,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_832539edd32dad0c_001.jpg,emtd_832539edd32dad0c_001,16,139.jpg,41,39,1599,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_83c81868dff163c0_001.jpg,emtd_83c81868dff163c0_001,25,P1840560.JPG,314,307,96398,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_8673f35e4b6971c2_001.jpg,emtd_8673f35e4b6971c2_001,15,P1830935.JPG,34,32,1088,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_88f3a3e8314f39b5_001.jpg,emtd_88f3a3e8314f39b5_001,16,P1840051.JPG,194,193,37442,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_893e6128762b6154_001.jpg,emtd_893e6128762b6154_001,16,P1830950.JPG,205,201,41205,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_9605e3695c2857bf_001.jpg,emtd_9605e3695c2857bf_001,16,DSC-0106.JPG,42,42,1764,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_9c561f32d7e48782_003.jpg,emtd_9c561f32d7e48782_003,13,1080.jpg,160,147,23520,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_9c561f32d7e48782_004.jpg,emtd_9c561f32d7e48782_004,13,1080.jpg,22,20,440,true
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_a9c7a00e38611f7b_001.jpg,emtd_a9c7a00e38611f7b_001,14,Screenshot (94).png,262,277,72574,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_a9c7a00e38611f7b_002.jpg,emtd_a9c7a00e38611f7b_002,14,Screenshot (94).png,30,34,1020,true
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_abbcc91c8b94455f_001.jpg,emtd_abbcc91c8b94455f_001,14,P1830984.JPG,155,197,30535,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_b2d6665dba64ebb7_002.jpg,emtd_b2d6665dba64ebb7_002,16,P1840151.JPG,56,53,2968,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_b7ecc0a580b2a5cc_001.jpg,emtd_b7ecc0a580b2a5cc_001,16,P1840015.JPG,87,88,7656,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_bae61e844d444d82_001.jpg,emtd_bae61e844d444d82_001,15,P1840345.JPG,272,272,73984,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_baeca3a8a8d9bd1c_001.jpg,emtd_baeca3a8a8d9bd1c_001,13,Screenshot (95).png,85,131,11135,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_baeca3a8a8d9bd1c_002.jpg,emtd_baeca3a8a8d9bd1c_002,14,Screenshot (95).png,53,55,2915,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_baeca3a8a8d9bd1c_003.jpg,emtd_baeca3a8a8d9bd1c_003,14,Screenshot (95).png,18,27,486,true
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_c6165ae8361d22d1_001.jpg,emtd_c6165ae8361d22d1_001,15,P1860398.JPG,289,286,82654,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_cd5d30b8635d404f_001.jpg,emtd_cd5d30b8635d404f_001,13,1091.jpg,133,119,15827,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_ce9c16ca0280d757_002.jpg,emtd_ce9c16ca0280d757_002,6,P1840089.JPG,42,56,2352,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_d235b581fa497e34_001.jpg,emtd_d235b581fa497e34_001,16,P1840445.JPG,120,118,14160,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_d235b581fa497e34_002.jpg,emtd_d235b581fa497e34_002,16,P1840445.JPG,116,116,13456,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_d70de6bc8f0470fc_002.jpg,emtd_d70de6bc8f0470fc_002,13,P1840348.JPG,60,58,3480,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_de0ab664395b2329_001.jpg,emtd_de0ab664395b2329_001,15,P1830937.JPG,59,57,3363,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_de62579075080971_001.jpg,emtd_de62579075080971_001,17,1006.jpg,71,74,5254,false
+train,height_restriction,data/processed/emtd_classification/train/height_restriction/emtd_df679b3a4a2692a0_001.jpg,emtd_df679b3a4a2692a0_001,15,P1830936.JPG,43,42,1806,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_027baf8a52bbc0e7_001.jpg,emtd_027baf8a52bbc0e7_001,3,P1840577.JPG,168,174,29232,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_1feebc48a8305db0_001.jpg,emtd_1feebc48a8305db0_001,3,P1840221.JPG,367,440,161480,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_2008f08885984e1a_001.jpg,emtd_2008f08885984e1a_001,3,113.jpg,22,22,484,true
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_33d33dbf542c7559_001.jpg,emtd_33d33dbf542c7559_001,3,1085.jpg,76,78,5928,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_39b5a5c5816fadb7_002.jpg,emtd_39b5a5c5816fadb7_002,3,142.jpg,28,24,672,true
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_40e5b319cf97adf3_001.jpg,emtd_40e5b319cf97adf3_001,3,P1840121.JPG,945,968,914760,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_49d6c89a15cbdc9c_001.jpg,emtd_49d6c89a15cbdc9c_001,3,P1840291.JPG,188,187,35156,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_4d3922230fab2996_001.jpg,emtd_4d3922230fab2996_001,3,Screenshot (227).png,55,53,2915,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_4dafc2a4b3a3316b_001.jpg,emtd_4dafc2a4b3a3316b_001,3,P1840117.JPG,47,46,2162,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_5df46409ee99afa6_001.jpg,emtd_5df46409ee99afa6_001,3,1007.jpg,21,21,441,true
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_5e76576986d31148_001.jpg,emtd_5e76576986d31148_001,3,1055.jpg,93,98,9114,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_78bafb3446dd0cc9_001.jpg,emtd_78bafb3446dd0cc9_001,3,114.jpg,32,31,992,true
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_78bafb3446dd0cc9_002.jpg,emtd_78bafb3446dd0cc9_002,3,114.jpg,16,15,240,true
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_81dc8b0d168f3bbb_001.jpg,emtd_81dc8b0d168f3bbb_001,3,P1840024.JPG,176,172,30272,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_86ce16e7b74daf8f_001.jpg,emtd_86ce16e7b74daf8f_001,3,P1840118.JPG,56,56,3136,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_8bd277c271f71c15_001.jpg,emtd_8bd277c271f71c15_001,3,P1830990.JPG,232,232,53824,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_97ad7887eb642fb9_002.jpg,emtd_97ad7887eb642fb9_002,3,1069.jpg,15,18,270,true
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_ae4c2c00bbb95ad3_001.jpg,emtd_ae4c2c00bbb95ad3_001,3,1002.jpg,135,140,18900,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_c5705399e9a25d1d_001.jpg,emtd_c5705399e9a25d1d_001,3,1008.jpg,27,32,864,true
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_ccb893e17c2a5f32_001.jpg,emtd_ccb893e17c2a5f32_001,3,DSC-0142.JPG,46,46,2116,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_d4d0e8dc3fd82865_001.jpg,emtd_d4d0e8dc3fd82865_001,3,P1840120.JPG,204,197,40188,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_dab264437f101537_001.jpg,emtd_dab264437f101537_001,3,P1840119.JPG,90,88,7920,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_e0d134836d50a02f_001.jpg,emtd_e0d134836d50a02f_001,3,P1840069.JPG,585,663,387855,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_f5f4396410d256d3_001.jpg,emtd_f5f4396410d256d3_001,3,DSC-0143.JPG,76,73,5548,false
+train,keep_left,data/processed/emtd_classification/train/keep_left/emtd_f9af889d5c2a88d0_002.jpg,emtd_f9af889d5c2a88d0_002,3,1056.jpg,25,24,600,true
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_07fae35db1ab4cf6_001.jpg,emtd_07fae35db1ab4cf6_001,2,1021.jpg,69,64,4416,false
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_26b004f004482943_001.jpg,emtd_26b004f004482943_001,2,Screenshot (246).png,18,17,306,true
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_26b004f004482943_002.jpg,emtd_26b004f004482943_002,2,Screenshot (246).png,23,21,483,true
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_26b004f004482943_003.jpg,emtd_26b004f004482943_003,2,Screenshot (246).png,32,34,1088,false
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_2cb555f1a6b6025a_001.jpg,emtd_2cb555f1a6b6025a_001,2,Screenshot (89).png,25,31,775,true
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_3843e3f4487fce9b_001.jpg,emtd_3843e3f4487fce9b_001,2,P1840122.JPG,202,201,40602,false
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_39b5a5c5816fadb7_001.jpg,emtd_39b5a5c5816fadb7_001,2,142.jpg,42,40,1680,false
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_45d54815138e523e_001.jpg,emtd_45d54815138e523e_001,2,Screenshot (101).png,133,133,17689,false
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_500a439573a7b739_001.jpg,emtd_500a439573a7b739_001,2,1035.jpg,127,102,12954,false
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_500a439573a7b739_002.jpg,emtd_500a439573a7b739_002,2,1035.jpg,16,16,256,true
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_6c2027e3e59351f4_001.jpg,emtd_6c2027e3e59351f4_001,2,1061.jpg,42,39,1638,false
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_8af82c9799b0a794_001.jpg,emtd_8af82c9799b0a794_001,2,Screenshot (250).png,58,60,3480,false
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_8af82c9799b0a794_002.jpg,emtd_8af82c9799b0a794_002,2,Screenshot (250).png,32,33,1056,false
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_97ad7887eb642fb9_001.jpg,emtd_97ad7887eb642fb9_001,2,1069.jpg,23,25,575,true
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_b2e71399904be6c2_001.jpg,emtd_b2e71399904be6c2_001,2,P1860639.JPG,339,339,114921,false
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_c5013860ca1f3895_001.jpg,emtd_c5013860ca1f3895_001,2,1024.jpg,21,21,441,true
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_cdcdc9af83fcd27c_001.jpg,emtd_cdcdc9af83fcd27c_001,2,Screenshot (98).png,24,23,552,true
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_ed219c7640833ec8_001.jpg,emtd_ed219c7640833ec8_001,2,118.jpg,30,27,810,true
+train,keep_right,data/processed/emtd_classification/train/keep_right/emtd_f9af889d5c2a88d0_001.jpg,emtd_f9af889d5c2a88d0_001,2,1056.jpg,105,111,11655,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_00988f3171828f27_003.jpg,emtd_00988f3171828f27_003,22,Screenshot (114).png,19,18,342,true
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_009e580a009c7377_003.jpg,emtd_009e580a009c7377_003,29,P1840303.JPG,419,411,172209,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_04128cdf51be3987_001.jpg,emtd_04128cdf51be3987_001,16,P1840505.JPG,119,86,10234,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_07fae35db1ab4cf6_003.jpg,emtd_07fae35db1ab4cf6_003,21,1021.jpg,21,21,441,true
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_0929558fd62d9d44_001.jpg,emtd_0929558fd62d9d44_001,25,P1840559.JPG,83,83,6889,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_110456139d0a1273_001.jpg,emtd_110456139d0a1273_001,22,P1840181.JPG,32,31,992,true
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_174dab7e39076657_001.jpg,emtd_174dab7e39076657_001,26,32.jpg,70,63,4410,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_174dab7e39076657_002.jpg,emtd_174dab7e39076657_002,26,32.jpg,44,47,2068,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_1c1e5ba67f0a4144_001.jpg,emtd_1c1e5ba67f0a4144_001,24,P1840360.JPG,551,581,320131,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_1c495cb762c2b681_001.jpg,emtd_1c495cb762c2b681_001,24,P1860360.JPG,141,154,21714,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_1f995b601aba9274_001.jpg,emtd_1f995b601aba9274_001,26,31.jpg,34,32,1088,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_1f995b601aba9274_002.jpg,emtd_1f995b601aba9274_002,26,31.jpg,25,24,600,true
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_20923a7ba318eb58_001.jpg,emtd_20923a7ba318eb58_001,25,P1840072.JPG,126,125,15750,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_20923a7ba318eb58_002.jpg,emtd_20923a7ba318eb58_002,25,P1840072.JPG,120,126,15120,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_254b3cede5da9e7c_001.jpg,emtd_254b3cede5da9e7c_001,18,Screenshot (77).png,77,77,5929,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_26b004f004482943_004.jpg,emtd_26b004f004482943_004,22,Screenshot (246).png,78,90,7020,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_29b865b3af155a72_002.jpg,emtd_29b865b3af155a72_002,20,P1830948.JPG,141,141,19881,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_2b0800c50aaa1f8c_001.jpg,emtd_2b0800c50aaa1f8c_001,16,P1830949.JPG,279,277,77283,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_2c5403f1cd9ee193_001.jpg,emtd_2c5403f1cd9ee193_001,26,42.jpg,58,68,3944,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_2c5403f1cd9ee193_002.jpg,emtd_2c5403f1cd9ee193_002,26,42.jpg,52,59,3068,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_2c81d981741c93c6_002.jpg,emtd_2c81d981741c93c6_002,20,P1840356.JPG,227,229,51983,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_2cff2f6c6a799f5e_001.jpg,emtd_2cff2f6c6a799f5e_001,25,Screenshot (315).png,69,70,4830,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_3b8f7e5391e2ece8_001.jpg,emtd_3b8f7e5391e2ece8_001,19,P1840453.JPG,214,209,44726,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_3d8c52fd447232ed_001.jpg,emtd_3d8c52fd447232ed_001,21,P1840503.JPG,424,419,177656,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_42acc3c7177ad062_001.jpg,emtd_42acc3c7177ad062_001,23,P1840387.JPG,285,285,81225,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_45eb6e4ef59fa5f5_001.jpg,emtd_45eb6e4ef59fa5f5_001,22,P1860064.JPG,150,154,23100,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_466d7e7edc38e164_001.jpg,emtd_466d7e7edc38e164_001,25,P1840063.JPG,174,174,30276,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_500a439573a7b739_003.jpg,emtd_500a439573a7b739_003,19,1035.jpg,28,24,672,true
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_51bb564b6b10913f_001.jpg,emtd_51bb564b6b10913f_001,19,135.jpg,83,68,5644,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_595647f10f1a4e3e_002.jpg,emtd_595647f10f1a4e3e_002,16,P1840150.JPG,42,40,1680,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_5975b4f591e8f67c_001.jpg,emtd_5975b4f591e8f67c_001,16,P1840357.JPG,349,349,121801,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_5975b4f591e8f67c_002.jpg,emtd_5975b4f591e8f67c_002,20,P1840357.JPG,174,164,28536,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_5a4e8392ee9c9023_001.jpg,emtd_5a4e8392ee9c9023_001,25,P1840535.JPG,120,120,14400,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_5a4e8392ee9c9023_002.jpg,emtd_5a4e8392ee9c9023_002,25,P1840535.JPG,120,117,14040,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_5df46409ee99afa6_003.jpg,emtd_5df46409ee99afa6_003,23,1007.jpg,28,34,952,true
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_5df46409ee99afa6_004.jpg,emtd_5df46409ee99afa6_004,23,1007.jpg,45,43,1935,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_5fce6e09bed7a483_001.jpg,emtd_5fce6e09bed7a483_001,24,P1840522.JPG,60,61,3660,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_6212f2e24a038fe4_001.jpg,emtd_6212f2e24a038fe4_001,23,P1840476.JPG,376,371,139496,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_64a6e880795ff953_003.jpg,emtd_64a6e880795ff953_003,21,P1840152.JPG,46,46,2116,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_6d12917d23d39d65_001.jpg,emtd_6d12917d23d39d65_001,20,Screenshot (75).png,82,82,6724,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_744806c4a943abab_001.jpg,emtd_744806c4a943abab_001,21,P1840140.JPG,115,116,13340,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_751450996ef5bac5_001.jpg,emtd_751450996ef5bac5_001,21,P1840071.JPG,344,330,113520,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_751450996ef5bac5_002.jpg,emtd_751450996ef5bac5_002,25,P1840071.JPG,88,88,7744,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_751450996ef5bac5_003.jpg,emtd_751450996ef5bac5_003,25,P1840071.JPG,86,87,7482,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_777aaf4b9aca3408_001.jpg,emtd_777aaf4b9aca3408_001,22,Screenshot (105).png,157,158,24806,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_79875b1ba6aa526c_003.jpg,emtd_79875b1ba6aa526c_003,20,P1830982.JPG,191,189,36099,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_7bae3457d2aa752b_001.jpg,emtd_7bae3457d2aa752b_001,19,P1840035.JPG,67,99,6633,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_83c81868dff163c0_002.jpg,emtd_83c81868dff163c0_002,32,P1840560.JPG,96,96,9216,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_893e6128762b6154_002.jpg,emtd_893e6128762b6154_002,20,P1830950.JPG,427,442,188734,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_93dd2d3be43c5e97_001.jpg,emtd_93dd2d3be43c5e97_001,26,52.jpg,30,27,810,true
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_93dd2d3be43c5e97_002.jpg,emtd_93dd2d3be43c5e97_002,26,52.jpg,26,27,702,true
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_9525e600c00aed34_001.jpg,emtd_9525e600c00aed34_001,26,41.jpg,42,44,1848,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_9525e600c00aed34_002.jpg,emtd_9525e600c00aed34_002,26,41.jpg,40,40,1600,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_9cc07a10f4ce9727_001.jpg,emtd_9cc07a10f4ce9727_001,22,P1840558.JPG,313,307,96091,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_9f034251bdb55aeb_001.jpg,emtd_9f034251bdb55aeb_001,24,149.jpg,32,33,1056,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_a63448bed7903b35_001.jpg,emtd_a63448bed7903b35_001,22,66.jpg,101,87,8787,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_a813151de51d2c1a_001.jpg,emtd_a813151de51d2c1a_001,21,P1840147.JPG,193,193,37249,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_adb352f74da847f9_001.jpg,emtd_adb352f74da847f9_001,24,P1830954.JPG,74,74,5476,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_b1d343f30ca62a77_001.jpg,emtd_b1d343f30ca62a77_001,23,P1840475.JPG,285,284,80940,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_b2d6665dba64ebb7_003.jpg,emtd_b2d6665dba64ebb7_003,21,P1840151.JPG,41,43,1763,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_b30ff17d14b759c0_001.jpg,emtd_b30ff17d14b759c0_001,26,6.jpg,45,43,1935,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_b30ff17d14b759c0_002.jpg,emtd_b30ff17d14b759c0_002,26,6.jpg,28,29,812,true
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_b8b559a1d5a36c1c_001.jpg,emtd_b8b559a1d5a36c1c_001,24,P1830956.JPG,233,233,54289,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_bc78e3f14aabf775_001.jpg,emtd_bc78e3f14aabf775_001,26,51.jpg,18,18,324,true
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_bc78e3f14aabf775_002.jpg,emtd_bc78e3f14aabf775_002,26,51.jpg,17,17,289,true
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_be374659503ea7c6_001.jpg,emtd_be374659503ea7c6_001,25,P1840562.JPG,322,325,104650,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_c5705399e9a25d1d_003.jpg,emtd_c5705399e9a25d1d_003,23,1008.jpg,99,92,9108,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_c5705399e9a25d1d_004.jpg,emtd_c5705399e9a25d1d_004,23,1008.jpg,39,69,2691,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_cb56fe2eabb7b14f_002.jpg,emtd_cb56fe2eabb7b14f_002,21,P1860084.JPG,187,186,34782,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_cdcdc9af83fcd27c_003.jpg,emtd_cdcdc9af83fcd27c_003,22,Screenshot (98).png,45,42,1890,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_cf0b187577f8749f_001.jpg,emtd_cf0b187577f8749f_001,20,P1840355.JPG,133,134,17822,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_d0b4b254dda62cf8_001.jpg,emtd_d0b4b254dda62cf8_001,21,103.jpg,24,23,552,true
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_d88c81accb5618cf_001.jpg,emtd_d88c81accb5618cf_001,22,P1840281.JPG,194,198,38412,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_daf8786588506c1b_001.jpg,emtd_daf8786588506c1b_001,21,P1860079.JPG,265,265,70225,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_df13965d41341f4c_001.jpg,emtd_df13965d41341f4c_001,21,P1840148.JPG,397,397,157609,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_df9874147187f16e_001.jpg,emtd_df9874147187f16e_001,19,1014.jpg,15,15,225,true
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_df9874147187f16e_002.jpg,emtd_df9874147187f16e_002,23,1014.jpg,74,72,5328,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_df9874147187f16e_003.jpg,emtd_df9874147187f16e_003,23,1014.jpg,104,87,9048,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_e0d134836d50a02f_003.jpg,emtd_e0d134836d50a02f_003,19,P1840069.JPG,540,553,298620,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_e1b6bada8aa26482_002.jpg,emtd_e1b6bada8aa26482_002,19,Screenshot (50).png,62,69,4278,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_e88a6cbfc3b37e6b_003.jpg,emtd_e88a6cbfc3b37e6b_003,27,P1860090.JPG,104,92,9568,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_e88f80e2db86cbb7_001.jpg,emtd_e88f80e2db86cbb7_001,25,P1840074.JPG,220,220,48400,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_ed219c7640833ec8_002.jpg,emtd_ed219c7640833ec8_002,20,118.jpg,77,77,5929,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_f1dba46f5eb30184_001.jpg,emtd_f1dba46f5eb30184_001,26,34.jpg,26,22,572,true
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_f6a03683afb636ae_001.jpg,emtd_f6a03683afb636ae_001,26,33.jpg,13,13,169,true
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_f6db5430fa1dbf04_001.jpg,emtd_f6db5430fa1dbf04_001,20,Screenshot (74).png,41,40,1640,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_faead23c3a3626a7_001.jpg,emtd_faead23c3a3626a7_001,24,1044.jpg,68,62,4216,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_faead23c3a3626a7_002.jpg,emtd_faead23c3a3626a7_002,24,1044.jpg,55,59,3245,false
+train,maximum_speed,data/processed/emtd_classification/train/maximum_speed/emtd_fe5cbb142e7065f9_001.jpg,emtd_fe5cbb142e7065f9_001,25,P1840561.JPG,237,232,54984,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_030c8af46287be06_002.jpg,emtd_030c8af46287be06_002,57,P1860642.JPG,368,359,132112,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_1ec87425fce92b2f_001.jpg,emtd_1ec87425fce92b2f_001,57,P1840462.JPG,387,387,149769,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_20923a7ba318eb58_004.jpg,emtd_20923a7ba318eb58_004,57,P1840072.JPG,114,115,13110,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_30d3540ab66976b8_001.jpg,emtd_30d3540ab66976b8_001,57,P1840054.JPG,553,560,309680,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_38d2092e8a2e7e09_001.jpg,emtd_38d2092e8a2e7e09_001,57,79.jpg,43,42,1806,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_3b6a8f1eafa9f748_001.jpg,emtd_3b6a8f1eafa9f748_001,57,P1840045.JPG,289,561,162129,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_4dafc2a4b3a3316b_009.jpg,emtd_4dafc2a4b3a3316b_009,57,P1840117.JPG,170,174,29580,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_5df46409ee99afa6_007.jpg,emtd_5df46409ee99afa6_007,57,1007.jpg,45,58,2610,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_5fce6e09bed7a483_003.jpg,emtd_5fce6e09bed7a483_003,57,P1840522.JPG,132,131,17292,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_5fce6e09bed7a483_004.jpg,emtd_5fce6e09bed7a483_004,57,P1840522.JPG,291,287,83517,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_5fce6e09bed7a483_005.jpg,emtd_5fce6e09bed7a483_005,57,P1840522.JPG,39,38,1482,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_606776c64a392220_002.jpg,emtd_606776c64a392220_002,57,P1840241.JPG,317,329,104293,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_8673f35e4b6971c2_002.jpg,emtd_8673f35e4b6971c2_002,57,P1830935.JPG,106,105,11130,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_ade5e4cb73268bc1_001.jpg,emtd_ade5e4cb73268bc1_001,57,P1840368.JPG,163,168,27384,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_ccbea56843be030f_002.jpg,emtd_ccbea56843be030f_002,57,P1830957.JPG,366,376,137616,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_d235b581fa497e34_003.jpg,emtd_d235b581fa497e34_003,57,P1840445.JPG,187,189,35343,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_df679b3a4a2692a0_002.jpg,emtd_df679b3a4a2692a0_002,57,P1830936.JPG,175,171,29925,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_e88f80e2db86cbb7_003.jpg,emtd_e88f80e2db86cbb7_003,57,P1840074.JPG,161,164,26404,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_e968b703a29148d9_003.jpg,emtd_e968b703a29148d9_003,57,P1840409.JPG,641,610,391010,false
+train,merge_left,data/processed/emtd_classification/train/merge_left/emtd_f9af889d5c2a88d0_006.jpg,emtd_f9af889d5c2a88d0_006,57,1056.jpg,163,190,30970,false
+train,merge_right,data/processed/emtd_classification/train/merge_right/emtd_1db3d5c40c201627_002.jpg,emtd_1db3d5c40c201627_002,56,Screenshot (292).png,91,98,8918,false
+train,merge_right,data/processed/emtd_classification/train/merge_right/emtd_4dafc2a4b3a3316b_008.jpg,emtd_4dafc2a4b3a3316b_008,56,P1840117.JPG,215,255,54825,false
+train,merge_right,data/processed/emtd_classification/train/merge_right/emtd_6c6336a4fe5b9a86_002.jpg,emtd_6c6336a4fe5b9a86_002,56,Screenshot (293).png,255,263,67065,false
+train,merge_right,data/processed/emtd_classification/train/merge_right/emtd_86ce16e7b74daf8f_008.jpg,emtd_86ce16e7b74daf8f_008,56,P1840118.JPG,455,451,205205,false
+train,merge_right,data/processed/emtd_classification/train/merge_right/emtd_90b477b11d9c37f6_001.jpg,emtd_90b477b11d9c37f6_001,56,P1840103.JPG,279,309,86211,false
+train,merge_right,data/processed/emtd_classification/train/merge_right/emtd_97ad7887eb642fb9_006.jpg,emtd_97ad7887eb642fb9_006,56,1069.jpg,67,76,5092,false
+train,merge_right,data/processed/emtd_classification/train/merge_right/emtd_9aa7dca4b8a09a1d_002.jpg,emtd_9aa7dca4b8a09a1d_002,56,Screenshot (291).png,54,56,3024,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_08487605f8d07bdc_004.jpg,emtd_08487605f8d07bdc_004,10,Screenshot (278).png,53,55,2915,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_15150b2adeb95289_001.jpg,emtd_15150b2adeb95289_001,10,1106.jpg,63,61,3843,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_40e5b319cf97adf3_002.jpg,emtd_40e5b319cf97adf3_002,10,P1840121.JPG,753,755,568515,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_4dafc2a4b3a3316b_002.jpg,emtd_4dafc2a4b3a3316b_002,9,P1840117.JPG,40,60,2400,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_4dafc2a4b3a3316b_005.jpg,emtd_4dafc2a4b3a3316b_005,31,P1840117.JPG,52,57,2964,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_515e10bb275de1b5_001.jpg,emtd_515e10bb275de1b5_001,10,P1840177.JPG,313,490,153370,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_690e01bc15464b84_001.jpg,emtd_690e01bc15464b84_001,10,P1840319.JPG,230,294,67620,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_77c5279e46eb5924_001.jpg,emtd_77c5279e46eb5924_001,10,P1830979.JPG,134,134,17956,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_77c5279e46eb5924_002.jpg,emtd_77c5279e46eb5924_002,10,P1830979.JPG,599,599,358801,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_86ce16e7b74daf8f_003.jpg,emtd_86ce16e7b74daf8f_003,10,P1840118.JPG,58,64,3712,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_86ce16e7b74daf8f_004.jpg,emtd_86ce16e7b74daf8f_004,10,P1840118.JPG,52,68,3536,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_89ce925e34a6fb5f_001.jpg,emtd_89ce925e34a6fb5f_001,10,P1840160.JPG,513,619,317547,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_89ce925e34a6fb5f_002.jpg,emtd_89ce925e34a6fb5f_002,10,P1840160.JPG,233,623,145159,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_9d509ede2a448da3_001.jpg,emtd_9d509ede2a448da3_001,10,1004.jpg,63,62,3906,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_9d509ede2a448da3_002.jpg,emtd_9d509ede2a448da3_002,10,1004.jpg,40,41,1640,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_a6334abc6ddd06b7_002.jpg,emtd_a6334abc6ddd06b7_002,10,P1830980.JPG,309,303,93627,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_b3518542b54528f8_001.jpg,emtd_b3518542b54528f8_001,10,P1840318.JPG,150,143,21450,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_cb56fe2eabb7b14f_001.jpg,emtd_cb56fe2eabb7b14f_001,10,P1860084.JPG,53,53,2809,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_d4d0e8dc3fd82865_002.jpg,emtd_d4d0e8dc3fd82865_002,10,P1840120.JPG,189,216,40824,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_d4d0e8dc3fd82865_003.jpg,emtd_d4d0e8dc3fd82865_003,10,P1840120.JPG,238,236,56168,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_d7bfedd4915c52b7_001.jpg,emtd_d7bfedd4915c52b7_001,10,P1840159.JPG,385,519,199815,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_d7bfedd4915c52b7_002.jpg,emtd_d7bfedd4915c52b7_002,10,P1840159.JPG,151,512,77312,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_d85b67a2e74c36f4_001.jpg,emtd_d85b67a2e74c36f4_001,10,P1860394.JPG,291,273,79443,false
+train,no_entry,data/processed/emtd_classification/train/no_entry/emtd_dab264437f101537_002.jpg,emtd_dab264437f101537_002,10,P1840119.JPG,90,98,8820,false
+train,no_heavy_vehicle,data/processed/emtd_classification/train/no_heavy_vehicle/emtd_08fda0244b5397e0_001.jpg,emtd_08fda0244b5397e0_001,28,2.jpg,28,24,672,true
+train,no_heavy_vehicle,data/processed/emtd_classification/train/no_heavy_vehicle/emtd_08fda0244b5397e0_002.jpg,emtd_08fda0244b5397e0_002,28,2.jpg,19,20,380,true
+train,no_heavy_vehicle,data/processed/emtd_classification/train/no_heavy_vehicle/emtd_0f05a1cb8eeac810_001.jpg,emtd_0f05a1cb8eeac810_001,28,Screenshot (19).png,27,26,702,true
+train,no_heavy_vehicle,data/processed/emtd_classification/train/no_heavy_vehicle/emtd_1ce62fadeb705de6_001.jpg,emtd_1ce62fadeb705de6_001,28,P1860279.JPG,98,98,9604,false
+train,no_heavy_vehicle,data/processed/emtd_classification/train/no_heavy_vehicle/emtd_1ce62fadeb705de6_002.jpg,emtd_1ce62fadeb705de6_002,28,P1860279.JPG,97,93,9021,false
+train,no_heavy_vehicle,data/processed/emtd_classification/train/no_heavy_vehicle/emtd_576aa01f8ed15bc9_001.jpg,emtd_576aa01f8ed15bc9_001,28,P1860280.JPG,92,91,8372,false
+train,no_heavy_vehicle,data/processed/emtd_classification/train/no_heavy_vehicle/emtd_9b609598d3644b81_001.jpg,emtd_9b609598d3644b81_001,28,Screenshot (17).png,56,52,2912,false
+train,no_heavy_vehicle,data/processed/emtd_classification/train/no_heavy_vehicle/emtd_a38b0961a70badc9_001.jpg,emtd_a38b0961a70badc9_001,28,Screenshot (16).png,180,160,28800,false
+train,no_heavy_vehicle,data/processed/emtd_classification/train/no_heavy_vehicle/emtd_d0b42d939c0bba2f_001.jpg,emtd_d0b42d939c0bba2f_001,28,P1860277.JPG,96,93,8928,false
+train,no_heavy_vehicle,data/processed/emtd_classification/train/no_heavy_vehicle/emtd_d0b42d939c0bba2f_002.jpg,emtd_d0b42d939c0bba2f_002,28,P1860277.JPG,96,93,8928,false
+train,no_left_turn,data/processed/emtd_classification/train/no_left_turn/emtd_3de2dfc2f06abff9_001.jpg,emtd_3de2dfc2f06abff9_001,7,P1840471.JPG,227,227,51529,false
+train,no_left_turn,data/processed/emtd_classification/train/no_left_turn/emtd_5c12524488a7c01d_001.jpg,emtd_5c12524488a7c01d_001,7,P1840001.JPG,156,155,24180,false
+train,no_left_turn,data/processed/emtd_classification/train/no_left_turn/emtd_7b1961bec90c74cc_002.jpg,emtd_7b1961bec90c74cc_002,31,P1840099.JPG,175,172,30100,false
+train,no_left_turn,data/processed/emtd_classification/train/no_left_turn/emtd_a4649379d63ad5e7_001.jpg,emtd_a4649379d63ad5e7_001,7,Screenshot (62).png,188,173,32524,false
+train,no_left_turn,data/processed/emtd_classification/train/no_left_turn/emtd_c3d38bed31c1181e_001.jpg,emtd_c3d38bed31c1181e_001,7,P1840467.JPG,364,391,142324,false
+train,no_left_turn,data/processed/emtd_classification/train/no_left_turn/emtd_cdfc9e454086f3ed_001.jpg,emtd_cdfc9e454086f3ed_001,7,Screenshot (61).png,61,62,3782,false
+train,no_left_turn,data/processed/emtd_classification/train/no_left_turn/emtd_db153285b514101e_001.jpg,emtd_db153285b514101e_001,7,P1840468.JPG,247,244,60268,false
+train,no_left_turn,data/processed/emtd_classification/train/no_left_turn/emtd_fc7291ba39fbe0d5_001.jpg,emtd_fc7291ba39fbe0d5_001,7,Screenshot (60).png,35,39,1365,false
+train,no_overtaking,data/processed/emtd_classification/train/no_overtaking/emtd_47e028962db99dbd_001.jpg,emtd_47e028962db99dbd_001,33,Screenshot (191).png,179,206,36874,false
+train,no_overtaking,data/processed/emtd_classification/train/no_overtaking/emtd_49acec27228829f3_001.jpg,emtd_49acec27228829f3_001,33,DSC-0120.JPG,28,30,840,true
+train,no_overtaking,data/processed/emtd_classification/train/no_overtaking/emtd_5b73c017d8b7c322_001.jpg,emtd_5b73c017d8b7c322_001,33,Screenshot (190).png,42,43,1806,false
+train,no_overtaking,data/processed/emtd_classification/train/no_overtaking/emtd_cd8242fc6f363eca_001.jpg,emtd_cd8242fc6f363eca_001,33,DSC-0119.JPG,78,74,5772,false
+train,no_overtaking,data/processed/emtd_classification/train/no_overtaking/emtd_d7eed066ee575544_001.jpg,emtd_d7eed066ee575544_001,33,Screenshot (201).png,96,112,10752,false
+train,no_overtaking,data/processed/emtd_classification/train/no_overtaking/emtd_e84f3544a854f151_001.jpg,emtd_e84f3544a854f151_001,33,Screenshot (203).png,28,27,756,true
+train,no_overtaking,data/processed/emtd_classification/train/no_overtaking/emtd_e87b5b252d4f1ec3_001.jpg,emtd_e87b5b252d4f1ec3_001,33,Screenshot (202).png,41,42,1722,false
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_009e580a009c7377_001.jpg,emtd_009e580a009c7377_001,21,P1840303.JPG,87,90,7830,false
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_009e580a009c7377_002.jpg,emtd_009e580a009c7377_002,29,P1840303.JPG,120,151,18120,false
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_009e580a009c7377_004.jpg,emtd_009e580a009c7377_004,29,P1840303.JPG,349,420,146580,false
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_0c571b3b7d5bcf8d_001.jpg,emtd_0c571b3b7d5bcf8d_001,14,P1840414.JPG,100,104,10400,false
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_3665f32430565132_003.jpg,emtd_3665f32430565132_003,29,1101.jpg,63,72,4536,false
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_49d6c89a15cbdc9c_002.jpg,emtd_49d6c89a15cbdc9c_002,29,P1840291.JPG,131,127,16637,false
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_4db4c57471c78e5e_003.jpg,emtd_4db4c57471c78e5e_003,29,1078.jpg,69,71,4899,false
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_56d3fee8dff6cf13_003.jpg,emtd_56d3fee8dff6cf13_003,29,1102.jpg,42,47,1974,false
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_6e826dab36633a41_003.jpg,emtd_6e826dab36633a41_003,29,1103.jpg,29,28,812,true
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_7dcb14ce9eda671c_001.jpg,emtd_7dcb14ce9eda671c_001,29,1100.jpg,69,67,4623,false
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_ac5f6d24590a9878_001.jpg,emtd_ac5f6d24590a9878_001,29,134.jpg,20,26,520,true
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_c95c416e6cbba497_001.jpg,emtd_c95c416e6cbba497_001,29,1094.jpg,34,38,1292,false
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_d2610180e830189d_001.jpg,emtd_d2610180e830189d_001,29,1095.jpg,81,86,6966,false
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_daf8786588506c1b_002.jpg,emtd_daf8786588506c1b_002,29,P1860079.JPG,62,62,3844,false
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_daf8786588506c1b_003.jpg,emtd_daf8786588506c1b_003,29,P1860079.JPG,83,85,7055,false
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_daf8786588506c1b_004.jpg,emtd_daf8786588506c1b_004,29,P1860079.JPG,107,126,13482,false
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_daf8786588506c1b_005.jpg,emtd_daf8786588506c1b_005,29,P1860079.JPG,245,266,65170,false
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_e3fd2a0c1babff07_001.jpg,emtd_e3fd2a0c1babff07_001,29,1077.jpg,20,23,460,true
+train,no_parking,data/processed/emtd_classification/train/no_parking/emtd_e3fd2a0c1babff07_002.jpg,emtd_e3fd2a0c1babff07_002,29,1077.jpg,15,17,255,true
+train,no_stopping,data/processed/emtd_classification/train/no_stopping/emtd_110456139d0a1273_002.jpg,emtd_110456139d0a1273_002,30,P1840181.JPG,25,25,625,true
+train,no_stopping,data/processed/emtd_classification/train/no_stopping/emtd_27fc894ec54867c0_003.jpg,emtd_27fc894ec54867c0_003,30,P1840096.JPG,73,71,5183,false
+train,no_stopping,data/processed/emtd_classification/train/no_stopping/emtd_27fc894ec54867c0_004.jpg,emtd_27fc894ec54867c0_004,31,P1840096.JPG,57,58,3306,false
+train,no_stopping,data/processed/emtd_classification/train/no_stopping/emtd_28e4e221ad933605_003.jpg,emtd_28e4e221ad933605_003,30,P1830970.JPG,46,46,2116,false
+train,no_stopping,data/processed/emtd_classification/train/no_stopping/emtd_3888248c925e9c81_001.jpg,emtd_3888248c925e9c81_001,9,P1840217.JPG,78,77,6006,false
+train,no_stopping,data/processed/emtd_classification/train/no_stopping/emtd_51965458ff11aa25_001.jpg,emtd_51965458ff11aa25_001,30,1087.jpg,46,47,2162,false
+train,no_stopping,data/processed/emtd_classification/train/no_stopping/emtd_680f6d595734dbcd_001.jpg,emtd_680f6d595734dbcd_001,30,P1840100.JPG,96,117,11232,false
+train,no_stopping,data/processed/emtd_classification/train/no_stopping/emtd_695985373825108d_001.jpg,emtd_695985373825108d_001,30,P1830978.JPG,300,294,88200,false
+train,no_stopping,data/processed/emtd_classification/train/no_stopping/emtd_6f9e795a68442be9_001.jpg,emtd_6f9e795a68442be9_001,30,P1830976.JPG,125,165,20625,false
+train,no_stopping,data/processed/emtd_classification/train/no_stopping/emtd_744806c4a943abab_002.jpg,emtd_744806c4a943abab_002,30,P1840140.JPG,60,76,4560,false
+train,no_stopping,data/processed/emtd_classification/train/no_stopping/emtd_96c840a754c9d933_001.jpg,emtd_96c840a754c9d933_001,30,125.jpg,54,57,3078,false
+train,no_stopping,data/processed/emtd_classification/train/no_stopping/emtd_a2bb22296a921e05_001.jpg,emtd_a2bb22296a921e05_001,30,Screenshot (93).png,157,141,22137,false
+train,no_stopping,data/processed/emtd_classification/train/no_stopping/emtd_e922be64f6c9a29b_001.jpg,emtd_e922be64f6c9a29b_001,30,Screenshot (91).png,35,34,1190,false
+train,no_stopping,data/processed/emtd_classification/train/no_stopping/emtd_ecf89bd784bba2e2_002.jpg,emtd_ecf89bd784bba2e2_002,31,P1840183.JPG,91,91,8281,false
+train,no_stopping,data/processed/emtd_classification/train/no_stopping/emtd_eed9757fa6d6f8ad_001.jpg,emtd_eed9757fa6d6f8ad_001,30,1107.jpg,46,45,2070,false
+train,no_u_turn,data/processed/emtd_classification/train/no_u_turn/emtd_04cd3b9d54d92b46_001.jpg,emtd_04cd3b9d54d92b46_001,9,Screenshot (311).png,57,77,4389,false
+train,no_u_turn,data/processed/emtd_classification/train/no_u_turn/emtd_38cf0bbf0e297237_003.jpg,emtd_38cf0bbf0e297237_003,31,P1840275.JPG,334,349,116566,false
+train,no_u_turn,data/processed/emtd_classification/train/no_u_turn/emtd_4dafc2a4b3a3316b_004.jpg,emtd_4dafc2a4b3a3316b_004,10,P1840117.JPG,202,215,43430,false
+train,no_u_turn,data/processed/emtd_classification/train/no_u_turn/emtd_53c525ee0daae4f9_001.jpg,emtd_53c525ee0daae4f9_001,9,P1840272.JPG,57,58,3306,false
+train,no_u_turn,data/processed/emtd_classification/train/no_u_turn/emtd_53c525ee0daae4f9_002.jpg,emtd_53c525ee0daae4f9_002,9,P1840272.JPG,139,141,19599,false
+train,no_u_turn,data/processed/emtd_classification/train/no_u_turn/emtd_708372d6389e4d17_001.jpg,emtd_708372d6389e4d17_001,9,P1840223.JPG,187,187,34969,false
+train,no_u_turn,data/processed/emtd_classification/train/no_u_turn/emtd_8041763ff898dd78_001.jpg,emtd_8041763ff898dd78_001,9,Screenshot (220).png,46,46,2116,false
+train,no_u_turn,data/processed/emtd_classification/train/no_u_turn/emtd_86ce16e7b74daf8f_002.jpg,emtd_86ce16e7b74daf8f_002,9,P1840118.JPG,381,378,144018,false
+train,no_u_turn,data/processed/emtd_classification/train/no_u_turn/emtd_9c561f32d7e48782_002.jpg,emtd_9c561f32d7e48782_002,9,1080.jpg,14,16,224,true
+train,no_u_turn,data/processed/emtd_classification/train/no_u_turn/emtd_ecaf1f64ed132b6c_001.jpg,emtd_ecaf1f64ed132b6c_001,9,Screenshot (224).png,44,59,2596,false
+train,no_u_turn,data/processed/emtd_classification/train/no_u_turn/emtd_f94025e8cb308ac7_001.jpg,emtd_f94025e8cb308ac7_001,9,1084.jpg,43,49,2107,false
+train,no_u_turn,data/processed/emtd_classification/train/no_u_turn/emtd_f9420e678ece056e_001.jpg,emtd_f9420e678ece056e_001,9,P1840224.JPG,250,250,62500,false
+train,pass_either_side,data/processed/emtd_classification/train/pass_either_side/emtd_02dd6505496dfd91_001.jpg,emtd_02dd6505496dfd91_001,4,P1840436.JPG,258,257,66306,false
+train,pass_either_side,data/processed/emtd_classification/train/pass_either_side/emtd_1a05ea3a6f431838_001.jpg,emtd_1a05ea3a6f431838_001,4,P1860409.JPG,155,156,24180,false
+train,pass_either_side,data/processed/emtd_classification/train/pass_either_side/emtd_48a573b4c9147735_001.jpg,emtd_48a573b4c9147735_001,4,P1840435.JPG,176,177,31152,false
+train,pass_either_side,data/processed/emtd_classification/train/pass_either_side/emtd_48f98f76fb82a42d_001.jpg,emtd_48f98f76fb82a42d_001,4,P1840335.JPG,276,261,72036,false
+train,pass_either_side,data/processed/emtd_classification/train/pass_either_side/emtd_ccf1a71ae83670a5_001.jpg,emtd_ccf1a71ae83670a5_001,4,P1840437.JPG,373,372,138756,false
+train,pass_either_side,data/processed/emtd_classification/train/pass_either_side/emtd_ce60a44828235c6d_001.jpg,emtd_ce60a44828235c6d_001,4,P1840252.JPG,387,409,158283,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_05109e7fa190b843_004.jpg,emtd_05109e7fa190b843_004,42,1092.jpg,41,39,1599,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_05109e7fa190b843_005.jpg,emtd_05109e7fa190b843_005,42,1092.jpg,34,42,1428,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_0cfb42c3e68f1bb8_002.jpg,emtd_0cfb42c3e68f1bb8_002,43,P1840394.JPG,198,201,39798,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_21f1b2454de256db_001.jpg,emtd_21f1b2454de256db_001,43,1098.jpg,78,77,6006,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_347395075fda396c_001.jpg,emtd_347395075fda396c_001,43,P1840004.JPG,547,594,324918,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_39c6e079d27e1d71_001.jpg,emtd_39c6e079d27e1d71_001,43,P1840019.JPG,222,248,55056,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_3cf774064801236e_001.jpg,emtd_3cf774064801236e_001,43,Screenshot (126).png,112,103,11536,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_40e5b319cf97adf3_003.jpg,emtd_40e5b319cf97adf3_003,42,P1840121.JPG,1018,1133,1153394,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_4ae94de816267824_002.jpg,emtd_4ae94de816267824_002,43,P1840023.JPG,45,49,2205,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_4dafc2a4b3a3316b_006.jpg,emtd_4dafc2a4b3a3316b_006,42,P1840117.JPG,57,63,3591,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_81dc8b0d168f3bbb_002.jpg,emtd_81dc8b0d168f3bbb_002,43,P1840024.JPG,119,129,15351,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_81dc8b0d168f3bbb_003.jpg,emtd_81dc8b0d168f3bbb_003,43,P1840024.JPG,125,136,17000,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_86ce16e7b74daf8f_006.jpg,emtd_86ce16e7b74daf8f_006,42,P1840118.JPG,63,72,4536,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_94fa340a0d670ea6_001.jpg,emtd_94fa340a0d670ea6_001,42,Screenshot (116).png,78,81,6318,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_9605e3695c2857bf_002.jpg,emtd_9605e3695c2857bf_002,43,DSC-0106.JPG,62,60,3720,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_9605e3695c2857bf_003.jpg,emtd_9605e3695c2857bf_003,43,DSC-0106.JPG,54,52,2808,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_b18ae704b64d62c0_001.jpg,emtd_b18ae704b64d62c0_001,42,Screenshot (41).png,96,87,8352,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_be9e2270d0628bba_003.jpg,emtd_be9e2270d0628bba_003,42,Screenshot (118).png,86,83,7138,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_be9e2270d0628bba_004.jpg,emtd_be9e2270d0628bba_004,42,Screenshot (118).png,39,39,1521,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_cd5d30b8635d404f_003.jpg,emtd_cd5d30b8635d404f_003,42,1091.jpg,82,73,5986,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_cd5d30b8635d404f_004.jpg,emtd_cd5d30b8635d404f_004,42,1091.jpg,49,53,2597,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_cd5d30b8635d404f_005.jpg,emtd_cd5d30b8635d404f_005,42,1091.jpg,43,42,1806,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_d4d0e8dc3fd82865_004.jpg,emtd_d4d0e8dc3fd82865_004,42,P1840120.JPG,227,252,57204,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_dab264437f101537_004.jpg,emtd_dab264437f101537_004,42,P1840119.JPG,103,113,11639,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_dab264437f101537_005.jpg,emtd_dab264437f101537_005,42,P1840119.JPG,69,106,7314,false
+train,pedestrian_crossing,data/processed/emtd_classification/train/pedestrian_crossing/emtd_eda240d27c65057d_002.jpg,emtd_eda240d27c65057d_002,43,P1840305.JPG,130,141,18330,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_05109e7fa190b843_003.jpg,emtd_05109e7fa190b843_003,38,1092.jpg,52,54,2808,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_21211e33261ff19e_001.jpg,emtd_21211e33261ff19e_001,37,DSC-0101.JPG,97,97,9409,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_28acb8c62542e205_001.jpg,emtd_28acb8c62542e205_001,37,P1860061.JPG,538,538,289444,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_28acb8c62542e205_002.jpg,emtd_28acb8c62542e205_002,38,P1860061.JPG,187,191,35717,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_2eb3432fe6d8822d_001.jpg,emtd_2eb3432fe6d8822d_001,37,P1860047.JPG,263,267,70221,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_35c25a0c7de858ca_001.jpg,emtd_35c25a0c7de858ca_001,37,P1840586.JPG,249,248,61752,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_4b28b89f22b47f59_001.jpg,emtd_4b28b89f22b47f59_001,38,Screenshot (23).png,82,89,7298,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_51965458ff11aa25_002.jpg,emtd_51965458ff11aa25_002,38,1087.jpg,24,25,600,true
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_70bd0695872cffd9_001.jpg,emtd_70bd0695872cffd9_001,38,P1860054.JPG,319,318,101442,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_7a4c6513c9fc2183_001.jpg,emtd_7a4c6513c9fc2183_001,38,Screenshot (39).png,74,71,5254,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_7bae3457d2aa752b_002.jpg,emtd_7bae3457d2aa752b_002,37,P1840035.JPG,111,128,14208,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_85bc42e11dc2f8e8_001.jpg,emtd_85bc42e11dc2f8e8_001,38,P1840592.JPG,179,175,31325,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_88f3a3e8314f39b5_002.jpg,emtd_88f3a3e8314f39b5_002,37,P1840051.JPG,52,56,2912,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_89a43cbf62cf7d82_001.jpg,emtd_89a43cbf62cf7d82_001,37,P1840032.JPG,495,493,244035,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_89a43cbf62cf7d82_002.jpg,emtd_89a43cbf62cf7d82_002,37,P1840032.JPG,77,85,6545,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_8a6a9ccf27affcb6_001.jpg,emtd_8a6a9ccf27affcb6_001,37,P1840029.JPG,337,342,115254,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_96f733d50c7f5130_001.jpg,emtd_96f733d50c7f5130_001,37,Screenshot (139).png,28,26,728,true
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_96f733d50c7f5130_002.jpg,emtd_96f733d50c7f5130_002,38,Screenshot (139).png,20,20,400,true
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_a4d82c88cae51a2b_001.jpg,emtd_a4d82c88cae51a2b_001,38,P1840027.JPG,305,303,92415,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_ac5f6d24590a9878_002.jpg,emtd_ac5f6d24590a9878_002,38,134.jpg,34,33,1122,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_be9e2270d0628bba_002.jpg,emtd_be9e2270d0628bba_002,37,Screenshot (118).png,27,22,594,true
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_cd5d30b8635d404f_002.jpg,emtd_cd5d30b8635d404f_002,38,1091.jpg,92,119,10948,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_ce9c16ca0280d757_004.jpg,emtd_ce9c16ca0280d757_004,37,P1840089.JPG,136,180,24480,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_d70de6bc8f0470fc_003.jpg,emtd_d70de6bc8f0470fc_003,37,P1840348.JPG,151,214,32314,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_db66c26b36cd8103_001.jpg,emtd_db66c26b36cd8103_001,38,Screenshot (182).png,111,97,10767,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_dbfac1521a4da677_001.jpg,emtd_dbfac1521a4da677_001,37,Screenshot (128).png,17,17,289,true
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_dbfac1521a4da677_002.jpg,emtd_dbfac1521a4da677_002,37,Screenshot (128).png,17,18,306,true
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_dbfac1521a4da677_003.jpg,emtd_dbfac1521a4da677_003,38,Screenshot (128).png,102,93,9486,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_e15af3011f552187_001.jpg,emtd_e15af3011f552187_001,37,P1840213.JPG,233,229,53357,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_ed0f014a564195aa_001.jpg,emtd_ed0f014a564195aa_001,37,P1860059.JPG,133,133,17689,false
+train,road_hump,data/processed/emtd_classification/train/road_hump/emtd_ed0f014a564195aa_002.jpg,emtd_ed0f014a564195aa_002,38,P1860059.JPG,205,205,42025,false
+train,road_narrows_both,data/processed/emtd_classification/train/road_narrows_both/emtd_0b135d5452fca1bc_002.jpg,emtd_0b135d5452fca1bc_002,47,Screenshot (296).png,18,18,324,true
+train,road_narrows_both,data/processed/emtd_classification/train/road_narrows_both/emtd_1aa628691303333f_001.jpg,emtd_1aa628691303333f_001,47,145.jpg,41,40,1640,false
+train,road_narrows_both,data/processed/emtd_classification/train/road_narrows_both/emtd_1ca24f39588a3df5_001.jpg,emtd_1ca24f39588a3df5_001,47,Screenshot (9).png,34,35,1190,false
+train,road_narrows_both,data/processed/emtd_classification/train/road_narrows_both/emtd_5fbc85200676377a_001.jpg,emtd_5fbc85200676377a_001,61,62.jpg,30,30,900,true
+train,road_narrows_both,data/processed/emtd_classification/train/road_narrows_both/emtd_782968a1d499a863_001.jpg,emtd_782968a1d499a863_001,61,59.jpg,44,44,1936,false
+train,road_narrows_both,data/processed/emtd_classification/train/road_narrows_both/emtd_7d2a6d47d511cc58_002.jpg,emtd_7d2a6d47d511cc58_002,47,Screenshot (295).png,16,19,304,true
+train,road_narrows_both,data/processed/emtd_classification/train/road_narrows_both/emtd_87c4ff9c0476aab1_001.jpg,emtd_87c4ff9c0476aab1_001,47,P1840540.JPG,448,436,195328,false
+train,road_narrows_both,data/processed/emtd_classification/train/road_narrows_both/emtd_94e7a7901331db7e_001.jpg,emtd_94e7a7901331db7e_001,61,58.jpg,24,24,576,true
+train,road_narrows_both,data/processed/emtd_classification/train/road_narrows_both/emtd_a518ac992ac1d5a0_001.jpg,emtd_a518ac992ac1d5a0_001,61,Screenshot (331).png,45,44,1980,false
+train,road_narrows_both,data/processed/emtd_classification/train/road_narrows_both/emtd_aedd5ece83e2d8e8_001.jpg,emtd_aedd5ece83e2d8e8_001,61,Screenshot (329).png,53,49,2597,false
+train,road_narrows_both,data/processed/emtd_classification/train/road_narrows_both/emtd_ba8525166863df3d_001.jpg,emtd_ba8525166863df3d_001,61,63.jpg,68,67,4556,false
+train,road_narrows_both,data/processed/emtd_classification/train/road_narrows_both/emtd_e5b24cf60326608b_001.jpg,emtd_e5b24cf60326608b_001,61,57.jpg,59,56,3304,false
+train,road_narrows_both,data/processed/emtd_classification/train/road_narrows_both/emtd_ea5d8e6a127f40c9_001.jpg,emtd_ea5d8e6a127f40c9_001,61,Screenshot (328).png,34,38,1292,false
+train,road_narrows_both,data/processed/emtd_classification/train/road_narrows_both/emtd_f2308c0aaaf857e1_001.jpg,emtd_f2308c0aaaf857e1_001,61,Screenshot (332).png,58,62,3596,false
+train,road_narrows_both,data/processed/emtd_classification/train/road_narrows_both/emtd_fa60124cff855c75_002.jpg,emtd_fa60124cff855c75_002,47,Screenshot (298).png,23,22,506,true
+train,roadworks,data/processed/emtd_classification/train/roadworks/emtd_0ed1686442ac6303_001.jpg,emtd_0ed1686442ac6303_001,34,5.jpg,23,20,460,true
+train,roadworks,data/processed/emtd_classification/train/roadworks/emtd_0ed1686442ac6303_002.jpg,emtd_0ed1686442ac6303_002,34,5.jpg,17,18,306,true
+train,roadworks,data/processed/emtd_classification/train/roadworks/emtd_2008f08885984e1a_002.jpg,emtd_2008f08885984e1a_002,34,113.jpg,35,35,1225,false
+train,roadworks,data/processed/emtd_classification/train/roadworks/emtd_29b865b3af155a72_003.jpg,emtd_29b865b3af155a72_003,34,P1830948.JPG,105,105,11025,false
+train,roadworks,data/processed/emtd_classification/train/roadworks/emtd_2b0800c50aaa1f8c_003.jpg,emtd_2b0800c50aaa1f8c_003,34,P1830949.JPG,162,164,26568,false
+train,roadworks,data/processed/emtd_classification/train/roadworks/emtd_2c81d981741c93c6_003.jpg,emtd_2c81d981741c93c6_003,34,P1840356.JPG,142,143,20306,false
+train,roadworks,data/processed/emtd_classification/train/roadworks/emtd_500a439573a7b739_004.jpg,emtd_500a439573a7b739_004,34,1035.jpg,19,17,323,true
+train,roadworks,data/processed/emtd_classification/train/roadworks/emtd_5975b4f591e8f67c_003.jpg,emtd_5975b4f591e8f67c_003,34,P1840357.JPG,185,187,34595,false
+train,roadworks,data/processed/emtd_classification/train/roadworks/emtd_5e76576986d31148_003.jpg,emtd_5e76576986d31148_003,34,1055.jpg,17,16,272,true
+train,roadworks,data/processed/emtd_classification/train/roadworks/emtd_5e76576986d31148_004.jpg,emtd_5e76576986d31148_004,34,1055.jpg,19,20,380,true
+train,roadworks,data/processed/emtd_classification/train/roadworks/emtd_78bafb3446dd0cc9_003.jpg,emtd_78bafb3446dd0cc9_003,34,114.jpg,91,91,8281,false
+train,roadworks,data/processed/emtd_classification/train/roadworks/emtd_893e6128762b6154_003.jpg,emtd_893e6128762b6154_003,34,P1830950.JPG,214,214,45796,false
+train,roundabout_ahead,data/processed/emtd_classification/train/roundabout_ahead/emtd_32a998418f1dabd2_001.jpg,emtd_32a998418f1dabd2_001,60,Screenshot (321).png,42,45,1890,false
+train,roundabout_ahead,data/processed/emtd_classification/train/roundabout_ahead/emtd_32a998418f1dabd2_002.jpg,emtd_32a998418f1dabd2_002,60,Screenshot (321).png,38,40,1520,false
+train,roundabout_ahead,data/processed/emtd_classification/train/roundabout_ahead/emtd_53d69a4c14418a17_001.jpg,emtd_53d69a4c14418a17_001,60,P1830986.JPG,353,345,121785,false
+train,roundabout_ahead,data/processed/emtd_classification/train/roundabout_ahead/emtd_571cc3e850a927e5_001.jpg,emtd_571cc3e850a927e5_001,60,P1840324.JPG,319,285,90915,false
+train,roundabout_ahead,data/processed/emtd_classification/train/roundabout_ahead/emtd_96c840a754c9d933_002.jpg,emtd_96c840a754c9d933_002,60,125.jpg,35,33,1155,false
+train,roundabout_ahead,data/processed/emtd_classification/train/roundabout_ahead/emtd_abb6d92eae09fd8e_002.jpg,emtd_abb6d92eae09fd8e_002,60,Screenshot (281).png,169,188,31772,false
+train,roundabout_ahead,data/processed/emtd_classification/train/roundabout_ahead/emtd_c3bcb355d2735c58_002.jpg,emtd_c3bcb355d2735c58_002,60,P1840496.JPG,798,827,659946,false
+train,roundabout_ahead,data/processed/emtd_classification/train/roundabout_ahead/emtd_c828ea59252aebaf_001.jpg,emtd_c828ea59252aebaf_001,60,Screenshot (313).png,69,122,8418,false
+train,roundabout_ahead,data/processed/emtd_classification/train/roundabout_ahead/emtd_c828ea59252aebaf_002.jpg,emtd_c828ea59252aebaf_002,60,Screenshot (313).png,58,81,4698,false
+train,roundabout_ahead,data/processed/emtd_classification/train/roundabout_ahead/emtd_e7fc40b17400844d_001.jpg,emtd_e7fc40b17400844d_001,60,Screenshot (322).png,69,90,6210,false
+train,roundabout_ahead,data/processed/emtd_classification/train/roundabout_ahead/emtd_e7fc40b17400844d_002.jpg,emtd_e7fc40b17400844d_002,60,Screenshot (322).png,64,64,4096,false
+train,side_road_left,data/processed/emtd_classification/train/side_road_left/emtd_3ec1f9592607cedd_001.jpg,emtd_3ec1f9592607cedd_001,53,98.jpg,34,32,1088,false
+train,side_road_left,data/processed/emtd_classification/train/side_road_left/emtd_41cc1cfbb8691933_001.jpg,emtd_41cc1cfbb8691933_001,53,Screenshot (254).png,38,41,1558,false
+train,side_road_left,data/processed/emtd_classification/train/side_road_left/emtd_4e99621c3f915b6f_001.jpg,emtd_4e99621c3f915b6f_001,53,Screenshot (256).png,201,203,40803,false
+train,side_road_left,data/processed/emtd_classification/train/side_road_left/emtd_51280e73c48fa304_002.jpg,emtd_51280e73c48fa304_002,53,Screenshot (83).png,47,48,2256,false
+train,side_road_left,data/processed/emtd_classification/train/side_road_left/emtd_53c525ee0daae4f9_003.jpg,emtd_53c525ee0daae4f9_003,53,P1840272.JPG,88,87,7656,false
+train,side_road_left,data/processed/emtd_classification/train/side_road_left/emtd_a9c7a00e38611f7b_003.jpg,emtd_a9c7a00e38611f7b_003,53,Screenshot (94).png,270,251,67770,false
+train,side_road_left,data/processed/emtd_classification/train/side_road_left/emtd_aadb368367681805_001.jpg,emtd_aadb368367681805_001,53,97.jpg,16,16,256,true
+train,side_road_left,data/processed/emtd_classification/train/side_road_left/emtd_baeca3a8a8d9bd1c_004.jpg,emtd_baeca3a8a8d9bd1c_004,53,Screenshot (95).png,82,82,6724,false
+train,side_road_left,data/processed/emtd_classification/train/side_road_left/emtd_c50e37646cd064ca_001.jpg,emtd_c50e37646cd064ca_001,53,Screenshot (171).png,139,146,20294,false
+train,side_road_left,data/processed/emtd_classification/train/side_road_left/emtd_cf60f2c266a67940_002.jpg,emtd_cf60f2c266a67940_002,53,Screenshot (63).png,44,46,2024,false
+train,side_road_right,data/processed/emtd_classification/train/side_road_right/emtd_14cc12b1e20c19bd_001.jpg,emtd_14cc12b1e20c19bd_001,52,Screenshot (261).png,91,91,8281,false
+train,side_road_right,data/processed/emtd_classification/train/side_road_right/emtd_1af03976d2f4cb04_001.jpg,emtd_1af03976d2f4cb04_001,52,DSC-0139.JPG,142,130,18460,false
+train,side_road_right,data/processed/emtd_classification/train/side_road_right/emtd_205cc2c8e60c9eaa_001.jpg,emtd_205cc2c8e60c9eaa_001,52,Screenshot (319).png,104,102,10608,false
+train,side_road_right,data/processed/emtd_classification/train/side_road_right/emtd_2cff2f6c6a799f5e_002.jpg,emtd_2cff2f6c6a799f5e_002,52,Screenshot (315).png,18,20,360,true
+train,side_road_right,data/processed/emtd_classification/train/side_road_right/emtd_2f159e69b7244de0_001.jpg,emtd_2f159e69b7244de0_001,52,P1840211.JPG,387,333,128871,false
+train,side_road_right,data/processed/emtd_classification/train/side_road_right/emtd_3211db382f189ec9_001.jpg,emtd_3211db382f189ec9_001,52,Screenshot (230).png,18,19,342,true
+train,side_road_right,data/processed/emtd_classification/train/side_road_right/emtd_38cf0bbf0e297237_004.jpg,emtd_38cf0bbf0e297237_004,52,P1840275.JPG,59,58,3422,false
+train,side_road_right,data/processed/emtd_classification/train/side_road_right/emtd_3f1204a0b04a1616_001.jpg,emtd_3f1204a0b04a1616_001,52,DSC-0138.JPG,54,54,2916,false
+train,side_road_right,data/processed/emtd_classification/train/side_road_right/emtd_a8b9cba0d160dc08_001.jpg,emtd_a8b9cba0d160dc08_001,52,Screenshot (257).png,213,299,63687,false
+train,side_road_right,data/processed/emtd_classification/train/side_road_right/emtd_c93e477731dc68aa_001.jpg,emtd_c93e477731dc68aa_001,52,Screenshot (167).png,35,32,1120,false
+train,side_road_right,data/processed/emtd_classification/train/side_road_right/emtd_d6f5077a58192e9d_003.jpg,emtd_d6f5077a58192e9d_003,52,P1840276.JPG,81,72,5832,false
+train,side_road_right,data/processed/emtd_classification/train/side_road_right/emtd_df521cafd2e7f940_001.jpg,emtd_df521cafd2e7f940_001,52,Screenshot (137).png,99,96,9504,false
+train,slippery_road,data/processed/emtd_classification/train/slippery_road/emtd_31e0fb8f0548ac71_001.jpg,emtd_31e0fb8f0548ac71_001,41,68.jpg,32,28,896,true
+train,slippery_road,data/processed/emtd_classification/train/slippery_road/emtd_ac78ab3f35109d6b_001.jpg,emtd_ac78ab3f35109d6b_001,41,67.jpg,77,59,4543,false
+train,staggered_junction,data/processed/emtd_classification/train/staggered_junction/emtd_110456139d0a1273_006.jpg,emtd_110456139d0a1273_006,50,P1840181.JPG,38,41,1558,false
+train,staggered_junction,data/processed/emtd_classification/train/staggered_junction/emtd_3d12b7340c82d0f2_001.jpg,emtd_3d12b7340c82d0f2_001,50,Screenshot (183).png,41,40,1640,false
+train,staggered_junction,data/processed/emtd_classification/train/staggered_junction/emtd_6c4265f9b9ce9e34_001.jpg,emtd_6c4265f9b9ce9e34_001,50,Screenshot (184).png,76,73,5548,false
+train,staggered_junction,data/processed/emtd_classification/train/staggered_junction/emtd_db66c26b36cd8103_002.jpg,emtd_db66c26b36cd8103_002,50,Screenshot (182).png,32,31,992,true
+train,stop,data/processed/emtd_classification/train/stop/emtd_00988f3171828f27_001.jpg,emtd_00988f3171828f27_001,6,Screenshot (114).png,67,62,4154,false
+train,stop,data/processed/emtd_classification/train/stop/emtd_08487605f8d07bdc_001.jpg,emtd_08487605f8d07bdc_001,6,Screenshot (278).png,27,48,1296,true
+train,stop,data/processed/emtd_classification/train/stop/emtd_08487605f8d07bdc_002.jpg,emtd_08487605f8d07bdc_002,6,Screenshot (278).png,19,20,380,true
+train,stop,data/processed/emtd_classification/train/stop/emtd_0869c9a0920be1d3_001.jpg,emtd_0869c9a0920be1d3_001,6,Screenshot (12).png,35,35,1225,false
+train,stop,data/processed/emtd_classification/train/stop/emtd_2487eb09bc887a80_001.jpg,emtd_2487eb09bc887a80_001,6,Screenshot (22).png,44,45,1980,false
+train,stop,data/processed/emtd_classification/train/stop/emtd_392c33456a68caa2_001.jpg,emtd_392c33456a68caa2_001,6,Screenshot (277).png,39,53,2067,false
+train,stop,data/processed/emtd_classification/train/stop/emtd_79875b1ba6aa526c_001.jpg,emtd_79875b1ba6aa526c_001,6,P1830982.JPG,60,62,3720,false
+train,stop,data/processed/emtd_classification/train/stop/emtd_7e0bff5cf9d55cdf_001.jpg,emtd_7e0bff5cf9d55cdf_001,6,Screenshot (210).png,15,16,240,true
+train,stop,data/processed/emtd_classification/train/stop/emtd_a6334abc6ddd06b7_001.jpg,emtd_a6334abc6ddd06b7_001,6,P1830980.JPG,280,286,80080,false
+train,stop,data/processed/emtd_classification/train/stop/emtd_bb096ba63805df6e_001.jpg,emtd_bb096ba63805df6e_001,6,Screenshot (119).png,47,42,1974,false
+train,stop,data/processed/emtd_classification/train/stop/emtd_cc2aa98984715850_001.jpg,emtd_cc2aa98984715850_001,6,Screenshot (31).png,88,102,8976,false
+train,stop,data/processed/emtd_classification/train/stop/emtd_ce9c16ca0280d757_001.jpg,emtd_ce9c16ca0280d757_001,6,P1840089.JPG,142,145,20590,false
+train,stop,data/processed/emtd_classification/train/stop/emtd_ce9c16ca0280d757_003.jpg,emtd_ce9c16ca0280d757_003,16,P1840089.JPG,143,178,25454,false
+train,stop,data/processed/emtd_classification/train/stop/emtd_d70de6bc8f0470fc_001.jpg,emtd_d70de6bc8f0470fc_001,6,P1840348.JPG,164,165,27060,false
+train,stop,data/processed/emtd_classification/train/stop/emtd_e1b6bada8aa26482_001.jpg,emtd_e1b6bada8aa26482_001,6,Screenshot (50).png,29,29,841,true
+train,stop,data/processed/emtd_classification/train/stop/emtd_e7a965ae8755681e_001.jpg,emtd_e7a965ae8755681e_001,6,Screenshot (13).png,27,25,675,true
+train,stop,data/processed/emtd_classification/train/stop/emtd_f6a087ef05c79e28_001.jpg,emtd_f6a087ef05c79e28_001,6,Screenshot (25).png,43,42,1806,false
+train,t_junction,data/processed/emtd_classification/train/t_junction/emtd_0869c9a0920be1d3_002.jpg,emtd_0869c9a0920be1d3_002,51,Screenshot (12).png,46,45,2070,false
+train,t_junction,data/processed/emtd_classification/train/t_junction/emtd_28acb8c62542e205_004.jpg,emtd_28acb8c62542e205_004,51,P1860061.JPG,177,186,32922,false
+train,t_junction,data/processed/emtd_classification/train/t_junction/emtd_4d3922230fab2996_002.jpg,emtd_4d3922230fab2996_002,51,Screenshot (227).png,61,58,3538,false
+train,t_junction,data/processed/emtd_classification/train/t_junction/emtd_7e0bff5cf9d55cdf_002.jpg,emtd_7e0bff5cf9d55cdf_002,51,Screenshot (210).png,150,140,21000,false
+train,t_junction,data/processed/emtd_classification/train/t_junction/emtd_9e17581883b923ed_001.jpg,emtd_9e17581883b923ed_001,51,Screenshot (208).png,40,40,1600,false
+train,t_junction,data/processed/emtd_classification/train/t_junction/emtd_e7a965ae8755681e_002.jpg,emtd_e7a965ae8755681e_002,51,Screenshot (13).png,35,32,1120,false
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_05109e7fa190b843_006.jpg,emtd_05109e7fa190b843_006,48,1092.jpg,20,21,420,true
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_110456139d0a1273_003.jpg,emtd_110456139d0a1273_003,48,P1840181.JPG,303,300,90900,false
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_110456139d0a1273_004.jpg,emtd_110456139d0a1273_004,48,P1840181.JPG,35,39,1365,false
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_176f7536713ddb1b_002.jpg,emtd_176f7536713ddb1b_002,48,146.jpg,81,71,5751,false
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_21f1b2454de256db_002.jpg,emtd_21f1b2454de256db_002,48,1098.jpg,64,59,3776,false
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_28acb8c62542e205_003.jpg,emtd_28acb8c62542e205_003,48,P1860061.JPG,192,199,38208,false
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_45eb6e4ef59fa5f5_002.jpg,emtd_45eb6e4ef59fa5f5_002,48,P1860064.JPG,289,281,81209,false
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_47e028962db99dbd_002.jpg,emtd_47e028962db99dbd_002,48,Screenshot (191).png,25,23,575,true
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_5274ccefb955c386_001.jpg,emtd_5274ccefb955c386_001,48,P1840322.JPG,339,334,113226,false
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_5b73c017d8b7c322_002.jpg,emtd_5b73c017d8b7c322_002,48,Screenshot (190).png,18,19,342,true
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_b4ff14189beb101f_001.jpg,emtd_b4ff14189beb101f_001,48,157.jpg,75,55,4125,false
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_c3bcb355d2735c58_001.jpg,emtd_c3bcb355d2735c58_001,48,P1840496.JPG,479,475,227525,false
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_cd5d30b8635d404f_006.jpg,emtd_cd5d30b8635d404f_006,48,1091.jpg,27,24,648,true
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_d7eed066ee575544_002.jpg,emtd_d7eed066ee575544_002,48,Screenshot (201).png,33,28,924,true
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_d88c81accb5618cf_002.jpg,emtd_d88c81accb5618cf_002,48,P1840281.JPG,425,410,174250,false
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_dab264437f101537_006.jpg,emtd_dab264437f101537_006,48,P1840119.JPG,290,286,82940,false
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_dce52a4f21d3e7b7_001.jpg,emtd_dce52a4f21d3e7b7_001,48,1099.jpg,141,144,20304,false
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_de62579075080971_002.jpg,emtd_de62579075080971_002,48,1006.jpg,52,62,3224,false
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_e84f3544a854f151_002.jpg,emtd_e84f3544a854f151_002,48,Screenshot (203).png,21,17,357,true
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_e87b5b252d4f1ec3_002.jpg,emtd_e87b5b252d4f1ec3_002,48,Screenshot (202).png,24,21,504,true
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_ed0f014a564195aa_003.jpg,emtd_ed0f014a564195aa_003,48,P1860059.JPG,104,106,11024,false
+train,traffic_signal_ahead,data/processed/emtd_classification/train/traffic_signal_ahead/emtd_f745139c7b9c554a_001.jpg,emtd_f745139c7b9c554a_001,48,P1840163.JPG,335,337,112895,false
+train,two_way_traffic,data/processed/emtd_classification/train/two_way_traffic/emtd_3b7eba9b00e311f6_001.jpg,emtd_3b7eba9b00e311f6_001,63,Screenshot (196).png,87,102,8874,false
+train,two_way_traffic,data/processed/emtd_classification/train/two_way_traffic/emtd_7230b53e389dfa64_001.jpg,emtd_7230b53e389dfa64_001,63,Screenshot (200).png,258,295,76110,false
+train,two_way_traffic,data/processed/emtd_classification/train/two_way_traffic/emtd_98dfbf1a980c3ff4_001.jpg,emtd_98dfbf1a980c3ff4_001,63,Screenshot (199).png,129,128,16512,false
+train,two_way_traffic,data/processed/emtd_classification/train/two_way_traffic/emtd_a2bb22296a921e05_002.jpg,emtd_a2bb22296a921e05_002,63,Screenshot (93).png,142,142,20164,false
+train,two_way_traffic,data/processed/emtd_classification/train/two_way_traffic/emtd_e922be64f6c9a29b_002.jpg,emtd_e922be64f6c9a29b_002,63,Screenshot (91).png,43,45,1935,false
+train,two_way_traffic,data/processed/emtd_classification/train/two_way_traffic/emtd_febf1639bee47442_001.jpg,emtd_febf1639bee47442_001,63,Screenshot (197).png,58,55,3190,false
+train,vehicle_collision_hazard,data/processed/emtd_classification/train/vehicle_collision_hazard/emtd_02a0d43461c2e28f_001.jpg,emtd_02a0d43461c2e28f_001,39,P1860051.JPG,229,285,65265,false
+train,vehicle_collision_hazard,data/processed/emtd_classification/train/vehicle_collision_hazard/emtd_28e4e221ad933605_004.jpg,emtd_28e4e221ad933605_004,39,P1830970.JPG,52,75,3900,false
+train,vehicle_collision_hazard,data/processed/emtd_classification/train/vehicle_collision_hazard/emtd_33a20d48faf93e4d_001.jpg,emtd_33a20d48faf93e4d_001,39,P1860040.JPG,305,365,111325,false
+train,vehicle_collision_hazard,data/processed/emtd_classification/train/vehicle_collision_hazard/emtd_72bd7f9ef5c1e9fa_001.jpg,emtd_72bd7f9ef5c1e9fa_001,39,P1840287.JPG,103,107,11021,false
+train,vehicle_collision_hazard,data/processed/emtd_classification/train/vehicle_collision_hazard/emtd_744806c4a943abab_003.jpg,emtd_744806c4a943abab_003,39,P1840140.JPG,258,405,104490,false
+train,vehicle_collision_hazard,data/processed/emtd_classification/train/vehicle_collision_hazard/emtd_8eacefb84eecce9d_001.jpg,emtd_8eacefb84eecce9d_001,39,120.jpg,42,44,1848,false
+train,vehicle_collision_hazard,data/processed/emtd_classification/train/vehicle_collision_hazard/emtd_ae4608b739584ec1_001.jpg,emtd_ae4608b739584ec1_001,39,P1860043.JPG,174,242,42108,false
+train,vehicle_collision_hazard,data/processed/emtd_classification/train/vehicle_collision_hazard/emtd_b7ecc0a580b2a5cc_002.jpg,emtd_b7ecc0a580b2a5cc_002,39,P1840015.JPG,220,230,50600,false
+train,vehicle_collision_hazard,data/processed/emtd_classification/train/vehicle_collision_hazard/emtd_c27e3f01068bc4b5_001.jpg,emtd_c27e3f01068bc4b5_001,39,P1840288.JPG,118,119,14042,false
+train,vehicle_collision_hazard,data/processed/emtd_classification/train/vehicle_collision_hazard/emtd_e3fd2a0c1babff07_003.jpg,emtd_e3fd2a0c1babff07_003,39,1077.jpg,76,82,6232,false
+train,vehicle_collision_hazard,data/processed/emtd_classification/train/vehicle_collision_hazard/emtd_eed9757fa6d6f8ad_002.jpg,emtd_eed9757fa6d6f8ad_002,39,1107.jpg,61,61,3721,false
+train,weight_restriction,data/processed/emtd_classification/train/weight_restriction/emtd_0b141c3e31b24328_001.jpg,emtd_0b141c3e31b24328_001,27,P1860092.JPG,328,321,105288,false
+train,weight_restriction,data/processed/emtd_classification/train/weight_restriction/emtd_42acc3c7177ad062_002.jpg,emtd_42acc3c7177ad062_002,27,P1840387.JPG,222,218,48396,false
+train,weight_restriction,data/processed/emtd_classification/train/weight_restriction/emtd_527982e4f86d8262_001.jpg,emtd_527982e4f86d8262_001,11,P1860111.JPG,134,133,17822,false
+train,weight_restriction,data/processed/emtd_classification/train/weight_restriction/emtd_527982e4f86d8262_002.jpg,emtd_527982e4f86d8262_002,11,P1860111.JPG,106,118,12508,false
+train,weight_restriction,data/processed/emtd_classification/train/weight_restriction/emtd_63e5f42d48da207d_002.jpg,emtd_63e5f42d48da207d_002,27,P1860091.JPG,190,191,36290,false
+train,weight_restriction,data/processed/emtd_classification/train/weight_restriction/emtd_6e44994598059afd_001.jpg,emtd_6e44994598059afd_001,11,P1840250.JPG,295,419,123605,false
+train,weight_restriction,data/processed/emtd_classification/train/weight_restriction/emtd_9f950e30ce7c33f1_001.jpg,emtd_9f950e30ce7c33f1_001,27,P1840138.JPG,244,343,83692,false
+train,weight_restriction,data/processed/emtd_classification/train/weight_restriction/emtd_c11fa2bb0ca06974_001.jpg,emtd_c11fa2bb0ca06974_001,27,P1840139.JPG,711,721,512631,false
+train,weight_restriction,data/processed/emtd_classification/train/weight_restriction/emtd_ce46c238751f1b72_001.jpg,emtd_ce46c238751f1b72_001,11,P1860110.JPG,147,168,24696,false
+train,weight_restriction,data/processed/emtd_classification/train/weight_restriction/emtd_cfedb6a9ec2e7bac_001.jpg,emtd_cfedb6a9ec2e7bac_001,12,P1860055.JPG,193,212,40916,false
+train,weight_restriction,data/processed/emtd_classification/train/weight_restriction/emtd_db4cdfda57a77fbc_001.jpg,emtd_db4cdfda57a77fbc_001,27,P1860331.JPG,227,208,47216,false
+train,weight_restriction,data/processed/emtd_classification/train/weight_restriction/emtd_dc3530a41813727d_001.jpg,emtd_dc3530a41813727d_001,12,P1860056.JPG,400,429,171600,false
+train,weight_restriction,data/processed/emtd_classification/train/weight_restriction/emtd_e88a6cbfc3b37e6b_002.jpg,emtd_e88a6cbfc3b37e6b_002,21,P1860090.JPG,120,120,14400,false
+train,width_restriction,data/processed/emtd_classification/train/width_restriction/emtd_0929558fd62d9d44_002.jpg,emtd_0929558fd62d9d44_002,32,P1840559.JPG,213,214,45582,false
+validation,animal_crossing,data/processed/emtd_classification/validation/animal_crossing/emtd_dddb1d7e4463c695_001.jpg,emtd_dddb1d7e4463c695_001,59,DSC-0328.JPG,190,178,33820,false
+validation,camera_enforcement,data/processed/emtd_classification/validation/camera_enforcement/emtd_4e0edc87f7466c6a_005.jpg,emtd_4e0edc87f7466c6a_005,35,P1840111.JPG,58,58,3364,false
+validation,camera_enforcement,data/processed/emtd_classification/validation/camera_enforcement/emtd_556fd7814f6283d8_002.jpg,emtd_556fd7814f6283d8_002,35,89.jpg,28,24,672,true
+validation,children_crossing,data/processed/emtd_classification/validation/children_crossing/emtd_1837b8eee3ead324_003.jpg,emtd_1837b8eee3ead324_003,45,P1860048.JPG,114,110,12540,false
+validation,children_crossing,data/processed/emtd_classification/validation/children_crossing/emtd_643de76a68d374e0_002.jpg,emtd_643de76a68d374e0_002,44,Screenshot (268).png,127,114,14478,false
+validation,children_crossing,data/processed/emtd_classification/validation/children_crossing/emtd_eb07db745f1be2ba_004.jpg,emtd_eb07db745f1be2ba_004,44,P1840037.JPG,684,683,467172,false
+validation,children_crossing,data/processed/emtd_classification/validation/children_crossing/emtd_f0d4a2e0bbd454e1_005.jpg,emtd_f0d4a2e0bbd454e1_005,45,P1860046.JPG,78,75,5850,false
+validation,crossroads,data/processed/emtd_classification/validation/crossroads/emtd_f1896b0d6c3429df_004.jpg,emtd_f1896b0d6c3429df_004,55,P1860071.JPG,191,215,41065,false
+validation,crossroads,data/processed/emtd_classification/validation/crossroads/emtd_f4c05b290ec60cf7_005.jpg,emtd_f4c05b290ec60cf7_005,55,P1840199.JPG,231,232,53592,false
+validation,crosswind,data/processed/emtd_classification/validation/crosswind/emtd_d75dd4921f9f5ca9_001.jpg,emtd_d75dd4921f9f5ca9_001,36,14.jpg,38,39,1482,false
+validation,curve_left,data/processed/emtd_classification/validation/curve_left/emtd_92beb7fbc9890a1a_002.jpg,emtd_92beb7fbc9890a1a_002,40,Screenshot (195).png,23,24,552,true
+validation,curve_left,data/processed/emtd_classification/validation/curve_left/emtd_bf30a635a938663b_002.jpg,emtd_bf30a635a938663b_002,40,1058.jpg,40,34,1360,false
+validation,divided_road_begins,data/processed/emtd_classification/validation/divided_road_begins/emtd_198b0f979552448d_003.jpg,emtd_198b0f979552448d_003,62,P1840375.JPG,467,479,223693,false
+validation,divided_road_begins,data/processed/emtd_classification/validation/divided_road_begins/emtd_4360afab485bdcdc_004.jpg,emtd_4360afab485bdcdc_004,62,P1830940.JPG,89,106,9434,false
+validation,divided_road_begins,data/processed/emtd_classification/validation/divided_road_begins/emtd_4832e5835a0f1e95_006.jpg,emtd_4832e5835a0f1e95_006,62,P1840007.JPG,106,105,11130,false
+validation,divided_road_begins,data/processed/emtd_classification/validation/divided_road_begins/emtd_4ade1ccf5fa86554_004.jpg,emtd_4ade1ccf5fa86554_004,62,P1840236.JPG,184,203,37352,false
+validation,divided_road_begins,data/processed/emtd_classification/validation/divided_road_begins/emtd_4dfe51e40d7b9547_004.jpg,emtd_4dfe51e40d7b9547_004,62,Screenshot (225).png,35,40,1400,false
+validation,divided_road_begins,data/processed/emtd_classification/validation/divided_road_begins/emtd_4e0edc87f7466c6a_008.jpg,emtd_4e0edc87f7466c6a_008,62,P1840111.JPG,187,186,34782,false
+validation,divided_road_begins,data/processed/emtd_classification/validation/divided_road_begins/emtd_50915fb50cc7d488_004.jpg,emtd_50915fb50cc7d488_004,62,Screenshot (226).png,18,15,270,true
+validation,divided_road_begins,data/processed/emtd_classification/validation/divided_road_begins/emtd_62303011fcc9c591_003.jpg,emtd_62303011fcc9c591_003,62,P1830952.JPG,103,103,10609,false
+validation,divided_road_begins,data/processed/emtd_classification/validation/divided_road_begins/emtd_803a3df237414bc0_007.jpg,emtd_803a3df237414bc0_007,62,P1840185.JPG,635,626,397510,false
+validation,divided_road_begins,data/processed/emtd_classification/validation/divided_road_begins/emtd_9f4c563b497eb46b_005.jpg,emtd_9f4c563b497eb46b_005,16,P1840114.JPG,103,103,10609,false
+validation,divided_road_begins,data/processed/emtd_classification/validation/divided_road_begins/emtd_acc78e7af2b84b6a_004.jpg,emtd_acc78e7af2b84b6a_004,62,P1840488.JPG,61,77,4697,false
+validation,divided_road_begins,data/processed/emtd_classification/validation/divided_road_begins/emtd_b330bbc32b124384_004.jpg,emtd_b330bbc32b124384_004,62,P1840073.JPG,317,319,101123,false
+validation,divided_road_begins,data/processed/emtd_classification/validation/divided_road_begins/emtd_c77f07884f3b0afd_003.jpg,emtd_c77f07884f3b0afd_003,62,Screenshot (280).png,16,15,240,true
+validation,divided_road_begins,data/processed/emtd_classification/validation/divided_road_begins/emtd_cb2c89b8be2fc7f6_004.jpg,emtd_cb2c89b8be2fc7f6_004,62,P1840294.JPG,245,250,61250,false
+validation,divided_road_begins,data/processed/emtd_classification/validation/divided_road_begins/emtd_f4c05b290ec60cf7_006.jpg,emtd_f4c05b290ec60cf7_006,62,P1840199.JPG,83,84,6972,false
+validation,double_curve,data/processed/emtd_classification/validation/double_curve/emtd_d010ca8f179a2740_002.jpg,emtd_d010ca8f179a2740_002,65,P1860069.JPG,288,284,81792,false
+validation,general_caution,data/processed/emtd_classification/validation/general_caution/emtd_556fd7814f6283d8_003.jpg,emtd_556fd7814f6283d8_003,46,89.jpg,38,26,988,true
+validation,general_caution,data/processed/emtd_classification/validation/general_caution/emtd_643de76a68d374e0_003.jpg,emtd_643de76a68d374e0_003,46,Screenshot (268).png,45,44,1980,false
+validation,general_caution,data/processed/emtd_classification/validation/general_caution/emtd_9f4c563b497eb46b_004.jpg,emtd_9f4c563b497eb46b_004,10,P1840114.JPG,352,354,124608,false
+validation,give_way,data/processed/emtd_classification/validation/give_way/emtd_0a80e5fcdaaf3765_004.jpg,emtd_0a80e5fcdaaf3765_004,31,P1830975.JPG,55,49,2695,false
+validation,give_way,data/processed/emtd_classification/validation/give_way/emtd_643de76a68d374e0_001.jpg,emtd_643de76a68d374e0_001,31,Screenshot (268).png,16,15,240,true
+validation,give_way,data/processed/emtd_classification/validation/give_way/emtd_9f4c563b497eb46b_011.jpg,emtd_9f4c563b497eb46b_011,56,P1840114.JPG,70,58,4060,false
+validation,give_way,data/processed/emtd_classification/validation/give_way/emtd_c77f07884f3b0afd_001.jpg,emtd_c77f07884f3b0afd_001,31,Screenshot (280).png,14,12,168,true
+validation,give_way,data/processed/emtd_classification/validation/give_way/emtd_d81b8450e1f6b24c_005.jpg,emtd_d81b8450e1f6b24c_005,31,1068.jpg,17,16,272,true
+validation,give_way,data/processed/emtd_classification/validation/give_way/emtd_ed6369453cc5fd41_003.jpg,emtd_ed6369453cc5fd41_003,31,1001.jpg,31,29,899,true
+validation,give_way,data/processed/emtd_classification/validation/give_way/emtd_ed6369453cc5fd41_004.jpg,emtd_ed6369453cc5fd41_004,31,1001.jpg,26,23,598,true
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_07f7bebe989a4fb2_002.jpg,emtd_07f7bebe989a4fb2_002,13,P1840108.JPG,49,49,2401,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_0a80e5fcdaaf3765_001.jpg,emtd_0a80e5fcdaaf3765_001,16,P1830975.JPG,63,60,3780,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_214262c5339b209c_001.jpg,emtd_214262c5339b209c_001,17,P1860093.JPG,90,90,8100,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_3cd200f20793dfbe_001.jpg,emtd_3cd200f20793dfbe_001,14,P1840604.JPG,75,100,7500,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_4360afab485bdcdc_001.jpg,emtd_4360afab485bdcdc_001,13,P1830940.JPG,57,59,3363,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_4360afab485bdcdc_002.jpg,emtd_4360afab485bdcdc_002,16,P1830940.JPG,26,30,780,true
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_4486c2d99d3f2790_003.jpg,emtd_4486c2d99d3f2790_003,30,P1840012.JPG,144,146,21024,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_4979f8f85583d8ec_004.jpg,emtd_4979f8f85583d8ec_004,13,Screenshot (103).png,68,59,4012,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_4979f8f85583d8ec_005.jpg,emtd_4979f8f85583d8ec_005,13,Screenshot (103).png,64,64,4096,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_4e0edc87f7466c6a_002.jpg,emtd_4e0edc87f7466c6a_002,13,P1840111.JPG,102,99,10098,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_4e0edc87f7466c6a_003.jpg,emtd_4e0edc87f7466c6a_003,16,P1840111.JPG,77,81,6237,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_4e0edc87f7466c6a_004.jpg,emtd_4e0edc87f7466c6a_004,16,P1840111.JPG,67,63,4221,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_8b84acee490ad60d_002.jpg,emtd_8b84acee490ad60d_002,18,P1860113.JPG,395,405,159975,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_933751dd497d8cee_001.jpg,emtd_933751dd497d8cee_001,16,P1840244.JPG,158,160,25280,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_9f4c563b497eb46b_013.jpg,emtd_9f4c563b497eb46b_013,57,P1840114.JPG,52,78,4056,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_aa216831fbd23e7d_001.jpg,emtd_aa216831fbd23e7d_001,14,P1830981.JPG,440,535,235400,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_acc78e7af2b84b6a_001.jpg,emtd_acc78e7af2b84b6a_001,15,P1840488.JPG,83,84,6972,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_acc78e7af2b84b6a_002.jpg,emtd_acc78e7af2b84b6a_002,15,P1840488.JPG,89,78,6942,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_ae3c2d8d4035e435_006.jpg,emtd_ae3c2d8d4035e435_006,13,Screenshot (102).png,31,28,868,true
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_ae3c2d8d4035e435_007.jpg,emtd_ae3c2d8d4035e435_007,13,Screenshot (102).png,30,29,870,true
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_ae3c2d8d4035e435_008.jpg,emtd_ae3c2d8d4035e435_008,13,Screenshot (102).png,33,33,1089,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_ae3c2d8d4035e435_009.jpg,emtd_ae3c2d8d4035e435_009,13,Screenshot (102).png,28,34,952,true
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_ae3c2d8d4035e435_010.jpg,emtd_ae3c2d8d4035e435_010,13,Screenshot (102).png,30,29,870,true
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_ed52e1f11cc3401d_002.jpg,emtd_ed52e1f11cc3401d_002,13,1079.jpg,38,35,1330,false
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_ed52e1f11cc3401d_003.jpg,emtd_ed52e1f11cc3401d_003,13,1079.jpg,17,18,306,true
+validation,height_restriction,data/processed/emtd_classification/validation/height_restriction/emtd_fec5286f2348d2f4_002.jpg,emtd_fec5286f2348d2f4_002,14,Screenshot (81).png,54,44,2376,false
+validation,keep_left,data/processed/emtd_classification/validation/keep_left/emtd_31c43eb56fd8e08a_001.jpg,emtd_31c43eb56fd8e08a_001,3,P1860107.JPG,151,151,22801,false
+validation,keep_left,data/processed/emtd_classification/validation/keep_left/emtd_31c43eb56fd8e08a_002.jpg,emtd_31c43eb56fd8e08a_002,3,P1860107.JPG,212,208,44096,false
+validation,keep_left,data/processed/emtd_classification/validation/keep_left/emtd_50915fb50cc7d488_001.jpg,emtd_50915fb50cc7d488_001,3,Screenshot (226).png,86,75,6450,false
+validation,keep_left,data/processed/emtd_classification/validation/keep_left/emtd_9f4c563b497eb46b_002.jpg,emtd_9f4c563b497eb46b_002,3,P1840114.JPG,32,31,992,true
+validation,keep_left,data/processed/emtd_classification/validation/keep_left/emtd_bf30a635a938663b_001.jpg,emtd_bf30a635a938663b_001,3,1058.jpg,11,12,132,true
+validation,keep_left,data/processed/emtd_classification/validation/keep_left/emtd_d81b8450e1f6b24c_002.jpg,emtd_d81b8450e1f6b24c_002,3,1068.jpg,17,16,272,true
+validation,keep_left,data/processed/emtd_classification/validation/keep_left/emtd_ed6369453cc5fd41_001.jpg,emtd_ed6369453cc5fd41_001,3,1001.jpg,26,26,676,true
+validation,keep_left,data/processed/emtd_classification/validation/keep_left/emtd_f13d801ad7d2b152_001.jpg,emtd_f13d801ad7d2b152_001,3,Screenshot (288).png,18,17,306,true
+validation,keep_left,data/processed/emtd_classification/validation/keep_left/emtd_f13d801ad7d2b152_002.jpg,emtd_f13d801ad7d2b152_002,3,Screenshot (288).png,12,13,156,true
+validation,keep_left,data/processed/emtd_classification/validation/keep_left/emtd_f46f86b31a823c41_002.jpg,emtd_f46f86b31a823c41_002,3,P1840115.JPG,33,30,990,true
+validation,keep_right,data/processed/emtd_classification/validation/keep_right/emtd_32c4edc13ca9cb80_001.jpg,emtd_32c4edc13ca9cb80_001,2,Screenshot (85).png,22,22,484,true
+validation,keep_right,data/processed/emtd_classification/validation/keep_right/emtd_32c4edc13ca9cb80_002.jpg,emtd_32c4edc13ca9cb80_002,2,Screenshot (85).png,18,18,324,true
+validation,keep_right,data/processed/emtd_classification/validation/keep_right/emtd_c3a3012aa501b819_001.jpg,emtd_c3a3012aa501b819_001,2,Screenshot (99).png,35,34,1190,false
+validation,keep_right,data/processed/emtd_classification/validation/keep_right/emtd_d81b8450e1f6b24c_001.jpg,emtd_d81b8450e1f6b24c_001,2,1068.jpg,26,27,702,true
+validation,keep_right,data/processed/emtd_classification/validation/keep_right/emtd_ecfd881435d99808_001.jpg,emtd_ecfd881435d99808_001,2,Screenshot (88).png,24,23,552,true
+validation,keep_right,data/processed/emtd_classification/validation/keep_right/emtd_ecfd881435d99808_002.jpg,emtd_ecfd881435d99808_002,2,Screenshot (88).png,70,67,4690,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_0149b935b851d2f0_001.jpg,emtd_0149b935b851d2f0_001,24,P1830946.JPG,165,165,27225,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_07f7bebe989a4fb2_003.jpg,emtd_07f7bebe989a4fb2_003,24,P1840108.JPG,325,321,104325,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_0a80e5fcdaaf3765_002.jpg,emtd_0a80e5fcdaaf3765_002,21,P1830975.JPG,266,221,58786,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_1837b8eee3ead324_001.jpg,emtd_1837b8eee3ead324_001,19,P1860048.JPG,107,110,11770,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_20f4efa9359fe143_001.jpg,emtd_20f4efa9359fe143_001,22,Screenshot (109).png,39,39,1521,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_20f4efa9359fe143_002.jpg,emtd_20f4efa9359fe143_002,22,Screenshot (109).png,38,38,1444,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_32c4edc13ca9cb80_006.jpg,emtd_32c4edc13ca9cb80_006,22,Screenshot (85).png,25,26,650,true
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_3cd200f20793dfbe_002.jpg,emtd_3cd200f20793dfbe_002,20,P1840604.JPG,323,316,102068,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_4979f8f85583d8ec_006.jpg,emtd_4979f8f85583d8ec_006,18,Screenshot (103).png,63,62,3906,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_556fd7814f6283d8_001.jpg,emtd_556fd7814f6283d8_001,24,89.jpg,20,19,380,true
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_62303011fcc9c591_001.jpg,emtd_62303011fcc9c591_001,24,P1830952.JPG,53,54,2862,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_803a3df237414bc0_001.jpg,emtd_803a3df237414bc0_001,9,P1840185.JPG,86,86,7396,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_8b84acee490ad60d_001.jpg,emtd_8b84acee490ad60d_001,13,P1860113.JPG,395,405,159975,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_932c4aaabb554e29_001.jpg,emtd_932c4aaabb554e29_001,19,1027.jpg,17,17,289,true
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_aa216831fbd23e7d_002.jpg,emtd_aa216831fbd23e7d_002,20,P1830981.JPG,105,104,10920,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_ae3c2d8d4035e435_011.jpg,emtd_ae3c2d8d4035e435_011,18,Screenshot (102).png,32,32,1024,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_b330bbc32b124384_001.jpg,emtd_b330bbc32b124384_001,25,P1840073.JPG,150,147,22050,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_b95e97340168cba4_001.jpg,emtd_b95e97340168cba4_001,26,DSC-0333.JPG,278,278,77284,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_b983516b549c0ada_002.jpg,emtd_b983516b549c0ada_002,19,Screenshot (49).png,34,39,1326,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_c3a3012aa501b819_003.jpg,emtd_c3a3012aa501b819_003,22,Screenshot (99).png,111,112,12432,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_e3e5946f3e2a82fc_001.jpg,emtd_e3e5946f3e2a82fc_001,22,Screenshot (110).png,57,54,3078,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_e3e5946f3e2a82fc_002.jpg,emtd_e3e5946f3e2a82fc_002,22,Screenshot (110).png,57,53,3021,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_eb07db745f1be2ba_001.jpg,emtd_eb07db745f1be2ba_001,19,P1840037.JPG,129,130,16770,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_ecfd881435d99808_006.jpg,emtd_ecfd881435d99808_006,22,Screenshot (88).png,40,42,1680,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_f0d4a2e0bbd454e1_001.jpg,emtd_f0d4a2e0bbd454e1_001,19,P1860046.JPG,77,72,5544,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_f1538f8966a8ec11_002.jpg,emtd_f1538f8966a8ec11_002,22,93.jpg,27,25,675,true
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_f1e47bf09aa9b0c2_001.jpg,emtd_f1e47bf09aa9b0c2_001,23,1051.jpg,46,45,2070,false
+validation,maximum_speed,data/processed/emtd_classification/validation/maximum_speed/emtd_f1e47bf09aa9b0c2_002.jpg,emtd_f1e47bf09aa9b0c2_002,23,1051.jpg,48,53,2544,false
+validation,merge_left,data/processed/emtd_classification/validation/merge_left/emtd_4e0edc87f7466c6a_007.jpg,emtd_4e0edc87f7466c6a_007,57,P1840111.JPG,41,40,1640,false
+validation,merge_left,data/processed/emtd_classification/validation/merge_left/emtd_65e9002f35db15b4_001.jpg,emtd_65e9002f35db15b4_001,57,P1840369.JPG,209,227,47443,false
+validation,merge_left,data/processed/emtd_classification/validation/merge_left/emtd_9f4c563b497eb46b_003.jpg,emtd_9f4c563b497eb46b_003,9,P1840114.JPG,56,64,3584,false
+validation,merge_left,data/processed/emtd_classification/validation/merge_left/emtd_9f4c563b497eb46b_006.jpg,emtd_9f4c563b497eb46b_006,31,P1840114.JPG,100,101,10100,false
+validation,merge_left,data/processed/emtd_classification/validation/merge_left/emtd_9f4c563b497eb46b_008.jpg,emtd_9f4c563b497eb46b_008,46,P1840114.JPG,74,74,5476,false
+validation,merge_left,data/processed/emtd_classification/validation/merge_left/emtd_b330bbc32b124384_003.jpg,emtd_b330bbc32b124384_003,57,P1840073.JPG,133,133,17689,false
+validation,merge_left,data/processed/emtd_classification/validation/merge_left/emtd_ed6369453cc5fd41_006.jpg,emtd_ed6369453cc5fd41_006,57,1001.jpg,70,74,5180,false
+validation,merge_left,data/processed/emtd_classification/validation/merge_left/emtd_f46f86b31a823c41_005.jpg,emtd_f46f86b31a823c41_005,16,P1840115.JPG,76,75,5700,false
+validation,merge_right,data/processed/emtd_classification/validation/merge_right/emtd_d81b8450e1f6b24c_006.jpg,emtd_d81b8450e1f6b24c_006,56,1068.jpg,128,179,22912,false
+validation,merge_right,data/processed/emtd_classification/validation/merge_right/emtd_f46f86b31a823c41_003.jpg,emtd_f46f86b31a823c41_003,9,P1840115.JPG,90,88,7920,false
+validation,merge_right,data/processed/emtd_classification/validation/merge_right/emtd_f46f86b31a823c41_006.jpg,emtd_f46f86b31a823c41_006,31,P1840115.JPG,128,131,16768,false
+validation,no_entry,data/processed/emtd_classification/validation/no_entry/emtd_4979f8f85583d8ec_001.jpg,emtd_4979f8f85583d8ec_001,10,Screenshot (103).png,44,42,1848,false
+validation,no_entry,data/processed/emtd_classification/validation/no_entry/emtd_f46f86b31a823c41_013.jpg,emtd_f46f86b31a823c41_013,62,P1840115.JPG,38,39,1482,false
+validation,no_heavy_vehicle,data/processed/emtd_classification/validation/no_heavy_vehicle/emtd_cece785eb92cd643_001.jpg,emtd_cece785eb92cd643_001,28,10.jpg,25,25,625,true
+validation,no_heavy_vehicle,data/processed/emtd_classification/validation/no_heavy_vehicle/emtd_cece785eb92cd643_002.jpg,emtd_cece785eb92cd643_002,28,10.jpg,27,26,702,true
+validation,no_left_turn,data/processed/emtd_classification/validation/no_left_turn/emtd_32c4edc13ca9cb80_005.jpg,emtd_32c4edc13ca9cb80_005,7,Screenshot (85).png,22,23,506,true
+validation,no_left_turn,data/processed/emtd_classification/validation/no_left_turn/emtd_ecfd881435d99808_005.jpg,emtd_ecfd881435d99808_005,7,Screenshot (88).png,58,60,3480,false
+validation,no_overtaking,data/processed/emtd_classification/validation/no_overtaking/emtd_92beb7fbc9890a1a_001.jpg,emtd_92beb7fbc9890a1a_001,33,Screenshot (195).png,113,128,14464,false
+validation,no_overtaking,data/processed/emtd_classification/validation/no_overtaking/emtd_f13d801ad7d2b152_003.jpg,emtd_f13d801ad7d2b152_003,33,Screenshot (288).png,43,41,1763,false
+validation,no_parking,data/processed/emtd_classification/validation/no_parking/emtd_f0d4a2e0bbd454e1_002.jpg,emtd_f0d4a2e0bbd454e1_002,29,P1860046.JPG,61,85,5185,false
+validation,no_parking,data/processed/emtd_classification/validation/no_parking/emtd_f1896b0d6c3429df_002.jpg,emtd_f1896b0d6c3429df_002,29,P1860071.JPG,149,147,21903,false
+validation,no_parking,data/processed/emtd_classification/validation/no_parking/emtd_f4c05b290ec60cf7_001.jpg,emtd_f4c05b290ec60cf7_001,29,P1840199.JPG,85,144,12240,false
+validation,no_parking,data/processed/emtd_classification/validation/no_parking/emtd_f4c05b290ec60cf7_003.jpg,emtd_f4c05b290ec60cf7_003,30,P1840199.JPG,34,45,1530,false
+validation,no_stopping,data/processed/emtd_classification/validation/no_stopping/emtd_0a80e5fcdaaf3765_003.jpg,emtd_0a80e5fcdaaf3765_003,30,P1830975.JPG,248,262,64976,false
+validation,no_stopping,data/processed/emtd_classification/validation/no_stopping/emtd_214262c5339b209c_002.jpg,emtd_214262c5339b209c_002,30,P1860093.JPG,169,231,39039,false
+validation,no_stopping,data/processed/emtd_classification/validation/no_stopping/emtd_4486c2d99d3f2790_001.jpg,emtd_4486c2d99d3f2790_001,4,P1840012.JPG,63,61,3843,false
+validation,no_stopping,data/processed/emtd_classification/validation/no_stopping/emtd_4486c2d99d3f2790_002.jpg,emtd_4486c2d99d3f2790_002,15,P1840012.JPG,87,97,8439,false
+validation,no_stopping,data/processed/emtd_classification/validation/no_stopping/emtd_4486c2d99d3f2790_004.jpg,emtd_4486c2d99d3f2790_004,30,P1840012.JPG,46,48,2208,false
+validation,no_stopping,data/processed/emtd_classification/validation/no_stopping/emtd_4486c2d99d3f2790_005.jpg,emtd_4486c2d99d3f2790_005,30,P1840012.JPG,54,83,4482,false
+validation,no_stopping,data/processed/emtd_classification/validation/no_stopping/emtd_4486c2d99d3f2790_010.jpg,emtd_4486c2d99d3f2790_010,39,P1840012.JPG,203,201,40803,false
+validation,no_stopping,data/processed/emtd_classification/validation/no_stopping/emtd_4832e5835a0f1e95_001.jpg,emtd_4832e5835a0f1e95_001,30,P1840007.JPG,173,185,32005,false
+validation,no_stopping,data/processed/emtd_classification/validation/no_stopping/emtd_803a3df237414bc0_003.jpg,emtd_803a3df237414bc0_003,30,P1840185.JPG,202,200,40400,false
+validation,no_stopping,data/processed/emtd_classification/validation/no_stopping/emtd_c2a0f4313c3c9e12_001.jpg,emtd_c2a0f4313c3c9e12_001,30,DSC-0130.JPG,45,45,2025,false
+validation,no_stopping,data/processed/emtd_classification/validation/no_stopping/emtd_f4c05b290ec60cf7_002.jpg,emtd_f4c05b290ec60cf7_002,29,P1840199.JPG,38,41,1558,false
+validation,no_straight_ahead,data/processed/emtd_classification/validation/no_straight_ahead/emtd_4979f8f85583d8ec_002.jpg,emtd_4979f8f85583d8ec_002,10,Screenshot (103).png,44,46,2024,false
+validation,no_straight_ahead,data/processed/emtd_classification/validation/no_straight_ahead/emtd_4979f8f85583d8ec_003.jpg,emtd_4979f8f85583d8ec_003,10,Screenshot (103).png,44,42,1848,false
+validation,no_straight_ahead,data/processed/emtd_classification/validation/no_straight_ahead/emtd_ae3c2d8d4035e435_001.jpg,emtd_ae3c2d8d4035e435_001,10,Screenshot (102).png,26,24,624,true
+validation,no_straight_ahead,data/processed/emtd_classification/validation/no_straight_ahead/emtd_ae3c2d8d4035e435_002.jpg,emtd_ae3c2d8d4035e435_002,10,Screenshot (102).png,22,20,440,true
+validation,no_straight_ahead,data/processed/emtd_classification/validation/no_straight_ahead/emtd_ae3c2d8d4035e435_003.jpg,emtd_ae3c2d8d4035e435_003,10,Screenshot (102).png,25,19,475,true
+validation,no_straight_ahead,data/processed/emtd_classification/validation/no_straight_ahead/emtd_ae3c2d8d4035e435_004.jpg,emtd_ae3c2d8d4035e435_004,10,Screenshot (102).png,23,22,506,true
+validation,no_straight_ahead,data/processed/emtd_classification/validation/no_straight_ahead/emtd_ae3c2d8d4035e435_005.jpg,emtd_ae3c2d8d4035e435_005,10,Screenshot (102).png,22,25,550,true
+validation,no_u_turn,data/processed/emtd_classification/validation/no_u_turn/emtd_4dfe51e40d7b9547_002.jpg,emtd_4dfe51e40d7b9547_002,9,Screenshot (225).png,35,35,1225,false
+validation,no_u_turn,data/processed/emtd_classification/validation/no_u_turn/emtd_803a3df237414bc0_002.jpg,emtd_803a3df237414bc0_002,22,P1840185.JPG,44,44,1936,false
+validation,no_u_turn,data/processed/emtd_classification/validation/no_u_turn/emtd_9f4c563b497eb46b_007.jpg,emtd_9f4c563b497eb46b_007,42,P1840114.JPG,69,70,4830,false
+validation,obstruction_ahead,data/processed/emtd_classification/validation/obstruction_ahead/emtd_872688bce44ccd84_002.jpg,emtd_872688bce44ccd84_002,64,72.jpg,71,76,5396,false
+validation,obstruction_ahead,data/processed/emtd_classification/validation/obstruction_ahead/emtd_9f4c563b497eb46b_014.jpg,emtd_9f4c563b497eb46b_014,62,P1840114.JPG,41,41,1681,false
+validation,obstruction_ahead,data/processed/emtd_classification/validation/obstruction_ahead/emtd_f46f86b31a823c41_010.jpg,emtd_f46f86b31a823c41_010,56,P1840115.JPG,132,132,17424,false
+validation,obstruction_ahead,data/processed/emtd_classification/validation/obstruction_ahead/emtd_f46f86b31a823c41_011.jpg,emtd_f46f86b31a823c41_011,57,P1840115.JPG,44,44,1936,false
+validation,obstruction_ahead,data/processed/emtd_classification/validation/obstruction_ahead/emtd_f46f86b31a823c41_012.jpg,emtd_f46f86b31a823c41_012,57,P1840115.JPG,130,132,17160,false
+validation,pass_either_side,data/processed/emtd_classification/validation/pass_either_side/emtd_2a0a0b2cfe0ac666_001.jpg,emtd_2a0a0b2cfe0ac666_001,4,P1860411.JPG,373,377,140621,false
+validation,pass_either_side,data/processed/emtd_classification/validation/pass_either_side/emtd_4486c2d99d3f2790_007.jpg,emtd_4486c2d99d3f2790_007,30,P1840012.JPG,43,43,1849,false
+validation,pedestrian_crossing,data/processed/emtd_classification/validation/pedestrian_crossing/emtd_4832e5835a0f1e95_004.jpg,emtd_4832e5835a0f1e95_004,43,P1840007.JPG,118,115,13570,false
+validation,pedestrian_crossing,data/processed/emtd_classification/validation/pedestrian_crossing/emtd_933751dd497d8cee_002.jpg,emtd_933751dd497d8cee_002,43,P1840244.JPG,206,194,39964,false
+validation,pedestrian_crossing,data/processed/emtd_classification/validation/pedestrian_crossing/emtd_e9ec60ee0cc922c7_002.jpg,emtd_e9ec60ee0cc922c7_002,43,P1840597.JPG,100,105,10500,false
+validation,pedestrian_crossing,data/processed/emtd_classification/validation/pedestrian_crossing/emtd_f46f86b31a823c41_004.jpg,emtd_f46f86b31a823c41_004,10,P1840115.JPG,39,42,1638,false
+validation,permitted_u_turn,data/processed/emtd_classification/validation/permitted_u_turn/emtd_9f4c563b497eb46b_012.jpg,emtd_9f4c563b497eb46b_012,57,P1840114.JPG,133,188,25004,false
+validation,permitted_u_turn,data/processed/emtd_classification/validation/permitted_u_turn/emtd_f46f86b31a823c41_007.jpg,emtd_f46f86b31a823c41_007,42,P1840115.JPG,229,343,78547,false
+validation,road_hump,data/processed/emtd_classification/validation/road_hump/emtd_1837b8eee3ead324_002.jpg,emtd_1837b8eee3ead324_002,37,P1860048.JPG,449,455,204295,false
+validation,road_hump,data/processed/emtd_classification/validation/road_hump/emtd_5bf857844918003a_001.jpg,emtd_5bf857844918003a_001,37,P1860060.JPG,90,90,8100,false
+validation,road_hump,data/processed/emtd_classification/validation/road_hump/emtd_5bf857844918003a_002.jpg,emtd_5bf857844918003a_002,37,P1860060.JPG,201,198,39798,false
+validation,road_hump,data/processed/emtd_classification/validation/road_hump/emtd_5bf857844918003a_003.jpg,emtd_5bf857844918003a_003,38,P1860060.JPG,117,118,13806,false
+validation,road_hump,data/processed/emtd_classification/validation/road_hump/emtd_5bf857844918003a_004.jpg,emtd_5bf857844918003a_004,38,P1860060.JPG,405,402,162810,false
+validation,road_hump,data/processed/emtd_classification/validation/road_hump/emtd_c2a0f4313c3c9e12_002.jpg,emtd_c2a0f4313c3c9e12_002,37,DSC-0130.JPG,47,48,2256,false
+validation,road_hump,data/processed/emtd_classification/validation/road_hump/emtd_c2a0f4313c3c9e12_003.jpg,emtd_c2a0f4313c3c9e12_003,38,DSC-0130.JPG,202,188,37976,false
+validation,road_hump,data/processed/emtd_classification/validation/road_hump/emtd_eb07db745f1be2ba_002.jpg,emtd_eb07db745f1be2ba_002,37,P1840037.JPG,169,171,28899,false
+validation,road_hump,data/processed/emtd_classification/validation/road_hump/emtd_eb07db745f1be2ba_003.jpg,emtd_eb07db745f1be2ba_003,37,P1840037.JPG,68,63,4284,false
+validation,road_hump,data/processed/emtd_classification/validation/road_hump/emtd_f0d4a2e0bbd454e1_003.jpg,emtd_f0d4a2e0bbd454e1_003,37,P1860046.JPG,174,177,30798,false
+validation,road_hump,data/processed/emtd_classification/validation/road_hump/emtd_f0d4a2e0bbd454e1_004.jpg,emtd_f0d4a2e0bbd454e1_004,37,P1860046.JPG,100,96,9600,false
+validation,road_hump,data/processed/emtd_classification/validation/road_hump/emtd_f1e47bf09aa9b0c2_003.jpg,emtd_f1e47bf09aa9b0c2_003,37,1051.jpg,33,32,1056,false
+validation,road_hump,data/processed/emtd_classification/validation/road_hump/emtd_f1e47bf09aa9b0c2_004.jpg,emtd_f1e47bf09aa9b0c2_004,37,1051.jpg,18,19,342,true
+validation,road_narrows_both,data/processed/emtd_classification/validation/road_narrows_both/emtd_31c43eb56fd8e08a_003.jpg,emtd_31c43eb56fd8e08a_003,47,P1860107.JPG,314,315,98910,false
+validation,road_narrows_both,data/processed/emtd_classification/validation/road_narrows_both/emtd_932c4aaabb554e29_003.jpg,emtd_932c4aaabb554e29_003,47,1027.jpg,40,32,1280,false
+validation,road_narrows_both,data/processed/emtd_classification/validation/road_narrows_both/emtd_b983516b549c0ada_003.jpg,emtd_b983516b549c0ada_003,47,Screenshot (49).png,17,20,340,true
+validation,roadworks,data/processed/emtd_classification/validation/roadworks/emtd_4dfe51e40d7b9547_003.jpg,emtd_4dfe51e40d7b9547_003,34,Screenshot (225).png,25,27,675,true
+validation,roadworks,data/processed/emtd_classification/validation/roadworks/emtd_932c4aaabb554e29_002.jpg,emtd_932c4aaabb554e29_002,34,1027.jpg,74,71,5254,false
+validation,roadworks,data/processed/emtd_classification/validation/roadworks/emtd_ed6369453cc5fd41_005.jpg,emtd_ed6369453cc5fd41_005,34,1001.jpg,52,56,2912,false
+validation,roundabout_ahead,data/processed/emtd_classification/validation/roundabout_ahead/emtd_643de76a68d374e0_004.jpg,emtd_643de76a68d374e0_004,60,Screenshot (268).png,30,29,870,true
+validation,roundabout_ahead,data/processed/emtd_classification/validation/roundabout_ahead/emtd_c77f07884f3b0afd_002.jpg,emtd_c77f07884f3b0afd_002,60,Screenshot (280).png,75,77,5775,false
+validation,side_road_left,data/processed/emtd_classification/validation/side_road_left/emtd_cb2c89b8be2fc7f6_003.jpg,emtd_cb2c89b8be2fc7f6_003,53,P1840294.JPG,68,73,4964,false
+validation,side_road_left,data/processed/emtd_classification/validation/side_road_left/emtd_f13d801ad7d2b152_004.jpg,emtd_f13d801ad7d2b152_004,53,Screenshot (288).png,86,73,6278,false
+validation,side_road_right,data/processed/emtd_classification/validation/side_road_right/emtd_953c96b1e18f4230_002.jpg,emtd_953c96b1e18f4230_002,52,DSC-0122.JPG,43,42,1806,false
+validation,staggered_junction,data/processed/emtd_classification/validation/staggered_junction/emtd_803a3df237414bc0_006.jpg,emtd_803a3df237414bc0_006,50,P1840185.JPG,76,101,7676,false
+validation,stop,data/processed/emtd_classification/validation/stop/emtd_32c4edc13ca9cb80_004.jpg,emtd_32c4edc13ca9cb80_004,6,Screenshot (85).png,29,29,841,true
+validation,stop,data/processed/emtd_classification/validation/stop/emtd_4dfe51e40d7b9547_001.jpg,emtd_4dfe51e40d7b9547_001,6,Screenshot (225).png,26,26,676,true
+validation,stop,data/processed/emtd_classification/validation/stop/emtd_b983516b549c0ada_001.jpg,emtd_b983516b549c0ada_001,6,Screenshot (49).png,24,25,600,true
+validation,stop,data/processed/emtd_classification/validation/stop/emtd_ecfd881435d99808_004.jpg,emtd_ecfd881435d99808_004,6,Screenshot (88).png,74,77,5698,false
+validation,t_junction,data/processed/emtd_classification/validation/t_junction/emtd_50915fb50cc7d488_003.jpg,emtd_50915fb50cc7d488_003,51,Screenshot (226).png,78,85,6630,false
+validation,t_junction,data/processed/emtd_classification/validation/t_junction/emtd_5bf857844918003a_006.jpg,emtd_5bf857844918003a_006,51,P1860060.JPG,93,129,11997,false
+validation,traffic_signal_ahead,data/processed/emtd_classification/validation/traffic_signal_ahead/emtd_5bf857844918003a_005.jpg,emtd_5bf857844918003a_005,48,P1860060.JPG,132,130,17160,false
+validation,traffic_signal_ahead,data/processed/emtd_classification/validation/traffic_signal_ahead/emtd_803a3df237414bc0_004.jpg,emtd_803a3df237414bc0_004,48,P1840185.JPG,100,93,9300,false
+validation,traffic_signal_ahead,data/processed/emtd_classification/validation/traffic_signal_ahead/emtd_953c96b1e18f4230_001.jpg,emtd_953c96b1e18f4230_001,48,DSC-0122.JPG,45,41,1845,false
+validation,traffic_signal_ahead,data/processed/emtd_classification/validation/traffic_signal_ahead/emtd_cb2c89b8be2fc7f6_001.jpg,emtd_cb2c89b8be2fc7f6_001,48,P1840294.JPG,75,75,5625,false
+validation,traffic_signal_ahead,data/processed/emtd_classification/validation/traffic_signal_ahead/emtd_f1896b0d6c3429df_003.jpg,emtd_f1896b0d6c3429df_003,48,P1860071.JPG,212,217,46004,false
+validation,two_way_traffic,data/processed/emtd_classification/validation/two_way_traffic/emtd_872688bce44ccd84_001.jpg,emtd_872688bce44ccd84_001,63,72.jpg,48,56,2688,false
+validation,vehicle_collision_hazard,data/processed/emtd_classification/validation/vehicle_collision_hazard/emtd_4486c2d99d3f2790_006.jpg,emtd_4486c2d99d3f2790_006,30,P1840012.JPG,69,72,4968,false
+validation,vehicle_collision_hazard,data/processed/emtd_classification/validation/vehicle_collision_hazard/emtd_4486c2d99d3f2790_008.jpg,emtd_4486c2d99d3f2790_008,39,P1840012.JPG,155,171,26505,false
+validation,vehicle_collision_hazard,data/processed/emtd_classification/validation/vehicle_collision_hazard/emtd_4486c2d99d3f2790_009.jpg,emtd_4486c2d99d3f2790_009,39,P1840012.JPG,71,86,6106,false
+validation,vehicle_collision_hazard,data/processed/emtd_classification/validation/vehicle_collision_hazard/emtd_4832e5835a0f1e95_002.jpg,emtd_4832e5835a0f1e95_002,39,P1840007.JPG,141,143,20163,false
+validation,vehicle_collision_hazard,data/processed/emtd_classification/validation/vehicle_collision_hazard/emtd_4832e5835a0f1e95_003.jpg,emtd_4832e5835a0f1e95_003,39,P1840007.JPG,180,201,36180,false
+validation,vehicle_collision_hazard,data/processed/emtd_classification/validation/vehicle_collision_hazard/emtd_d010ca8f179a2740_001.jpg,emtd_d010ca8f179a2740_001,39,P1860069.JPG,118,104,12272,false
+validation,weight_restriction,data/processed/emtd_classification/validation/weight_restriction/emtd_4ade1ccf5fa86554_001.jpg,emtd_4ade1ccf5fa86554_001,11,P1840236.JPG,165,244,40260,false
+validation,weight_restriction,data/processed/emtd_classification/validation/weight_restriction/emtd_4ade1ccf5fa86554_002.jpg,emtd_4ade1ccf5fa86554_002,27,P1840236.JPG,208,208,43264,false
+validation,weight_restriction,data/processed/emtd_classification/validation/weight_restriction/emtd_e9ec60ee0cc922c7_001.jpg,emtd_e9ec60ee0cc922c7_001,27,P1840597.JPG,186,190,35340,false
+validation,weight_restriction,data/processed/emtd_classification/validation/weight_restriction/emtd_fec5286f2348d2f4_001.jpg,emtd_fec5286f2348d2f4_001,11,Screenshot (81).png,53,43,2279,false

@@ -27,6 +27,7 @@ chapter preparation.
 - [Coursework images](./data/official/assignment_images/)
 - [Coursework documents](./data/official/coursework_documents/)
 - [P0-P14 implementation report](./TECHNICAL_DEVELOPMENT_REPORT_P0_P14.md)
+- [Data-to-final-model flow](./DATA_TO_FINAL_MODEL_FLOW.md)
 
 The new implementation must be developed independently from the old generated
 models, labels, measurements, and source code.
@@ -243,10 +244,10 @@ Use the status values:
 |---|---|---:|---|---|---|
 | P0 | Destructive reset and backup | `[x]` | Codex | 2026-06-25 | External backup and restored tree verified: 84 images, 24 documents, zero checksum mismatches |
 | P1 | Repository and environment foundation | `[~]` | Codex | 2026-06-24 | Reproducible CUDA environment, CI, DVC remote, scripts, and quality gates verified; initial Git commit left to owner |
-| P2 | Malaysian sign ontology | `[-]` | Codex | 2026-06-24 | 81-entry validated draft catalogue; authoritative two-person review pending |
+| P2 | Malaysian sign ontology | `[~]` | Codex | 2026-06-26 | 96-entry validated and owner-approved P2 catalogue, coursework-driven ontology gaps resolved, Excel-safe review workbook/audit generated; local JKR PDF archive pending |
 | P3 | Coursework image mapping | `[-]` | Codex | 2026-06-24 | 84-image inventory and mapping template created; semantic review pending |
 | P4 | Data acquisition and provenance | `[~]` | Codex | 2026-06-25 | Licence policy, Zenodo provenance, 510-image/66-class EMTD subset, checksums, and DVC remote verified; local field collection remains |
-| P5 | Annotation and quality control | `[~]` | Codex | 2026-06-25 | 1,227 source boxes validated; SAM 2.1 produced 1,220 draft masks on 507 images with 3 QA rejects; independent human review remains |
+| P5 | Annotation and quality control | `[~]` | Owner/Codex | 2026-06-27 | Owner class-sheet review imported; source-level fixes and 126 crop-level correction decisions applied; low-support classes and final sheet review remain |
 | P6 | Leakage-safe dataset construction | `[~]` | Codex | 2026-06-26 | 507 duplicate groups, deterministic group-stratified splits, adjacent-video session leakage test, 1,064 semantic crops, DVC release; one rare class absent from validation/test |
 | P7 | Classical color/shape baseline | `[x]` | Codex | 2026-06-25 | 84/84 processed; masks/crops/features saved; six frozen-split SVM/RF comparisons completed |
 | P8 | Deep-learning sign segmentation | `[~]` | Codex | 2026-06-25 | 640/960 YOLO26s-seg comparison complete; live 640 model has small-sign recall 0.674 and CPU p95 1.04 s; final targets/review remain |
@@ -267,7 +268,7 @@ Use the status values:
 
 | Metric | Required target | Current result | Status | Evidence |
 |---|---:|---:|---:|---|
-| Supported semantic classes | 60-80 | 81 catalogue drafts; 35 trained experimental labels | `[~]` | Catalogue and `data/processed/emtd_classification/labels.json` |
+| Supported semantic classes | 60-100 | 96 approved catalogue entries; 35 trained experimental labels | `[~]` | Catalogue, `data/manifests/p2_ontology_review_latest.xlsx`, and `data/processed/emtd_classification/labels.json` |
 | Coursework images processed | 84/84 | 84/84 baseline | `[x]` | `outputs/baseline/results.csv` |
 | Coursework runtime | <2 seconds/image on lab CPU | 787 ms mean, 1,413 ms max; 84/84 under 2 s with YOLO26s on development RTX laptop | `[~]` | `outputs/evaluation/coursework_experimental_s30/summary.json`; lab CPU pending |
 | Sign detector recall | >=90% | Box 68.1%; mask 57.3% on YOLO26s EMTD test | `[~]` | `outputs/evaluation/emtd_segmenter_s30/metrics.json` |
@@ -386,9 +387,9 @@ will use.
 
 | ID | Task | Status | Owner | Deliverable or evidence |
 |---|---|---:|---|---|
-| P2.1 | Obtain and archive authoritative Malaysian sign references | `[~]` | Codex | Four official JKR references registered; local PDF archive pending |
+| P2.1 | Obtain and archive authoritative Malaysian sign references | `[~]` | Codex | Four official JKR references registered; local PDF archive attempted on 2026-06-26 but JKR host timed out from this machine |
 | P2.2 | Define ontology schema and validation rules | `[x]` | Codex | Strict Pydantic models and tests |
-| P2.3 | Select the first 60-80 supported classes | `[x]` | Codex | 81-entry experimental catalogue |
+| P2.3 | Select the first supported class set | `[x]` | Codex | 96-entry P2 owner-review catalogue including coursework-driven missing classes |
 | P2.4 | Define English names | `[x]` | Codex | Catalogue entries |
 | P2.5 | Define Bahasa Melayu names | `[x]` | Codex | Catalogue entries |
 | P2.6 | Define Chinese names | `[x]` | Codex | UTF-8 catalogue entries and validation |
@@ -397,15 +398,15 @@ will use.
 | P2.9 | Assign severity levels | `[x]` | Codex | Safety metadata |
 | P2.10 | Define deterministic ADAS action codes | `[x]` | Codex | Action enum and catalogue |
 | P2.11 | Add standard references for every class | `[x]` | Codex | Every entry references a registered JKR source |
-| P2.12 | Perform independent two-person review | `[ ]` |  | Review record |
-| P2.13 | Freeze ontology version `v1.0` | `[~]` | Codex | Versioned draft catalogue; approval pending |
+| P2.12 | Perform independent two-person review | `[x]` | Owner | Owner approved all entries; Excel-safe `data/manifests/p2_ontology_review_latest.xlsx` generated because the original CSV was locked by Excel |
+| P2.13 | Freeze ontology version `v1.0` | `[~]` | Codex | `0.4-p2-approved-pending-archive` catalogue validated and approved; freeze pending local reference archive |
 
 ## Completion Gate
 
 - [x] Every supported class has all required fields.
 - [x] Every meaning and action has a cited reference.
 - [x] No semantic class is defined only from an unverified web image.
-- [ ] Two reviewers approve every safety-critical entry.
+- [x] Two reviewers approve every safety-critical entry; `outputs/audit/p2_ontology_audit.json` verifies approval.
 - [x] Catalogue validation tests pass.
 
 ---
@@ -550,14 +551,14 @@ Each sign instance should contain:
 | P5.4 | Create annotator training task | `[ ]` |  | Training set |
 | P5.5 | Measure inter-annotator agreement | `[ ]` |  | Agreement report |
 | P5.6 | Annotate official coursework images | `[ ]` |  | Verified masks/boxes |
-| P5.7 | Annotate public dataset samples | `[~]` | Codex | 1,227 EMTD boxes and 1,220 SAM draft masks; human acceptance pending |
+| P5.7 | Annotate public dataset samples | `[~]` | Codex | 1,227 EMTD boxes and 1,220 SAM draft masks; EMTD source classes 2, 3, 15, 24, 35, 36, 39, 50, 56, 57, and 59 corrected from owner review |
 | P5.8 | Annotate local collected data | `[ ]` |  | Accepted annotations |
 | P5.9 | Annotate OCR text and numeric values | `[ ]` |  | OCR ground truth |
-| P5.10 | Perform independent review | `[ ]` |  | Review status |
+| P5.10 | Perform independent review | `[~]` | Owner/Codex | Owner review converted into source remaps and 126 reviewed crop decisions in `data/manifests/p5_owner_crop_corrections.csv`; Excel-locked tracker fallback written to `data/manifests/p5_class_review_next.csv` |
 | P5.11 | Run polygon and box validation | `[x]` | Codex | Bounds, area-ratio, box-IoU QA; 3 mask drafts rejected |
 | P5.12 | Run transcript consistency validation | `[ ]` |  | OCR QA report |
 | P5.13 | Randomly audit 10% of accepted labels | `[ ]` |  | Audit report |
-| P5.14 | Correct rejected annotations | `[ ]` |  | Final annotation set |
+| P5.14 | Correct rejected annotations | `[~]` | Codex | Reproducible source-mapping corrections and owner crop-correction manifest applied; sheets regenerated for final review |
 | P5.15 | Freeze annotation release `v1.0` | `[~]` | Codex | Experimental draft release pushed to DVC; reviewed v1.0 pending |
 
 ## Completion Gate
@@ -1454,6 +1455,12 @@ acceptance targets.
 | 2026-06-26 | `0.11` | Hardened live-camera reliability with WebSocket bad-frame recovery tests, defensive React camera-message parsing, parser unit tests, and raised Python/API tests to 67 passing | Codex |
 | 2026-06-26 | `0.12` | Hardened upload boundaries with oversized-image, oversized-batch, and invalid-video cleanup regression tests, raising Python/API tests to 70 passing | Codex |
 | 2026-06-26 | `0.13` | Expanded P14 Playwright coverage for backend-offline recovery and deep runtime/provider diagnostics, raising desktop/mobile E2E coverage to 10 passing tests | Codex |
+| 2026-06-26 | `0.14` | Advanced P2 ontology to `0.4-p2-approved-pending-archive`: added coursework-driven missing semantic classes, resolved four owner-reviewed coursework meanings, fixed Excel Chinese mojibake with UTF-8/XLSX review artifacts, applied owner approval, and verified P2 audit approval gates | Codex |
+| 2026-06-26 | `0.15` | Started serious P5 label QC: generated class contact sheets, corrected EMTD class 35 from animal crossing to camera enforcement at source-mapping level, rebuilt EMTD classification data, and added regression tests for the corrected label state | Codex |
+| 2026-06-27 | `0.16` | Applied owner P5 class-sheet review at source-mapping level: swapped keep-left/right, moved merge-labelled source classes to side-road classes, added staggered junction, restored true animal crossing from cow-sign crops, regenerated QC artifacts, and preserved crop-level cleanup as the next review step | Codex |
+| 2026-06-27 | `0.17` | Applied serious P5 crop cleanup from owner notes: added obstruction, crosswind, and vehicle-collision classes; remapped source classes 15, 24, 36, and 39; applied 77 crop-level relabels; split no-stopping/no-straight-ahead from noisy folders; regenerated sheets; and re-ran full tests | Codex |
+| 2026-06-27 | `0.18` | Applied owner follow-up P5 corrections for maximum-speed, obstruction, vehicle-collision, no-stopping, and heavy height-restriction noise; expanded owner crop decisions to 123 applied rows; regenerated QC sheets; and re-ran full tests | Codex |
+| 2026-06-27 | `0.19` | Applied three additional owner-reviewed height-restriction corrections, raising owner crop decisions to 126 applied rows; regenerated QC artifacts; and re-ran focused P5/catalogue/import tests | Codex |
 
 ---
 

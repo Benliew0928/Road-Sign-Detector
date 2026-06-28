@@ -13,8 +13,8 @@
         "warning danger signs",
         "guide and information signs"
       ],
-      "local_archive_status": "remote_index_verified",
-      "notes": "Official JKR host was indexed and readable through search on 2026-06-24; direct archival transfer timed out and must be retried."
+      "local_archive_status": "download_blocked_timeout",
+      "notes": "Official JKR host was indexed and readable through search on 2026-06-24; PowerShell and Python direct archival attempts timed out from this machine on 2026-06-26."
     },
     {
       "reference_id": "jkr_atj_2b_85_2019",
@@ -25,8 +25,8 @@
         "warning sign application",
         "guide sign application"
       ],
-      "local_archive_status": "remote_index_verified",
-      "notes": "Use for placement and application guidance; sign artwork remains referenced to ATJ 2A/85."
+      "local_archive_status": "download_blocked_timeout",
+      "notes": "Use for placement and application guidance; sign artwork remains referenced to ATJ 2A/85. PowerShell and Python direct archival attempts timed out from this machine on 2026-06-26."
     },
     {
       "reference_id": "jkr_atj_2c_85_2017",
@@ -36,8 +36,8 @@
         "temporary signs",
         "construction and work-zone signs"
       ],
-      "local_archive_status": "remote_index_verified",
-      "notes": "Use for the temporary-sign subset."
+      "local_archive_status": "download_blocked_timeout",
+      "notes": "Use for the temporary-sign subset. PowerShell and Python direct archival attempts timed out from this machine on 2026-06-26."
     },
     {
       "reference_id": "jkr_road_sign_usage_2021",
@@ -47,8 +47,20 @@
         "JKR sign-system overview",
         "road and expressway sign usage"
       ],
-      "local_archive_status": "remote_index_verified",
-      "notes": "Supporting JKR presentation material, not a replacement for ATJ standards."
+      "local_archive_status": "download_blocked_timeout",
+      "notes": "Supporting JKR presentation material, not a replacement for ATJ standards. PowerShell and Python direct archival attempts timed out from this machine on 2026-06-26."
+    },
+    {
+      "reference_id": "china_gb_5768_commons",
+      "title": "China GB 5768 Road Traffic Signs - Wikimedia Commons Reference Files",
+      "source_url": "https://commons.wikimedia.org/wiki/File:CN_road_sign_%E8%AD%A6_23.svg",
+      "scope": [
+        "China GB-style warning signs",
+        "assignment rare-sign reference signs",
+        "residential/village warning signs"
+      ],
+      "local_archive_status": "per_file_reference_downloaded",
+      "notes": "Used for assignment signs that visually match Mainland China / GB-style road-sign artwork rather than Malaysian JKR artwork. Per-file metadata is tracked in stage_c_china_reference_sources_01.csv."
     }
   ]
 }

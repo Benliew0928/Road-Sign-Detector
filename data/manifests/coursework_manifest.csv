@@ -8,25 +8,25 @@ Blue Signs__021_0003,Blue Signs/021_0003.png,sign_021,sign_021,straight_ahead,,c
 Blue Signs__021_0004,Blue Signs/021_0004.png,sign_021,sign_021,straight_ahead,,codex_visual_review,,draft_single_review,0.99,Proceed straight.
 Blue Signs__021_0004_j,Blue Signs/021_0004_j.png,sign_021,sign_021,straight_ahead,,codex_visual_review,,draft_single_review,0.99,Proceed straight.
 Blue Signs__022_0005,Blue Signs/022_0005.png,sign_022,sign_022,turn_left,,codex_visual_review,,draft_single_review,0.99,Turn left.
-Blue Signs__023_1_0002_1_j,Blue Signs/023_1_0002_1_j.png,sign_023,sign_023,,,codex_visual_review,,draft_single_review,0.98,Turn left or right; exact class is not in catalogue v0.1.
-Blue Signs__023_1_0003,Blue Signs/023_1_0003.png,sign_023,sign_023,,,codex_visual_review,,draft_single_review,0.98,Turn left or right; exact class is not in catalogue v0.1.
-Blue Signs__023_1_0004,Blue Signs/023_1_0004.png,sign_023,sign_023,,,codex_visual_review,,draft_single_review,0.98,Turn left or right; exact class is not in catalogue v0.1.
-Blue Signs__023_1_0005,Blue Signs/023_1_0005.png,sign_023,sign_023,,,codex_visual_review,,draft_single_review,0.98,Turn left or right; exact class is not in catalogue v0.1.
+Blue Signs__023_1_0002_1_j,Blue Signs/023_1_0002_1_j.png,sign_023,sign_023,turn_left_or_right,,codex_visual_review,,draft_single_review,0.98,Turn left or right; added to ontology in P2 v0.2 review.
+Blue Signs__023_1_0003,Blue Signs/023_1_0003.png,sign_023,sign_023,turn_left_or_right,,codex_visual_review,,draft_single_review,0.98,Turn left or right; added to ontology in P2 v0.2 review.
+Blue Signs__023_1_0004,Blue Signs/023_1_0004.png,sign_023,sign_023,turn_left_or_right,,codex_visual_review,,draft_single_review,0.98,Turn left or right; added to ontology in P2 v0.2 review.
+Blue Signs__023_1_0005,Blue Signs/023_1_0005.png,sign_023,sign_023,turn_left_or_right,,codex_visual_review,,draft_single_review,0.98,Turn left or right; added to ontology in P2 v0.2 review.
 Blue Signs__024_1_0016,Blue Signs/024_1_0016.png,sign_024,sign_024,turn_right,,codex_visual_review,,draft_single_review,0.99,Turn right.
 Blue Signs__024_1_0017,Blue Signs/024_1_0017.png,sign_024,sign_024,turn_right,,codex_visual_review,,draft_single_review,0.99,Turn right.
 Blue Signs__026_1_0016,Blue Signs/026_1_0016.png,sign_026,sign_026,keep_right,,codex_visual_review,,draft_single_review,0.96,Pass or keep right.
 Blue Signs__027_0002,Blue Signs/027_0002.png,sign_027,sign_027,roundabout_mandatory,,codex_visual_review,,draft_single_review,0.99,Roundabout circulation.
 Blue Signs__027_0010,Blue Signs/027_0010.png,sign_027,sign_027,roundabout_mandatory,,codex_visual_review,,draft_single_review,0.99,Roundabout circulation.
 Blue Signs__027_0012,Blue Signs/027_0012.png,sign_027,sign_027,roundabout_mandatory,,codex_visual_review,,draft_single_review,0.99,Roundabout circulation.
-Blue Signs__028_0202,Blue Signs/028_0202.png,sign_028,sign_028,,,codex_visual_review,,draft_single_review,0.97,Motor vehicles only; exact class is not in catalogue v0.1.
-Blue Signs__028_1_0007,Blue Signs/028_1_0007.png,sign_028,sign_028,,,codex_visual_review,,draft_single_review,0.97,Motor vehicles only; exact class is not in catalogue v0.1.
-Blue Signs__028_1_0216,Blue Signs/028_1_0216.png,sign_028,sign_028,,,codex_visual_review,,draft_single_review,0.97,Motor vehicles only; exact class is not in catalogue v0.1.
-Blue Signs__029_1_0015,Blue Signs/029_1_0015.png,sign_029,sign_029,,,codex_visual_review,,draft_single_review,0.98,Sound horn; exact class is not in catalogue v0.1.
-Blue Signs__030_1_0002,Blue Signs/030_1_0002.png,sign_030,sign_030,,,codex_visual_review,,draft_single_review,0.99,Bicycles only; exact class is not in catalogue v0.1.
-Blue Signs__030_1_0018_1_j,Blue Signs/030_1_0018_1_j.png,sign_030,sign_030,,,codex_visual_review,,draft_single_review,0.99,Bicycles only; exact class is not in catalogue v0.1.
-Blue Signs__030_1_0023,Blue Signs/030_1_0023.png,sign_030,sign_030,,,codex_visual_review,,draft_single_review,0.99,Bicycles only; exact class is not in catalogue v0.1.
-Blue Signs__031_0011,Blue Signs/031_0011.png,sign_031,sign_031,,,codex_visual_review,,draft_single_review,0.99,Permitted U-turn; exact class is not in catalogue v0.1.
-Blue Signs__031_1_0020,Blue Signs/031_1_0020.png,sign_031,sign_031,,,codex_visual_review,,draft_single_review,0.99,Permitted U-turn; exact class is not in catalogue v0.1.
+Blue Signs__028_0202,Blue Signs/028_0202.png,sign_028,sign_028,motor_vehicles_only,,codex_visual_review,,draft_single_review,0.97,Motor vehicles only; added to ontology in P2 v0.2 review.
+Blue Signs__028_1_0007,Blue Signs/028_1_0007.png,sign_028,sign_028,motor_vehicles_only,,codex_visual_review,,draft_single_review,0.97,Motor vehicles only; added to ontology in P2 v0.2 review.
+Blue Signs__028_1_0216,Blue Signs/028_1_0216.png,sign_028,sign_028,motor_vehicles_only,,codex_visual_review,,draft_single_review,0.97,Motor vehicles only; added to ontology in P2 v0.2 review.
+Blue Signs__029_1_0015,Blue Signs/029_1_0015.png,sign_029,sign_029,sound_horn,,codex_visual_review,,draft_single_review,0.98,Sound horn; added to ontology in P2 v0.2 review.
+Blue Signs__030_1_0002,Blue Signs/030_1_0002.png,sign_030,sign_030,bicycles_only,,codex_visual_review,,draft_single_review,0.99,Bicycles only; added to ontology in P2 v0.2 review.
+Blue Signs__030_1_0018_1_j,Blue Signs/030_1_0018_1_j.png,sign_030,sign_030,bicycles_only,,codex_visual_review,,draft_single_review,0.99,Bicycles only; added to ontology in P2 v0.2 review.
+Blue Signs__030_1_0023,Blue Signs/030_1_0023.png,sign_030,sign_030,bicycles_only,,codex_visual_review,,draft_single_review,0.99,Bicycles only; added to ontology in P2 v0.2 review.
+Blue Signs__031_0011,Blue Signs/031_0011.png,sign_031,sign_031,permitted_u_turn,,codex_visual_review,,draft_single_review,0.99,Permitted U-turn; added to ontology in P2 v0.2 review.
+Blue Signs__031_1_0020,Blue Signs/031_1_0020.png,sign_031,sign_031,permitted_u_turn,,codex_visual_review,,draft_single_review,0.99,Permitted U-turn; added to ontology in P2 v0.2 review.
 Red Signs__000_1_0002,Red Signs/000_1_0002.png,sign_000,sign_000,maximum_speed,5,codex_visual_review,,draft_single_review,0.99,Numeric speed-limit sign.
 Red Signs__000_1_0013,Red Signs/000_1_0013.png,sign_000,sign_000,maximum_speed,5,codex_visual_review,,draft_single_review,0.99,Numeric speed-limit sign.
 Red Signs__000_1_0018,Red Signs/000_1_0018.png,sign_000,sign_000,maximum_speed,5,codex_visual_review,,draft_single_review,0.99,Numeric speed-limit sign.
@@ -40,41 +40,41 @@ Red Signs__004_1_0020,Red Signs/004_1_0020.png,sign_004,sign_004,maximum_speed,5
 Red Signs__005_0030,Red Signs/005_0030.png,sign_005,sign_005,maximum_speed,60,codex_visual_review,,draft_single_review,0.99,Numeric speed-limit sign.
 Red Signs__005_1_0027,Red Signs/005_1_0027.png,sign_005,sign_005,maximum_speed,60,codex_visual_review,,draft_single_review,0.99,Numeric speed-limit sign.
 Red Signs__007_1_0006,Red Signs/007_1_0006.png,sign_007,sign_007,maximum_speed,80,codex_visual_review,,draft_single_review,0.99,Numeric speed-limit sign.
-Red Signs__008_1_0008_1_j,Red Signs/008_1_0008_1_j.png,sign_008,sign_008,,,codex_visual_review,,draft_single_review,0.7,Compound straight/left/right prohibition; Malaysian semantic equivalent requires review.
-Red Signs__010_1_0013,Red Signs/010_1_0013.png,sign_010,sign_010,,,codex_visual_review,,draft_single_review,0.9,No straight or right compound sign; class is not in catalogue v0.1.
+Red Signs__008_1_0008_1_j,Red Signs/008_1_0008_1_j.png,sign_008,sign_008,no_straight_or_left,,codex_visual_review,,draft_single_review,0.7,Owner confirmed no straight or left on 2026-06-26.
+Red Signs__010_1_0013,Red Signs/010_1_0013.png,sign_010,sign_010,no_straight_ahead,,codex_visual_review,,draft_single_review,0.99,Owner corrected: no straight ahead; not no straight or right.
 Red Signs__011_0029,Red Signs/011_0029.png,sign_011,sign_011,no_left_turn,,codex_visual_review,,draft_single_review,0.98,No left turn.
 Red Signs__011_1_0019,Red Signs/011_1_0019.png,sign_011,sign_011,no_left_turn,,codex_visual_review,,draft_single_review,0.98,No left turn.
-Red Signs__012_1_0015,Red Signs/012_1_0015.png,sign_012,sign_012,,,codex_visual_review,,draft_single_review,0.9,No left or right compound sign; class is not in catalogue v0.1.
+Red Signs__012_1_0015,Red Signs/012_1_0015.png,sign_012,sign_012,no_left_or_right_turn,,codex_visual_review,,draft_single_review,0.9,No left or right compound prohibition; added to ontology in P2 v0.2 review.
 Red Signs__013_0013,Red Signs/013_0013.png,sign_013,sign_013,no_right_turn,,codex_visual_review,,draft_single_review,0.98,No right turn.
-Red Signs__014_1_0028,Red Signs/014_1_0028.png,sign_014,sign_014,,,codex_visual_review,,draft_single_review,0.86,Compound straight/turn prohibition; requires independent semantic review.
+Red Signs__014_1_0028,Red Signs/014_1_0028.png,sign_014,sign_014,no_overtaking,,codex_visual_review,,draft_single_review,0.99,Owner corrected: no overtaking.
 Red Signs__015_1_0001,Red Signs/015_1_0001.png,sign_015,sign_015,no_u_turn,,codex_visual_review,,draft_single_review,0.98,No U-turn.
-Red Signs__016_1_0014,Red Signs/016_1_0014.png,sign_016,sign_016,,,codex_visual_review,,draft_single_review,0.94,No motor vehicles; exact class is not in catalogue v0.1.
-Red Signs__017_1_0017,Red Signs/017_1_0017.png,sign_017,sign_017,,,codex_visual_review,,draft_single_review,0.98,No horn; exact class is not in catalogue v0.1.
+Red Signs__016_1_0014,Red Signs/016_1_0014.png,sign_016,sign_016,no_motor_vehicles,,codex_visual_review,,draft_single_review,0.94,No motor vehicles; added to ontology in P2 v0.2 review.
+Red Signs__017_1_0017,Red Signs/017_1_0017.png,sign_017,sign_017,no_horn,,codex_visual_review,,draft_single_review,0.98,No horn; added to ontology in P2 v0.2 review.
 Red Signs__033_1_0001,Red Signs/033_1_0001.png,sign_033,sign_033,traffic_signal_ahead,,codex_visual_review,,draft_single_review,0.99,Traffic signals ahead.
 Red Signs__052_1_0008_1_j,Red Signs/052_1_0008_1_j.png,sign_052,sign_052,stop,,codex_visual_review,,draft_single_review,0.99,Chinese stop sign.
 Red Signs__055_1_0031,Red Signs/055_1_0031.png,sign_055,sign_055,no_entry,,codex_visual_review,,draft_single_review,0.99,No entry.
 Red Signs__056_1_0010,Red Signs/056_1_0010.png,sign_056,sign_056,give_way,,codex_visual_review,,draft_single_review,0.99,Chinese give-way sign.
-Red Signs__057_0003_j,Red Signs/057_0003_j.png,sign_057,sign_057,,,codex_visual_review,,draft_single_review,0.9,Vehicle-class restriction with Chinese plaque; exact class requires review.
-Yellow Signs__032_1_0001_1_j,Yellow Signs/032_1_0001_1_j.png,sign_032,sign_032,roundabout_ahead,,codex_visual_review,,draft_single_review,0.97,Roundabout ahead.
-Yellow Signs__032_1_0002_1_j,Yellow Signs/032_1_0002_1_j.png,sign_032,sign_032,roundabout_ahead,,codex_visual_review,,draft_single_review,0.97,Roundabout ahead.
+Red Signs__057_0003_j,Red Signs/057_0003_j.png,sign_057,sign_057,stop_for_checking,,codex_visual_review,,draft_single_review,0.9,Owner confirmed stop for checking on 2026-06-26.
+Yellow Signs__032_1_0001_1_j,Yellow Signs/032_1_0001_1_j.png,sign_032,sign_032,roadway_diverges,,codex_visual_review,,draft_single_review,0.98,Owner corrected: split traffic / traffic diverges.
+Yellow Signs__032_1_0002_1_j,Yellow Signs/032_1_0002_1_j.png,sign_032,sign_032,roadway_diverges,,codex_visual_review,,draft_single_review,0.98,Owner corrected: split traffic / traffic diverges.
 Yellow Signs__034_1_0002,Yellow Signs/034_1_0002.png,sign_034,sign_034,general_caution,,codex_visual_review,,draft_single_review,0.99,Other danger/general caution.
 Yellow Signs__034_1_0003_1_j,Yellow Signs/034_1_0003_1_j.png,sign_034,sign_034,general_caution,,codex_visual_review,,draft_single_review,0.99,Other danger/general caution.
 Yellow Signs__035_1_0002,Yellow Signs/035_1_0002.png,sign_035,sign_035,pedestrian_crossing,,codex_visual_review,,draft_single_review,0.99,Pedestrian crossing.
 Yellow Signs__035_1_0003,Yellow Signs/035_1_0003.png,sign_035,sign_035,pedestrian_crossing,,codex_visual_review,,draft_single_review,0.99,Pedestrian crossing.
 Yellow Signs__035_1_0004,Yellow Signs/035_1_0004.png,sign_035,sign_035,pedestrian_crossing,,codex_visual_review,,draft_single_review,0.99,Pedestrian crossing.
-Yellow Signs__036_1_0014,Yellow Signs/036_1_0014.png,sign_036,sign_036,,,codex_visual_review,,draft_single_review,0.99,Bicycle crossing; exact warning class is not in catalogue v0.1.
-Yellow Signs__036_1_0016,Yellow Signs/036_1_0016.png,sign_036,sign_036,,,codex_visual_review,,draft_single_review,0.99,Bicycle crossing; exact warning class is not in catalogue v0.1.
-Yellow Signs__036_1_0019,Yellow Signs/036_1_0019.png,sign_036,sign_036,,,codex_visual_review,,draft_single_review,0.99,Bicycle crossing; exact warning class is not in catalogue v0.1.
+Yellow Signs__036_1_0014,Yellow Signs/036_1_0014.png,sign_036,sign_036,bicycle_crossing,,codex_visual_review,,draft_single_review,0.99,Bicycle crossing; added to ontology in P2 v0.2 review.
+Yellow Signs__036_1_0016,Yellow Signs/036_1_0016.png,sign_036,sign_036,bicycle_crossing,,codex_visual_review,,draft_single_review,0.99,Bicycle crossing; added to ontology in P2 v0.2 review.
+Yellow Signs__036_1_0019,Yellow Signs/036_1_0019.png,sign_036,sign_036,bicycle_crossing,,codex_visual_review,,draft_single_review,0.99,Bicycle crossing; added to ontology in P2 v0.2 review.
 Yellow Signs__037_0019,Yellow Signs/037_0019.png,sign_037,sign_037,children_crossing,,codex_visual_review,,draft_single_review,0.98,Children/school crossing.
 Yellow Signs__037_0021,Yellow Signs/037_0021.png,sign_037,sign_037,children_crossing,,codex_visual_review,,draft_single_review,0.98,Children/school crossing.
 Yellow Signs__037_1_0009,Yellow Signs/037_1_0009.png,sign_037,sign_037,children_crossing,,codex_visual_review,,draft_single_review,0.98,Children/school crossing.
 Yellow Signs__038_0008,Yellow Signs/038_0008.png,sign_038,sign_038,double_curve,,codex_visual_review,,draft_single_review,0.93,Winding/double curve.
 Yellow Signs__040_0011,Yellow Signs/040_0011.png,sign_040,sign_040,steep_descent,,codex_visual_review,,draft_single_review,0.95,Steep descent.
-Yellow Signs__042_0002_j,Yellow Signs/042_0002_j.png,sign_042,sign_042,,,codex_visual_review,,draft_single_review,0.99,Chinese text for slow; exact text class is not in catalogue v0.1.
-Yellow Signs__042_0016_j,Yellow Signs/042_0016_j.png,sign_042,sign_042,,,codex_visual_review,,draft_single_review,0.99,Chinese text for slow; exact text class is not in catalogue v0.1.
+Yellow Signs__042_0002_j,Yellow Signs/042_0002_j.png,sign_042,sign_042,slow_text,,codex_visual_review,,draft_single_review,0.99,Chinese slow text sign; added to ontology in P2 v0.2 review.
+Yellow Signs__042_0016_j,Yellow Signs/042_0016_j.png,sign_042,sign_042,slow_text,,codex_visual_review,,draft_single_review,0.99,Chinese slow text sign; added to ontology in P2 v0.2 review.
 Yellow Signs__043_1_0021,Yellow Signs/043_1_0021.png,sign_043,sign_043,side_road_right,,codex_visual_review,,draft_single_review,0.97,Side road on right.
-Yellow Signs__045_1_0004,Yellow Signs/045_1_0004.png,sign_045,sign_045,road_narrows_right,,codex_visual_review,,draft_single_review,0.91,Road narrows on right.
-Yellow Signs__045_1_0009,Yellow Signs/045_1_0009.png,sign_045,sign_045,road_narrows_right,,codex_visual_review,,draft_single_review,0.91,Road narrows on right.
+Yellow Signs__045_1_0004,Yellow Signs/045_1_0004.png,sign_045,sign_045,residential_area_ahead,,codex_visual_review,,draft_single_review,0.97,Village/residential area ahead warning; verified against CN road sign warning 23 reference.
+Yellow Signs__045_1_0009,Yellow Signs/045_1_0009.png,sign_045,sign_045,residential_area_ahead,,codex_visual_review,,draft_single_review,0.97,Village/residential area ahead warning; verified against CN road sign warning 23 reference.
 Yellow Signs__046_0005_j,Yellow Signs/046_0005_j.png,sign_046,sign_046,double_curve,,codex_visual_review,,draft_single_review,0.95,Winding/double curve.
 Yellow Signs__047_0002,Yellow Signs/047_0002.png,sign_047,sign_047,railway_crossing,,codex_visual_review,,draft_single_review,0.97,Railway crossing with train pictogram.
 Yellow Signs__047_0005,Yellow Signs/047_0005.png,sign_047,sign_047,railway_crossing,,codex_visual_review,,draft_single_review,0.97,Railway crossing with train pictogram.
@@ -82,4 +82,4 @@ Yellow Signs__047_1_0003,Yellow Signs/047_1_0003.png,sign_047,sign_047,railway_c
 Yellow Signs__048_0004,Yellow Signs/048_0004.png,sign_048,sign_048,roadworks,,codex_visual_review,,draft_single_review,0.98,Roadworks.
 Yellow Signs__049_1_0010,Yellow Signs/049_1_0010.png,sign_049,sign_049,uneven_road,,codex_visual_review,,draft_single_review,0.94,Uneven road.
 Yellow Signs__050_1_0003,Yellow Signs/050_1_0003.png,sign_050,sign_050,railway_crossing,,codex_visual_review,,draft_single_review,0.92,Gated railway crossing.
-Yellow Signs__051_0005_j,Yellow Signs/051_0005_j.png,sign_051,sign_051,,,codex_visual_review,,draft_single_review,0.55,Vehicle-related hazard; pictogram meaning requires independent review.
+Yellow Signs__051_0005_j,Yellow Signs/051_0005_j.png,sign_051,sign_051,tractors_ahead,,codex_visual_review,,draft_single_review,0.98,Owner corrected: watch out for tractors.
