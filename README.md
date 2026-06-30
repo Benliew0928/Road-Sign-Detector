@@ -7,6 +7,8 @@ deterministic ADAS recommendations.
 
 The authoritative implementation tracker is
 [GREENFIELD_TECHNICAL_DEVELOPMENT_PLAN.md](./GREENFIELD_TECHNICAL_DEVELOPMENT_PLAN.md).
+The clean data collection and cleaning tracker is
+[DATA_PROGRESS_TRACKER.md](./DATA_PROGRESS_TRACKER.md).
 The verified P0-P14 implementation notes and manual instructions are in
 [TECHNICAL_DEVELOPMENT_REPORT_P0_P14.md](./TECHNICAL_DEVELOPMENT_REPORT_P0_P14.md).
 
@@ -30,6 +32,26 @@ PP-OCRv6 experiments:
 
 The experimental profile is visibly labelled and is not promoted to the
 production model registry.
+
+For phone-camera streaming on a local Wi-Fi or hotspot:
+
+```powershell
+.\scripts\run_phone.ps1
+```
+
+Then open the dashboard, choose **Phone**, and scan the QR code. Mobile camera
+permission requires HTTPS, so trust the generated local certificate if the phone
+browser asks.
+
+For phone-camera streaming through a trusted public HTTPS tunnel:
+
+```powershell
+.\scripts\run_public_phone.ps1 -Config configs\inference\experimental.yaml -Port 8443
+```
+
+Use this when local Wi-Fi blocks phone-to-laptop access. The local/offline path
+above remains available; see [docs/P15_PUBLIC_TUNNEL.md](./docs/P15_PUBLIC_TUNNEL.md)
+for tunnel setup and operator-token behavior.
 
 ## Development
 

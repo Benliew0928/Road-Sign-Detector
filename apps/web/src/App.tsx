@@ -13,6 +13,7 @@ import {
   Radio,
   RotateCcw,
   ShieldCheck,
+  Smartphone,
   Upload,
   Volume2,
   VolumeX,
@@ -24,9 +25,11 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { getHealth, inferBatch, inferImage, inferVideo } from "./api";
 import { BatchResults, type BatchDisplayItem } from "./components/BatchResults";
 import { EventTimeline } from "./components/EventTimeline";
+import { PhoneConnectPanel } from "./components/PhoneConnectPanel";
 import { SignPanel } from "./components/SignPanel";
 import { VideoSurface } from "./components/VideoSurface";
 import { VideoResults } from "./components/VideoResults";
+import { useAdvisoryAudio } from "./hooks/useAdvisoryAudio";
 import { useCameraStream } from "./hooks/useCameraStream";
 import type {
   DisplayLanguage,
@@ -50,6 +53,22 @@ function pipelineLabel(mode: FrameResult["mode"] | null): string {
   if (mode === "baseline") return "Classical baseline";
   if (mode === "auto") return "Automatic fallback pipeline";
   return "Checking pipeline";
+}
+
+function isLocalOrPrivateHost(hostname: string): boolean {
+  const host = hostname.replace(/^\[|\]$/g, "").toLowerCase();
+  if (!host || host === "localhost" || host === "::1") return true;
+  if (host.endsWith(".local")) return true;
+  const octets = host.split(".").map((part) => Number(part));
+  if (octets.length !== 4 || octets.some((part) => !Number.isInteger(part))) return false;
+  const [first, second] = octets;
+  return (
+    first === 10 ||
+    first === 127 ||
+    first === 169 ||
+    (first === 172 && second >= 16 && second <= 31) ||
+    (first === 192 && second === 168)
+  );
 }
 
 export default function App() {
@@ -81,6 +100,11 @@ export default function App() {
   }, []);
 
   const camera = useCameraStream(handleResult);
+  const advisoryAudio = useAdvisoryAudio({ result, language, muted });
+  const publicNetworkHost = useMemo(
+    () => !isLocalOrPrivateHost(window.location.hostname),
+    [],
+  );
 
   const refreshHealth = useCallback(async () => {
     const controller = new AbortController();
@@ -134,12 +158,21 @@ export default function App() {
 
   const switchMode = useCallback(
     (mode: SourceMode) => {
+      if (mode === "camera" && publicNetworkHost) {
+        camera.stop();
+        setSourceMode("phone");
+        setResult(null);
+        setOperationError(
+          "Direct camera streaming is disabled on public links. Use the Phone QR flow from the local dashboard so the camera connection includes its access token.",
+        );
+        return;
+      }
       if (mode !== "camera") camera.stop();
       setSourceMode(mode);
       setResult(null);
       setOperationError(null);
     },
-    [camera],
+    [camera, publicNetworkHost],
   );
 
   const handleImage = useCallback(
@@ -206,6 +239,7 @@ export default function App() {
       setBusy(true);
       setResult(null);
       setVideoSummary(null);
+      setHistory([]);
       setOperationError(null);
       const nextUrl = URL.createObjectURL(file);
       setVideoUrl((current) => {
@@ -213,7 +247,14 @@ export default function App() {
         return nextUrl;
       });
       try {
-        setVideoSummary(await inferVideo(file));
+        const response = await inferVideo(file);
+        setVideoSummary(response);
+        if (response.representative_result) {
+          setResult(response.representative_result);
+        }
+        if (response.event_samples?.length) {
+          setHistory([...response.event_samples].reverse().slice(0, 40));
+        }
       } catch (cause) {
         setOperationError(cause instanceof Error ? cause.message : "Video analysis failed.");
       } finally {
@@ -283,6 +324,12 @@ export default function App() {
               <button
                 className={sourceMode === "camera" ? "active" : ""}
                 onClick={() => switchMode("camera")}
+                disabled={publicNetworkHost}
+                title={
+                  publicNetworkHost
+                    ? "Use Phone mode from the local dashboard for public camera streaming"
+                    : "Camera"
+                }
               >
                 <Camera size={17} />
                 Camera
@@ -308,6 +355,13 @@ export default function App() {
                 <Film size={17} />
                 Video
               </button>
+              <button
+                className={sourceMode === "phone" ? "active" : ""}
+                onClick={() => switchMode("phone")}
+              >
+                <Smartphone size={17} />
+                Phone
+              </button>
             </div>
           </section>
 
@@ -322,7 +376,7 @@ export default function App() {
                 <button
                   className="primary-command"
                   onClick={() => void camera.start()}
-                  disabled={!backendOnline || camera.status === "connecting"}
+                  disabled={!backendOnline || camera.status === "connecting" || publicNetworkHost}
                 >
                   <Radio size={18} />
                   {camera.status === "connecting" ? "Connecting" : "Start camera"}
@@ -373,6 +427,11 @@ export default function App() {
                 <Upload size={18} />
                 {busy ? "Analyzing batch" : "Choose images"}
               </button>
+            </section>
+          ) : sourceMode === "phone" ? (
+            <section className="source-actions phone-source-note">
+              <Smartphone size={18} />
+              <span>Open the QR panel and stream from a phone browser.</span>
             </section>
           ) : (
             <section className="source-actions">
@@ -469,6 +528,8 @@ export default function App() {
         <section className="primary-work">
           {sourceMode === "batch" ? (
             <BatchResults items={batchItems} busy={busy} />
+          ) : sourceMode === "phone" ? (
+            <PhoneConnectPanel busy={busy} />
           ) : sourceMode === "video" ? (
             <VideoResults videoUrl={videoUrl} summary={videoSummary} busy={busy} />
           ) : (
@@ -479,9 +540,9 @@ export default function App() {
               result={result}
             />
           )}
-          {(operationError || camera.error || healthError) && (
+          {(operationError || camera.error || healthError || advisoryAudio.error) && (
             <div className="error-banner" role="alert">
-              {operationError || camera.error || healthError}
+              {operationError || camera.error || healthError || advisoryAudio.error}
             </div>
           )}
           <div className="work-footer">

@@ -120,11 +120,13 @@ or for the highest-confidence unknown candidate. Camera/video OCR is cached by
 stable track. Still-image and batch detections are treated as stable
 immediately.
 
-Track assignment uses global minimum-cost association over motion-predicted
-boxes, combining IoU and normalized center distance. It rebinds short
-occlusions, expires stale tracks, fuses semantic scores, and applies per-track
-announcement cooldowns. Full BoT-SORT ReID and camera-homography compensation
-remain future field-validation work.
+Track assignment now uses a configurable BoT-SORT/GMC adapter when available,
+with a sparse optical-flow IoU tracker fallback. It maps custom detector outputs
+to stable session-local track state, compensates camera translation in video,
+rebinds short occlusions, expires stale tracks, fuses semantic scores, and
+applies per-track announcement cooldowns. Synthetic stationary, moving-camera,
+occlusion, blur, and cooldown checks pass; owner real-footage testing remains
+recommended for final demonstration confidence.
 
 ## 4. Data And Provenance
 
@@ -829,7 +831,7 @@ approval work is:
 | P8 | Experimental models and small-sign comparison implemented | Recall/mask targets, negatives, and human mask review |
 | P9 | Experimental CNNs and embedding-gated unknown rejection implemented | Macro-F1/ECE/critical-recall targets and reviewed OOD AUROC |
 | P10 | Offline OCR implemented | Reviewed real-road multilingual evaluation |
-| P11 | Motion-aware tracker implemented | Full BoT-SORT/GMC and real moving-camera test |
+| P11 | Verified with configurable BoT-SORT/GMC adapter, sparse optical-flow fallback, and synthetic motion/blur report | Owner real-footage demonstration test |
 | P12 | Deterministic safety rules implemented | Independent safety review |
 | P13 | Verified | None |
 | P14 | Verified | None |

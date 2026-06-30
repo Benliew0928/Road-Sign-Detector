@@ -12,7 +12,7 @@ frozen dataset.
 
 | Source ID | Source | Task | Licence | Raw images reported by source | Local raw zip |
 |---|---|---|---|---:|---|
-| `roboflow_malaysia_road_sign_v1` | Malaysia Road Sign Dataset | Object detection | CC BY 4.0 | 23,068 generated images | `data/raw/roboflow/malaysia_road_sign_dataset_v1/test.v1i.yolov8.zip` |
+| `roboflow_malaysia_road_sign_v1` | Malaysia Road Sign Dataset | Object detection | CC BY 4.0 | 23,068 augmented/exported images | `data/raw/roboflow/malaysia_road_sign_dataset_v1/test.v1i.yolov8.zip` |
 | `roboflow_dr_samsudin_malaysia_road_sign` | Malaysia's Road Sign | Classification | Public Domain / CC0 metadata | 844 images | `data/raw/roboflow/dr_samsudin_malaysia_road_sign/Malaysia-s Road Sign.v1-1.folder.zip` |
 
 Source ledger:

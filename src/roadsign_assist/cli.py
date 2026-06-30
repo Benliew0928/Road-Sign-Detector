@@ -153,6 +153,19 @@ def build_parser() -> argparse.ArgumentParser:
     classifier_safety.add_argument("--labels", required=True)
     classifier_safety.add_argument("--output", required=True)
 
+    tracking_motion = subparsers.add_parser(
+        "evaluate-tracking-motion",
+        help="Run synthetic P11 tracking, camera-motion, blur, and cooldown checks.",
+    )
+    tracking_motion.add_argument(
+        "--output",
+        default="outputs/evaluation/tracking_motion",
+    )
+    tracking_motion.add_argument(
+        "--report",
+        default="docs/P11_TRACKING_MOTION_REPORT.md",
+    )
+
     detector_slices = subparsers.add_parser(
         "evaluate-detector-slices",
         help="Measure overall and normalized-area small-sign box recall.",
@@ -177,6 +190,9 @@ def build_parser() -> argparse.ArgumentParser:
         "--config",
         default="configs/inference/default.yaml",
     )
+    serve.add_argument("--ssl-certfile", default=None)
+    serve.add_argument("--ssl-keyfile", default=None)
+    serve.add_argument("--public-host", default=None)
 
     detector = subparsers.add_parser(
         "train-detector",
@@ -532,6 +548,17 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 0
 
+    if args.command == "evaluate-tracking-motion":
+        from roadsign_assist.evaluation.tracking import evaluate_tracking_motion
+
+        report = evaluate_tracking_motion(args.output, args.report)
+        print(
+            "P11 tracking motion evaluation complete: "
+            f"{report['summary']['passed_count']}/{report['summary']['scenario_count']} "
+            f"passed, id_switches={report['summary']['total_id_switches']}"
+        )
+        return 0 if report["passed"] else 1
+
     if args.command == "evaluate-detector-slices":
         from roadsign_assist.evaluation.detector import (
             evaluate_detector_recall_slices,
@@ -586,7 +613,16 @@ def main(argv: list[str] | None = None) -> int:
         import uvicorn
 
         os.environ["ROADSIGN_CONFIG"] = args.config
-        uvicorn.run("roadsign_api.main:app", host=args.host, port=args.port, reload=False)
+        if args.public_host:
+            os.environ["ROADSIGN_PUBLIC_HOST"] = args.public_host
+        uvicorn.run(
+            "roadsign_api.main:app",
+            host=args.host,
+            port=args.port,
+            reload=False,
+            ssl_certfile=args.ssl_certfile,
+            ssl_keyfile=args.ssl_keyfile,
+        )
         return 0
 
     if args.command == "train-detector":

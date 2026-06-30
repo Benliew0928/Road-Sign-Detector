@@ -19,6 +19,9 @@ ocr:
   enabled: true
   languages: [latin, chinese]
 tracking:
+  backend: auto
+  tracker_config_path: configs/tracking/botsort.yaml
+  gmc_method: sparseOptFlow
   match_iou: 0.30
   max_center_distance: 2.0
   min_stable_frames: 3

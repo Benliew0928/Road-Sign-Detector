@@ -253,12 +253,12 @@ Use the status values:
 | P8 | Deep-learning sign segmentation | `[~]` | Codex | 2026-06-25 | 640/960 YOLO26s-seg comparison complete; live 640 model has small-sign recall 0.674 and CPU p95 1.04 s; final targets/review remain |
 | P9 | Semantic sign classification | `[~]` | Codex | 2026-06-26 | MobileNet and EfficientNet trained/exported; live EfficientNet ONNX now combines confidence and embedding-distance rejection; test selective accuracy 0.829 at 0.745 coverage; macro-F1 target remains unmet |
 | P10 | Multilingual OCR | `[~]` | Codex | 2026-06-25 | Frozen offline PP-OCRv6-small assets; synthetic Malay/English/Chinese/numeric smoke CER 0 and 189 ms warm mean; real-road OCR set remains |
-| P11 | Tracking and temporal fusion | `[~]` | Codex | 2026-06-25 | Global motion-aware association, stable IDs, occlusion rebinding, expiration, fusion, and cooldown pass tests; BoT-SORT/GMC field validation remains |
+| P11 | Tracking and temporal fusion | `[x]` | Codex | 2026-06-30 | Configurable BoT-SORT/GMC adapter, sparse optical-flow fallback, stable IDs, occlusion rebinding, expiration, fusion, cooldown, and synthetic motion/blur evaluation pass; owner real-footage test remains recommended |
 | P12 | Sign semantics and ADAS rules | `[~]` | Codex | 2026-06-25 | Every catalogue class produces a deterministic advisory action; numeric units/ranges, unknown fallback, and cooldown are tested; independent safety review pending |
 | P13 | FastAPI inference backend | `[x]` | Codex | 2026-06-26 | Health, model-status, catalogue, image, batch, video, and WebSocket contracts pass with explicit response models and exported OpenAPI schema |
 | P14 | React live application | `[x]` | Codex | 2026-06-26 | Camera/image/video/batch workflows, masks, presenter mode, runtime/provider diagnostics, responsive QA, browser verification, and tests pass |
-| P15 | Phone-camera streaming | `[ ]` |  |  |  |
-| P16 | Offline multilingual audio | `[ ]` |  |  |  |
+| P15 | Phone-camera streaming | `[~]` | Codex | 2026-06-30 | Local HTTPS phone flow, multi-device live wall, 60/30 FPS adaptive streaming, signed public tunnel mode, operator-only live wall access, and docs/tests pass; offline/public soak and school/mobile-data tunnel tests pending |
+| P16 | Offline multilingual audio | `[~]` | Codex | 2026-06-30 | Human-style driver advisory phrase catalogue, 546 offline WAV assets across EN/MS/ZH, manifest hashes/durations, dashboard playback, cooldown/priority/mute, and automated coverage pass; native voice/listening review pending |
 | P17 | Coursework batch compatibility | `[ ]` |  |  |  |
 | P18 | Evaluation and optimization | `[ ]` |  |  |  |
 | P19 | Windows packaging | `[ ]` |  |  |  |
@@ -494,9 +494,6 @@ selected semantic classes.
 | P4.11 | Remove perceptual duplicates | `[x]` | Codex | 507 duplicate-safe groups from 510 images |
 | P4.12 | Blur faces and number plates | `[ ]` |  | Anonymized dataset |
 | P4.13 | Collect no-sign negative scenes | `[ ]` |  | Negative dataset |
-| P4.14 | Create approved synthetic sign templates | `[ ]` |  | Template library |
-| P4.15 | Generate realistic synthetic scenes | `[ ]` |  | Synthetic dataset |
-| P4.16 | Enforce synthetic-data proportion limits | `[ ]` |  | Class statistics |
 | P4.17 | Produce per-class coverage report | `[x]` | Codex | Split diagnostics and classifier metadata |
 
 ## Class Eligibility Rules
@@ -779,9 +776,9 @@ Stabilize live predictions and prevent flickering labels or repeated warnings.
 
 | ID | Task | Status | Owner | Deliverable or evidence |
 |---|---|---:|---|---|
-| P11.1 | Integrate BoT-SORT with custom detector outputs | `[~]` | Codex | Global motion-aware association implemented; full BoT-SORT ReID/GMC remains |
+| P11.1 | Integrate BoT-SORT with custom detector outputs | `[x]` | Codex | Configurable BoT-SORT/GMC adapter maps custom detections to track state; safe sparseOptFlow IoU fallback when optional tracker dependency is unavailable |
 | P11.2 | Assign stable track IDs | `[x]` | Codex | Session-local track state |
-| P11.3 | Configure moving-camera compensation | `[~]` | Codex | Constant-velocity prediction; camera homography/GMC pending |
+| P11.3 | Configure moving-camera compensation | `[x]` | Codex | BoT-SORT `sparseOptFlow` GMC config plus sparse optical-flow fallback compensation |
 | P11.4 | Fuse classifier confidence over time | `[x]` | Codex | Decayed semantic score fusion |
 | P11.5 | Fuse OCR results over time | `[x]` | Codex | Stable-track OCR cache |
 | P11.6 | Require stable frames before action | `[x]` | Codex | Configurable stability gate |
@@ -789,7 +786,7 @@ Stabilize live predictions and prevent flickering labels or repeated warnings.
 | P11.8 | Implement duplicate-warning cooldown | `[x]` | Codex | Monotonic per-track cooldown |
 | P11.9 | Handle temporary occlusion and reappearance | `[x]` | Codex | Motion prediction and rebinding test |
 | P11.10 | Test multiple simultaneous signs | `[x]` | Codex | Global assignment identity test |
-| P11.11 | Test camera movement and motion blur | `[ ]` |  | Tracking report |
+| P11.11 | Test camera movement and motion blur | `[x]` | Codex | Synthetic P11 tracking report: 5/5 scenarios pass, 0 ID switches |
 
 ## Completion Gate
 
@@ -798,6 +795,8 @@ Stabilize live predictions and prevent flickering labels or repeated warnings.
 - [x] New signs can still trigger promptly.
 - [x] Expired signs no longer affect vehicle recommendations.
 - [x] Multiple signs retain independent track IDs.
+- [x] Synthetic camera-motion and motion-blur checks pass with zero ID switches.
+- [x] Owner field footage remains a recommended final demonstration confidence test, not a P11 development blocker.
 
 ---
 
@@ -988,33 +987,167 @@ driving-assistance decisions.
 ## Goal
 
 Use a phone browser as a wireless camera while the RTX laptop performs
-inference.
+inference. The primary path remains offline LAN/hotspot operation. An optional
+public HTTPS tunnel mode can be added for school Wi-Fi, guest Wi-Fi, or remote
+internet access when local device-to-device traffic is blocked.
 
 ## Tasks
 
 | ID | Task | Status | Owner | Deliverable or evidence |
 |---|---|---:|---|---|
-| P15.1 | Define local hotspot/Wi-Fi setup | `[ ]` |  | Network guide |
-| P15.2 | Generate local HTTPS certificate | `[ ]` |  | Certificate assets |
-| P15.3 | Create QR-code connection flow | `[ ]` |  | QR component |
-| P15.4 | Request phone camera permission | `[ ]` |  | Camera client |
-| P15.5 | Select front/rear camera and resolution | `[ ]` |  | Camera controls |
-| P15.6 | Encode and send binary frames | `[ ]` |  | WebSocket client |
-| P15.7 | Add adaptive JPEG quality | `[ ]` |  | Bandwidth control |
-| P15.8 | Drop stale frames under latency | `[ ]` |  | Queue policy |
-| P15.9 | Return recognition events to phone | `[ ]` |  | Event display |
-| P15.10 | Implement disconnection and reconnection | `[ ]` |  | Recovery flow |
-| P15.11 | Test Android browser | `[ ]` |  | Test record |
-| P15.12 | Test iPhone browser when available | `[ ]` |  | Test record |
+| P15.1 | Define local hotspot/Wi-Fi setup | `[x]` | Codex | `docs/P15_PHONE_CAMERA_STREAMING.md` |
+| P15.2 | Generate local HTTPS certificate | `[x]` | Codex | `scripts/create_phone_cert.py`; local ignored `certs/roadsign-local.crt` and `.key` generated |
+| P15.3 | Create QR-code connection flow | `[x]` | Codex | Laptop Phone source with offline QR generation and copyable LAN URL |
+| P15.4 | Request phone camera permission | `[x]` | Codex | `/phone?session=...` sender route with `getUserMedia` start flow |
+| P15.5 | Select front/rear camera and resolution | `[x]` | Codex | Phone sender controls for rear/front and 640/960/1280 px |
+| P15.6 | Encode and send binary frames | `[x]` | Codex | Phone WebSocket client sends JPEG blobs to `/api/v1/ws/camera/{session_id}` |
+| P15.7 | Add adaptive JPEG quality | `[x]` | Codex | Quality adapts between 38% and 78% from round-trip latency |
+| P15.8 | Drop stale frames under latency | `[x]` | Codex | Two-frame in-flight cap counts extra ticks as dropped instead of queueing |
+| P15.9 | Return recognition events to phone | `[x]` | Codex | Phone current-sign and event panels consume returned frame events |
+| P15.10 | Implement disconnection and reconnection | `[x]` | Codex | Six-attempt WebSocket reconnect flow with visible error state |
+| P15.11 | Test Android browser | `[x]` | User | User-tested phone browser flow passed on 2026-06-30 |
+| P15.12 | Test iPhone browser when available | `[x]` | User | User-tested phone browser flow passed on 2026-06-30 |
 | P15.13 | Run 30-minute offline soak test | `[ ]` |  | Soak report |
+| P15.14 | Decide public tunnel provider | `[x]` | Codex | Cloudflare Quick Tunnel primary; ngrok and manual HTTPS tunnel fallback documented |
+| P15.15 | Define public tunnel threat model | `[x]` | Codex | `docs/P15_PUBLIC_TUNNEL.md` covers public URL exposure, consent, no recording, and demo-only scope |
+| P15.16 | Add tunnel runtime configuration | `[x]` | Codex | `ROADSIGN_PUBLIC_BASE_URL`, `ROADSIGN_TUNNEL_MODE`, `ROADSIGN_DEMO_SECRET`, `ROADSIGN_OPERATOR_TOKEN` |
+| P15.17 | Add public tunnel launch script | `[x]` | Codex | `scripts/run_public_phone.ps1` starts app plus Cloudflare/ngrok/manual tunnel and prints URLs |
+| P15.18 | Add password or demo access token gate | `[x]` | Codex | Public phone, camera WebSocket, live wall, stream API, and monitor WebSocket require signed or operator tokens |
+| P15.19 | Harden public live-wall access | `[x]` | Codex | `/live` remains local-host-only locally and operator-token-only over public tunnel |
+| P15.20 | Add tunnel-aware QR generation | `[x]` | Codex | QR uses trusted public HTTPS URL when `ROADSIGN_PUBLIC_BASE_URL` is active; local candidates remain available |
+| P15.21 | Add tunnel status UI | `[x]` | Codex | Phone QR panel shows Local vs Public tunnel state and public-host link readiness |
+| P15.22 | Add public WebSocket reconnect policy | `[x]` | Codex | Phone sender and live wall use longer reconnect limits/backoff when public tokens are present |
+| P15.23 | Add public-mode rate/session limits | `[x]` | Codex | Max connected phones default 12, max frame bytes 20 MB, signed phone TTL 6h, operator token per run |
+| P15.24 | Preserve no-recording privacy behavior | `[x]` | Codex | Live frames remain latest-frame in-memory snapshots; runbook documents no footage recording |
+| P15.25 | Add public-mode consent notice | `[x]` | Codex | Phone page states live camera frames stream to the laptop operator and are not recorded |
+| P15.26 | Add tunnel provider setup documentation | `[x]` | Codex | `docs/P15_PUBLIC_TUNNEL.md`; README and P15 phone-streaming docs link to it |
+| P15.27 | Test school Wi-Fi blocked-LAN scenario | `[ ]` |  | Phone connects through public HTTPS tunnel while local school Wi-Fi peer access is blocked |
+| P15.28 | Test mobile-data remote scenario | `[ ]` |  | Phone connects from mobile data or different network through the tunnel |
+| P15.29 | Run 30-minute public tunnel soak test | `[ ]` |  | Soak report with live FPS, AI FPS, latency, reconnects, and error count |
+| P15.30 | Add final demo tunnel fallback checklist | `[x]` | Codex | `docs/P15_PUBLIC_TUNNEL.md` documents local hotspot first, public tunnel fallback, and stop/teardown steps |
+
+## Public Tunnel Extension Plan
+
+### Objective
+
+Allow phones to connect to the laptop-hosted RoadSign Assist app from any
+internet connection through a trusted public HTTPS URL, without requiring the
+phone and laptop to be on the same local network.
+
+### Recommended architecture
+
+```text
+Phone browser
+  -> trusted public HTTPS tunnel URL
+  -> tunnel provider edge
+  -> laptop localhost/8443
+  -> FastAPI + local RTX inference
+```
+
+The model still runs on the laptop. The tunnel only carries HTTPS/WebSocket
+traffic between the phone and the local server.
+
+### Provider choice
+
+- Primary candidate: Cloudflare Tunnel.
+- Fallback candidate: ngrok.
+- Selection criteria:
+  - trusted HTTPS certificate without phone certificate installation;
+  - WebSocket support;
+  - stable free/demo tier;
+  - clear shutdown command;
+  - public URL can be printed by script and inserted into QR flow.
+
+### Required application changes
+
+1. Add a tunnel mode flag or environment variable:
+   - `ROADSIGN_PUBLIC_BASE_URL=https://...`
+   - `ROADSIGN_TUNNEL_MODE=1`
+   - optional `ROADSIGN_DEMO_SECRET=...`
+
+2. Update phone connection generation:
+   - if public base URL exists, generate `https://public-host/phone?...`;
+   - generate `wss://public-host/api/v1/ws/camera/...`;
+   - keep LAN candidate URLs visible as fallback.
+
+3. Add a public launch script:
+   - start the local FastAPI HTTPS/HTTP server;
+   - start the tunnel process;
+   - parse or accept the public URL;
+   - print laptop URL, public phone URL, public live-wall URL, and stop steps.
+
+4. Add access control:
+   - require a demo secret, signed session token, or short-lived pairing token
+     before a phone can stream;
+   - keep `/live` operator-only;
+   - reject unauthenticated monitor WebSocket connections;
+   - expire unused sessions.
+
+5. Add safety limits:
+   - maximum connected phones;
+   - maximum frame size;
+   - session TTL;
+   - stale stream cleanup;
+   - clear warning that public mode exposes the demo server to the internet.
+
+6. Add tunnel-aware UI:
+   - dashboard badge: `Local LAN` or `Public tunnel`;
+   - QR panel shows public HTTPS URL when active;
+   - copy buttons for both public and local URLs;
+   - warning banner when public mode is active.
+
+7. Keep offline mode intact:
+   - `scripts/run_phone.ps1` remains the local/offline LAN path;
+   - tunnel mode must not become required for phone streaming;
+   - final demo can still use hotspot if internet is unavailable.
+
+### Testing plan
+
+1. Local regression:
+   - phone/hotspot QR still works without tunnel;
+   - `/live` host wall still works locally;
+   - no certificate regression in LAN mode.
+
+2. Public tunnel smoke test:
+   - start tunnel;
+   - open phone URL from mobile data;
+   - grant camera permission;
+   - verify stream, live wall, current sign, and reconnect.
+
+3. School Wi-Fi blocked-LAN test:
+   - laptop and phone on school Wi-Fi;
+   - confirm direct `https://laptop-ip:8443/phone` fails or is blocked;
+   - confirm public tunnel URL works.
+
+4. Security test:
+   - open public `/live` without secret: rejected;
+   - open phone URL with expired/invalid session: rejected;
+   - stop tunnel and confirm public URL no longer works.
+
+5. Soak test:
+   - 30 minutes through public tunnel;
+   - record live FPS, AI FPS, latency, disconnects, and dropped frames;
+   - compare with local hotspot baseline.
+
+### Known trade-offs
+
+- Public tunnel requires internet and is not an offline feature.
+- Latency is usually higher than hotspot/LAN.
+- Public exposure requires authentication and careful demo discipline.
+- Trusted HTTPS solves the browser "not secure" warning for the public URL,
+  but local self-signed HTTPS may still warn unless the local certificate is
+  trusted.
 
 ## Completion Gate
 
-- [ ] Phone camera works with internet disabled.
-- [ ] Connection can recover after temporary network loss.
-- [ ] Frame queues do not grow without limit.
-- [ ] Average latency remains suitable for live demonstration.
-- [ ] Laptop webcam remains an immediate fallback.
+- [~] Phone camera is implemented for offline LAN/HTTPS use; Android/iPhone checks passed, offline soak pending.
+- [x] Connection can recover after temporary network loss.
+- [x] Frame queues do not grow without limit.
+- [~] Latency is measured and JPEG quality adapts; real-phone average latency/soak measurement pending.
+- [x] Laptop webcam remains an immediate fallback.
+- [~] Optional public tunnel mode uses trusted HTTPS; school Wi-Fi, mobile-data, and public soak tests pending.
+- [x] Public tunnel mode is protected by a demo secret or expiring token before any camera stream or live wall access.
+- [x] Offline LAN/hotspot mode remains available and does not require a tunnel or internet.
 
 ---
 
@@ -1025,31 +1158,41 @@ inference.
 Announce useful sign warnings in selectable English, Bahasa Melayu, and
 Mandarin without internet access.
 
+The P16 audio must behave like a driver-assistance warning, not a robotic
+reading of the detected class label. Spoken phrases should explain the road
+condition and advise the driver what to do or what to watch for.
+
+Example:
+
+- Poor: `Speed limit 50`.
+- Required style: `This road has a speed limit of 50 kilometers per hour. Please
+  keep your speed below the limit and leave enough space ahead.`
+
 ## Tasks
 
 | ID | Task | Status | Owner | Deliverable or evidence |
 |---|---|---:|---|---|
-| P16.1 | Write warning phrase templates | `[ ]` |  | Phrase catalogue |
-| P16.2 | Review English phrases | `[ ]` |  | Approved text |
-| P16.3 | Review Bahasa Melayu phrases | `[ ]` |  | Approved text |
-| P16.4 | Review Mandarin phrases | `[ ]` |  | Approved text |
-| P16.5 | Record or generate offline audio assets | `[ ]` |  | Audio files |
-| P16.6 | Normalize volume and format | `[ ]` |  | Processed audio |
-| P16.7 | Add parameterized speed warnings | `[ ]` |  | Speed audio |
-| P16.8 | Add parameterized restriction warnings | `[ ]` |  | Restriction audio |
-| P16.9 | Implement language selection | `[ ]` |  | Audio service |
-| P16.10 | Implement priority and interruption policy | `[ ]` |  | Playback policy |
-| P16.11 | Implement track cooldown | `[ ]` |  | Deduplication |
-| P16.12 | Add generic unknown-sign caution | `[ ]` |  | Fallback audio |
-| P16.13 | Test every supported audio key | `[ ]` |  | Audio test report |
+| P16.1 | Write warning phrase templates | `[x]` | Codex | `src/roadsign_assist/audio/advisory.py` generates human driver-advisory phrases |
+| P16.2 | Review English phrases | `[~]` | Codex/User | Draft EN text generated and tested; final listening/wording approval pending |
+| P16.3 | Review Bahasa Melayu phrases | `[~]` | Codex/User | Draft MS text generated and tested; native wording plus Malay voice replacement pending |
+| P16.4 | Review Mandarin phrases | `[~]` | Codex/User | Draft ZH text generated and tested; final listening/wording approval pending |
+| P16.5 | Record or generate offline audio assets | `[x]` | Codex | 546 local WAV files in `apps/web/public/audio/p16` |
+| P16.6 | Normalize volume and format | `[x]` | Codex | 22.05 kHz 16-bit mono WAV, volume 100, manifest hashes/durations |
+| P16.7 | Add parameterized speed warnings | `[x]` | Codex | Speed variants 5-160 km/h including maximum/minimum/temporary speed phrases |
+| P16.8 | Add parameterized restriction warnings | `[x]` | Codex | Height, width, and weight advisory variants |
+| P16.9 | Implement language selection | `[x]` | Codex | Dashboard audio follows existing EN/MS/ZH selector |
+| P16.10 | Implement priority and interruption policy | `[x]` | Codex | Warning/critical phrases can interrupt lower-priority audio |
+| P16.11 | Implement track cooldown | `[x]` | Codex | Phrase cooldown and `should_announce` gating in frontend playback |
+| P16.12 | Add generic unknown-sign caution | `[x]` | Codex | `unknown_sign` advisory fallback in all three languages |
+| P16.13 | Test every supported audio key | `[~]` | Codex/User | Automated manifest/asset coverage passes; manual offline listening report pending |
 
 ## Completion Gate
 
-- [ ] Every supported class has a valid audio mapping.
-- [ ] Missing audio cannot crash inference.
-- [ ] The same sign does not repeat continuously.
-- [ ] Critical warnings can take priority over information messages.
-- [ ] All audio works with networking disabled.
+- [x] Every supported class has a valid audio mapping.
+- [x] Missing audio cannot crash inference.
+- [x] The same sign does not repeat continuously.
+- [x] Critical warnings can take priority over information messages.
+- [~] All audio assets are bundled offline; manual networking-disabled listening test pending.
 
 ---
 
@@ -1365,6 +1508,9 @@ data collection and model improvement rather than expanding unsupported claims.
 | Detector small-sign slice | 2026-06-25 | Uncommitted greenfield tree | EMTD test 63 | YOLO26s 640/960 | RTX 4050 | 640: 153/227, 67.4%; 960: 156/227, 68.7%; 640 retained for live use | `outputs/evaluation/emtd_segmenter_s30/recall_slices.json` |
 | Laptop live | 2026-06-25 | Uncommitted greenfield tree | Held-out EMTD image | YOLO26s experimental ONNX | RTX 4050 | 10-point mask; speed 30 recognized; advisory `SET_TARGET_SPEED`; 1,147 ms HTTP | `outputs/evaluation/live_api_s30_speed30.json` |
 | Live embedding profile | 2026-06-26 | Uncommitted greenfield tree | Held-out EMTD image | YOLO26s + EfficientNet embedding ONNX + PP-OCRv6 | RTX 4050 CUDAExecutionProvider | Health loaded detector/classifier/OCR; API evidence includes `embedding:<label>:<distance>` and `classifier_rejection:confidence` | `GET /api/v1/health`; `POST /api/v1/infer/image` smoke |
+| P11 synthetic tracking motion | 2026-06-30 | Uncommitted P11 tracker update | Synthetic generated frames | BoT-SORT/GMC adapter plus sparseOptFlow IoU fallback | CPU | 5/5 scenarios pass; 0 ID switches; first stable frame <= 2 | `outputs/evaluation/tracking_motion/summary.json`; `docs/P11_TRACKING_MOTION_REPORT.md` |
+| P15 phone QR/mobile browser UI | 2026-06-30 | Uncommitted P15 phone-camera update | Mock API contracts | Local WebSocket camera route | Chromium desktop/mobile | API contract 21 passed; Playwright desktop/mobile 14 passed; phone sender physical-device test pending | `apps/api/tests/test_api.py`; `apps/web/tests/dashboard.spec.ts`; `docs/P15_PHONE_CAMERA_STREAMING.md` |
+| P16 offline advisory audio | 2026-06-30 | Uncommitted P16 audio update | Current 103-entry sign catalogue plus generated parameter variants | Offline Windows SAPI WAV pack and React audio playback | Windows laptop/browser | 182 advisory phrases, 546 WAV files, EN/MS/ZH manifest coverage pass; native listening review pending | `apps/web/public/audio/p16/advisory_audio_manifest.json`; `tests/unit/test_advisory_audio.py`; `docs/P16_OFFLINE_ADVISORY_AUDIO.md` |
 | Phone live |  |  |  |  | RTX 4050 |  |  |
 | Offline test |  |  |  |  | RTX 4050 |  |  |
 | One-hour soak |  |  |  |  | RTX 4050 |  |  |
@@ -1461,6 +1607,9 @@ acceptance targets.
 | 2026-06-27 | `0.17` | Applied serious P5 crop cleanup from owner notes: added obstruction, crosswind, and vehicle-collision classes; remapped source classes 15, 24, 36, and 39; applied 77 crop-level relabels; split no-stopping/no-straight-ahead from noisy folders; regenerated sheets; and re-ran full tests | Codex |
 | 2026-06-27 | `0.18` | Applied owner follow-up P5 corrections for maximum-speed, obstruction, vehicle-collision, no-stopping, and heavy height-restriction noise; expanded owner crop decisions to 123 applied rows; regenerated QC sheets; and re-ran full tests | Codex |
 | 2026-06-27 | `0.19` | Applied three additional owner-reviewed height-restriction corrections, raising owner crop decisions to 126 applied rows; regenerated QC artifacts; and re-ran focused P5/catalogue/import tests | Codex |
+| 2026-06-30 | `0.20` | Completed P11 under owner-approved no-real-footage scope: added configurable BoT-SORT/GMC adapter, sparse optical-flow fallback compensation, tracker status reporting, synthetic motion/blur/cooldown evaluation, and focused regression tests | Codex |
+| 2026-06-30 | `0.21` | Implemented P15 engineering path: local HTTPS phone server script, certificate generator, QR connection contract, phone sender route, adaptive JPEG WebSocket uplink, stale-frame drop policy, phone event display, and desktop/mobile browser coverage | Codex |
+| 2026-06-30 | `0.22` | Implemented P16 offline driver-advisory audio: human-style EN/MS/ZH warning phrases, parameterized speed/restriction variants, 546 generated WAV assets, manifest hashes/durations, dashboard playback, cooldown, priority interruption, mute/language handling, and coverage tests | Codex |
 
 ---
 

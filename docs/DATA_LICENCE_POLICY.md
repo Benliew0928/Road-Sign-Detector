@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Every image, video, annotation, synthetic template, and model weight used by
+Every image, video, annotation, and model weight used by
 RoadSign Assist must have documented permission for the intended academic use.
 An accessible download is not sufficient evidence of permission.
 
@@ -66,4 +66,3 @@ For every accepted source, preserve:
 Faces and number plates must be blurred before data enters an accepted release.
 Raw private footage must remain outside Git and be stored only as long as
 needed to create the anonymized derivative.
-

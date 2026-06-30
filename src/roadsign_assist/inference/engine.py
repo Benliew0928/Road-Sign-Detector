@@ -26,8 +26,9 @@ from roadsign_assist.inference.models import (
 from roadsign_assist.ocr.engine import MultilingualOCREngine
 from roadsign_assist.paths import project_path
 from roadsign_assist.semantics.rules import SemanticRuleEngine
+from roadsign_assist.tracking.factory import build_tracker
 from roadsign_assist.tracking.fusion import update_semantic_scores
-from roadsign_assist.tracking.iou_tracker import IoUTracker, TrackState
+from roadsign_assist.tracking.iou_tracker import TrackState
 
 LOGGER = logging.getLogger(__name__)
 
@@ -86,12 +87,7 @@ class InferenceEngine:
             self.ocr = shared.ocr
             self.rules = shared.rules
         tracking = self.config["tracking"]
-        self.tracker = IoUTracker(
-            match_iou=float(tracking.get("match_iou", 0.30)),
-            max_center_distance=float(tracking.get("max_center_distance", 2.0)),
-            min_stable_frames=int(tracking["min_stable_frames"]),
-            max_missed_frames=int(tracking["max_missed_frames"]),
-        )
+        self.tracker = build_tracker(tracking)
         self.frame_id = 0
         self._ocr_cache: dict[int, OCRModel] = {}
 
@@ -160,6 +156,7 @@ class InferenceEngine:
             "classifier_available": self.classifier.available,
             "classifier_loaded": bool(getattr(self.classifier, "loaded", True)),
             "classifier_providers": classifier_providers,
+            "tracker": self.tracker.name,
             "ocr_available": self.ocr.available,
             "ocr_loaded": self.ocr.loaded,
             "ocr_load_error": self.ocr.load_error,
@@ -213,7 +210,7 @@ class InferenceEngine:
         frame_id = self.frame_id
         self.frame_id += 1
         detections = self.detector.detect(image)
-        assignments = self.tracker.update(detections)
+        assignments = self.tracker.update(detections, image=image)
         events: list[SignEventModel] = []
 
         active_ids = {track.track_id for _, track in assignments}

@@ -87,7 +87,48 @@ export interface VideoInferenceResponse {
   frames_read: number;
   sampled_frames: number;
   events: number;
+  event_samples: SignEvent[];
+  representative_result: FrameResult | null;
 }
+
+export interface PhoneConnectionResponse {
+  session_id: string;
+  phone_url: string;
+  websocket_url: string;
+  candidate_urls: string[];
+  https: boolean;
+  camera_requires_https: boolean;
+  mode: "local" | "public_tunnel";
+  public_base_url: string | null;
+  access_token: string | null;
+  operator_live_url: string | null;
+}
+
+export interface PhoneStreamSnapshot {
+  stream_id: string;
+  session_id: string;
+  device_id: string | null;
+  label: string;
+  connected_at: number;
+  updated_at: number;
+  frame_seq: number;
+  width: number | null;
+  height: number | null;
+  jpeg_base64: string | null;
+  result: FrameResult | null;
+  live_fps: number;
+  inference_fps: number;
+  inference_pending: boolean;
+  inference_frame_seq: number;
+}
+
+export interface PhoneStreamsResponse {
+  streams: PhoneStreamSnapshot[];
+}
+
+export type PhoneMonitorMessage =
+  | { type: "snapshot"; streams: PhoneStreamSnapshot[] }
+  | { type: "update"; stream: PhoneStreamSnapshot };
 
 export interface HealthResponse {
   status: "ok" | "degraded";
@@ -109,6 +150,7 @@ export interface HealthResponse {
     classifier_available: boolean;
     classifier_loaded?: boolean;
     classifier_providers?: string[];
+    tracker: string;
     ocr_available: boolean;
     ocr_loaded?: boolean;
     ocr_load_error?: string | null;
@@ -116,5 +158,5 @@ export interface HealthResponse {
   };
 }
 
-export type SourceMode = "camera" | "image" | "video" | "batch";
+export type SourceMode = "camera" | "image" | "video" | "batch" | "phone";
 export type DisplayLanguage = "en" | "ms" | "zh";

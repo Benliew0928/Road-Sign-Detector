@@ -4,7 +4,7 @@ import { cameraSocketUrl } from "../api";
 import type { FrameResult } from "../types";
 
 type CameraStatus = "idle" | "connecting" | "live" | "error";
-type CameraMessage = FrameResult | { error: string };
+export type CameraMessage = FrameResult | { error: string };
 
 interface CameraStream {
   videoRef: React.RefObject<HTMLVideoElement | null>;

@@ -2,6 +2,8 @@ import type {
   BatchInferenceResponse,
   HealthResponse,
   ImageInferenceResponse,
+  PhoneConnectionResponse,
+  PhoneStreamsResponse,
   VideoInferenceResponse,
 } from "./types";
 
@@ -41,8 +43,41 @@ export async function inferVideo(file: File): Promise<VideoInferenceResponse> {
   );
 }
 
-export function cameraSocketUrl(sessionId: string): string {
+export async function getPhoneConnection(operatorToken?: string): Promise<PhoneConnectionResponse> {
+  const path = operatorToken
+    ? `/api/v1/phone/connection?operator=${encodeURIComponent(operatorToken)}`
+    : "/api/v1/phone/connection";
+  return parseJson<PhoneConnectionResponse>(await fetch(path));
+}
+
+export async function getPhoneStreams(
+  signal?: AbortSignal,
+  operatorToken?: string,
+): Promise<PhoneStreamsResponse> {
+  const path = operatorToken
+    ? `/api/v1/phone/streams?operator=${encodeURIComponent(operatorToken)}`
+    : "/api/v1/phone/streams";
+  return parseJson<PhoneStreamsResponse>(await fetch(path, { signal }));
+}
+
+export function cameraSocketUrl(
+  sessionId: string,
+  accessToken?: string,
+  deviceId?: string,
+): string {
   const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
   const host = import.meta.env.DEV ? "127.0.0.1:8000" : window.location.host;
-  return `${protocol}//${host}/api/v1/ws/camera/${encodeURIComponent(sessionId)}`;
+  const path = `${protocol}//${host}/api/v1/ws/camera/${encodeURIComponent(sessionId)}`;
+  const params = new URLSearchParams();
+  if (accessToken) params.set("access", accessToken);
+  if (deviceId) params.set("device", deviceId);
+  const query = params.toString();
+  return query ? `${path}?${query}` : path;
+}
+
+export function phoneMonitorSocketUrl(operatorToken?: string): string {
+  const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+  const host = import.meta.env.DEV ? "127.0.0.1:8000" : window.location.host;
+  const path = `${protocol}//${host}/api/v1/ws/phone/monitor`;
+  return operatorToken ? `${path}?operator=${encodeURIComponent(operatorToken)}` : path;
 }

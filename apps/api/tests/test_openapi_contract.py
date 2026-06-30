@@ -18,6 +18,8 @@ def test_openapi_exposes_typed_p13_http_contracts() -> None:
         ("/api/v1/health", "get"): "#/components/schemas/HealthResponse",
         ("/api/v1/catalogue", "get"): "#/components/schemas/SignCatalogue",
         ("/api/v1/models", "get"): "#/components/schemas/ModelStatusResponse",
+        ("/api/v1/phone/connection", "get"): "#/components/schemas/PhoneConnectionResponse",
+        ("/api/v1/phone/streams", "get"): "#/components/schemas/PhoneStreamsResponse",
         ("/api/v1/infer/image", "post"): "#/components/schemas/ImageInferenceResponse",
         ("/api/v1/infer/batch", "post"): "#/components/schemas/BatchInferenceResponse",
         ("/api/v1/infer/video", "post"): "#/components/schemas/VideoInferenceResponse",
@@ -31,13 +33,44 @@ def test_openapi_contains_runtime_fields_used_by_react() -> None:
     schemas = app.openapi()["components"]["schemas"]
     diagnostics = schemas["DiagnosticsResponse"]["properties"]
     model_status = schemas["ModelStatusResponse"]["properties"]
+    video_status = schemas["VideoInferenceResponse"]["properties"]
+    phone_connection = schemas["PhoneConnectionResponse"]["properties"]
+    phone_stream = schemas["PhoneStreamSnapshot"]["properties"]
     assert "healthy" in diagnostics
     for field in (
         "detector_loaded",
         "detector_device",
         "classifier_loaded",
         "classifier_providers",
+        "tracker",
         "ocr_loaded",
         "ocr_load_error",
     ):
         assert field in model_status
+    for field in ("event_samples", "representative_result"):
+        assert field in video_status
+    for field in (
+        "session_id",
+        "phone_url",
+        "websocket_url",
+        "candidate_urls",
+        "https",
+        "mode",
+        "public_base_url",
+        "access_token",
+        "operator_live_url",
+    ):
+        assert field in phone_connection
+    for field in (
+        "session_id",
+        "stream_id",
+        "device_id",
+        "label",
+        "updated_at",
+        "jpeg_base64",
+        "result",
+        "live_fps",
+        "inference_fps",
+        "inference_pending",
+    ):
+        assert field in phone_stream
