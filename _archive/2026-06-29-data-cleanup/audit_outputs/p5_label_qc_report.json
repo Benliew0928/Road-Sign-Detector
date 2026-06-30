@@ -1,0 +1,478 @@
+{
+  "schema_version": "1.0",
+  "classification_root": "data/processed/emtd_classification",
+  "total_crops": 1064,
+  "labels": 43,
+  "label_counts": {
+    "animal_crossing": 6,
+    "camera_enforcement": 18,
+    "children_crossing": 25,
+    "crossroads": 13,
+    "crosswind": 9,
+    "curve_left": 12,
+    "divided_road_begins": 81,
+    "double_curve": 4,
+    "general_caution": 21,
+    "give_way": 41,
+    "height_restriction": 97,
+    "keep_left": 44,
+    "keep_right": 31,
+    "maximum_speed": 144,
+    "merge_left": 34,
+    "merge_right": 13,
+    "no_entry": 30,
+    "no_heavy_vehicle": 13,
+    "no_left_turn": 12,
+    "no_overtaking": 11,
+    "no_parking": 27,
+    "no_stopping": 34,
+    "no_straight_ahead": 7,
+    "no_u_turn": 17,
+    "obstruction_ahead": 8,
+    "pass_either_side": 10,
+    "pedestrian_crossing": 35,
+    "permitted_u_turn": 3,
+    "road_hump": 54,
+    "road_narrows_both": 21,
+    "roadworks": 19,
+    "roundabout_ahead": 15,
+    "side_road_left": 15,
+    "side_road_right": 14,
+    "slippery_road": 2,
+    "staggered_junction": 6,
+    "stop": 25,
+    "t_junction": 10,
+    "traffic_signal_ahead": 33,
+    "two_way_traffic": 8,
+    "vehicle_collision_hazard": 20,
+    "weight_restriction": 21,
+    "width_restriction": 1
+  },
+  "rare_labels": {
+    "double_curve": 4,
+    "permitted_u_turn": 3,
+    "slippery_road": 2,
+    "width_restriction": 1
+  },
+  "missing_labels_by_split": {
+    "test": [
+      "no_straight_ahead",
+      "slippery_road",
+      "width_restriction"
+    ],
+    "train": [
+      "no_straight_ahead",
+      "obstruction_ahead",
+      "permitted_u_turn"
+    ],
+    "validation": [
+      "slippery_road",
+      "width_restriction"
+    ]
+  },
+  "tiny_crop_counts": {
+    "animal_crossing": 2,
+    "camera_enforcement": 5,
+    "children_crossing": 1,
+    "crosswind": 1,
+    "curve_left": 1,
+    "divided_road_begins": 14,
+    "general_caution": 12,
+    "give_way": 18,
+    "height_restriction": 11,
+    "keep_left": 22,
+    "keep_right": 15,
+    "maximum_speed": 26,
+    "no_entry": 3,
+    "no_heavy_vehicle": 5,
+    "no_left_turn": 1,
+    "no_overtaking": 3,
+    "no_parking": 4,
+    "no_stopping": 3,
+    "no_straight_ahead": 5,
+    "no_u_turn": 1,
+    "road_hump": 10,
+    "road_narrows_both": 8,
+    "roadworks": 7,
+    "roundabout_ahead": 2,
+    "side_road_left": 2,
+    "side_road_right": 3,
+    "slippery_road": 1,
+    "staggered_junction": 1,
+    "stop": 8,
+    "traffic_signal_ahead": 7,
+    "weight_restriction": 2
+  },
+  "mixed_source_classes_by_label": {
+    "children_crossing": {
+      "44": 16,
+      "45": 9
+    },
+    "divided_road_begins": {
+      "62": 79,
+      "10": 1,
+      "16": 1
+    },
+    "general_caution": {
+      "46": 19,
+      "19": 1,
+      "10": 1
+    },
+    "give_way": {
+      "31": 33,
+      "62": 1,
+      "57": 1,
+      "29": 1,
+      "15": 1,
+      "9": 1,
+      "10": 1,
+      "30": 1,
+      "56": 1
+    },
+    "height_restriction": {
+      "21": 4,
+      "16": 27,
+      "56": 1,
+      "24": 2,
+      "15": 16,
+      "13": 24,
+      "14": 12,
+      "29": 1,
+      "30": 3,
+      "20": 1,
+      "25": 1,
+      "6": 1,
+      "17": 2,
+      "18": 1,
+      "57": 1
+    },
+    "keep_left": {
+      "16": 1,
+      "31": 1,
+      "3": 42
+    },
+    "maximum_speed": {
+      "16": 8,
+      "19": 19,
+      "23": 14,
+      "24": 14,
+      "18": 5,
+      "22": 21,
+      "21": 14,
+      "25": 15,
+      "20": 12,
+      "29": 1,
+      "26": 17,
+      "32": 1,
+      "27": 1,
+      "9": 1,
+      "13": 1
+    },
+    "merge_left": {
+      "57": 28,
+      "10": 2,
+      "9": 1,
+      "31": 1,
+      "46": 1,
+      "16": 1
+    },
+    "merge_right": {
+      "3": 2,
+      "56": 9,
+      "9": 1,
+      "31": 1
+    },
+    "no_entry": {
+      "42": 2,
+      "10": 25,
+      "9": 1,
+      "31": 1,
+      "62": 1
+    },
+    "no_left_turn": {
+      "7": 11,
+      "31": 1
+    },
+    "no_parking": {
+      "29": 22,
+      "30": 2,
+      "31": 1,
+      "21": 1,
+      "14": 1
+    },
+    "no_stopping": {
+      "29": 2,
+      "30": 26,
+      "31": 2,
+      "9": 1,
+      "4": 1,
+      "15": 1,
+      "39": 1
+    },
+    "no_u_turn": {
+      "56": 1,
+      "9": 12,
+      "31": 1,
+      "10": 1,
+      "22": 1,
+      "42": 1
+    },
+    "obstruction_ahead": {
+      "9": 2,
+      "16": 1,
+      "64": 1,
+      "62": 1,
+      "56": 1,
+      "57": 2
+    },
+    "pass_either_side": {
+      "4": 9,
+      "30": 1
+    },
+    "pedestrian_crossing": {
+      "43": 16,
+      "31": 1,
+      "57": 1,
+      "42": 16,
+      "10": 1
+    },
+    "permitted_u_turn": {
+      "46": 1,
+      "57": 1,
+      "42": 1
+    },
+    "road_hump": {
+      "37": 35,
+      "38": 19
+    },
+    "road_narrows_both": {
+      "47": 11,
+      "61": 10
+    },
+    "stop": {
+      "6": 24,
+      "16": 1
+    },
+    "vehicle_collision_hazard": {
+      "39": 19,
+      "30": 1
+    },
+    "weight_restriction": {
+      "27": 10,
+      "11": 8,
+      "12": 2,
+      "21": 1
+    }
+  },
+  "source_classes_with_multiple_labels": {
+    "10": {
+      "divided_road_begins": 1,
+      "merge_left": 2,
+      "no_entry": 25,
+      "give_way": 1,
+      "no_u_turn": 1,
+      "general_caution": 1,
+      "no_straight_ahead": 7,
+      "pedestrian_crossing": 1
+    },
+    "13": {
+      "height_restriction": 24,
+      "maximum_speed": 1
+    },
+    "14": {
+      "height_restriction": 12,
+      "no_parking": 1
+    },
+    "15": {
+      "height_restriction": 16,
+      "give_way": 1,
+      "no_stopping": 1
+    },
+    "16": {
+      "height_restriction": 27,
+      "keep_left": 1,
+      "maximum_speed": 8,
+      "obstruction_ahead": 1,
+      "stop": 1,
+      "divided_road_begins": 1,
+      "merge_left": 1
+    },
+    "18": {
+      "maximum_speed": 5,
+      "height_restriction": 1
+    },
+    "19": {
+      "general_caution": 1,
+      "maximum_speed": 19
+    },
+    "20": {
+      "maximum_speed": 12,
+      "height_restriction": 1
+    },
+    "21": {
+      "height_restriction": 4,
+      "maximum_speed": 14,
+      "no_parking": 1,
+      "weight_restriction": 1
+    },
+    "22": {
+      "maximum_speed": 21,
+      "no_u_turn": 1
+    },
+    "24": {
+      "height_restriction": 2,
+      "maximum_speed": 14
+    },
+    "25": {
+      "maximum_speed": 15,
+      "height_restriction": 1
+    },
+    "27": {
+      "weight_restriction": 10,
+      "maximum_speed": 1
+    },
+    "29": {
+      "give_way": 1,
+      "no_parking": 22,
+      "no_stopping": 2,
+      "height_restriction": 1,
+      "maximum_speed": 1
+    },
+    "3": {
+      "keep_left": 42,
+      "merge_right": 2
+    },
+    "30": {
+      "no_parking": 2,
+      "no_stopping": 26,
+      "give_way": 1,
+      "height_restriction": 3,
+      "pass_either_side": 1,
+      "vehicle_collision_hazard": 1
+    },
+    "31": {
+      "give_way": 33,
+      "keep_left": 1,
+      "no_parking": 1,
+      "pedestrian_crossing": 1,
+      "no_entry": 1,
+      "no_left_turn": 1,
+      "no_stopping": 2,
+      "no_u_turn": 1,
+      "merge_left": 1,
+      "merge_right": 1
+    },
+    "32": {
+      "maximum_speed": 1,
+      "width_restriction": 1
+    },
+    "39": {
+      "vehicle_collision_hazard": 19,
+      "no_stopping": 1
+    },
+    "4": {
+      "pass_either_side": 9,
+      "no_stopping": 1
+    },
+    "42": {
+      "no_entry": 2,
+      "pedestrian_crossing": 16,
+      "no_u_turn": 1,
+      "permitted_u_turn": 1
+    },
+    "46": {
+      "general_caution": 19,
+      "permitted_u_turn": 1,
+      "merge_left": 1
+    },
+    "56": {
+      "height_restriction": 1,
+      "merge_right": 9,
+      "no_u_turn": 1,
+      "give_way": 1,
+      "obstruction_ahead": 1
+    },
+    "57": {
+      "give_way": 1,
+      "merge_left": 28,
+      "pedestrian_crossing": 1,
+      "height_restriction": 1,
+      "obstruction_ahead": 2,
+      "permitted_u_turn": 1
+    },
+    "6": {
+      "stop": 24,
+      "height_restriction": 1
+    },
+    "62": {
+      "divided_road_begins": 79,
+      "give_way": 1,
+      "no_entry": 1,
+      "obstruction_ahead": 1
+    },
+    "9": {
+      "no_u_turn": 12,
+      "obstruction_ahead": 2,
+      "give_way": 1,
+      "no_entry": 1,
+      "no_stopping": 1,
+      "maximum_speed": 1,
+      "merge_left": 1,
+      "merge_right": 1
+    }
+  },
+  "labels_not_in_p2_catalogue": [],
+  "exact_duplicate_hashes_cross_split": {},
+  "seeded_corrections": 0,
+  "contact_sheets": {
+    "animal_crossing": "outputs/review/p5_class_contact_sheets/animal_crossing.jpg",
+    "camera_enforcement": "outputs/review/p5_class_contact_sheets/camera_enforcement.jpg",
+    "children_crossing": "outputs/review/p5_class_contact_sheets/children_crossing.jpg",
+    "crossroads": "outputs/review/p5_class_contact_sheets/crossroads.jpg",
+    "crosswind": "outputs/review/p5_class_contact_sheets/crosswind.jpg",
+    "curve_left": "outputs/review/p5_class_contact_sheets/curve_left.jpg",
+    "divided_road_begins": "outputs/review/p5_class_contact_sheets/divided_road_begins.jpg",
+    "double_curve": "outputs/review/p5_class_contact_sheets/double_curve.jpg",
+    "general_caution": "outputs/review/p5_class_contact_sheets/general_caution.jpg",
+    "give_way": "outputs/review/p5_class_contact_sheets/give_way.jpg",
+    "height_restriction": "outputs/review/p5_class_contact_sheets/height_restriction.jpg",
+    "keep_left": "outputs/review/p5_class_contact_sheets/keep_left.jpg",
+    "keep_right": "outputs/review/p5_class_contact_sheets/keep_right.jpg",
+    "maximum_speed": "outputs/review/p5_class_contact_sheets/maximum_speed.jpg",
+    "merge_left": "outputs/review/p5_class_contact_sheets/merge_left.jpg",
+    "merge_right": "outputs/review/p5_class_contact_sheets/merge_right.jpg",
+    "no_entry": "outputs/review/p5_class_contact_sheets/no_entry.jpg",
+    "no_heavy_vehicle": "outputs/review/p5_class_contact_sheets/no_heavy_vehicle.jpg",
+    "no_left_turn": "outputs/review/p5_class_contact_sheets/no_left_turn.jpg",
+    "no_overtaking": "outputs/review/p5_class_contact_sheets/no_overtaking.jpg",
+    "no_parking": "outputs/review/p5_class_contact_sheets/no_parking.jpg",
+    "no_stopping": "outputs/review/p5_class_contact_sheets/no_stopping.jpg",
+    "no_straight_ahead": "outputs/review/p5_class_contact_sheets/no_straight_ahead.jpg",
+    "no_u_turn": "outputs/review/p5_class_contact_sheets/no_u_turn.jpg",
+    "obstruction_ahead": "outputs/review/p5_class_contact_sheets/obstruction_ahead.jpg",
+    "pass_either_side": "outputs/review/p5_class_contact_sheets/pass_either_side.jpg",
+    "pedestrian_crossing": "outputs/review/p5_class_contact_sheets/pedestrian_crossing.jpg",
+    "permitted_u_turn": "outputs/review/p5_class_contact_sheets/permitted_u_turn.jpg",
+    "road_hump": "outputs/review/p5_class_contact_sheets/road_hump.jpg",
+    "road_narrows_both": "outputs/review/p5_class_contact_sheets/road_narrows_both.jpg",
+    "roadworks": "outputs/review/p5_class_contact_sheets/roadworks.jpg",
+    "roundabout_ahead": "outputs/review/p5_class_contact_sheets/roundabout_ahead.jpg",
+    "side_road_left": "outputs/review/p5_class_contact_sheets/side_road_left.jpg",
+    "side_road_right": "outputs/review/p5_class_contact_sheets/side_road_right.jpg",
+    "slippery_road": "outputs/review/p5_class_contact_sheets/slippery_road.jpg",
+    "staggered_junction": "outputs/review/p5_class_contact_sheets/staggered_junction.jpg",
+    "stop": "outputs/review/p5_class_contact_sheets/stop.jpg",
+    "t_junction": "outputs/review/p5_class_contact_sheets/t_junction.jpg",
+    "traffic_signal_ahead": "outputs/review/p5_class_contact_sheets/traffic_signal_ahead.jpg",
+    "two_way_traffic": "outputs/review/p5_class_contact_sheets/two_way_traffic.jpg",
+    "vehicle_collision_hazard": "outputs/review/p5_class_contact_sheets/vehicle_collision_hazard.jpg",
+    "weight_restriction": "outputs/review/p5_class_contact_sheets/weight_restriction.jpg",
+    "width_restriction": "outputs/review/p5_class_contact_sheets/width_restriction.jpg",
+    "_class_representatives": "outputs/review/p5_class_contact_sheets/_class_representatives.jpg"
+  },
+  "review_manifest": "data/manifests/p5_label_qc_manifest.csv",
+  "class_review_manifest": "data/manifests/p5_class_review.csv",
+  "correction_manifest": "data/manifests/p5_label_corrections.csv",
+  "status": "partial_owner_corrections_applied",
+  "label_qc_status": "partial_owner_corrections_applied"
+}

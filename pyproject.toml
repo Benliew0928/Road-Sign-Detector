@@ -41,6 +41,7 @@ training = [
   "ultralytics>=8.3,<9",
 ]
 inference = [
+  "lap>=0.5.12,<1",
   "onnx>=1.18,<2",
   "onnxruntime-gpu>=1.22,<2",
   "ultralytics>=8.3,<9",

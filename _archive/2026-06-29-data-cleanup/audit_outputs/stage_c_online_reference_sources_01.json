@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0",
+  "stage_id": "stage_c_online_reference_sources_01",
+  "generated_at": "2026-06-28T05:49:19.863667+00:00",
+  "source": "Curated Wikimedia Commons and HuggingFace/Wikipedia Malaysian road-sign references",
+  "downloaded_reference_candidates": 15,
+  "failed_candidates": 1,
+  "classes_with_exact_or_high_confidence_reference": [
+    "no_heavy_vehicle",
+    "pass_either_side",
+    "school_zone",
+    "side_road_right",
+    "steep_descent",
+    "straight_ahead",
+    "straight_or_right",
+    "turn_left",
+    "turn_right",
+    "uneven_road",
+    "width_restriction"
+  ],
+  "reference_counts_by_class": {
+    "straight_ahead": 1,
+    "straight_or_right": 1,
+    "turn_left": 1,
+    "turn_right": 1,
+    "motor_vehicles_only": 1,
+    "pass_either_side": 1,
+    "school_zone": 2,
+    "steep_descent": 2,
+    "uneven_road": 2,
+    "width_restriction": 1,
+    "no_heavy_vehicle": 1,
+    "side_road_right": 1
+  },
+  "exact_or_high_reference_counts_by_class": {
+    "straight_ahead": 1,
+    "straight_or_right": 1,
+    "turn_left": 1,
+    "turn_right": 1,
+    "pass_either_side": 1,
+    "school_zone": 2,
+    "steep_descent": 2,
+    "uneven_road": 2,
+    "width_restriction": 1,
+    "no_heavy_vehicle": 1,
+    "side_road_right": 1
+  },
+  "unresolved_targets": [
+    {
+      "semantic_sign_id": "bicycle_crossing",
+      "reason": "Current online references found bicycle-only/prohibition signs, not a bicycle crossing warning.",
+      "next_source": "JKR ATJ 2A/85 artwork extraction or a public real-photo dataset with exact bicycle-crossing label.",
+      "realistic_candidate_total": "0",
+      "gap_to_minimum_realistic": "50"
+    },
+    {
+      "semantic_sign_id": "no_lane_changing",
+      "reason": "Search found lane-closure/keep-lane material, not the exact no-lane-changing sign.",
+      "next_source": "JKR ATJ 2A/85 artwork extraction or exact public photo.",
+      "realistic_candidate_total": "0",
+      "gap_to_minimum_realistic": "50"
+    },
+    {
+      "semantic_sign_id": "no_left_or_right_turn",
+      "reason": "Search found U-turn and road markings, not an exact no-left-or-right-turn sign.",
+      "next_source": "JKR ATJ 2A/85 artwork extraction.",
+      "realistic_candidate_total": "0",
+      "gap_to_minimum_realistic": "50"
+    },
+    {
+      "semantic_sign_id": "no_motor_vehicles",
+      "reason": "No exact Malaysian online file found yet; no-motorcycle/no-truck signs are different classes.",
+      "next_source": "JKR ATJ 2A/85 artwork extraction or exact public photo.",
+      "realistic_candidate_total": "0",
+      "gap_to_minimum_realistic": "50"
+    },
+    {
+      "semantic_sign_id": "no_straight_or_left",
+      "reason": "No exact Malaysian online file found yet.",
+      "next_source": "JKR ATJ 2A/85 artwork extraction.",
+      "realistic_candidate_total": "0",
+      "gap_to_minimum_realistic": "50"
+    },
+    {
+      "semantic_sign_id": "no_straight_or_right",
+      "reason": "No exact Malaysian online file found yet.",
+      "next_source": "JKR ATJ 2A/85 artwork extraction.",
+      "realistic_candidate_total": "0",
+      "gap_to_minimum_realistic": "50"
+    },
+    {
+      "semantic_sign_id": "roundabout_mandatory",
+      "reason": "Commons has yellow roundabout warning signs, not an exact blue mandatory roundabout sign.",
+      "next_source": "JKR ATJ 2A/85 artwork extraction or exact public photo.",
+      "realistic_candidate_total": "0",
+      "gap_to_minimum_realistic": "50"
+    },
+    {
+      "semantic_sign_id": "slow_text",
+      "reason": "Search found road marking text, not a confirmed road sign panel matching the assignment class.",
+      "next_source": "JKR/coursework artwork source or exact public photo.",
+      "realistic_candidate_total": "0",
+      "gap_to_minimum_realistic": "50"
+    },
+    {
+      "semantic_sign_id": "sound_horn",
+      "reason": "Search found no-horn prohibition, which is the opposite of mandatory sound-horn.",
+      "next_source": "JKR ATJ 2A/85 artwork extraction.",
+      "realistic_candidate_total": "0",
+      "gap_to_minimum_realistic": "50"
+    },
+    {
+      "semantic_sign_id": "stop_for_checking",
+      "reason": "Search did not find an exact Malaysian stop-for-checking sign image.",
+      "next_source": "JKR ATJ 2A/85 artwork extraction or exact public photo.",
+      "realistic_candidate_total": "0",
+      "gap_to_minimum_realistic": "50"
+    },
+    {
+      "semantic_sign_id": "turn_left_or_right",
+      "reason": "RM1f/RM1g are not confirmed left-or-right combined signs; not mapped to avoid label noise.",
+      "next_source": "JKR ATJ 2A/85 artwork extraction.",
+      "realistic_candidate_total": "0",
+      "gap_to_minimum_realistic": "50"
+    }
+  ],
+  "manifest": "data/manifests/stage_c_online_reference_sources_01.csv",
+  "raw_root": "data/raw/online_sources/stage_c_reference_01/wikimedia_commons",
+  "contact_sheets": {
+    "motor_vehicles_only": "outputs/review/stage_c_online_reference_sources_01/motor_vehicles_only.jpg",
+    "no_heavy_vehicle": "outputs/review/stage_c_online_reference_sources_01/no_heavy_vehicle.jpg",
+    "pass_either_side": "outputs/review/stage_c_online_reference_sources_01/pass_either_side.jpg",
+    "school_zone": "outputs/review/stage_c_online_reference_sources_01/school_zone.jpg",
+    "side_road_right": "outputs/review/stage_c_online_reference_sources_01/side_road_right.jpg",
+    "steep_descent": "outputs/review/stage_c_online_reference_sources_01/steep_descent.jpg",
+    "straight_ahead": "outputs/review/stage_c_online_reference_sources_01/straight_ahead.jpg",
+    "straight_or_right": "outputs/review/stage_c_online_reference_sources_01/straight_or_right.jpg",
+    "turn_left": "outputs/review/stage_c_online_reference_sources_01/turn_left.jpg",
+    "turn_right": "outputs/review/stage_c_online_reference_sources_01/turn_right.jpg",
+    "uneven_road": "outputs/review/stage_c_online_reference_sources_01/uneven_road.jpg",
+    "width_restriction": "outputs/review/stage_c_online_reference_sources_01/width_restriction.jpg",
+    "_all_reference_candidates": "outputs/review/stage_c_online_reference_sources_01/_all_reference_candidates.jpg"
+  },
+  "status": "online_reference_candidates_collected_pending_visual_qc",
+  "important_note": "These files are online reference candidates, not real road-photo coverage. They can support class definitions and controlled training experiments, but they do not close the realistic-photo coverage gap by themselves."
+}

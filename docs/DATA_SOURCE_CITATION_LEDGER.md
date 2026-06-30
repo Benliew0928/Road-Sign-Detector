@@ -4,7 +4,7 @@ This ledger records every dataset, image source, document, and external resource
 used or planned for the road-sign recognition project. It is technical
 provenance, not report prose.
 
-Last updated: 2026-06-28
+Last updated: 2026-06-29
 
 ---
 
@@ -156,187 +156,125 @@ Important notes:
   a rectangular automobiles-only lane sign.
 - `no_lane_changing` remains unresolved; do not force-map it without a verified
   standalone sign-board source.
-- These files are more reliable than generated fake signs, but they still do
+- These files support class definition, but they still do
   not close realistic-photo coverage gaps by themselves.
 
 ---
 
-## Stage C Sprint 02 Synthetic Top-Up
+## Stage C Gap Fill 01 TT100K Exact Real Crops
 
-Policy update on 2026-06-28:
-
-- This batch is now `reference_only`.
-- It is excluded from final realistic dataset coverage.
-- Use `outputs/audit/post_stage_c_realistic_gap_report.*` for current Stage C
-  coverage decisions.
-
-Generated on: 2026-06-28
+Collected on: 2026-06-29
 
 | Source ID | Source | Local root | Manifest | Status | Use |
 |---|---|---|---|---|---|
-| `stage_c_sprint_02_synthetic_topup` | Synthetic variants generated from P5-cleaned EMTD crops and Sprint 01 Commons seed | `data/generated/stage_c_sprint_02_synthetic_topup/` | `data/manifests/stage_c_sprint_02_synthetic_candidates.csv` | `reference_only` | UI/testing/reference support for `side_road_right` and `no_heavy_vehicle`; not final realistic coverage. |
+| `stage_c_gap_fill_01_tt100k` | Tsinghua-Tencent 100K / TT100K via Hugging Face mirror | `data/raw/online_sources/stage_c_gap_fill_01_tt100k/` | `data/manifests/stage_c_gap_fill_01_tt100k_candidates.csv` | `candidate` | Real road-scene crop candidates for exact rare assignment-style signs. |
+
+Source links:
+
+- Hugging Face mirror: https://huggingface.co/datasets/Genius-Society/tt100k
+- Original dataset: https://cg.cs.tsinghua.edu.cn/traffic-sign/
+- Visual class legend: https://lijiancheng0614.github.io/2019/04/16/2019_04_16_TT100K/
 
 Sprint report:
 
-- `docs/STAGE_C_SPRINT_02_SYNTHETIC_TOPUP_REPORT.md`
-
-Audit files:
-
-- `outputs/audit/stage_c_sprint_02_synthetic_candidates.json`
-- `outputs/audit/post_stage_c_sprint_02_gap_report.csv`
-- `outputs/audit/post_stage_c_sprint_02_gap_report.json`
+- `docs/STAGE_C_GAP_FILL_01_TT100K_REPORT.md`
 
 Important notes:
 
-- Synthetic top-ups are not real camera coverage.
-- Seed-derived generated candidates must be handled carefully during Stage E
-  split freeze to avoid leakage between seed and generated variants.
-- These files do not close final realistic coverage gaps.
+- No AI-generated images were used.
+- Four train shards were processed in this sprint.
+- The collected real-road crop candidates are still pending Stage D visual QC
+  and Stage E split freeze before final model training.
+- The active tracker CSV was locked, so a pending updated tracker was written
+  to `data/manifests/CURRENT_DATA_PROGRESS.pending_stage_c_gap_fill_01.csv`.
 
 ---
 
-## Stage C Sprint 03 Mandatory Direction Symbols
+## Stage C Gap Fill 02 Public Real Sources
 
-Policy update on 2026-06-28:
-
-- This batch is now `reference_only`.
-- It is excluded from final realistic dataset coverage.
-- Use `outputs/audit/post_stage_c_realistic_gap_report.*` for current Stage C
-  coverage decisions.
-
-Generated on: 2026-06-28
+Collected on: 2026-06-29
 
 | Source ID | Source | Local root | Manifest | Status | Use |
 |---|---|---|---|---|---|
-| `stage_c_sprint_03_mandatory_direction_symbols` | Project-owned generated reference-symbol candidates | `data/generated/stage_c_sprint_03_mandatory_direction_symbols/` | `data/manifests/stage_c_sprint_03_mandatory_direction_symbols.csv` | `reference_only` | Symbol reference/UI support for `straight_ahead`, `turn_left`, and `turn_right`; not final realistic coverage. |
+| `stage_c_gap_fill_02_gtsrb` | German Traffic Sign Recognition Benchmark / GTSRB | `data/raw/online_sources/stage_c_gap_fill_02_public_real_sources/` | `data/manifests/stage_c_gap_fill_02_public_real_sources_candidates.csv` | `candidate` | Exact public real-road cropped classification candidates for 9 rare or under-covered classes. |
+| `stage_c_gap_fill_02_tt100k_p6` | TT100K local shards from Stage C Gap Fill 01 | `data/raw/online_sources/stage_c_gap_fill_02_public_real_sources/crops/no_bicycle/` | `data/manifests/stage_c_gap_fill_02_public_real_sources_candidates.csv` | `candidate` | Real-road detection crops for `no_bicycle`. |
+
+Source links:
+
+- GTSRB official benchmark: https://benchmark.ini.rub.de/
+- GTSRB training zip: https://sid.erda.dk/public/archives/daaeac0d7ce1152aea9b61d9f1e19370/GTSRB-Training_fixed.zip
+- TT100K Hugging Face mirror: https://huggingface.co/datasets/Genius-Society/tt100k
+- Original TT100K dataset: https://cg.cs.tsinghua.edu.cn/traffic-sign/
+- TT100K visual class legend: https://lijiancheng0614.github.io/2019/04/16/2019_04_16_TT100K/
 
 Sprint report:
 
-- `docs/STAGE_C_SPRINT_03_MANDATORY_DIRECTION_SYMBOLS_REPORT.md`
+- `docs/STAGE_C_GAP_FILL_02_PUBLIC_REAL_SOURCES_REPORT.md`
 
 Audit files:
 
-- `outputs/audit/stage_c_sprint_03_mandatory_direction_symbols.json`
-- `outputs/audit/post_stage_c_sprint_03_gap_report.csv`
-- `outputs/audit/post_stage_c_sprint_03_gap_report.json`
+- `outputs/audit/stage_c_gap_fill_02_public_real_sources_candidates.json`
+- `outputs/audit/post_stage_c_realistic_gap_report.csv`
+- `outputs/audit/post_stage_c_gap_fill_02_gap_report.json`
+- `outputs/review/stage_c_gap_fill_02_public_real_sources/`
 
 Important notes:
 
-- These are generated reference-symbol candidates, not real road-scene data.
-- They do not close final realistic coverage gaps and should be replaced or
-  supplemented with real camera/demo samples.
+- No AI-generated images were used.
+- GTSRB was used only for exact source classes, not near-meaning substitutes.
+- The collector uses class-spread sampling to avoid taking one near-duplicate
+  source sequence as the whole class top-up.
+- Samples remain candidate data pending Stage D visual QC and Stage E split
+  freeze.
 
 ---
 
-## Stage C Sprint 04 Compound Mandatory Symbols
+## Stage C Gap Fill 03-06 Rare Class Mining
 
-Policy update on 2026-06-28:
-
-- This batch is now `reference_only`.
-- It is excluded from final realistic dataset coverage.
-- Use `outputs/audit/post_stage_c_realistic_gap_report.*` for current Stage C
-  coverage decisions.
-
-Generated on: 2026-06-28
+Collected on: 2026-06-29
 
 | Source ID | Source | Local root | Manifest | Status | Use |
 |---|---|---|---|---|---|
-| `stage_c_sprint_04_compound_mandatory_symbols` | Project-owned generated reference-symbol candidates | `data/generated/stage_c_sprint_04_compound_mandatory_symbols/` | `data/manifests/stage_c_sprint_04_compound_mandatory_symbols.csv` | `reference_only` | Symbol reference/UI support for compound mandatory direction signs and `pass_either_side`; not final realistic coverage. |
+| `stage_c_gap_fill_03_remaining_tt100k` | Tsinghua-Tencent 100K / TT100K via `Genius-Society/tt100k` | `data/raw/online_sources/stage_c_gap_fill_03_remaining_tt100k/` | `data/manifests/stage_c_gap_fill_03_remaining_tt100k_candidates.csv` | `candidate` | Exact TT100K real road-scene crops for rare China/assignment-style classes. |
+| `stage_c_gap_fill_04_mapillary_exact` | Mapillary Traffic Sign Dataset via `ThankGod/mapillary_traffic_sign_dataset` | `data/raw/online_sources/stage_c_gap_fill_04_mapillary/` | `data/manifests/stage_c_gap_fill_04_mapillary_exact_candidates.csv` | `exhausted_rejected` | Rejection audit only; no accepted candidates. |
+| `stage_c_gap_fill_05_prashant_tt100k_remote` | Alternate TT100K mirror via `PrashantDixit0/TT-100K` | `data/raw/online_sources/stage_c_gap_fill_05_prashant_tt100k/` | `data/manifests/stage_c_gap_fill_05_prashant_tt100k_remote_candidates.csv` | `candidate` | Remote metadata-scanned exact TT100K labels; accepted only visually valid rows. |
+| `stage_c_gap_fill_06_roboflow_roadway_diverges` | Malaysia Road Sign Dataset v1 via Roboflow | `data/raw/online_sources/stage_c_gap_fill_06_roboflow_roadway_diverges/` | `data/manifests/stage_c_gap_fill_06_roboflow_roadway_diverges_candidates.csv` | `candidate` | Exact real-road `roadway_diverges` crops. |
+
+Source links:
+
+- TT100K Hugging Face mirror: https://huggingface.co/datasets/Genius-Society/tt100k
+- Alternate TT100K mirror: https://huggingface.co/datasets/PrashantDixit0/TT-100K
+- Original TT100K dataset: https://cg.cs.tsinghua.edu.cn/traffic-sign/
+- Mapillary HF mirror: https://huggingface.co/datasets/ThankGod/mapillary_traffic_sign_dataset
+- Mapillary Traffic Sign Dataset: https://www.mapillary.com/dataset/trafficsign
+- Roboflow Malaysia Road Sign Dataset v1: https://universe.roboflow.com/test-22a9b/test-fwdci/dataset/1
 
 Sprint report:
 
-- `docs/STAGE_C_SPRINT_04_COMPOUND_MANDATORY_SYMBOLS_REPORT.md`
+- `docs/STAGE_C_GAP_FILL_03_TO_06_RARE_CLASS_MINING_REPORT.md`
 
 Audit files:
 
-- `outputs/audit/stage_c_sprint_04_compound_mandatory_symbols.json`
-- `outputs/audit/post_stage_c_sprint_04_gap_report.csv`
-- `outputs/audit/post_stage_c_sprint_04_gap_report.json`
+- `outputs/audit/stage_c_gap_fill_03_remaining_tt100k_candidates.json`
+- `outputs/audit/stage_c_gap_fill_04_mapillary_exact_candidates.json`
+- `outputs/audit/stage_c_gap_fill_05_prashant_tt100k_remote_candidates.json`
+- `outputs/audit/stage_c_gap_fill_06_roboflow_roadway_diverges_candidates.json`
+- `outputs/audit/post_stage_c_realistic_gap_report.csv`
+- `outputs/audit/post_stage_c_gap_fill_06_gap_report.json`
 
 Important notes:
 
-- These are generated reference-symbol candidates, not real road-scene data.
-- `pass_either_side` generation was based on the current P5 contact sheet shape.
-- Roundabout and compound direction symbols should be supplemented with real or
-  official-reference samples when possible.
-- These files do not close final realistic coverage gaps.
-
----
-
-## Stage C Sprint 05 Prohibitory Direction Symbols
-
-Policy update on 2026-06-28:
-
-- This batch is now `reference_only`.
-- It is excluded from final realistic dataset coverage.
-- Use `outputs/audit/post_stage_c_realistic_gap_report.*` for current Stage C
-  coverage decisions.
-
-Generated on: 2026-06-28
-
-| Source ID | Source | Local root | Manifest | Status | Use |
-|---|---|---|---|---|---|
-| `stage_c_sprint_05_prohibitory_direction_symbols` | Project-owned generated reference-symbol candidates | `data/generated/stage_c_sprint_05_prohibitory_direction_symbols/` | `data/manifests/stage_c_sprint_05_prohibitory_direction_symbols.csv` | `reference_only` | Symbol reference/UI support for prohibitory direction signs; not final realistic coverage. |
-
-Sprint report:
-
-- `docs/STAGE_C_SPRINT_05_PROHIBITORY_DIRECTION_SYMBOLS_REPORT.md`
-
-Audit files:
-
-- `outputs/audit/stage_c_sprint_05_prohibitory_direction_symbols.json`
-- `outputs/audit/post_stage_c_sprint_05_gap_report.csv`
-- `outputs/audit/post_stage_c_sprint_05_gap_report.json`
-
-Important notes:
-
-- These are generated reference-symbol candidates, not real road-scene data.
-- Prohibition slash placement should be reviewed during Stage D visual QC.
-- These files do not close final realistic coverage gaps.
-
----
-
-## Stage C Sprint 06 Warning Symbols
-
-Generated on: 2026-06-28
-
-| Source ID | Source | Local root | Manifest | Status | Use |
-|---|---|---|---|---|---|
-| `stage_c_sprint_06_warning_symbols` | Project-owned generated warning-symbol references | `data/generated/stage_c_sprint_06_warning_symbols/` | `data/manifests/stage_c_sprint_06_warning_symbols.csv` | `reference_only` | UI/testing/reference support for `bicycle_crossing`, `school_zone`, `steep_descent`, and `uneven_road`; not final realistic coverage. |
-
-Audit files:
-
-- `outputs/audit/stage_c_sprint_06_warning_symbols.json`
-- `outputs/review/stage_c_sprint_06_warning_symbols/`
-
-Important notes:
-
-- Visual review found this generated batch too fake/unrealistic for final model
-  coverage.
-- These files do not close final realistic coverage gaps.
-
----
-
-## Stage C Sprint 07 Regulatory/Text Symbols
-
-Generated on: 2026-06-28
-
-| Source ID | Source | Local root | Manifest | Status | Use |
-|---|---|---|---|---|---|
-| `stage_c_sprint_07_regulatory_text_symbols` | Project-owned generated regulatory/text references | `data/generated/stage_c_sprint_07_regulatory_text_symbols/` | `data/manifests/stage_c_sprint_07_regulatory_text_symbols.csv` | `reference_only` | UI/testing/reference support for `motor_vehicles_only`, `no_lane_changing`, `no_motor_vehicles`, `slow_text`, `sound_horn`, `stop_for_checking`, and `width_restriction`; not final realistic coverage. |
-
-Audit files:
-
-- `outputs/audit/stage_c_sprint_07_regulatory_text_symbols.json`
-- `outputs/review/stage_c_sprint_07_regulatory_text_symbols/`
-
-Important notes:
-
-- Visual review found this generated batch too fake/unrealistic for final model
-  coverage.
-- These files are not reliable enough for final OCR or multilingual text
-  claims.
-- These files do not close final realistic coverage gaps.
+- No AI-generated images were used.
+- Stage 03 completed the full local `Genius-Society/tt100k` train,
+  validation, and test mirror.
+- Stage 05 scanned all 171 remote parquet files / 16,811 rows in
+  `PrashantDixit0/TT-100K` without downloading the full 73 GB mirror.
+- Mapillary `warning--pass-left-or-right` is not `roadway_diverges`.
+- Mapillary `regulatory--no-straight-through` is not the red
+  `no_straight_ahead` prohibition.
+- Prashant TT100K `pb`/`pb5` was visually rejected for `width_restriction`.
+- Accepted crops remain candidate data pending Stage D visual QC and Stage E
+  split freeze.
 
 ---
 
@@ -357,7 +295,7 @@ Important notes:
 
 ---
 
-## Generated Artifacts To Update During Stage C
+## Artifacts To Update During Stage C
 
 | Artifact | Purpose |
 |---|---|
@@ -369,17 +307,6 @@ Important notes:
 | `docs/STAGE_C_ROBOFLOW_IMPORT_REPORT.md` | Human-readable import result and local path index. |
 | `data/manifests/stage_c_sprint_01_commons_candidates.csv` | Per-file Commons candidate provenance and review status. |
 | `docs/STAGE_C_SPRINT_01_COMMONS_TOPUP_REPORT.md` | Human-readable Stage C Sprint 01 result. |
-| `data/manifests/stage_c_sprint_02_synthetic_candidates.csv` | Synthetic candidate provenance and seed linkage. |
-| `docs/STAGE_C_SPRINT_02_SYNTHETIC_TOPUP_REPORT.md` | Human-readable Stage C Sprint 02 result. |
-| `data/manifests/stage_c_sprint_03_mandatory_direction_symbols.csv` | Generated mandatory-direction reference candidate manifest. |
-| `docs/STAGE_C_SPRINT_03_MANDATORY_DIRECTION_SYMBOLS_REPORT.md` | Human-readable Stage C Sprint 03 result. |
-| `data/manifests/stage_c_sprint_04_compound_mandatory_symbols.csv` | Generated compound mandatory-direction candidate manifest. |
-| `docs/STAGE_C_SPRINT_04_COMPOUND_MANDATORY_SYMBOLS_REPORT.md` | Human-readable Stage C Sprint 04 result. |
-| `data/manifests/stage_c_sprint_05_prohibitory_direction_symbols.csv` | Generated prohibitory-direction candidate manifest. |
-| `docs/STAGE_C_SPRINT_05_PROHIBITORY_DIRECTION_SYMBOLS_REPORT.md` | Human-readable Stage C Sprint 05 result. |
-| `data/manifests/stage_c_sprint_06_warning_symbols.csv` | Generated warning-symbol reference manifest. |
-| `data/manifests/stage_c_sprint_07_regulatory_text_symbols.csv` | Generated regulatory/text reference manifest. |
-| `docs/STAGE_C_GENERATED_REFERENCE_POLICY.md` | Policy explaining generated reference-only status and realistic coverage rules. |
 | `data/manifests/stage_c_china_reference_sources_01.csv` | Per-file China/GB-style reference-sign provenance for rare assignment classes. |
 | `docs/STAGE_C_CHINA_REFERENCE_SOURCES_01_REPORT.md` | Human-readable Stage C China/GB reference-source result. |
-| `outputs/audit/post_stage_c_realistic_gap_report.csv` | Corrected Stage C report that excludes generated references from final realistic coverage. |
+| `outputs/audit/post_stage_c_realistic_gap_report.csv` | Current Stage C realistic coverage report. |

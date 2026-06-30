@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-27T18:30:27.250361+00:00",
+  "inputs": {
+    "base_gap_report": "outputs/audit/post_roboflow_data_gap_report.csv",
+    "sprint_manifests": [
+      "data/manifests/stage_c_sprint_01_commons_candidates.csv"
+    ]
+  },
+  "summary": {
+    "target_classes": 100,
+    "stage_c_sprint_candidates": 8,
+    "classes_with_sprint_gain": 3,
+    "must_classes_meeting_minimum_with_sprint_candidates": 28,
+    "must_classes_still_below_minimum_with_sprint_candidates": 23
+  },
+  "sprint_counts_by_class": {
+    "keep_right": 3,
+    "no_heavy_vehicle": 1,
+    "no_overtaking": 4
+  },
+  "remaining_near_minimum_must_gaps": [
+    {
+      "semantic_sign_id": "no_heavy_vehicle",
+      "priority": "must",
+      "required_for": "common_malaysia;current_p5_dataset",
+      "candidate_total_before_sprint": 42,
+      "stage_c_sprint_candidates": 1,
+      "candidate_total_with_sprint": 43,
+      "minimum_clean_crops": 50,
+      "good_target_crops": 100,
+      "gap_to_minimum_with_sprint": 7,
+      "gap_to_good_with_sprint": 57,
+      "sprint_candidate_status": "still_below_minimum",
+      "note": "Stage C sprint candidates are newly collected and still require Stage D visual QC/annotation and Stage E split freeze before final training use."
+    },
+    {
+      "semantic_sign_id": "side_road_right",
+      "priority": "must",
+      "required_for": "assignment;secondary_malaysia;current_p5_dataset",
+      "candidate_total_before_sprint": 45,
+      "stage_c_sprint_candidates": 0,
+      "candidate_total_with_sprint": 45,
+      "minimum_clean_crops": 50,
+      "good_target_crops": 150,
+      "gap_to_minimum_with_sprint": 5,
+      "gap_to_good_with_sprint": 105,
+      "sprint_candidate_status": "still_below_minimum",
+      "note": "Stage C sprint candidates are newly collected and still require Stage D visual QC/annotation and Stage E split freeze before final training use."
+    }
+  ],
+  "output_csv": "outputs/audit/post_stage_c_sprint_01_gap_report.csv",
+  "status": "sprint_candidates_counted_pending_stage_d_qc"
+}

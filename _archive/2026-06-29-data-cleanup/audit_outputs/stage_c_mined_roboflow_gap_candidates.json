@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "stage_id": "stage_c_mined_roboflow_gap_candidates_01",
+  "generated_at": "2026-06-28T06:23:34.105197+00:00",
+  "source_manifest": "data/manifests/roboflow_source_manifest.csv",
+  "output_manifest": "data/manifests/stage_c_mined_roboflow_gap_candidates.csv",
+  "output_root": "data/staging/stage_c_mined_roboflow_gap_candidates",
+  "sheets": {
+    "pass_either_side": "outputs/review/stage_c_mined_roboflow_gap_candidates/pass_either_side.jpg",
+    "side_road_right": "outputs/review/stage_c_mined_roboflow_gap_candidates/side_road_right.jpg",
+    "_all_mined_candidates": "outputs/review/stage_c_mined_roboflow_gap_candidates/_all_mined_candidates.jpg"
+  },
+  "total_mined_candidates": 51,
+  "review_status_counts": {
+    "pending_stage_d_visual_qc": 51
+  },
+  "rules": [
+    {
+      "semantic_sign_id": "pass_either_side",
+      "source_id": "roboflow_malaysia_road_sign_v1",
+      "source_label": "Pass either side",
+      "mined_candidates": 50,
+      "max_candidates": 120,
+      "reason": "The Roboflow source label was rejected as noisy/mixed, but blue-color filtering can recover likely mandatory pass-either-side candidates."
+    },
+    {
+      "semantic_sign_id": "side_road_right",
+      "source_id": "roboflow_malaysia_road_sign_v1",
+      "source_label": "Crossroad on the right",
+      "mined_candidates": 1,
+      "max_candidates": 15,
+      "reason": "The accepted pool left side_road_right slightly below the realistic minimum. Rejected rows from the same exact source label are mined only when they still look like yellow warning-sign candidates."
+    }
+  ],
+  "status": "mined_candidates_pending_stage_d_visual_qc",
+  "important_note": "These candidates are mined from a previously rejected/noisy Roboflow source class. They must be visually QCed before final dataset freeze."
+}

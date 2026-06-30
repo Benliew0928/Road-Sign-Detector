@@ -41,7 +41,7 @@ Red Signs__005_0030,Red Signs/005_0030.png,sign_005,sign_005,maximum_speed,60,co
 Red Signs__005_1_0027,Red Signs/005_1_0027.png,sign_005,sign_005,maximum_speed,60,codex_visual_review,,draft_single_review,0.99,Numeric speed-limit sign.
 Red Signs__007_1_0006,Red Signs/007_1_0006.png,sign_007,sign_007,maximum_speed,80,codex_visual_review,,draft_single_review,0.99,Numeric speed-limit sign.
 Red Signs__008_1_0008_1_j,Red Signs/008_1_0008_1_j.png,sign_008,sign_008,no_straight_or_left,,codex_visual_review,,draft_single_review,0.7,Owner confirmed no straight or left on 2026-06-26.
-Red Signs__010_1_0013,Red Signs/010_1_0013.png,sign_010,sign_010,no_straight_ahead,,codex_visual_review,,draft_single_review,0.99,Owner corrected: no straight ahead; not no straight or right.
+Red Signs__010_1_0013,Red Signs/010_1_0013.png,sign_010,sign_010,no_straight_ahead,,codex_visual_review,,draft_single_review,0.99,"Owner corrected: no straight ahead, not no straight or right."
 Red Signs__011_0029,Red Signs/011_0029.png,sign_011,sign_011,no_left_turn,,codex_visual_review,,draft_single_review,0.98,No left turn.
 Red Signs__011_1_0019,Red Signs/011_1_0019.png,sign_011,sign_011,no_left_turn,,codex_visual_review,,draft_single_review,0.98,No left turn.
 Red Signs__012_1_0015,Red Signs/012_1_0015.png,sign_012,sign_012,no_left_or_right_turn,,codex_visual_review,,draft_single_review,0.9,No left or right compound prohibition; added to ontology in P2 v0.2 review.

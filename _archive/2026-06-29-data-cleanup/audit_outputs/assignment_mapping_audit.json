@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-28T11:33:14.625339+00:00",
+  "source_manifest": "data/manifests/coursework_manifest.csv",
+  "assignment_image_count": 84,
+  "unique_assignment_sign_ids": 48,
+  "status_counts": {
+    "accepted_visual_medium_confidence": 2,
+    "accepted_with_reference_caution": 1,
+    "confirmed_online_reference": 14,
+    "confirmed_owner_review": 6,
+    "confirmed_visual_high_confidence": 25
+  },
+  "needs_second_review": [],
+  "important_note": "This audit records current evidence quality. It is stronger than a guess, but a lecturer-provided answer key would still be the highest authority.",
+  "outputs": {
+    "audit_csv": "data/manifests/assignment_mapping_audit_latest.csv",
+    "unique_contact_sheet": "outputs/review/assignment_mapping_audit_unique_signs.jpg",
+    "attention_contact_sheet": "outputs/review/assignment_mapping_audit_low_confidence.jpg"
+  }
+}

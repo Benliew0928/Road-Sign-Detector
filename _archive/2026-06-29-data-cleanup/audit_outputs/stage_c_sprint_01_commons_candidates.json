@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "stage_id": "stage_c_sprint_01_commons_near_minimum_topup",
+  "generated_at": "2026-06-27T18:29:21.648142+00:00",
+  "source": "Wikimedia Commons curated candidate download",
+  "total_curated_candidates": 13,
+  "downloaded_candidates": 8,
+  "downloaded_excluded": 1,
+  "failed_candidates": 4,
+  "candidate_counts_by_class": {
+    "no_overtaking": 4,
+    "keep_right": 3,
+    "no_heavy_vehicle": 1
+  },
+  "malaysia_candidate_counts_by_class": {
+    "no_overtaking": 2,
+    "keep_right": 3,
+    "no_heavy_vehicle": 1
+  },
+  "class_impacts": [
+    {
+      "semantic_sign_id": "keep_right",
+      "candidate_total_before_sprint": 47,
+      "downloaded_sprint_candidates": 3,
+      "downloaded_malaysia_candidates": 3,
+      "candidate_total_with_sprint": 50,
+      "minimum_clean_crops": 50,
+      "gap_to_minimum_with_sprint_candidates": 0,
+      "stage_d_required": true
+    },
+    {
+      "semantic_sign_id": "no_heavy_vehicle",
+      "candidate_total_before_sprint": 42,
+      "downloaded_sprint_candidates": 1,
+      "downloaded_malaysia_candidates": 1,
+      "candidate_total_with_sprint": 43,
+      "minimum_clean_crops": 50,
+      "gap_to_minimum_with_sprint_candidates": 7,
+      "stage_d_required": true
+    },
+    {
+      "semantic_sign_id": "no_overtaking",
+      "candidate_total_before_sprint": 47,
+      "downloaded_sprint_candidates": 4,
+      "downloaded_malaysia_candidates": 2,
+      "candidate_total_with_sprint": 51,
+      "minimum_clean_crops": 50,
+      "gap_to_minimum_with_sprint_candidates": 0,
+      "stage_d_required": true
+    }
+  ],
+  "manifest": "data/manifests/stage_c_sprint_01_commons_candidates.csv",
+  "raw_root": "data/raw/local_collection/stage_c_sprint_01/wikimedia_commons",
+  "contact_sheets": {
+    "keep_right": "outputs/review/stage_c_sprint_01_commons_candidates/keep_right.jpg",
+    "no_heavy_vehicle": "outputs/review/stage_c_sprint_01_commons_candidates/no_heavy_vehicle.jpg",
+    "no_overtaking": "outputs/review/stage_c_sprint_01_commons_candidates/no_overtaking.jpg",
+    "_all_candidates": "outputs/review/stage_c_sprint_01_commons_candidates/_all_candidates.jpg"
+  },
+  "status": "candidate_collection_complete_pending_stage_d_qc",
+  "important_note": "These images are newly collected Stage C candidates only. They are not in the final training split until Stage D QC, annotation, and Stage E freeze."
+}

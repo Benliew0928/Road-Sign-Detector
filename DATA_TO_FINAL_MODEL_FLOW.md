@@ -40,13 +40,9 @@ The correct flow is:
 8. Evaluate on assignment, Malaysian common-sign, and live-demo test sets.
 9. Integrate the best model into the app.
 
-Generated-data rule:
+Data authenticity rule:
 
-- Generated or synthetic signs can be kept for UI smoke tests, rule/OCR
-  prototyping, reference sheets, or later augmentation experiments.
-- Generated or synthetic signs do not count as final realistic dataset coverage
-  unless a separate experiment explicitly proves they improve real-image
-  validation performance.
+- Do not create or use AI-generated/fake sign images for this project dataset.
 - Final coverage gates must be based on real photos, public licensed image
   sources, official/reference sign material, or local camera/video collection.
 
@@ -292,36 +288,6 @@ Important note:
 - These Commons files are candidate data only. They still need Stage D visual
   QC/annotation and Stage E split freeze before final training.
 
-## Stage C Generated-Data Correction On 2026-06-28
-
-After reviewing Sprint 06 and Sprint 07 contact sheets, the generated signs were
-judged too fake/unrealistic for final dataset coverage. This correction also
-applies to the earlier generated Sprints 02-05.
-
-Authoritative coverage report after this correction:
-
-- `outputs/audit/post_stage_c_realistic_gap_report.csv`
-- `outputs/audit/post_stage_c_realistic_gap_report.json`
-
-Current realistic result:
-
-- Real/public sprint candidates counted toward final coverage: 8
-- Generated/reference-only candidates excluded from final coverage: 1,051
-- `must` classes meeting minimum realistic count: 28
-- `must` classes still below minimum realistic count: 24
-
-Later Stage C mining updated the current authoritative count; see `Stage C
-Roboflow Gap Mining On 2026-06-28` below.
-
-Important rule:
-
-- Sprints 02-07 remain useful as labelled reference material, app UI smoke-test
-  images, and possible future augmentation experiments.
-- Sprints 02-07 do not close Stage C final coverage gaps.
-- The old `post_stage_c_sprint_02/03/04/05_gap_report.*` files are historical
-  generated-count reports only. Use `post_stage_c_realistic_gap_report.*` for
-  real project decisions.
-
 ## Stage C Online Reference Sources 01 On 2026-06-28
 
 Reliable online reference-source sprint completed:
@@ -342,8 +308,8 @@ Important note:
 
 - These files are mostly diagrams/SVG references from Wikimedia/HuggingFace
   Wikimedia-linked sources.
-- They are far more reliable than generated fake signs for class definition.
-- They are still not 50 independent real road-scene photos and do not close the
+- They support class definition but are still not 50 independent real
+  road-scene photos and do not close the
   realistic-photo gap by themselves.
 
 ## Stage C Roboflow Gap Mining On 2026-06-28
@@ -399,129 +365,6 @@ Important note:
 - They improve class definition and future augmentation/OCR work, but they do
   not change `realistic_candidate_total`.
 
-## Stage C Sprint 02 Synthetic Top-Up On 2026-06-28
-
-Small near-minimum synthetic top-up completed as reference-only data:
-
-- `docs/STAGE_C_SPRINT_02_SYNTHETIC_TOPUP_REPORT.md`
-- `data/manifests/stage_c_sprint_02_synthetic_candidates.csv`
-- `outputs/audit/stage_c_sprint_02_synthetic_candidates.json`
-- `outputs/audit/post_stage_c_sprint_02_gap_report.csv`
-
-Historical generated-count result:
-
-- Generated synthetic candidates: 12
-- `side_road_right`: 45 -> 50 candidate samples, meets minimum pending Stage D QC
-- `no_heavy_vehicle`: 43 -> 50 candidate samples, meets minimum pending Stage D QC
-- Sprint 01 + Sprint 02 candidates counted: 20
-- `must` classes meeting minimum with sprint candidates: 30
-- `must` classes still below minimum with sprint candidates: 21
-
-Important note:
-
-- Synthetic candidates are not real demo coverage and no longer count toward
-  final realistic coverage. They must stay clearly marked during Stage D/E and
-  should be replaced or supplemented by real/local/public data.
-
-## Stage C Sprint 03 Mandatory Direction Symbols On 2026-06-28
-
-Small zero-data generated reference-symbol batch completed as reference-only
-data:
-
-- `docs/STAGE_C_SPRINT_03_MANDATORY_DIRECTION_SYMBOLS_REPORT.md`
-- `data/manifests/stage_c_sprint_03_mandatory_direction_symbols.csv`
-- `outputs/audit/stage_c_sprint_03_mandatory_direction_symbols.json`
-- `outputs/audit/post_stage_c_sprint_03_gap_report.csv`
-
-Historical generated-count result:
-
-- Generated reference-symbol candidates: 150
-- `straight_ahead`: 0 -> 50 candidate samples, meets minimum pending Stage D QC
-- `turn_left`: 0 -> 50 candidate samples, meets minimum pending Stage D QC
-- `turn_right`: 0 -> 50 candidate samples, meets minimum pending Stage D QC
-- Sprint 01 + Sprint 02 + Sprint 03 candidates counted: 170
-- `must` classes meeting minimum with sprint candidates: 33
-- `must` classes still below minimum with sprint candidates: 18
-
-Important note:
-
-- These are project-owned reference symbols only. They do not count toward final
-  realistic class coverage and must be replaced or supplemented by real,
-  public, official, or local camera examples.
-
-## Stage C Sprint 04 Compound Mandatory Symbols On 2026-06-28
-
-Small compound mandatory-sign batch completed as reference-only data:
-
-- `docs/STAGE_C_SPRINT_04_COMPOUND_MANDATORY_SYMBOLS_REPORT.md`
-- `data/manifests/stage_c_sprint_04_compound_mandatory_symbols.csv`
-- `outputs/audit/stage_c_sprint_04_compound_mandatory_symbols.json`
-- `outputs/audit/post_stage_c_sprint_04_gap_report.csv`
-
-Historical generated-count result:
-
-- Generated reference-symbol candidates: 190
-- `straight_or_right`: 0 -> 50 candidate samples, meets minimum pending Stage D QC
-- `turn_left_or_right`: 0 -> 50 candidate samples, meets minimum pending Stage D QC
-- `roundabout_mandatory`: 0 -> 50 candidate samples, meets minimum pending Stage D QC
-- `pass_either_side`: 10 -> 50 candidate samples, meets minimum pending Stage D QC
-- Sprint 01-04 candidates counted: 360
-- `must` classes meeting minimum with sprint candidates: 37
-- `must` classes still below minimum with sprint candidates: 14
-
-Important note:
-
-- These generated references do not improve final realistic coverage by
-  themselves. Final demo reliability still requires real camera/public/official
-  examples for the important signs.
-
-## Stage C Sprint 05 Prohibitory Direction Symbols On 2026-06-28
-
-Small prohibitory direction-sign batch completed as reference-only data:
-
-- `docs/STAGE_C_SPRINT_05_PROHIBITORY_DIRECTION_SYMBOLS_REPORT.md`
-- `data/manifests/stage_c_sprint_05_prohibitory_direction_symbols.csv`
-- `outputs/audit/stage_c_sprint_05_prohibitory_direction_symbols.json`
-- `outputs/audit/post_stage_c_sprint_05_gap_report.csv`
-
-Historical generated-count result:
-
-- Generated reference-symbol candidates: 150
-- `no_straight_or_left`: 0 -> 50 candidate samples, meets minimum pending Stage D QC
-- `no_straight_or_right`: 0 -> 50 candidate samples, meets minimum pending Stage D QC
-- `no_left_or_right_turn`: 0 -> 50 candidate samples, meets minimum pending Stage D QC
-- Sprint 01-05 candidates counted: 510
-- `must` classes meeting minimum with sprint candidates: 40
-- `must` classes still below minimum with sprint candidates: 11
-
-Important note:
-
-- These generated references need visual QC if used for UI/testing, but they do
-  not count toward final realistic training coverage.
-
-## Stage C Sprint 06 Warning Symbols On 2026-06-28
-
-Generated warning-symbol sheets were created for `bicycle_crossing`,
-`school_zone`, `steep_descent`, and `uneven_road`.
-
-Status:
-
-- Reference-only
-- Excluded from final realistic coverage
-- Use only for UI/rule prototyping or as a visual reminder of missing classes
-
-## Stage C Sprint 07 Regulatory/Text Symbols On 2026-06-28
-
-Generated regulatory/text sheets were created for `motor_vehicles_only`,
-`no_lane_changing`, `no_motor_vehicles`, `slow_text`, `sound_horn`,
-`stop_for_checking`, and `width_restriction`.
-
-Status:
-
-- Reference-only
-- Excluded from final realistic coverage
-- Not reliable for final OCR or multilingual text claims
-
 ## Completion Gate
 
 - [ ] Each `must` class reaches at least 50 clean candidate crops.
@@ -568,11 +411,44 @@ P5 is not complete if:
 - `outputs/review/p5_class_contact_sheets/`
 - `outputs/audit/p5_label_qc_report.json`
 
+## Stage D Zero-Gap Minimum-QC Batch On 2026-07-01
+
+To avoid generating many messy review files, the zero-gap Stage D batch writes
+one row-level manifest and one contact sheet:
+
+- `scripts/run_stage_d_zero_gap_qc.py`
+- `data/manifests/stage_d_zero_gap_qc_manifest.csv`
+- `outputs/review/00_CURRENT_REVIEW/stage_d_zero_gap_qc_contact_sheet.jpg`
+
+Current result:
+
+- Every `must` class whose `gap_to_minimum` is `0` is completed at the minimum
+  Stage D level.
+- 42 classes completed.
+- 50 accepted crops per class, 2,100 accepted crops total.
+- `keep_right`, `no_overtaking`, and `side_road_right` include a small number
+  of `low_resolution_readable` fallback crops. These were visually readable
+  enough for classifier candidate use, but the caveat is preserved in the
+  manifest for Stage E review.
+
+Interpretation:
+
+- These crops are ready as Stage E classifier split candidates.
+- Roboflow classification-folder samples remain classifier candidates first;
+  they should not be treated as detector/segmentation training boxes unless a
+  later Stage D/E step adds explicit box or mask annotations.
+- Final model training is still blocked on Stage E split freeze.
+- The remaining 10 `must` classes still below minimum realistic coverage need
+  more data before this Stage D process can complete them.
+
 ## Completion Gate
 
-- [ ] All `must` classes reviewed by contact sheet.
-- [ ] All known crop corrections are reproducible by manifest/script.
-- [ ] No manual drag-and-drop corrections are required.
+- [~] All `must` classes reviewed by contact sheet. All 42 zero-gap `must`
+      classes are completed at minimum Stage D level; 10 below-minimum classes
+      remain blocked by collection coverage.
+- [x] Zero-gap crop selections are reproducible by manifest and
+      `scripts/run_stage_d_zero_gap_qc.py`.
+- [x] Zero-gap batch requires no manual drag-and-drop corrections.
 
 ---
 
@@ -748,8 +624,8 @@ Convert recognition into useful autonomous-driving style output.
 |---|---:|---|---|---|
 | A. Target class lock | `[x]` | Codex | `target_sign_classes.csv` | Baseline locked on 2026-06-27; update only if final demo signs change |
 | B. Data gap audit | `[x]` | Codex | `data_gap_report.csv` | Generated on 2026-06-27; use `collection_rank` as the next data queue |
-| C. Data collection sprint | `[~]` | Owner/Codex | Local/public raw data | Roboflow import staged; Sprint 01 added 8 Commons candidates; generated Sprints 02-07 are reference-only; 24 must classes still need realistic coverage |
-| D. Annotation and QC | `[~]` | Owner/Codex | QC sheets and correction manifests | EMTD side-road vs merge cleanup applied; target-class QC not yet frozen |
+| C. Data collection sprint | `[~]` | Owner/Codex | Local/public raw data | Current tracker has 42 must classes meeting minimum realistic candidate count and 10 still below minimum |
+| D. Annotation and QC | `[~]` | Owner/Codex | QC sheets and correction manifests | All 42 zero-gap must classes completed at minimum Stage D level: 2,100 accepted crops in `stage_d_zero_gap_qc_manifest.csv`; 10 below-minimum must classes still need data then QC |
 | E. Freeze dataset split | `[ ]` | Codex | Final train/val/test manifests | Needed before retraining |
 | F. Detector retrain | `[ ]` | Codex | Final detector ONNX | Only if detection is weak |
 | G. Classifier retrain | `[ ]` | Codex | Final classifier ONNX | Most important next model step |

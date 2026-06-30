@@ -1,0 +1,29 @@
+{
+  "generated_on": "2026-06-26",
+  "catalogue_version": "0.4-p2-approved-pending-archive",
+  "entry_count": 96,
+  "standards_count": 4,
+  "machine_checks": {
+    "required_fields_valid": true,
+    "references_registered": true,
+    "local_archives_present": false,
+    "critical_entries_approved": true,
+    "all_entries_approved": true
+  },
+  "open_items": {
+    "missing_registered_reference": [],
+    "missing_local_archive": [
+      "jkr_atj_2a_85_2019",
+      "jkr_atj_2b_85_2019",
+      "jkr_atj_2c_85_2017",
+      "jkr_road_sign_usage_2021"
+    ],
+    "critical_not_approved": [],
+    "draft_entries": [],
+    "unresolved_coursework_mappings": {}
+  },
+  "review_workbook": "data\\manifests\\p2_ontology_review_latest.csv",
+  "review_workbook_xlsx": "data\\manifests\\p2_ontology_review_latest.xlsx",
+  "unresolved_coursework_review": "data\\manifests\\p2_unresolved_coursework_review.csv",
+  "unresolved_coursework_sheet": "outputs\\audit\\p2_unresolved_coursework_signs.png"
+}

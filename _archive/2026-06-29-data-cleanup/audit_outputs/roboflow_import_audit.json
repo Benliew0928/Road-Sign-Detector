@@ -1,0 +1,114 @@
+{
+  "generated_at": "2026-06-27T14:44:15.837847+00:00",
+  "inputs": {
+    "roboflow_malaysia_road_sign_v1": "data/raw/roboflow/malaysia_road_sign_dataset_v1/extracted_full",
+    "roboflow_dr_samsudin_malaysia_road_sign": "data/raw/roboflow/dr_samsudin_malaysia_road_sign/extracted"
+  },
+  "outputs": {
+    "staging_root": "data/staging/roboflow",
+    "manifest": "data/manifests/roboflow_source_manifest.csv",
+    "class_mapping": "data/manifests/roboflow_class_mapping.csv",
+    "contact_sheets": "outputs/review/stage_c_roboflow_import_sheets"
+  },
+  "quality_policy": {
+    "minimum_crop_side": 32,
+    "minimum_crop_area": 1024,
+    "exact_duplicate_handling": "first accepted, later duplicates rejected",
+    "status_meaning": {
+      "accepted_public_mixed": "Mapped and staged, but still public-source data rather than final frozen training data.",
+      "rejected": "Excluded from staged class folders because of mapping or quality rule."
+    }
+  },
+  "summary": {
+    "source_rows": {
+      "roboflow_dr_samsudin_malaysia_road_sign": 844,
+      "roboflow_malaysia_road_sign_v1": 28550
+    },
+    "quality_status_counts": {
+      "accepted_public_mixed": 22611,
+      "rejected": 6783
+    },
+    "mapping_action_counts": {
+      "exclude_ambiguous_direction": 1,
+      "exclude_noisy_mixed_source": 2,
+      "exclude_non_sign": 1,
+      "map_existing": 87,
+      "new_class_candidate": 5
+    },
+    "accepted_class_count": 57,
+    "new_class_candidates": [
+      "disabled_parking",
+      "lane_merges_left",
+      "motorcycles_only",
+      "narrow_bridge",
+      "tow_away_zone"
+    ],
+    "rejection_counts": {
+      "duplicate_exact_crop": 51,
+      "exclude_ambiguous_direction": 29,
+      "exclude_noisy_mixed_source": 3948,
+      "exclude_non_sign": 489,
+      "source_label_outlier_filename": 9,
+      "tiny_crop": 2257
+    }
+  },
+  "accepted_by_semantic_sign_id": {
+    "animal_crossing": 167,
+    "bicycles_only": 78,
+    "bus_stop": 189,
+    "camera_enforcement": 106,
+    "chevron_left": 28,
+    "chevron_right": 201,
+    "children_crossing": 223,
+    "crossroads": 84,
+    "crosswind": 31,
+    "curve_left": 167,
+    "curve_right": 110,
+    "dead_end": 30,
+    "disabled_parking": 27,
+    "double_curve": 228,
+    "expressway": 911,
+    "flagman_ahead": 41,
+    "general_caution": 313,
+    "give_way": 333,
+    "height_restriction": 953,
+    "keep_left": 549,
+    "keep_right": 16,
+    "lane_merges_left": 61,
+    "maximum_speed": 3950,
+    "merge_left": 525,
+    "merge_right": 144,
+    "motorcycles_only": 24,
+    "narrow_bridge": 24,
+    "no_entry": 841,
+    "no_heavy_vehicle": 29,
+    "no_horn": 140,
+    "no_left_turn": 392,
+    "no_motorcycle": 28,
+    "no_overtaking": 36,
+    "no_parking": 30,
+    "no_right_turn": 313,
+    "no_stopping": 1216,
+    "no_u_turn": 535,
+    "obstruction_ahead": 1887,
+    "one_way": 29,
+    "parking": 404,
+    "pedestrian_crossing": 482,
+    "permitted_u_turn": 875,
+    "railway_crossing": 396,
+    "road_hump": 1740,
+    "road_narrows_both": 30,
+    "road_narrows_left": 39,
+    "road_narrows_right": 652,
+    "roadworks": 252,
+    "roundabout_ahead": 70,
+    "side_road_left": 351,
+    "side_road_right": 31,
+    "slippery_road": 133,
+    "stop": 1355,
+    "t_junction": 27,
+    "tow_away_zone": 201,
+    "traffic_signal_ahead": 465,
+    "weight_restriction": 119
+  }
+}

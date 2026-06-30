@@ -1,3 +1,9 @@
+from typing import cast
+
+import cv2
+import numpy as np
+
+from roadsign_assist.baseline.models import UInt8Image
 from roadsign_assist.inference.models import BoundingBoxModel, DetectionModel
 from roadsign_assist.tracking.iou_tracker import IoUTracker
 
@@ -8,6 +14,21 @@ def _detection(x: float) -> DetectionModel:
         bbox=BoundingBoxModel(x1=x, y1=10, x2=x + 40, y2=50),
         confidence=0.9,
         detector="test",
+    )
+
+
+def _textured_frame(dx: int = 0) -> UInt8Image:
+    rng = np.random.default_rng(2513)
+    frame = np.zeros((180, 240, 3), dtype=np.uint8)
+    for _ in range(180):
+        x = int(rng.integers(8, 232))
+        y = int(rng.integers(8, 172))
+        color = int(rng.integers(120, 255))
+        cv2.circle(frame, (x, y), 1, (color, color, color), -1)
+    transform = np.asarray([[1, 0, dx], [0, 1, 0]], dtype=np.float32)
+    return cast(
+        UInt8Image,
+        cv2.warpAffine(frame, transform, (240, 180), borderMode=cv2.BORDER_REFLECT),
     )
 
 
@@ -50,3 +71,28 @@ def test_tracker_motion_prediction_handles_large_frame_to_frame_shift() -> None:
     tracker.update([])
     rebound = tracker.update([_detection(67)])[0][1]
     assert rebound.track_id == first.track_id
+
+
+def test_tracker_uses_sparse_optical_flow_for_camera_translation() -> None:
+    frame = _textured_frame()
+    translated = _textured_frame(24)
+
+    tracker = IoUTracker(match_iou=0.55, max_center_distance=0.45, gmc_method="sparseOptFlow")
+    first = tracker.update([_detection(80)], image=frame)[0][1]
+    second = tracker.update([_detection(104)], image=translated)[0][1]
+
+    assert second.track_id == first.track_id
+
+
+def test_tracker_does_not_double_count_camera_motion_as_object_velocity() -> None:
+    frame = _textured_frame()
+    second_frame = _textured_frame(20)
+    third_frame = _textured_frame(40)
+
+    tracker = IoUTracker(match_iou=0.55, max_center_distance=0.45, gmc_method="sparseOptFlow")
+    first = tracker.update([_detection(80)], image=frame)[0][1]
+    second = tracker.update([_detection(100)], image=second_frame)[0][1]
+    third = tracker.update([_detection(120)], image=third_frame)[0][1]
+
+    assert first.track_id == second.track_id == third.track_id
+    assert abs(third.velocity_x) < 3.0
