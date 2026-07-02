@@ -106,6 +106,14 @@ class ADASActionModel(BaseModel):
     advisory_only: bool = True
 
 
+class ADASAdvisoryModel(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    headline: LocalizedText
+    instruction: LocalizedText
+    safe_to_announce: bool = True
+
+
 class SignEventModel(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
@@ -120,6 +128,7 @@ class SignEventModel(BaseModel):
     bbox: BoundingBoxModel
     mask: MaskModel | None = None
     action: ADASActionModel
+    advisory: ADASAdvisoryModel
     severity: Severity
     latency_ms: float = Field(ge=0.0)
     device: str

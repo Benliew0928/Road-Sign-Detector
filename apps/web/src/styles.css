@@ -603,6 +603,7 @@ button {
   height: 38px;
   display: grid;
   place-items: center;
+  padding: 0;
   border: 1px solid #7c2b2b;
   border-radius: 7px;
   background: #170c0c;
@@ -612,6 +613,16 @@ button {
 .live-stream-button:hover {
   border-color: #ff4b4b;
   background: #241010;
+}
+
+.live-stream-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.live-stream-button:disabled:hover {
+  border-color: #7c2b2b;
+  background: #170c0c;
 }
 
 .live-stream-button img {

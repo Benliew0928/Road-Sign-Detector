@@ -1,5 +1,6 @@
 import { AlertTriangle, Gauge, Languages, Navigation, ShieldAlert } from "lucide-react";
 
+import { advisoryHeadline, advisoryInstruction, targetSummary } from "../advisoryDisplay";
 import type { DisplayLanguage, SignEvent } from "../types";
 
 interface SignPanelProps {
@@ -26,13 +27,13 @@ export function SignPanel({ event, language }: SignPanelProps) {
     );
   }
 
-  const target = event.action.target_speed_kmh;
+  const target = targetSummary(event);
   return (
     <section className={`sign-panel severity-panel-${event.severity}`}>
       <header className="sign-heading">
         <div>
           <span className="eyebrow">Current sign</span>
-          <h2>{event.meaning[language]}</h2>
+          <h2>{advisoryHeadline(event, language)}</h2>
         </div>
         <span className="confidence">{Math.round(event.confidence * 100)}%</span>
       </header>
@@ -40,15 +41,15 @@ export function SignPanel({ event, language }: SignPanelProps) {
       <dl className="sign-facts">
         <div>
           <dt>
-            <Navigation size={16} aria-hidden="true" /> ADAS action
+            <Navigation size={16} aria-hidden="true" /> ADAS advice
           </dt>
-          <dd>{event.action.code.replaceAll("_", " ")}</dd>
+          <dd>{advisoryInstruction(event, language)}</dd>
         </div>
         <div>
           <dt>
             <Gauge size={16} aria-hidden="true" /> Target
           </dt>
-          <dd>{target ? `${target} km/h` : "Advisory"}</dd>
+          <dd>{target}</dd>
         </div>
         <div>
           <dt>

@@ -2,11 +2,15 @@ import type { DisplayLanguage, SignEvent } from "../types";
 
 export interface AdvisoryAudioAsset {
   src: string;
+  fallback_src?: string | null;
   sha256: string | null;
   bytes: number | null;
   duration_seconds: number | null;
   voice: string | null;
   generated: boolean;
+  provider?: string | null;
+  model?: string | null;
+  style_profile?: string | null;
 }
 
 export interface AdvisoryAudioPhrase {
@@ -28,6 +32,19 @@ export interface AdvisoryAudioManifest {
   catalogue_version: string;
   languages: DisplayLanguage[];
   description: string;
+  audio_pack?: {
+    kind: string;
+    status: string;
+    provider: string;
+    model: string;
+    voices: Record<DisplayLanguage, string>;
+    style_profile: string;
+    style_label: string;
+    generated_at: string;
+    runtime_policy: string;
+    fallback_audio_root: string;
+    selected_phrase_ids: string[] | null;
+  };
   fallback_phrase_id: string;
   semantic_phrase_ids: Record<string, string>;
   audio_key_phrase_ids: Record<string, string>;
@@ -146,7 +163,7 @@ export function chooseAdvisoryEvent(
   manifest: AdvisoryAudioManifest,
 ): { event: SignEvent; phrase: AdvisoryAudioPhrase; phraseId: string } | null {
   const candidates = events
-    .filter((event) => event.should_announce)
+    .filter((event) => event.should_announce && (event.advisory?.safe_to_announce ?? true))
     .map((event) => {
       const phraseId = resolveAdvisoryPhraseId(event, manifest);
       const phrase = manifest.phrases[phraseId] ?? manifest.phrases[manifest.fallback_phrase_id];

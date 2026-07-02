@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 
+import { advisoryHeadline, advisoryInstruction } from "./advisoryDisplay";
 import {
   type PhoneFacingMode,
   type PhoneCameraStatus,
@@ -158,7 +159,8 @@ export default function PhoneCameraApp() {
                     }}
                   >
                     <span>
-                      #{event.track_id} {event.meaning.en} {Math.round(event.confidence * 100)}%
+                      #{event.track_id} {advisoryHeadline(event, "en")}{" "}
+                      {Math.round(event.confidence * 100)}%
                     </span>
                   </div>
                 ))}
@@ -273,10 +275,10 @@ export default function PhoneCameraApp() {
         {primaryEvent ? (
           <>
             <div className="phone-sign-heading">
-              <h2>{primaryEvent.meaning.en}</h2>
+              <h2>{advisoryHeadline(primaryEvent, "en")}</h2>
               <strong>{Math.round(primaryEvent.confidence * 100)}%</strong>
             </div>
-            <p>{primaryEvent.action.code.replaceAll("_", " ")}</p>
+            <p>{advisoryInstruction(primaryEvent, "en")}</p>
           </>
         ) : (
           <>
@@ -296,8 +298,8 @@ export default function PhoneCameraApp() {
             <article className="phone-event" key={`${event.track_id}-${event.frame_id}-${index}`}>
               <span className={`event-marker severity-${event.severity}`} />
               <div>
-                <strong>{event.meaning.en}</strong>
-                <span>#{event.track_id} - {event.action.code.replaceAll("_", " ")}</span>
+                <strong>{advisoryHeadline(event, "en")}</strong>
+                <span>#{event.track_id} - {advisoryInstruction(event, "en")}</span>
               </div>
             </article>
           ))

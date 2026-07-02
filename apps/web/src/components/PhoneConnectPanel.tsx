@@ -69,7 +69,10 @@ export function PhoneConnectPanel({ busy }: PhoneConnectPanelProps) {
     }
   }, [connection]);
 
-  const liveWallHref = connection?.operator_live_url ?? "/live";
+  const fallbackLiveWallHref = operatorToken
+    ? `/live?operator=${encodeURIComponent(operatorToken)}`
+    : null;
+  const liveWallHref = connection?.operator_live_url ?? fallbackLiveWallHref;
   const publicMode = connection?.mode === "public_tunnel";
 
   return (
@@ -85,10 +88,22 @@ export function PhoneConnectPanel({ busy }: PhoneConnectPanelProps) {
               {publicMode ? "Public tunnel" : "Local"}
             </span>
           ) : null}
-          <a className="live-stream-button" href={liveWallHref} title="Open host live camera wall">
-            <img src={liveStreamAsset} alt="" />
-            <span className="sr-only">Open host live camera wall</span>
-          </a>
+          {liveWallHref ? (
+            <a className="live-stream-button" href={liveWallHref} title="Open host live camera wall">
+              <img src={liveStreamAsset} alt="" />
+              <span className="sr-only">Open host live camera wall</span>
+            </a>
+          ) : (
+            <button
+              className="live-stream-button"
+              type="button"
+              disabled
+              title="Use the operator dashboard link printed by the public runner"
+            >
+              <img src={liveStreamAsset} alt="" />
+              <span className="sr-only">Open host live camera wall</span>
+            </button>
+          )}
           <button className="icon-button" onClick={() => void refresh()} disabled={loading || busy}>
             <RefreshCw size={17} />
             <span className="sr-only">Refresh phone QR</span>
