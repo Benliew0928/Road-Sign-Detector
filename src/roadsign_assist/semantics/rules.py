@@ -11,7 +11,7 @@ from roadsign_assist.catalogue.models import (
     SignDefinition,
 )
 from roadsign_assist.catalogue.repository import catalogue_by_id
-from roadsign_assist.inference.models import ADASActionModel, OCRModel
+from roadsign_assist.inference.models import ADASActionModel, ADASAdvisoryModel, OCRModel
 from roadsign_assist.tracking.iou_tracker import TrackState
 
 UNKNOWN_MEANING = LocalizedText(
@@ -19,6 +19,14 @@ UNKNOWN_MEANING = LocalizedText(
     ms="Papan tanda tidak dikenali",
     zh="未知交通标志",
 )
+
+
+def _localized(en: str, ms: str | None = None, zh: str | None = None) -> LocalizedText:
+    return LocalizedText(en=en, ms=ms or en, zh=zh or en)
+
+
+def _format_number(value: float) -> str:
+    return str(int(value)) if value.is_integer() else f"{value:.1f}".rstrip("0").rstrip(".")
 
 
 class SemanticRuleEngine:
@@ -125,6 +133,186 @@ class SemanticRuleEngine:
                 str(definition.default_parameter) if definition.default_parameter else None
             )
         return definition.names, definition.severity, ADASActionModel.model_validate(action_kwargs)
+
+    def advisory_for(
+        self,
+        semantic_sign_id: str,
+        meaning: LocalizedText,
+        confidence: float,
+        action: ADASActionModel,
+    ) -> ADASAdvisoryModel:
+        if action.code is ActionCode.UNKNOWN_CAUTION:
+            if semantic_sign_id == "unknown_sign" or semantic_sign_id not in self.catalogue:
+                return ADASAdvisoryModel(
+                    headline=UNKNOWN_MEANING,
+                    instruction=_localized(
+                        "A road sign was detected, but its meaning is uncertain. Keep monitoring the road.",
+                        "Papan tanda dikesan, tetapi maksudnya belum pasti. Terus pantau jalan.",
+                    ),
+                    safe_to_announce=False,
+                )
+            return ADASAdvisoryModel(
+                headline=meaning,
+                instruction=_localized(
+                    "This sign is not confident enough for a strong command. Slow down and verify it visually.",
+                    "Keyakinan tanda ini belum cukup untuk arahan kuat. Perlahankan kenderaan dan sahkan secara visual.",
+                ),
+                safe_to_announce=False,
+            )
+
+        if action.code is ActionCode.SET_TARGET_SPEED and action.target_speed_kmh is not None:
+            speed = _format_number(float(action.target_speed_kmh))
+            return ADASAdvisoryModel(
+                headline=_localized(
+                    f"Speed limit {speed} km/h",
+                    f"Had laju {speed} km/j",
+                ),
+                instruction=_localized(
+                    f"This road has a speed limit of {speed} km/h. Keep your speed at or below the limit.",
+                    f"Jalan ini mempunyai had laju {speed} km/j. Pastikan kelajuan tidak melebihi had.",
+                ),
+            )
+
+        if (
+            action.code
+            in {
+                ActionCode.HEIGHT_RESTRICTION,
+                ActionCode.WIDTH_RESTRICTION,
+                ActionCode.WEIGHT_RESTRICTION,
+            }
+            and action.restriction_value is not None
+            and action.restriction_unit
+        ):
+            value = _format_number(float(action.restriction_value))
+            unit = action.restriction_unit.lower()
+            dimension = {
+                ActionCode.HEIGHT_RESTRICTION: "height",
+                ActionCode.WIDTH_RESTRICTION: "width",
+                ActionCode.WEIGHT_RESTRICTION: "weight",
+            }[action.code]
+            return ADASAdvisoryModel(
+                headline=_localized(f"{dimension.title()} limit {value} {unit}"),
+                instruction=_localized(
+                    f"Check the vehicle {dimension}. Do not continue if it exceeds {value} {unit}.",
+                    f"Semak {dimension} kenderaan. Jangan teruskan jika melebihi {value} {unit}.",
+                ),
+            )
+
+        fixed: dict[ActionCode, tuple[str, str]] = {
+            ActionCode.STOP_REQUEST: (
+                "Stop ahead",
+                "Prepare to stop safely and check traffic before moving again.",
+            ),
+            ActionCode.YIELD: (
+                "Give way",
+                "Slow down and give way to traffic with priority.",
+            ),
+            ActionCode.REDUCE_SPEED: (
+                "Reduce speed",
+                "Slow down smoothly and scan the road ahead.",
+            ),
+            ActionCode.PROHIBIT_ENTRY: (
+                "Do not enter",
+                "Do not enter this road. Choose a permitted route.",
+            ),
+            ActionCode.PROHIBIT_LEFT_TURN: (
+                "No left turn",
+                "Do not turn left here. Continue until a permitted turn.",
+            ),
+            ActionCode.PROHIBIT_RIGHT_TURN: (
+                "No right turn",
+                "Do not turn right here. Continue until a permitted turn.",
+            ),
+            ActionCode.PROHIBIT_U_TURN: (
+                "No U-turn",
+                "Do not make a U-turn at this location.",
+            ),
+            ActionCode.PROHIBIT_DIRECTION: (
+                "Movement prohibited",
+                "Do not follow the prohibited direction shown by the sign.",
+            ),
+            ActionCode.PROHIBIT_LANE_CHANGE: (
+                "No lane change",
+                "Stay in your lane until lane changing is allowed.",
+            ),
+            ActionCode.PROHIBIT_OVERTAKING: (
+                "No overtaking",
+                "Do not overtake until the restriction ends.",
+            ),
+            ActionCode.PROHIBIT_VEHICLE: (
+                "Vehicle restriction",
+                "This vehicle type is restricted. Use an allowed route.",
+            ),
+            ActionCode.PROHIBIT_PARKING: (
+                "No parking",
+                "Do not park in this area.",
+            ),
+            ActionCode.PROHIBIT_STOPPING: (
+                "No stopping",
+                "Do not stop here unless required for safety.",
+            ),
+            ActionCode.PROHIBIT_HORN: (
+                "No horn",
+                "Avoid using the horn in this area.",
+            ),
+            ActionCode.KEEP_LEFT: (
+                "Keep left",
+                "Keep to the left side as directed.",
+            ),
+            ActionCode.KEEP_RIGHT: (
+                "Keep right",
+                "Keep to the right side as directed.",
+            ),
+            ActionCode.FOLLOW_DIRECTION: (
+                "Follow direction",
+                "Follow the direction shown by the sign.",
+            ),
+            ActionCode.SOUND_HORN: (
+                "Sound horn",
+                "Sound the horn if needed to warn others safely.",
+            ),
+            ActionCode.WATCH_PEDESTRIANS: (
+                "Pedestrian crossing",
+                "Slow down and watch for pedestrians crossing ahead.",
+            ),
+            ActionCode.WATCH_CHILDREN: (
+                "Watch for children",
+                "Slow down and be ready for children near the road.",
+            ),
+            ActionCode.WATCH_CYCLISTS: (
+                "Watch for cyclists",
+                "Give cyclists space and be ready to slow down.",
+            ),
+            ActionCode.WATCH_ANIMALS: (
+                "Watch for animals",
+                "Slow down and watch for animals near the road.",
+            ),
+            ActionCode.WATCH_TRAFFIC_SIGNAL: (
+                "Traffic signal ahead",
+                "Prepare to obey the traffic signal ahead.",
+            ),
+            ActionCode.WATCH_RAILWAY: (
+                "Railway crossing",
+                "Slow down and check for trains before crossing.",
+            ),
+            ActionCode.WATCH_ROAD_HAZARD: (
+                "Road hazard ahead",
+                "Slow down and prepare for a road hazard ahead.",
+            ),
+            ActionCode.INFORMATION_ONLY: (
+                meaning.en,
+                "Use this sign as information and continue monitoring the road.",
+            ),
+        }
+        headline, instruction = fixed.get(
+            action.code,
+            (meaning.en, "Continue carefully and monitor the road ahead."),
+        )
+        return ADASAdvisoryModel(
+            headline=_localized(headline),
+            instruction=_localized(instruction),
+            safe_to_announce=confidence >= self.normal_confidence,
+        )
 
     @staticmethod
     def _validated_parameter(

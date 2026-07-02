@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+import { advisoryInstruction, targetSummary } from "./advisoryDisplay";
 import { getHealth, inferBatch, inferImage, inferVideo } from "./api";
 import { BatchResults, type BatchDisplayItem } from "./components/BatchResults";
 import { EventTimeline } from "./components/EventTimeline";
@@ -53,6 +54,29 @@ function pipelineLabel(mode: FrameResult["mode"] | null): string {
   if (mode === "baseline") return "Classical baseline";
   if (mode === "auto") return "Automatic fallback pipeline";
   return "Checking pipeline";
+}
+
+function profileString(
+  profile: Record<string, unknown> | undefined,
+  key: string,
+): string | null {
+  const value = profile?.[key];
+  if (typeof value === "string") return value;
+  if (typeof value === "number" || typeof value === "boolean") return String(value);
+  return null;
+}
+
+function modelFileName(pathOrName: string | null | undefined): string {
+  if (!pathOrName) return "not loaded";
+  return pathOrName.split(/[\\/]/).pop() || pathOrName;
+}
+
+function detectorProfileSummary(profile: Record<string, unknown> | undefined): string {
+  const confidence = profileString(profile, "confidence_threshold");
+  const fallback = profileString(profile, "fallback_to_baseline");
+  if (!confidence && !fallback) return "profile pending";
+  const fallbackLabel = fallback === "true" ? "fallback on" : "deep only";
+  return confidence ? `conf ${confidence}, ${fallbackLabel}` : fallbackLabel;
 }
 
 function isLocalOrPrivateHost(hostname: string): boolean {
@@ -274,7 +298,10 @@ export default function App() {
     health?.models.classifier_providers?.[0] ??
     activeMode ??
     "—";
-  const classifierRuntime = health?.models.classifier_providers?.join(", ") ?? "not loaded";
+  const detectorModelPath = profileString(health?.models.detector_profile, "model_path");
+  const classifierModelPath = profileString(health?.models.classifier_profile, "model_path");
+  const detectorRuntime = detectorProfileSummary(health?.models.detector_profile);
+  const classifierRuntime = modelFileName(classifierModelPath ?? health?.models.classifier);
 
   return (
     <main className={`app-shell ${presenterMode ? "presenter-mode" : ""}`}>
@@ -510,8 +537,17 @@ export default function App() {
             </div>
             <div className="metric-row">
               <Cpu size={16} />
+              <span>Detector</span>
+              <strong title={detectorModelPath ?? health?.models.detector ?? undefined}>
+                {detectorRuntime}
+              </strong>
+            </div>
+            <div className="metric-row">
+              <Cpu size={16} />
               <span>Classifier</span>
-              <strong title={classifierRuntime}>{classifierRuntime}</strong>
+              <strong title={classifierModelPath ?? health?.models.classifier ?? undefined}>
+                {classifierRuntime}
+              </strong>
             </div>
           </section>
 
@@ -569,13 +605,13 @@ export default function App() {
               <span className="simulator-badge">SIM</span>
             </header>
             <div className="speed-readout">
-              <strong>{primaryEvent?.action.target_speed_kmh ?? 50}</strong>
-              <span>km/h target</span>
+              <strong>{primaryEvent ? targetSummary(primaryEvent) : "50 km/h"}</strong>
+              <span>target</span>
             </div>
             <div className="vehicle-action">
               <span>Advisory</span>
               <strong>
-                {primaryEvent?.action.code.replaceAll("_", " ") ?? "MONITOR ROAD"}
+                {primaryEvent ? advisoryInstruction(primaryEvent, language) : "Monitor road"}
               </strong>
             </div>
           </section>

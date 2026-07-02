@@ -16,10 +16,29 @@ def test_speed_limit_uses_ocr_parameter() -> None:
     assert action.target_speed_kmh == 50
 
 
+def test_speed_limit_advisory_is_human_readable_and_parameterized() -> None:
+    engine = SemanticRuleEngine()
+    meaning, _, action = engine.action_for(
+        "maximum_speed",
+        0.95,
+        OCRModel(text="50", confidence=0.99, numeric_value=50, unit="KM/H"),
+    )
+
+    advisory = engine.advisory_for("maximum_speed", meaning, 0.95, action)
+
+    assert advisory.headline.en == "Speed limit 50 km/h"
+    assert "Keep your speed at or below the limit" in advisory.instruction.en
+    assert advisory.safe_to_announce is True
+
+
 def test_low_confidence_action_degrades_to_caution() -> None:
     engine = SemanticRuleEngine()
-    _, _, action = engine.action_for("stop", 0.40, OCRModel())
+    meaning, _, action = engine.action_for("stop", 0.40, OCRModel())
     assert action.code == "UNKNOWN_CAUTION"
+
+    advisory = engine.advisory_for("stop", meaning, 0.40, action)
+    assert "not confident enough" in advisory.instruction.en
+    assert advisory.safe_to_announce is False
 
 
 def test_ocr_is_conditional_on_sign_semantics() -> None:

@@ -4,16 +4,16 @@ detector:
   backend: deep
   model_path: models/exported/experimental/emtd_segmenter_s30.onnx
   image_size: 640
-  fallback_to_baseline: true
-  fallback_max_detections: 3
-  confidence_threshold: 0.25
+  fallback_to_baseline: false
+  fallback_max_detections: 1
+  confidence_threshold: 0.35
   nms_iou_threshold: 0.50
 classifier:
   backend: deep
-  model_path: models/exported/experimental/emtd_classifier_efficientnet15_embedding.onnx
-  labels_path: models/exported/experimental/emtd_classifier_efficientnet15.labels.json
-  calibration_path: models/exported/experimental/emtd_classifier_efficientnet15_embedding.calibration.json
-  image_size: 192
+  model_path: models/exported/experimental/stage_e_current_efficientnet_v2_s_embedding_q97.onnx
+  labels_path: models/exported/experimental/stage_e_current_efficientnet_v2_s.labels.json
+  calibration_path: models/exported/experimental/stage_e_current_efficientnet_v2_s_embedding_q97.calibration.json
+  image_size: 224
   confidence_threshold: 0.72
 ocr:
   enabled: true

@@ -18,7 +18,10 @@ interface AdvisoryAudioState {
   error: string | null;
 }
 
-const MANIFEST_URL = "/audio/p16/advisory_audio_manifest.json";
+const MANIFEST_URLS = [
+  "/audio/p16/advisory_audio_manifest.json",
+  "/audio/p16_ai/advisory_audio_manifest.json",
+];
 
 function eventAnnouncementKey(result: FrameResult, phraseId: string, trackId: number): string {
   return `${result.frame_id}:${trackId}:${phraseId}`;
@@ -38,20 +41,26 @@ export function useAdvisoryAudio({
 
   useEffect(() => {
     let active = true;
-    fetch(MANIFEST_URL)
-      .then((response) => {
-        if (!response.ok) throw new Error(`Audio manifest failed: ${response.status}`);
-        return response.json() as Promise<AdvisoryAudioManifest>;
-      })
-      .then((nextManifest) => {
-        if (!active) return;
-        setManifest(nextManifest);
-        setError(null);
-      })
-      .catch((cause: unknown) => {
-        if (!active) return;
-        setError(cause instanceof Error ? cause.message : "Audio manifest is unavailable.");
-      });
+    async function loadManifest(): Promise<void> {
+      let lastError: Error | null = null;
+      for (const url of MANIFEST_URLS) {
+        try {
+          const response = await fetch(url);
+          if (!response.ok) throw new Error(`Audio manifest failed: ${response.status}`);
+          const nextManifest = (await response.json()) as AdvisoryAudioManifest;
+          if (!active) return;
+          setManifest(nextManifest);
+          setError(null);
+          return;
+        } catch (cause) {
+          lastError =
+            cause instanceof Error ? cause : new Error("Audio manifest is unavailable.");
+        }
+      }
+      if (!active) return;
+      setError(lastError?.message ?? "Audio manifest is unavailable.");
+    }
+    void loadManifest();
     return () => {
       active = false;
     };
@@ -102,33 +111,49 @@ export function useAdvisoryAudio({
       manifest.phrases[manifest.fallback_phrase_id]?.assets[language];
     if (!asset?.src) return;
 
+    const sources = [asset.src, asset.fallback_src].filter(
+      (source): source is string => Boolean(source),
+    );
+    if (sources.length === 0) return;
+
     announcedKeysRef.current.add(announcementKey);
     lastPhrasePlayedAtRef.current.set(selected.phraseId, now);
+    const selectedPhrase = selected.phrase;
 
-    const audio = new Audio(asset.src);
-    audio.preload = "auto";
-    currentAudioRef.current = audio;
-    currentPhraseRef.current = selected.phrase;
-    audio.onended = () => {
-      if (currentAudioRef.current === audio) {
-        currentAudioRef.current = null;
-        currentPhraseRef.current = null;
-      }
-    };
-    audio.onerror = () => {
-      setError("Audio warning could not be played.");
-      if (currentAudioRef.current === audio) {
-        currentAudioRef.current = null;
-        currentPhraseRef.current = null;
-      }
-    };
-    void audio.play().catch((cause: unknown) => {
-      setError(cause instanceof Error ? cause.message : "Audio playback was blocked.");
-      if (currentAudioRef.current === audio) {
-        currentAudioRef.current = null;
-        currentPhraseRef.current = null;
-      }
-    });
+    function playSource(index: number): void {
+      const source = sources[index];
+      const audio = new Audio(source);
+      audio.preload = "auto";
+      currentAudioRef.current = audio;
+      currentPhraseRef.current = selectedPhrase;
+
+      const tryFallback = (cause: unknown): void => {
+        if (currentAudioRef.current === audio) {
+          currentAudioRef.current = null;
+          currentPhraseRef.current = null;
+        }
+        if (index + 1 < sources.length) {
+          playSource(index + 1);
+          return;
+        }
+        setError(cause instanceof Error ? cause.message : "Audio warning could not be played.");
+      };
+
+      audio.onended = () => {
+        if (currentAudioRef.current === audio) {
+          currentAudioRef.current = null;
+          currentPhraseRef.current = null;
+        }
+      };
+      audio.onerror = () => {
+        tryFallback(new Error("Audio warning could not be played."));
+      };
+      void audio.play().catch((cause: unknown) => {
+        tryFallback(cause instanceof Error ? cause : new Error("Audio playback was blocked."));
+      });
+    }
+
+    playSource(0);
   }, [language, manifest, muted, result]);
 
   return { ready: Boolean(manifest), error };

@@ -152,4 +152,27 @@ describe("advisory audio resolver", () => {
 
     expect(selected?.phraseId).toBe("maximum_speed");
   });
+
+  it("does not announce events marked unsafe by the backend advisory", () => {
+    const selected = chooseAdvisoryEvent(
+      [
+        event({
+          semantic_sign_id: "maximum_speed",
+          severity: "critical",
+          advisory: {
+            headline: { en: "Maximum speed", ms: "Maximum speed", zh: "Maximum speed" },
+            instruction: {
+              en: "This sign is not confident enough for a strong command.",
+              ms: "This sign is not confident enough for a strong command.",
+              zh: "This sign is not confident enough for a strong command.",
+            },
+            safe_to_announce: false,
+          },
+        }),
+      ],
+      manifest,
+    );
+
+    expect(selected).toBeNull();
+  });
 });

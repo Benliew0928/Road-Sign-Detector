@@ -251,35 +251,35 @@ Use the status values:
 | P6 | Leakage-safe dataset construction | `[~]` | Codex | 2026-06-26 | 507 duplicate groups, deterministic group-stratified splits, adjacent-video session leakage test, 1,064 semantic crops, DVC release; one rare class absent from validation/test |
 | P7 | Classical color/shape baseline | `[x]` | Codex | 2026-06-25 | 84/84 processed; masks/crops/features saved; six frozen-split SVM/RF comparisons completed |
 | P8 | Deep-learning sign segmentation | `[~]` | Codex | 2026-06-25 | 640/960 YOLO26s-seg comparison complete; live 640 model has small-sign recall 0.674 and CPU p95 1.04 s; final targets/review remain |
-| P9 | Semantic sign classification | `[~]` | Codex | 2026-06-26 | MobileNet and EfficientNet trained/exported; live EfficientNet ONNX now combines confidence and embedding-distance rejection; test selective accuracy 0.829 at 0.745 coverage; macro-F1 target remains unmet |
+| P9 | Semantic sign classification | `[x]` | Codex | 2026-07-02 | Stage G current-data retrain complete: EfficientNetV2-S q97 embedding-gated ONNX selected; frozen test accuracy 0.9534, macro-F1 0.9430, accepted accuracy 0.9765 at 0.9474 coverage; assignment external accepted accuracy 0.9107 at 0.6667 coverage |
 | P10 | Multilingual OCR | `[~]` | Codex | 2026-06-25 | Frozen offline PP-OCRv6-small assets; synthetic Malay/English/Chinese/numeric smoke CER 0 and 189 ms warm mean; real-road OCR set remains |
 | P11 | Tracking and temporal fusion | `[x]` | Codex | 2026-06-30 | Configurable BoT-SORT/GMC adapter, sparse optical-flow fallback, stable IDs, occlusion rebinding, expiration, fusion, cooldown, and synthetic motion/blur evaluation pass; owner real-footage test remains recommended |
-| P12 | Sign semantics and ADAS rules | `[~]` | Codex | 2026-06-25 | Every catalogue class produces a deterministic advisory action; numeric units/ranges, unknown fallback, and cooldown are tested; independent safety review pending |
+| P12 | Sign semantics and ADAS rules | `[~]` | Codex | 2026-07-02 | Stage H advisory integration complete: every sign event carries machine-readable action plus human driver advisory, low-confidence detections are cautious/non-announceable, numeric OCR values drive speed/restriction advice; independent safety review pending |
 | P13 | FastAPI inference backend | `[x]` | Codex | 2026-06-26 | Health, model-status, catalogue, image, batch, video, and WebSocket contracts pass with explicit response models and exported OpenAPI schema |
 | P14 | React live application | `[x]` | Codex | 2026-06-26 | Camera/image/video/batch workflows, masks, presenter mode, runtime/provider diagnostics, responsive QA, browser verification, and tests pass |
-| P15 | Phone-camera streaming | `[~]` | Codex | 2026-06-30 | Local HTTPS phone flow, multi-device live wall, 60/30 FPS adaptive streaming, signed public tunnel mode, operator-only live wall access, and docs/tests pass; offline/public soak and school/mobile-data tunnel tests pending |
-| P16 | Offline multilingual audio | `[~]` | Codex | 2026-06-30 | Human-style driver advisory phrase catalogue, 546 offline WAV assets across EN/MS/ZH, manifest hashes/durations, dashboard playback, cooldown/priority/mute, and automated coverage pass; native voice/listening review pending |
-| P17 | Coursework batch compatibility | `[ ]` |  |  |  |
-| P18 | Evaluation and optimization | `[ ]` |  |  |  |
+| P15 | Phone-camera streaming | `[~]` | Codex | 2026-07-02 | Local HTTPS phone flow, multi-device live wall, 60/30 FPS adaptive streaming, signed public tunnel mode, operator-only live wall access, duplicate stream cleanup, and docs/tests pass; owner school/mobile-data tunnel and long soak tests pending |
+| P16 | Offline multilingual audio | `[~]` | Codex | 2026-07-02 | Driver advisory phrase catalogue, baseline Windows SAPI WAV pack, manifest hashes/durations, dashboard playback, cooldown/priority/mute, local manifest fallback, and automated coverage pass exist; browser speaker/listening approval and optional AI voice pack remain |
+| P17 | Coursework batch compatibility | `[~]` | Codex | 2026-07-02 | Batch/runtime paths exist and Stage I processes all 84 assignment images under two seconds, but full detector pipeline on isolated coursework crop images finds expected signs in 0/84; classifier-only crop path or detector/domain adaptation is needed if this is a final demo requirement |
+| P18 | Evaluation and optimization | `[~]` | Codex | 2026-07-02 | Stage F/G/I evidence complete: detector profile selected deep-only conf 0.35 fallback off, classifier selected, no-sign negatives measured, final acceptance report/CSV/fallback video generated; assignment full-pipeline crop gap remains |
 | P19 | Windows packaging | `[ ]` |  |  |  |
-| P20 | Final technical acceptance | `[ ]` |  |  |  |
+| P20 | Final technical acceptance | `[~]` | Codex/Owner | 2026-07-02 | Stage I final acceptance is partial: common classifier quality, runtime, and fallback video pass; owner live phone/audio/OCR tests and assignment crop handling decision remain |
 
 ## 4.1 Overall Metrics Tracker
 
 | Metric | Required target | Current result | Status | Evidence |
 |---|---:|---:|---:|---|
-| Supported semantic classes | 60-100 | 96 approved catalogue entries; 35 trained experimental labels | `[~]` | Catalogue, `data/manifests/p2_ontology_review_latest.xlsx`, and `data/processed/emtd_classification/labels.json` |
-| Coursework images processed | 84/84 | 84/84 baseline | `[x]` | `outputs/baseline/results.csv` |
-| Coursework runtime | <2 seconds/image on lab CPU | 787 ms mean, 1,413 ms max; 84/84 under 2 s with YOLO26s on development RTX laptop | `[~]` | `outputs/evaluation/coursework_experimental_s30/summary.json`; lab CPU pending |
-| Sign detector recall | >=90% | Box 68.1%; mask 57.3% on YOLO26s EMTD test | `[~]` | `outputs/evaluation/emtd_segmenter_s30/metrics.json` |
-| Small-sign recall | >=80% | 67.4% at 640 px; 68.7% at 960 px | `[~]` | `outputs/evaluation/emtd_segmenter_s30/recall_slices.json`; `outputs/evaluation/emtd_segmenter_s960_20/recall_slices.json` |
+| Supported semantic classes | 60-100 | 96 approved catalogue entries; 78 labels in the current Stage E/G classifier freeze | `[x]` | `data/processed/stage_e_classifier_current/labels.json`; `outputs/audit/final_split_audit.json` |
+| Coursework images processed | 84/84 | 84/84 Stage I assignment external pass completed; full detector expected match remains 0/84 on isolated crop images | `[~]` | `outputs/evaluation/stage_i_final/stage_i_assignment_pipeline_predictions.csv` |
+| Coursework runtime | <2 seconds/image on lab CPU | 476 ms mean, 628.8 ms p95, 1,064 ms max; 84/84 under 2 s on development RTX laptop | `[~]` | `outputs/evaluation/stage_i_final/stage_i_final_acceptance_report.json`; lab CPU pending |
+| Sign detector recall | >=90% | Selected deep-only conf 0.35 profile: recall 0.6509 and precision 0.8629 at IoU 0.50; no-sign false boxes 17.5/100 | `[~]` | `outputs/evaluation/stage_f_detector/stage_f_selection_report.json` |
+| Small-sign recall | >=80% | 67.4% at 640 px | `[~]` | `outputs/evaluation/emtd_segmenter_s30/recall_slices.json` |
 | Segmentation mask IoU | >=0.75 |  | `[ ]` |  |
-| Semantic classifier macro-F1 | >=85% | 70.6% all-label test macro-F1; embedding-gated selective accuracy 82.9% at 74.5% coverage | `[~]` | `outputs/training/emtd_classifier_efficientnet15/metrics.json`; `outputs/evaluation/classifier_comparison/embedding_rejection.json` |
-| Critical-class recall | >=90% | 59.6% macro/micro; uneven from 100% to 0% with tiny supports | `[~]` | `outputs/evaluation/classifier_comparison/critical_class_recall.json` |
-| Unknown-sign AUROC | >=0.85 | Not measured; reviewed OOD set unavailable | `[ ]` | `outputs/evaluation/classifier_comparison/embedding_rejection.json` |
+| Semantic classifier macro-F1 | >=85% | Stage G EfficientNetV2-S frozen test macro-F1 0.9430; q97 embedding accepted accuracy 0.9765 at 0.9474 coverage | `[x]` | `outputs/evaluation/stage_g_classifier/stage_e_current_efficientnet_v2_s_embedding_q97_report.json`; `outputs/training/stage_e_current_efficientnet_v2_s/metrics.json` |
+| Critical-class recall | >=90% | Not separately recomputed for Stage G; assignment accepted accuracy is 0.9107 at 0.6667 coverage | `[~]` | `outputs/evaluation/stage_g_classifier/stage_e_current_efficientnet_v2_s_embedding_q97_assignment_report.json` |
+| Unknown-sign AUROC | >=0.85 | Not measured; reviewed OOD set unavailable; q97 selective rejection rate on assignment external set is 0.3333 | `[~]` | `outputs/evaluation/stage_i_final/stage_i_final_acceptance_report.json` |
 | GPU live display rate | >=15 FPS |  | `[ ]` |  |
 | Stable warning latency | <=1 second |  | `[ ]` |  |
-| Offline operation | Pass | Deep ONNX models and PP-OCRv6 assets run locally; Ultralytics auto-install disabled | `[~]` | Installer and clean-machine network-disabled test remain |
+| Offline operation | Pass | Deep ONNX models, PP-OCRv6 assets, and local P16 audio manifest run locally; public tunnel remains optional for internet demos | `[~]` | Installer and clean-machine network-disabled test remain |
 | Phone-camera soak test | 30 minutes |  | `[ ]` |  |
 | Laptop-camera soak test | 60 minutes |  | `[ ]` |  |
 
@@ -1162,6 +1162,12 @@ The P16 audio must behave like a driver-assistance warning, not a robotic
 reading of the detected class label. Spoken phrases should explain the road
 condition and advise the driver what to do or what to watch for.
 
+Current status: the offline audio system works, but the generated voice pack is
+a baseline Windows SAPI pack. The final target is a presentation-grade
+AI-generated voice pack created before the demo, bundled locally, and played
+offline at runtime. The live detection loop must never call online TTS during
+normal operation.
+
 Example:
 
 - Poor: `Speed limit 50`.
@@ -1176,7 +1182,7 @@ Example:
 | P16.2 | Review English phrases | `[~]` | Codex/User | Draft EN text generated and tested; final listening/wording approval pending |
 | P16.3 | Review Bahasa Melayu phrases | `[~]` | Codex/User | Draft MS text generated and tested; native wording plus Malay voice replacement pending |
 | P16.4 | Review Mandarin phrases | `[~]` | Codex/User | Draft ZH text generated and tested; final listening/wording approval pending |
-| P16.5 | Record or generate offline audio assets | `[x]` | Codex | 546 local WAV files in `apps/web/public/audio/p16` |
+| P16.5 | Generate baseline offline audio assets | `[x]` | Codex | 546 local Windows SAPI WAV files in `apps/web/public/audio/p16`; useful as fallback, not final presentation voice |
 | P16.6 | Normalize volume and format | `[x]` | Codex | 22.05 kHz 16-bit mono WAV, volume 100, manifest hashes/durations |
 | P16.7 | Add parameterized speed warnings | `[x]` | Codex | Speed variants 5-160 km/h including maximum/minimum/temporary speed phrases |
 | P16.8 | Add parameterized restriction warnings | `[x]` | Codex | Height, width, and weight advisory variants |
@@ -1185,6 +1191,15 @@ Example:
 | P16.11 | Implement track cooldown | `[x]` | Codex | Phrase cooldown and `should_announce` gating in frontend playback |
 | P16.12 | Add generic unknown-sign caution | `[x]` | Codex | `unknown_sign` advisory fallback in all three languages |
 | P16.13 | Test every supported audio key | `[~]` | Codex/User | Automated manifest/asset coverage passes; manual offline listening report pending |
+| P16.14 | Define AI voice style brief | `[x]` | Codex/User | `src/roadsign_assist/audio/ai_voice.py` defines calm ADAS, warm assistant, and crisp safety style profiles |
+| P16.15 | Add AI TTS batch generator | `[x]` | Codex | `scripts/generate_p16_ai_audio_assets.py` generates sample/full WAV packs from the existing manifest using Gemini by default via `GEMINI_API_KEY`; OpenAI remains optional; no key stored in repo |
+| P16.16 | Generate small AI sample pack | `[~]` | Codex | Gemini sample manifest/review scaffold generated under `outputs/audio/p16_ai_samples/calm_adas`; actual WAV generation waits for API key |
+| P16.17 | Listening approval for voice style | `[ ]` | Owner | Owner chooses the best voice/style before full generation; rejected samples are archived as non-runtime evidence |
+| P16.18 | Batch-generate full AI voice pack | `[ ]` | Codex | Full offline AI WAV pack written to `apps/web/public/audio/p16_ai` with one asset per phrase per language |
+| P16.19 | Validate AI asset quality and metadata | `[~]` | Codex | Generator validates WAV shape and metadata path; full asset validation waits for generated files |
+| P16.20 | Switch runtime manifest to AI pack with fallback | `[~]` | Codex | Dashboard now tries `/audio/p16_ai/advisory_audio_manifest.json` first and falls back to Windows SAPI manifest/assets |
+| P16.21 | Perform offline listening demo test | `[ ]` | Codex/User | Internet disconnected; EN/MS/ZH warnings play from local files; mute/cooldown/priority still work |
+| P16.22 | Document AI voice pack provenance and limits | `[~]` | Codex | Gemini/OpenAI provider options, model, generation date, voice style, languages, and no-live-TTS runtime policy documented; final generated pack provenance pending |
 
 ## Completion Gate
 
@@ -1192,7 +1207,11 @@ Example:
 - [x] Missing audio cannot crash inference.
 - [x] The same sign does not repeat continuously.
 - [x] Critical warnings can take priority over information messages.
-- [~] All audio assets are bundled offline; manual networking-disabled listening test pending.
+- [x] Baseline Windows SAPI audio pack is bundled offline.
+- [ ] AI-generated human-like voice sample pack is approved by listening test.
+- [ ] Full AI-generated voice pack is bundled offline.
+- [ ] Runtime uses local audio files only; no online TTS call occurs during live detection.
+- [ ] Networking-disabled EN/MS/ZH listening test passes.
 
 ---
 
@@ -1445,11 +1464,11 @@ data collection and model improvement rather than expanding unsupported claims.
 | 9 | Multilingual OCR and parameter parsing | `[~]` | Offline OCR, parsing, unit/range safety complete; real-road set pending |
 | 10 | Tracking, fusion, catalogue, and ADAS rules | `[~]` | Motion-aware tracking and deterministic advisory rules; field/safety review pending |
 | 11 | FastAPI backend and React live application | `[x]` | Endpoints, WebSocket, dashboard, desktop/mobile E2E and Chrome QA pass |
-| 12 | Phone camera, audio, and vehicle simulator | `[ ]` |  |
-| 13 | Coursework compatibility and CPU benchmark | `[ ]` |  |
-| 14 | Optimization, packaging, and offline testing | `[ ]` |  |
-| 15 | Field tests, soak tests, and failure corrections | `[ ]` |  |
-| 16 | Final acceptance and demonstration rehearsal | `[ ]` |  |
+| 12 | Phone camera, audio, and vehicle simulator | `[~]` | Phone QR/local-public tunnel/live wall and offline advisory audio implemented; owner physical-device audio/soak testing remains |
+| 13 | Coursework compatibility and CPU benchmark | `[~]` | Stage I processed 84/84 assignment external images under two seconds; isolated crop full-detector assignment recognition remains partial |
+| 14 | Optimization, packaging, and offline testing | `[~]` | Stage F detector hardening, Stage G classifier selection, Stage H integration, and Stage I acceptance report complete; Windows package not built |
+| 15 | Field tests, soak tests, and failure corrections | `[~]` | Synthetic/training/fallback evidence exists; real phone route, real-road OCR, and long soak tests remain owner-side |
+| 16 | Final acceptance and demonstration rehearsal | `[~]` | Stage I final acceptance report, assignment CSV, and fallback video generated; final demo mode decision remains |
 
 ---
 
@@ -1474,11 +1493,13 @@ data collection and model improvement rather than expanding unsupported claims.
 | DET-02 | YOLO26s-seg | EMTD draft 510 | 30 epochs, 640 px | Test mask mAP50 | 0.598; recall 0.573 | ONNX 80.2 ms/model image on RTX 4050 | `models/exported/experimental/emtd_segmenter_s30.onnx` | `[~]` |
 | DET-02-CPU | YOLO26s-seg ONNX | EMTD test 63 | 640 px, conf 0.25 | CPU wall latency | 522 ms mean; 1,041 ms p95 | CPUExecutionProvider | `outputs/evaluation/emtd_segmenter_s30/cpu_runtime.json` | `[x]` |
 | DET-03 | YOLO26s-seg 960 | EMTD draft 510 | 20 epochs, 960 px | Small-sign box recall at IoU 0.50 | 0.687; mask mAP50 0.708 | PyTorch 64.9 ms; ONNX CUDA 1,906 ms; CPU p95 853 ms | `models/exported/experimental/emtd_segmenter_s960_20.onnx` | `[~]` |
-| DET-04 | YOLO26 P2 seg |  |  | Small recall |  |  |  | `[ ]` |
+| DET-04 | Stage F selected profile | EMTD test + no-sign negatives | YOLO26s ONNX, 640 px, conf 0.35, fallback off | Precision hardening | Recall 0.6509, precision 0.8629, no-sign false boxes 17.5/100 | Runtime p95 687.1 ms | `outputs/evaluation/stage_f_detector/stage_f_selection_report.json` | `[x]` |
 | CLS-01 | MobileNetV3-Large | EMTD 1,064 crops | 15 epochs, 192 px | Test macro-F1 | 0.675 | 17.0 MB ONNX | `models/exported/experimental/emtd_classifier_mobilenet15.onnx` | `[~]` |
 | CLS-02 | EfficientNetV2-S | EMTD 1,064 crops | 15 epochs, 192 px | Test macro-F1 | 0.706; selective accuracy 0.818 | 80.7 MB ONNX | `models/exported/experimental/emtd_classifier_efficientnet15.onnx` | `[~]` |
 | CLS-02E | EfficientNetV2-S logits+embedding | EMTD 1,064 crops | Train prototypes from train split; tune distance on validation | Test selective accuracy | 0.829 at 0.745 coverage; distance threshold 0.3775 | 80.7 MB ONNX plus 1.4 MB calibration | `models/exported/experimental/emtd_classifier_efficientnet15_embedding.onnx` | `[~]` |
-| CLS-03 | SVM deep embeddings |  |  | Macro-F1 |  |  |  | `[ ]` |
+| CLS-03 | MobileNetV3-Large current freeze | Stage E current 3,178 crops, 78 labels | Current Stage G baseline | Assignment external raw accuracy | 0.6429; frozen test accuracy 0.9393 | batch eval ~30 ms/image | `models/exported/experimental/stage_e_current_mobilenet_v3.onnx` | `[x]` |
+| CLS-04 | EfficientNetV2-S current freeze | Stage E current 3,178 crops, 78 labels | Logits-only current Stage G model | Assignment external raw accuracy | 0.6786; frozen test accuracy 0.9534 | batch eval ~30 ms/image | `models/exported/experimental/stage_e_current_efficientnet_v2_s.onnx` | `[x]` |
+| CLS-05 | EfficientNetV2-S q97 embedding | Stage E current 3,178 crops, 78 labels | Selected app classifier | Accepted assignment accuracy | 0.9107 at 0.6667 coverage; frozen accepted accuracy 0.9765 | batch eval ~30 ms/image | `models/exported/experimental/stage_e_current_efficientnet_v2_s_embedding_q97.onnx` | `[x]` |
 | BASE-01 | SVM and Random Forest | EMTD 1,064 crops | HOG, HOG+HSV, all handcrafted | Test macro-F1 | Best RF all-handcrafted 0.570 | Six Joblib models | `outputs/evaluation/baseline_classifiers/comparison.csv` | `[x]` |
 | OCR-01 | PP-OCRv6-small Latin | Synthetic smoke 3 | Local CPU, conditional | CER | 0.000 | 189 ms warm mean across all scripts | `models/ocr` | `[~]` |
 | OCR-02 | PP-OCRv6-small Chinese | Synthetic smoke 2 | Local CPU, conditional | CER | 0.000 | Included above | `models/ocr` | `[~]` |
@@ -1487,10 +1508,10 @@ data collection and model improvement rather than expanding unsupported claims.
 
 | Role | Selected model | Version | Format | Input | Output | Threshold file | Status |
 |---|---|---|---|---|---|---|---:|
-| GPU segmenter | YOLO26s-seg experimental | s30 | ONNX | 640 full frame | Masks/boxes | Conf 0.25; validation candidate 0.10 | `[~]` |
-| CPU segmenter | YOLO26s-seg experimental | s30 | ONNX | 640 full frame | Masks/boxes | Conf 0.25; 522 ms mean | `[~]` |
-| GPU classifier | EfficientNetV2-S embedding-gated experimental | 15 epochs + prototype gate | ONNX | 192 crop | 35 semantic labels or `unknown_sign` | Confidence 0.72; cosine distance 0.3775 | `[~]` |
-| CPU classifier |  |  | ONNX | Sign crop | Semantic class |  | `[ ]` |
+| GPU segmenter | YOLO26s-seg experimental | s30 Stage F selected | ONNX | 640 full frame | Masks/boxes | Conf 0.35, fallback off, NMS 0.50 | `[x]` |
+| CPU segmenter | YOLO26s-seg experimental | s30 Stage F selected | ONNX | 640 full frame | Masks/boxes | Conf 0.35, fallback off; CPU/lab clean-machine benchmark pending | `[~]` |
+| GPU classifier | EfficientNetV2-S q97 embedding-gated current freeze | Stage G selected | ONNX | 224 crop | 78 semantic labels or `unknown_sign` | Confidence 0.72 plus embedding distance q97 calibration | `[x]` |
+| CPU classifier | EfficientNetV2-S q97 embedding-gated current freeze | Stage G selected | ONNX | 224 crop | 78 semantic labels or `unknown_sign` | CPUExecutionProvider available through ONNX Runtime fallback; dedicated CPU benchmark pending | `[~]` |
 | Latin OCR | PP-OCRv6-small | 3.7.0 | Paddle | Text crop | Text/numeric | Local checksum manifest | `[~]` |
 | Chinese OCR | PP-OCRv6-small | 3.7.0 | Paddle | Text crop | Chinese text | Local checksum manifest | `[~]` |
 
@@ -1510,7 +1531,11 @@ data collection and model improvement rather than expanding unsupported claims.
 | Live embedding profile | 2026-06-26 | Uncommitted greenfield tree | Held-out EMTD image | YOLO26s + EfficientNet embedding ONNX + PP-OCRv6 | RTX 4050 CUDAExecutionProvider | Health loaded detector/classifier/OCR; API evidence includes `embedding:<label>:<distance>` and `classifier_rejection:confidence` | `GET /api/v1/health`; `POST /api/v1/infer/image` smoke |
 | P11 synthetic tracking motion | 2026-06-30 | Uncommitted P11 tracker update | Synthetic generated frames | BoT-SORT/GMC adapter plus sparseOptFlow IoU fallback | CPU | 5/5 scenarios pass; 0 ID switches; first stable frame <= 2 | `outputs/evaluation/tracking_motion/summary.json`; `docs/P11_TRACKING_MOTION_REPORT.md` |
 | P15 phone QR/mobile browser UI | 2026-06-30 | Uncommitted P15 phone-camera update | Mock API contracts | Local WebSocket camera route | Chromium desktop/mobile | API contract 21 passed; Playwright desktop/mobile 14 passed; phone sender physical-device test pending | `apps/api/tests/test_api.py`; `apps/web/tests/dashboard.spec.ts`; `docs/P15_PHONE_CAMERA_STREAMING.md` |
-| P16 offline advisory audio | 2026-06-30 | Uncommitted P16 audio update | Current 103-entry sign catalogue plus generated parameter variants | Offline Windows SAPI WAV pack and React audio playback | Windows laptop/browser | 182 advisory phrases, 546 WAV files, EN/MS/ZH manifest coverage pass; native listening review pending | `apps/web/public/audio/p16/advisory_audio_manifest.json`; `tests/unit/test_advisory_audio.py`; `docs/P16_OFFLINE_ADVISORY_AUDIO.md` |
+| P16 offline advisory audio | 2026-06-30 | Uncommitted P16 audio update | Current 103-entry sign catalogue plus generated parameter variants | Baseline offline Windows SAPI WAV pack and React audio playback | Windows laptop/browser | 182 advisory phrases, 546 WAV files, EN/MS/ZH manifest coverage pass; AI-generated human-like replacement pack pending | `apps/web/public/audio/p16/advisory_audio_manifest.json`; `tests/unit/test_advisory_audio.py`; `docs/P16_OFFLINE_ADVISORY_AUDIO.md` |
+| Stage F detector hardening | 2026-07-02 | Uncommitted Stage F update | EMTD detector test + no-sign negatives | YOLO26s ONNX deep-only conf 0.35 fallback off | RTX laptop | Recall 0.6509, precision 0.8629, no-sign false boxes 17.5/100; fallback disabled for live app | `outputs/evaluation/stage_f_detector/stage_f_selection_report.json` |
+| Stage G classifier selection | 2026-07-02 | Uncommitted Stage G update | Stage E current 3,178 crops, 78 labels + assignment external 84 | EfficientNetV2-S q97 embedding ONNX | CUDA/CPU ONNX Runtime | Frozen accepted accuracy 0.9765 at 0.9474 coverage; assignment accepted accuracy 0.9107 at 0.6667 coverage | `outputs/evaluation/stage_g_classifier/stage_g_selection_report.json` |
+| Stage H app integration | 2026-07-02 | Uncommitted Stage H update | Live app contracts and advisory events | Selected Stage F/G profile + PP-OCRv6 + P16 audio | pytest/Vitest/build | Backend/API tests 10 passed, audio tests 3 passed, web tests 10 passed, production build passed | `DATA_TO_FINAL_MODEL_FLOW.md`; `apps/web/src/advisoryDisplay.ts`; `src/roadsign_assist/semantics/rules.py` |
+| Stage I final acceptance | 2026-07-02 | Uncommitted Stage I update | Assignment external 84 + Stage F/G/OCR artifacts + detector full-frame fallback source | Selected experimental app profile | RTX laptop | Runtime/common/fallback pass; assignment crop full detector pipeline partial with expected match 0/84 | `outputs/evaluation/stage_i_final/stage_i_final_acceptance_report.json` |
 | Phone live |  |  |  |  | RTX 4050 |  |  |
 | Offline test |  |  |  |  | RTX 4050 |  |  |
 | One-hour soak |  |  |  |  | RTX 4050 |  |  |
@@ -1609,7 +1634,11 @@ acceptance targets.
 | 2026-06-27 | `0.19` | Applied three additional owner-reviewed height-restriction corrections, raising owner crop decisions to 126 applied rows; regenerated QC artifacts; and re-ran focused P5/catalogue/import tests | Codex |
 | 2026-06-30 | `0.20` | Completed P11 under owner-approved no-real-footage scope: added configurable BoT-SORT/GMC adapter, sparse optical-flow fallback compensation, tracker status reporting, synthetic motion/blur/cooldown evaluation, and focused regression tests | Codex |
 | 2026-06-30 | `0.21` | Implemented P15 engineering path: local HTTPS phone server script, certificate generator, QR connection contract, phone sender route, adaptive JPEG WebSocket uplink, stale-frame drop policy, phone event display, and desktop/mobile browser coverage | Codex |
-| 2026-06-30 | `0.22` | Implemented P16 offline driver-advisory audio: human-style EN/MS/ZH warning phrases, parameterized speed/restriction variants, 546 generated WAV assets, manifest hashes/durations, dashboard playback, cooldown, priority interruption, mute/language handling, and coverage tests | Codex |
+| 2026-06-30 | `0.22` | Implemented P16 offline driver-advisory audio baseline: EN/MS/ZH warning phrases, parameterized speed/restriction variants, 546 Windows SAPI WAV assets, manifest hashes/durations, dashboard playback, cooldown, priority interruption, mute/language handling, and coverage tests; presentation-grade AI voice pack remains a planned upgrade | Codex |
+| 2026-07-02 | `0.23` | Completed Stage F detector precision hardening and Stage G current-data classifier retrain/selection; selected deep-only detector conf 0.35 and EfficientNetV2-S q97 embedding-gated classifier for the experimental app | Codex |
+| 2026-07-02 | `0.24` | Completed Stage H app integration with backend advisory events, friendly dashboard/phone/live-wall advice, model-profile display, local audio manifest fallback, and backend/frontend regression tests | Codex |
+| 2026-07-02 | `0.25` | Completed Stage I final evaluation artifacts: acceptance JSON, assignment prediction CSV, and fallback demo video; documented that runtime/common/fallback pass while isolated assignment crop full-pipeline recognition remains partial | Codex |
+| 2026-07-02 | `0.26` | Refreshed the major technical plan to match current Stage F/G/H/I progress and cleaned disposable generated clutter while retaining final manifests, model evidence, and citation-critical provenance artifacts | Codex |
 
 ---
 

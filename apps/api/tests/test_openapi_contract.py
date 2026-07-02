@@ -40,8 +40,10 @@ def test_openapi_contains_runtime_fields_used_by_react() -> None:
     for field in (
         "detector_loaded",
         "detector_device",
+        "detector_profile",
         "classifier_loaded",
         "classifier_providers",
+        "classifier_profile",
         "tracker",
         "ocr_loaded",
         "ocr_load_error",

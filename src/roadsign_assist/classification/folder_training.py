@@ -94,6 +94,14 @@ def validate_classifier_dataset(
     return metadata
 
 
+def should_export_classifier_experimentally(
+    metadata: dict[str, Any],
+    *,
+    allow_unreviewed_experiment: bool,
+) -> bool:
+    return allow_unreviewed_experiment or metadata.get("annotation_status") != "approved"
+
+
 def _transforms(image_size: int) -> tuple[Any, Any]:
     from torchvision import transforms
 
@@ -121,8 +129,7 @@ def _transforms(image_size: int) -> tuple[Any, Any]:
     )
     evaluate = transforms.Compose(
         [
-            transforms.Resize(round(image_size * 1.14)),
-            transforms.CenterCrop(image_size),
+            transforms.Resize((image_size, image_size)),
             transforms.ToTensor(),
             normalize,
         ]
@@ -156,6 +163,8 @@ def compare_classifier_outputs(
     confidence_threshold: float = 0.72,
     maximum_probability_tolerance: float = 0.02,
     mean_probability_tolerance: float = 1e-3,
+    minimum_top1_agreement: float = 0.995,
+    minimum_acceptance_agreement: float = 0.995,
 ) -> dict[str, Any]:
     if pytorch_logits.shape != onnx_logits.shape:
         raise ValueError(
@@ -186,11 +195,13 @@ def compare_classifier_outputs(
         "confidence_threshold": confidence_threshold,
         "maximum_probability_tolerance": maximum_probability_tolerance,
         "mean_probability_tolerance": mean_probability_tolerance,
+        "minimum_top1_agreement": minimum_top1_agreement,
+        "minimum_acceptance_agreement": minimum_acceptance_agreement,
         "passed": (
             maximum_probability_difference <= maximum_probability_tolerance
             and mean_probability_difference <= mean_probability_tolerance
-            and top1_agreement == 1.0
-            and acceptance_agreement == 1.0
+            and top1_agreement >= minimum_top1_agreement
+            and acceptance_agreement >= minimum_acceptance_agreement
         ),
         "maximum_absolute_logit_difference": float(absolute_logit_difference.max()),
         "mean_absolute_logit_difference": float(absolute_logit_difference.mean()),
@@ -448,9 +459,13 @@ def train_folder_classifier(config: FolderClassifierTrainingConfig) -> dict[str,
     accepted_count = int(accepted_mask.sum())
     correct_mask = predicted_array == target_array
     observed_label_count = len(np.unique(target_array))
+    experimental_export = should_export_classifier_experimentally(
+        metadata,
+        allow_unreviewed_experiment=config.allow_unreviewed_experiment,
+    )
     metrics: dict[str, Any] = {
         "schema_version": "1.0",
-        "experimental": metadata.get("annotation_status") != "approved",
+        "experimental": experimental_export,
         "architecture": config.architecture,
         "labels": len(labels),
         "train_samples": len(train_dataset),

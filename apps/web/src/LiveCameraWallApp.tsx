@@ -1,6 +1,7 @@
 import { ChevronLeft, MonitorPlay, RefreshCw, ShieldCheck, Wifi, WifiOff, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 
+import { advisoryHeadline } from "./advisoryDisplay";
 import arrowAsset from "./assets/arrow.png";
 import { usePhoneMonitor } from "./hooks/usePhoneMonitor";
 import type { PhoneStreamSnapshot, SignEvent } from "./types";
@@ -160,7 +161,7 @@ function LiveCameraTile({ stream, now, zoomed = false, onOpen }: LiveCameraTileP
                       height: `${((event.bbox.y2 - event.bbox.y1) / result.height) * 100}%`,
                     }}
                   >
-                    <span>{event.meaning.en}</span>
+                    <span>{advisoryHeadline(event, "en")}</span>
                   </div>
                 ))}
               </div>
@@ -176,7 +177,7 @@ function LiveCameraTile({ stream, now, zoomed = false, onOpen }: LiveCameraTileP
       <footer className="live-camera-meta">
         <div>
           <strong>{stream.label}</strong>
-          <span>{primaryEvent?.meaning.en ?? "No sign detected"}</span>
+          <span>{primaryEvent ? advisoryHeadline(primaryEvent, "en") : "No sign detected"}</span>
         </div>
         <div>
           <strong>{Math.round(stream.live_fps)} FPS</strong>
@@ -216,11 +217,17 @@ function statusText(status: string): string {
   return "Connecting";
 }
 
+function dashboardHrefFromOperator(): string {
+  const operatorToken = new URLSearchParams(window.location.search).get("operator");
+  return operatorToken ? `/?operator=${encodeURIComponent(operatorToken)}` : "/";
+}
+
 export default function LiveCameraWallApp() {
   const { streams, status, error, refresh } = usePhoneMonitor();
   const { gridRef, layout } = useGridLayout(streams.length);
   const [now, setNow] = useState(() => Date.now());
   const [zoomStreamId, setZoomStreamId] = useState<string | null>(null);
+  const dashboardHref = useMemo(() => dashboardHrefFromOperator(), []);
   const zoomIndex = streams.findIndex((stream) => stream.stream_id === zoomStreamId);
   const zoomedStream = zoomIndex >= 0 ? streams[zoomIndex] : null;
 
@@ -282,7 +289,7 @@ export default function LiveCameraWallApp() {
             <RefreshCw size={17} />
             <span className="sr-only">Refresh cameras</span>
           </button>
-          <a className="live-back-button" href="/">
+          <a className="live-back-button" href={dashboardHref}>
             <ChevronLeft size={17} />
             Dashboard
           </a>

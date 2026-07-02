@@ -1,31 +1,33 @@
 from __future__ import annotations
 
+import argparse
 import csv
 import hashlib
 import html
 from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Literal
 
 from PIL import Image, ImageDraw, ImageFont, ImageStat
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 TRACKER_PATH = PROJECT_ROOT / "data/manifests/CURRENT_DATA_PROGRESS.csv"
-OUTPUT_MANIFEST_PATH = PROJECT_ROOT / "data/manifests/stage_d_zero_gap_qc_manifest.csv"
-OUTPUT_SHEET_PATH = (
-    PROJECT_ROOT / "outputs/review/00_CURRENT_REVIEW/stage_d_zero_gap_qc_contact_sheet.jpg"
-)
 
 ARCHIVE_MANIFEST_DIR = PROJECT_ROOT / "_archive/2026-06-29-data-cleanup/manifests"
 P5_QC_MANIFEST = ARCHIVE_MANIFEST_DIR / "p5_label_qc_manifest.csv"
 ROBOFLOW_MANIFEST = ARCHIVE_MANIFEST_DIR / "roboflow_source_manifest.csv"
 MINED_ROBOFLOW_MANIFEST = ARCHIVE_MANIFEST_DIR / "stage_c_mined_roboflow_gap_candidates.csv"
+P5_CURRENT_MANIFEST = ARCHIVE_MANIFEST_DIR / "p5_current_manifest_snapshot.csv"
+MANUAL_STAGE_C_MANIFEST = PROJECT_ROOT / "data/manifests/stage_c_manual_01_candidates.csv"
 
 THUMB_SIZE = 88
 GAP = 8
 LABEL_H = 28
 HEADER_H = 42
 COLUMNS = 10
+
+Scope = Literal["must", "other", "all"]
 
 
 @dataclass(frozen=True)
@@ -118,25 +120,68 @@ def roboflow_base_key(path: Path) -> str:
 
 
 def iter_processed_candidates() -> Iterable[Candidate]:
-    for row in read_csv(P5_QC_MANIFEST):
-        crop_path = project_path(row.get("file", ""))
-        semantic_sign_id = row.get("current_label", "").strip()
+    for manifest_path, review_status in (
+        (P5_QC_MANIFEST, "p5_partial_owner_review"),
+        (P5_CURRENT_MANIFEST, "p5_current_snapshot"),
+    ):
+        for row in read_csv(manifest_path):
+            crop_path = project_path(row.get("file", ""))
+            semantic_sign_id = row.get("current_label", "").strip()
+            if not semantic_sign_id or not crop_path.exists():
+                continue
+            instance_id = row.get("instance_id", crop_path.stem).strip() or crop_path.stem
+            yield Candidate(
+                semantic_sign_id=semantic_sign_id,
+                candidate_id=instance_id,
+                crop_path=crop_path,
+                source_group="processed_emtd_p5",
+                source_dataset="EMTD processed classification crop",
+                source_split=row.get("split", "").strip(),
+                source_label=semantic_sign_id,
+                source_url="https://zenodo.org/records/1217105",
+                license_notes="Zenodo EMTD source; keep project provenance and licence ledger.",
+                mapping_evidence=f"P5 current label {semantic_sign_id}; partial owner corrections applied.",
+                prior_review_status=review_status,
+                dedupe_key=instance_id,
+            )
+
+
+def iter_manual_stage_c_candidates() -> Iterable[Candidate]:
+    for row in read_csv(MANUAL_STAGE_C_MANIFEST):
+        crop_text = row.get("file", "").strip() or row.get("local_crop_path", "").strip()
+        if not crop_text:
+            continue
+        crop_path = project_path(crop_text)
+        semantic_sign_id = row.get("semantic_sign_id", "").strip()
         if not semantic_sign_id or not crop_path.exists():
             continue
-        instance_id = row.get("instance_id", crop_path.stem).strip() or crop_path.stem
+        source_url = (
+            row.get("commons_page_url", "").strip()
+            or row.get("source_file_url", "").strip()
+            or row.get("download_url", "").strip()
+        )
+        license_notes = row.get("license_short_name", "").strip()
+        license_url = row.get("license_url", "").strip()
+        if license_url:
+            license_notes = f"{license_notes} ({license_url})" if license_notes else license_url
         yield Candidate(
             semantic_sign_id=semantic_sign_id,
-            candidate_id=instance_id,
+            candidate_id=row.get("candidate_id", crop_path.stem).strip() or crop_path.stem,
             crop_path=crop_path,
-            source_group="processed_emtd_p5",
-            source_dataset="EMTD processed classification crop",
-            source_split=row.get("split", "").strip(),
-            source_label=semantic_sign_id,
-            source_url="https://zenodo.org/records/1217105",
-            license_notes="Zenodo EMTD source; keep project provenance and licence ledger.",
-            mapping_evidence=f"P5 current label {semantic_sign_id}; partial owner corrections applied.",
-            prior_review_status="p5_partial_owner_review",
-            dedupe_key=instance_id,
+            source_group=row.get("stage_id", "").strip() or "stage_c_manual_01_candidates",
+            source_dataset=row.get("source_modality", "stage_c_manual_visual_candidate").strip(),
+            source_split="",
+            source_label=row.get("source_title", "").strip(),
+            source_url=source_url,
+            license_notes=license_notes or "Manual Stage C source; review source URL/license fields.",
+            mapping_evidence=row.get("mapping_evidence", "").strip(),
+            prior_review_status=row.get("review_status", "visual_match_pending_stage_d_qc").strip(),
+            dedupe_key=(
+                row.get("source_sha256", "").strip()
+                or row.get("crop_sha256", "").strip()
+                or row.get("candidate_id", crop_path.stem).strip()
+                or crop_path.stem
+            ),
         )
 
 
@@ -235,10 +280,12 @@ def source_rank(candidate: Candidate) -> int:
         return 0
     if candidate.source_group.startswith("stage_c_gap_fill_"):
         return 1
-    if candidate.source_group == "stage_c_mined_roboflow_gap_candidates":
+    if candidate.source_group.startswith("stage_c_manual_01"):
         return 2
-    if candidate.source_group == "roboflow_source_manifest":
+    if candidate.source_group == "stage_c_mined_roboflow_gap_candidates":
         return 3
+    if candidate.source_group == "roboflow_source_manifest":
+        return 4
     return 9
 
 
@@ -252,6 +299,7 @@ def valid_candidates_by_class() -> dict[str, list[ValidCandidate]]:
     sources = (
         iter_processed_candidates(),
         iter_current_stage_c_candidates(),
+        iter_manual_stage_c_candidates(),
         iter_archived_mined_candidates(),
         iter_archived_roboflow_candidates(),
     )
@@ -306,27 +354,59 @@ def select_diverse(rows: list[ValidCandidate], needed: int) -> list[ValidCandida
     return selected
 
 
+def priority_in_scope(priority: str, scope: Scope) -> bool:
+    if scope == "all":
+        return True
+    if scope == "must":
+        return priority == "must"
+    return priority != "must"
+
+
+def default_outputs(scope: Scope) -> tuple[Path, Path]:
+    if scope == "must":
+        stem = "stage_d_zero_gap_qc"
+    elif scope == "other":
+        stem = "stage_d_other_zero_gap_qc"
+    else:
+        stem = "stage_d_all_zero_gap_qc"
+    return (
+        PROJECT_ROOT / f"data/manifests/{stem}_manifest.csv",
+        PROJECT_ROOT / f"outputs/review/00_CURRENT_REVIEW/{stem}_contact_sheet.jpg",
+    )
+
+
 def selected_classes(
     tracker_rows: list[dict[str, str]],
     grouped: dict[str, list[ValidCandidate]],
+    scope: Scope,
+    only_pending: bool = False,
+    include_below_if_enough: bool = False,
+    exclude_classes: set[str] | None = None,
 ) -> list[tuple[dict[str, str], list[ValidCandidate]]]:
     selected: list[tuple[dict[str, str], list[ValidCandidate]]] = []
     shortages: list[str] = []
+    exclude_classes = exclude_classes or set()
     for row in tracker_rows:
-        if row.get("priority") != "must":
-            continue
-        if int(row.get("gap_to_minimum", "999") or "999") > 0:
+        if not priority_in_scope(row.get("priority", ""), scope):
             continue
         semantic_sign_id = row["semantic_sign_id"]
+        if semantic_sign_id in exclude_classes:
+            continue
+        if only_pending and row.get("cleaning_status") == "stage_d_minimum_qc_complete":
+            continue
+        gap_to_minimum = int(row.get("gap_to_minimum", "999") or "999")
+        if gap_to_minimum > 0 and not include_below_if_enough:
+            continue
         needed = int(row.get("minimum_clean_crops", "50") or "50")
         candidates = grouped.get(semantic_sign_id, [])
         if len(candidates) < needed:
-            shortages.append(f"{semantic_sign_id}: {len(candidates)}/{needed}")
+            if gap_to_minimum <= 0:
+                shortages.append(f"{semantic_sign_id}: {len(candidates)}/{needed}")
             continue
         selected.append((row, select_diverse(candidates, needed)))
     if shortages:
         raise RuntimeError(
-            "Some zero-gap must classes still lack enough Stage D-valid crops: "
+            f"Some zero-gap {scope} classes still lack enough Stage D-valid crops: "
             + "; ".join(shortages)
         )
     return selected
@@ -335,28 +415,39 @@ def selected_classes(
 def update_tracker(
     tracker_rows: list[dict[str, str]],
     selected: list[tuple[dict[str, str], list[ValidCandidate]]],
+    manifest_path: Path,
 ) -> None:
     selected_ids = {row["semantic_sign_id"] for row, _ in selected}
     for row in tracker_rows:
         if row.get("semantic_sign_id") not in selected_ids:
             continue
+        minimum = int(row.get("minimum_clean_crops", "50") or "50")
+        current_total = int(row.get("realistic_candidate_total", "0") or "0")
+        row["realistic_candidate_total"] = str(max(current_total, minimum))
+        row["gap_to_minimum"] = "0"
         row["collection_status"] = "meets_minimum_stage_d_qc_complete"
         row["cleaning_status"] = "stage_d_minimum_qc_complete"
         row["next_action"] = (
             "Stage D zero-gap minimum QC complete in "
-            "data/manifests/stage_d_zero_gap_qc_manifest.csv; include in Stage E split freeze."
+            f"{relative_path(manifest_path)}; include in Stage E split freeze."
         )
     write_csv(TRACKER_PATH, tracker_rows, list(tracker_rows[0].keys()))
 
 
-def write_review_manifest(selected: list[tuple[dict[str, str], list[ValidCandidate]]]) -> None:
+def write_review_manifest(
+    selected: list[tuple[dict[str, str], list[ValidCandidate]]],
+    output_manifest_path: Path,
+    scope: Scope,
+    batch_label: str | None = None,
+) -> None:
     rows: list[dict[str, str]] = []
+    batch = batch_label or f"stage_d_{scope}_zero_gap_minimum_qc"
     for tracker_row, crops in selected:
         for index, crop in enumerate(crops, start=1):
             candidate = crop.candidate
             rows.append(
                 {
-                    "stage_d_batch": "stage_d_zero_gap_minimum_qc",
+                    "stage_d_batch": batch,
                     "semantic_sign_id": candidate.semantic_sign_id,
                     "name_en": tracker_row.get("name_en", ""),
                     "priority": tracker_row.get("priority", ""),
@@ -388,7 +479,7 @@ def write_review_manifest(selected: list[tuple[dict[str, str], list[ValidCandida
                 }
             )
     fieldnames = list(rows[0].keys())
-    write_csv(OUTPUT_MANIFEST_PATH, rows, fieldnames)
+    write_csv(output_manifest_path, rows, fieldnames)
 
 
 def draw_wrapped(draw: ImageDraw.ImageDraw, xy: tuple[int, int], text: str, font: ImageFont.ImageFont, fill: str, max_chars: int) -> None:
@@ -406,7 +497,12 @@ def draw_wrapped(draw: ImageDraw.ImageDraw, xy: tuple[int, int], text: str, font
         draw.text((x, y), line, font=font, fill=fill)
 
 
-def make_contact_sheet(selected: list[tuple[dict[str, str], list[ValidCandidate]]]) -> None:
+def make_contact_sheet(
+    selected: list[tuple[dict[str, str], list[ValidCandidate]]],
+    output_sheet_path: Path,
+    scope: Scope,
+    batch_label: str | None = None,
+) -> None:
     font = ImageFont.load_default()
     section_w = COLUMNS * THUMB_SIZE + (COLUMNS + 1) * GAP
     section_h = HEADER_H + 5 * (THUMB_SIZE + LABEL_H + GAP) + GAP
@@ -417,12 +513,21 @@ def make_contact_sheet(selected: list[tuple[dict[str, str], list[ValidCandidate]
     for tracker_row, crops in selected:
         semantic_sign_id = tracker_row["semantic_sign_id"]
         header = (
-            f"{semantic_sign_id} | {tracker_row.get('name_en', '')} | "
+            f"{semantic_sign_id} | {tracker_row.get('priority', '')} | "
+            f"{tracker_row.get('name_en', '')} | "
             f"{len(crops)}/{tracker_row.get('minimum_clean_crops', '50')} accepted"
         )
         draw.rectangle((0, y, section_w, y + HEADER_H), fill="#183027")
         draw.text((GAP, y + 8), header, font=font, fill="#e8fff3")
-        draw.text((GAP, y + 24), "Stage D zero-gap QC: readable, nonblank, deduped, source-mapped crops", font=font, fill="#9fd4bb")
+        draw.text(
+            (GAP, y + 24),
+            (
+                batch_label
+                or f"Stage D {scope} zero-gap QC: readable, nonblank, deduped, source-mapped crops"
+            ),
+            font=font,
+            fill="#9fd4bb",
+        )
         for index, crop in enumerate(crops):
             col = index % COLUMNS
             row = index // COLUMNS
@@ -440,14 +545,20 @@ def make_contact_sheet(selected: list[tuple[dict[str, str], list[ValidCandidate]
             draw.text((x0, y0 + THUMB_SIZE + 3), label, font=font, fill="#c4f2d7")
         y += section_h
 
-    OUTPUT_SHEET_PATH.parent.mkdir(parents=True, exist_ok=True)
-    canvas.save(OUTPUT_SHEET_PATH, quality=92)
+    output_sheet_path.parent.mkdir(parents=True, exist_ok=True)
+    canvas.save(output_sheet_path, quality=92)
 
 
-def print_summary(selected: list[tuple[dict[str, str], list[ValidCandidate]]]) -> None:
-    print("Stage D zero-gap must-class minimum QC complete")
-    print(f"Manifest: {relative_path(OUTPUT_MANIFEST_PATH)}")
-    print(f"Contact sheet: {relative_path(OUTPUT_SHEET_PATH)}")
+def print_summary(
+    selected: list[tuple[dict[str, str], list[ValidCandidate]]],
+    output_manifest_path: Path,
+    output_sheet_path: Path,
+    scope: Scope,
+    batch_label: str | None = None,
+) -> None:
+    print(batch_label or f"Stage D zero-gap {scope} minimum QC complete")
+    print(f"Manifest: {relative_path(output_manifest_path)}")
+    print(f"Contact sheet: {relative_path(output_sheet_path)}")
     for tracker_row, crops in selected:
         by_source: dict[str, int] = {}
         low_resolution_count = 0
@@ -460,16 +571,62 @@ def print_summary(selected: list[tuple[dict[str, str], list[ValidCandidate]]]) -
         print(f"- {tracker_row['semantic_sign_id']}: {len(crops)} accepted ({source_text}{low_res_text})")
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Run Stage D minimum QC for zero-gap classes with accessible crop files."
+    )
+    parser.add_argument(
+        "--scope",
+        choices=("must", "other", "all"),
+        default="must",
+        help="Class priority scope to process. 'other' means should+optional.",
+    )
+    parser.add_argument("--manifest", type=Path, default=None, help="Output CSV path.")
+    parser.add_argument("--sheet", type=Path, default=None, help="Output contact-sheet JPG path.")
+    parser.add_argument(
+        "--only-pending",
+        action="store_true",
+        help="Process only classes whose Stage D minimum QC is not already complete.",
+    )
+    parser.add_argument(
+        "--include-below-if-enough",
+        action="store_true",
+        help="Also process below-minimum tracker classes if accessible candidates meet the minimum.",
+    )
+    parser.add_argument(
+        "--exclude-class",
+        action="append",
+        default=[],
+        help="Semantic class id to exclude. Can be passed more than once.",
+    )
+    parser.add_argument("--batch-label", default=None, help="Stage D batch label stored in the output manifest.")
+    return parser.parse_args()
+
+
 def main() -> None:
+    args = parse_args()
+    scope = args.scope
+    default_manifest_path, default_sheet_path = default_outputs(scope)
+    output_manifest_path = args.manifest or default_manifest_path
+    output_sheet_path = args.sheet or default_sheet_path
     tracker_rows = read_csv(TRACKER_PATH)
     if not tracker_rows:
         raise RuntimeError(f"Tracker is empty: {TRACKER_PATH}")
     grouped = valid_candidates_by_class()
-    selected = selected_classes(tracker_rows, grouped)
-    write_review_manifest(selected)
-    make_contact_sheet(selected)
-    update_tracker(tracker_rows, selected)
-    print_summary(selected)
+    selected = selected_classes(
+        tracker_rows,
+        grouped,
+        scope,
+        only_pending=args.only_pending,
+        include_below_if_enough=args.include_below_if_enough,
+        exclude_classes=set(args.exclude_class),
+    )
+    if not selected:
+        raise RuntimeError("No classes matched the Stage D selection criteria.")
+    write_review_manifest(selected, output_manifest_path, scope, args.batch_label)
+    make_contact_sheet(selected, output_sheet_path, scope, args.batch_label)
+    update_tracker(tracker_rows, selected, output_manifest_path)
+    print_summary(selected, output_manifest_path, output_sheet_path, scope, args.batch_label)
 
 
 if __name__ == "__main__":

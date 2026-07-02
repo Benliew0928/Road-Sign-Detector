@@ -1,6 +1,7 @@
 import { ImageIcon, ScanLine } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+import { advisoryHeadline } from "../advisoryDisplay";
 import type { FrameResult, SourceMode } from "../types";
 
 interface VideoSurfaceProps {
@@ -107,7 +108,7 @@ export function VideoSurface({ mode, videoRef, imageUrl, result }: VideoSurfaceP
                     }}
                   >
                     <span className="detection-label">
-                      #{event.track_id} {event.meaning.en}{" "}
+                      #{event.track_id} {advisoryHeadline(event, "en")}{" "}
                       {Math.round(event.confidence * 100)}%
                     </span>
                   </div>

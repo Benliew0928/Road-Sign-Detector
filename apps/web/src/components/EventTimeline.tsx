@@ -1,5 +1,6 @@
 import { Clock3 } from "lucide-react";
 
+import { advisoryHeadline, advisoryInstruction } from "../advisoryDisplay";
 import type { DisplayLanguage, SignEvent } from "../types";
 
 interface EventTimelineProps {
@@ -25,8 +26,8 @@ export function EventTimeline({ events, language }: EventTimelineProps) {
             <article className="timeline-event" key={`${event.track_id}-${event.frame_id}-${index}`}>
               <span className={`event-marker severity-${event.severity}`} />
               <div>
-                <strong>{event.meaning[language]}</strong>
-                <span>{event.action.code.replaceAll("_", " ")}</span>
+                <strong>{advisoryHeadline(event, language)}</strong>
+                <span>{advisoryInstruction(event, language)}</span>
               </div>
               <time>#{event.track_id}</time>
             </article>
@@ -36,4 +37,3 @@ export function EventTimeline({ events, language }: EventTimelineProps) {
     </section>
   );
 }
-

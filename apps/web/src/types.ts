@@ -37,6 +37,12 @@ export interface ADASAction {
   advisory_only: boolean;
 }
 
+export interface ADASAdvisory {
+  headline: LocalizedMeaning;
+  instruction: LocalizedMeaning;
+  safe_to_announce: boolean;
+}
+
 export interface SignEvent {
   schema_version: string;
   frame_id: number;
@@ -49,6 +55,7 @@ export interface SignEvent {
   bbox: BoundingBox;
   mask: SegmentationMask | null;
   action: ADASAction;
+  advisory?: ADASAdvisory;
   severity: "information" | "caution" | "warning" | "critical";
   latency_ms: number;
   device: string;
@@ -146,10 +153,12 @@ export interface HealthResponse {
     detector_available: boolean;
     detector_loaded?: boolean;
     detector_device?: string | null;
+    detector_profile?: Record<string, unknown>;
     classifier: string;
     classifier_available: boolean;
     classifier_loaded?: boolean;
     classifier_providers?: string[];
+    classifier_profile?: Record<string, unknown>;
     tracker: string;
     ocr_available: boolean;
     ocr_loaded?: boolean;

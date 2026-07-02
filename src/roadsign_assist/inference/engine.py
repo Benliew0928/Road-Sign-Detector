@@ -146,16 +146,35 @@ class InferenceEngine:
     @property
     def model_status(self) -> dict[str, object]:
         classifier_providers = tuple(getattr(self.classifier, "active_providers", ()))
+        detector_settings = self.config["detector"]
+        classifier_settings = self.config["classifier"]
         return {
             "mode": self.mode,
             "detector": self.detector.name,
             "detector_available": self.detector.available,
             "detector_loaded": bool(getattr(self.detector, "loaded", True)),
             "detector_device": getattr(self.detector, "active_device", None),
+            "detector_profile": {
+                "backend": detector_settings.get("backend"),
+                "model_path": detector_settings.get("model_path"),
+                "image_size": detector_settings.get("image_size"),
+                "confidence_threshold": detector_settings.get("confidence_threshold"),
+                "nms_iou_threshold": detector_settings.get("nms_iou_threshold"),
+                "fallback_to_baseline": detector_settings.get("fallback_to_baseline"),
+                "fallback_max_detections": detector_settings.get("fallback_max_detections"),
+            },
             "classifier": self.classifier.name,
             "classifier_available": self.classifier.available,
             "classifier_loaded": bool(getattr(self.classifier, "loaded", True)),
             "classifier_providers": classifier_providers,
+            "classifier_profile": {
+                "backend": classifier_settings.get("backend"),
+                "model_path": classifier_settings.get("model_path"),
+                "labels_path": classifier_settings.get("labels_path"),
+                "calibration_path": classifier_settings.get("calibration_path"),
+                "image_size": classifier_settings.get("image_size"),
+                "confidence_threshold": classifier_settings.get("confidence_threshold"),
+            },
             "tracker": self.tracker.name,
             "ocr_available": self.ocr.available,
             "ocr_loaded": self.ocr.loaded,
@@ -233,6 +252,7 @@ class InferenceEngine:
                 ocr,
             )
             meaning, severity, action = self.rules.action_for(semantic_id, confidence, ocr)
+            advisory = self.rules.advisory_for(semantic_id, meaning, confidence, action)
             should_announce = self.rules.should_announce(track, stable=stable)
             events.append(
                 SignEventModel(
@@ -245,6 +265,7 @@ class InferenceEngine:
                     bbox=detection.bbox,
                     mask=detection.mask,
                     action=action,
+                    advisory=advisory,
                     severity=severity,
                     latency_ms=(time.perf_counter() - started) * 1000,
                     device=self._runtime_device(),
@@ -298,7 +319,7 @@ def annotate_frame(image: UInt8Image, result: FrameResultModel) -> UInt8Image:
             color,
             2,
         )
-        label = f"#{event.track_id} {event.meaning.en} {event.confidence:.2f}"
+        label = f"#{event.track_id} {event.advisory.headline.en} {event.confidence:.2f}"
         cv2.putText(
             annotated,
             label,

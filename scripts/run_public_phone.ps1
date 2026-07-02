@@ -146,11 +146,17 @@ try {
     $env:ROADSIGN_DEMO_SECRET = $DemoSecret
     $env:ROADSIGN_OPERATOR_TOKEN = $OperatorToken
 
+    $EscapedOperatorToken = [Uri]::EscapeDataString($OperatorToken)
+    $OperatorDashboardUrl = "$ResolvedPublicUrl/?operator=$EscapedOperatorToken"
+    $OperatorLiveUrl = "$ResolvedPublicUrl/live?operator=$EscapedOperatorToken"
+
     Write-Host "RoadSign Assist public phone camera server"
     Write-Host "Local dashboard:     http://127.0.0.1:$Port"
-    Write-Host "Public base URL:     $ResolvedPublicUrl"
-    Write-Host "Public live wall:    $ResolvedPublicUrl/live?operator=$OperatorToken"
+    Write-Host "Public viewer URL:   $ResolvedPublicUrl"
+    Write-Host "Operator dashboard:  $OperatorDashboardUrl"
+    Write-Host "Public live wall:    $OperatorLiveUrl"
     Write-Host "QR source:           Open the local dashboard and use the Phone camera panel."
+    Write-Host "Public QR source:    Use the operator dashboard URL, not the viewer URL."
     Write-Host "Privacy:             Keep the public live wall URL private; stop this script to close the tunnel."
 
     & $ProjectPython -m roadsign_assist.cli serve `
