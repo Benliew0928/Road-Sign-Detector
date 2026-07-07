@@ -19,8 +19,8 @@ interface AdvisoryAudioState {
 }
 
 const MANIFEST_URLS = [
-  "/audio/p16/advisory_audio_manifest.json",
   "/audio/p16_ai/advisory_audio_manifest.json",
+  "/audio/p16/advisory_audio_manifest.json",
 ];
 
 function eventAnnouncementKey(result: FrameResult, phraseId: string, trackId: number): string {

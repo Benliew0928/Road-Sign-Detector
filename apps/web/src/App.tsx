@@ -95,6 +95,10 @@ function isLocalOrPrivateHost(hostname: string): boolean {
   );
 }
 
+function revokeObjectUrl(url: string | null): void {
+  if (url?.startsWith("blob:")) URL.revokeObjectURL(url);
+}
+
 export default function App() {
   const [health, setHealth] = useState<HealthResponse | null>(null);
   const [healthError, setHealthError] = useState<string | null>(null);
@@ -159,13 +163,13 @@ export default function App() {
 
   useEffect(() => {
     return () => {
-      if (imageUrl) URL.revokeObjectURL(imageUrl);
+      revokeObjectUrl(imageUrl);
     };
   }, [imageUrl]);
 
   useEffect(() => {
     return () => {
-      if (videoUrl) URL.revokeObjectURL(videoUrl);
+      revokeObjectUrl(videoUrl);
     };
   }, [videoUrl]);
 
@@ -207,11 +211,16 @@ export default function App() {
       setOperationError(null);
       const nextUrl = URL.createObjectURL(file);
       setImageUrl((current) => {
-        if (current) URL.revokeObjectURL(current);
+        revokeObjectUrl(current);
         return nextUrl;
       });
       try {
         const response = await inferImage(file);
+        const annotatedUrl = `data:image/jpeg;base64,${response.annotated_jpeg_base64}`;
+        setImageUrl((current) => {
+          revokeObjectUrl(current);
+          return annotatedUrl;
+        });
         handleResult(response.result);
       } catch (cause) {
         setOperationError(cause instanceof Error ? cause.message : "Image analysis failed.");
@@ -267,7 +276,7 @@ export default function App() {
       setOperationError(null);
       const nextUrl = URL.createObjectURL(file);
       setVideoUrl((current) => {
-        if (current) URL.revokeObjectURL(current);
+        revokeObjectUrl(current);
         return nextUrl;
       });
       try {
