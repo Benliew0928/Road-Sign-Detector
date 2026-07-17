@@ -30,6 +30,7 @@ export interface PhoneStreamStats {
 
 interface PhoneCameraStream {
   videoRef: RefObject<HTMLVideoElement | null>;
+  frameUrl: string | null;
   status: PhoneCameraStatus;
   error: string | null;
   result: FrameResult | null;
@@ -41,8 +42,8 @@ interface PhoneCameraStream {
 
 const TARGET_60_FPS_INTERVAL_MS = 1000 / 60;
 const TARGET_30_FPS_INTERVAL_MS = 1000 / 30;
-const LOCAL_MAX_IN_FLIGHT_FRAMES = 3;
-const PUBLIC_MAX_IN_FLIGHT_FRAMES = 4;
+const LOCAL_MAX_IN_FLIGHT_FRAMES = 1;
+const PUBLIC_MAX_IN_FLIGHT_FRAMES = 1;
 const INITIAL_JPEG_QUALITY = 0.6;
 const PUBLIC_INITIAL_JPEG_QUALITY = 0.5;
 const MIN_JPEG_QUALITY = 0.38;
@@ -106,6 +107,7 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
   const inFlightFrames = useRef(0);
   const encodingFrame = useRef(false);
   const pendingFrameStartedAt = useRef<number[]>([]);
+  const pendingPreviewUrls = useRef<string[]>([]);
   const intentionalStop = useRef(false);
   const reconnectAttempts = useRef(0);
   const jpegQuality = useRef(INITIAL_JPEG_QUALITY);
@@ -120,6 +122,7 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
   const [status, setStatus] = useState<PhoneCameraStatus>("idle");
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<FrameResult | null>(null);
+  const [frameUrl, setFrameUrl] = useState<string | null>(null);
   const [events, setEvents] = useState<SignEvent[]>([]);
   const [stats, setStats] = useState<PhoneStreamStats>({
     framesSent: 0,
@@ -153,9 +156,15 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
     inFlightFrames.current = 0;
     encodingFrame.current = false;
     pendingFrameStartedAt.current = [];
+    pendingPreviewUrls.current.forEach((url) => URL.revokeObjectURL(url));
+    pendingPreviewUrls.current = [];
     sentSamples.current = [];
     ackSamples.current = [];
     droppedSinceLastAck.current = 0;
+    setFrameUrl((current) => {
+      if (current) URL.revokeObjectURL(current);
+      return null;
+    });
     setStatus("idle");
   }, []);
 
@@ -180,9 +189,8 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
 
     const canvas = canvasRef.current ?? document.createElement("canvas");
     canvasRef.current = canvas;
-    const scale = Math.min(1, options.maxWidth / video.videoWidth);
-    canvas.width = Math.max(1, Math.round(video.videoWidth * scale));
-    canvas.height = Math.max(1, Math.round(video.videoHeight * scale));
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
     const context = canvas.getContext("2d", { alpha: false });
     if (!context) return;
 
@@ -194,6 +202,7 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
         if (!blob || socket.readyState !== WebSocket.OPEN) return;
         inFlightFrames.current += 1;
         pendingFrameStartedAt.current.push(performance.now());
+        pendingPreviewUrls.current.push(URL.createObjectURL(blob));
         socket.send(blob);
         const sendFps = recordWindowFps(sentSamples.current, performance.now());
         setStats((current) => ({
@@ -207,7 +216,7 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
       "image/jpeg",
       jpegQuality.current,
     );
-  }, [options.maxWidth, options.publicMode]);
+  }, [options.publicMode]);
 
   const frameLoop = useCallback(
     (timestamp: number) => {
@@ -273,15 +282,24 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
       }));
 
       let cameraMessage: CameraMessage;
+      const previewUrl = pendingPreviewUrls.current.shift() ?? null;
       try {
         cameraMessage = parseCameraMessage(message.data);
       } catch {
+        if (previewUrl) URL.revokeObjectURL(previewUrl);
         setError("Phone stream response could not be decoded.");
         return;
       }
       if ("error" in cameraMessage) {
+        if (previewUrl) URL.revokeObjectURL(previewUrl);
         setError(cameraMessage.error);
         return;
+      }
+      if (previewUrl) {
+        setFrameUrl((current) => {
+          if (current) URL.revokeObjectURL(current);
+          return previewUrl;
+        });
       }
       setResult(cameraMessage);
       const notable = cameraMessage.events.filter(
@@ -294,12 +312,16 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
     socket.onerror = () => {
       inFlightFrames.current = 0;
       pendingFrameStartedAt.current = [];
+      pendingPreviewUrls.current.forEach((url) => URL.revokeObjectURL(url));
+      pendingPreviewUrls.current = [];
       socket.close();
     };
     socket.onclose = () => {
       if (socketRef.current === socket) socketRef.current = null;
       inFlightFrames.current = 0;
       pendingFrameStartedAt.current = [];
+      pendingPreviewUrls.current.forEach((url) => URL.revokeObjectURL(url));
+      pendingPreviewUrls.current = [];
       if (animationFrameRef.current !== null) {
         window.cancelAnimationFrame(animationFrameRef.current);
         animationFrameRef.current = null;
@@ -399,5 +421,5 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
     };
   }, [stop]);
 
-  return { videoRef, status, error, result, events, stats, start, stop };
+  return { videoRef, frameUrl, status, error, result, events, stats, start, stop };
 }

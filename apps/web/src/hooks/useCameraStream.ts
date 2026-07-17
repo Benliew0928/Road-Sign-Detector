@@ -78,9 +78,8 @@ export function useCameraStream(onResult: (result: FrameResult) => void): Camera
     }
     const canvas = canvasRef.current ?? document.createElement("canvas");
     canvasRef.current = canvas;
-    const scale = Math.min(1, 960 / video.videoWidth);
-    canvas.width = Math.max(1, Math.round(video.videoWidth * scale));
-    canvas.height = Math.max(1, Math.round(video.videoHeight * scale));
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
     const context = canvas.getContext("2d", { alpha: false });
     if (!context) return;
     context.drawImage(video, 0, 0, canvas.width, canvas.height);

@@ -25,6 +25,7 @@ tracking:
   max_center_distance: 2.0
   min_stable_frames: 3
   max_missed_frames: 12
+  display_hold_frames: 2
 semantics:
   critical_confidence_threshold: 0.88
   normal_confidence_threshold: 0.75

@@ -17,6 +17,7 @@ from roadsign_assist.detection.baseline_backend import BaselineSignDetector
 from roadsign_assist.detection.hybrid_backend import HybridSignDetector
 from roadsign_assist.detection.ultralytics_backend import UltralyticsSegmenter
 from roadsign_assist.inference.models import (
+    BoundingBoxModel,
     ClassificationModel,
     FrameResultModel,
     InferenceMode,
@@ -88,8 +89,10 @@ class InferenceEngine:
             self.rules = shared.rules
         tracking = self.config["tracking"]
         self.tracker = build_tracker(tracking)
+        self._display_hold_frames = max(0, int(tracking.get("display_hold_frames", 0)))
         self.frame_id = 0
         self._ocr_cache: dict[int, OCRModel] = {}
+        self._event_cache: dict[int, SignEventModel] = {}
 
     def new_session(self) -> InferenceEngine:
         """Create independent tracking state while sharing loaded model backends."""
@@ -233,8 +236,12 @@ class InferenceEngine:
         events: list[SignEventModel] = []
 
         active_ids = {track.track_id for _, track in assignments}
+        tracked_ids = {track.track_id for track in self.tracker.tracks}
         self._ocr_cache = {
-            track_id: value for track_id, value in self._ocr_cache.items() if track_id in active_ids
+            track_id: value for track_id, value in self._ocr_cache.items() if track_id in tracked_ids
+        }
+        self._event_cache = {
+            track_id: value for track_id, value in self._event_cache.items() if track_id in tracked_ids
         }
 
         for candidate_index, (detection, track) in enumerate(assignments):
@@ -254,45 +261,71 @@ class InferenceEngine:
             meaning, severity, action = self.rules.action_for(semantic_id, confidence, ocr)
             advisory = self.rules.advisory_for(semantic_id, meaning, confidence, action)
             should_announce = self.rules.should_announce(track, stable=stable)
-            events.append(
-                SignEventModel(
-                    frame_id=frame_id,
-                    track_id=track.track_id,
-                    semantic_sign_id=semantic_id,
-                    meaning=meaning,
-                    ocr=ocr,
-                    confidence=confidence,
-                    bbox=detection.bbox,
-                    mask=detection.mask,
-                    action=action,
-                    advisory=advisory,
-                    severity=severity,
-                    latency_ms=(time.perf_counter() - started) * 1000,
-                    device=self._runtime_device(),
-                    stable=stable,
-                    should_announce=should_announce,
-                    evidence=[
-                        f"detector:{detection.detector}:{detection.confidence:.3f}",
-                        (
-                            f"classifier_raw:{prediction.top_k[0][0]}:{prediction.confidence:.3f}"
-                            if prediction.top_k
-                            else f"classifier_raw:unknown_sign:{prediction.confidence:.3f}"
-                        ),
-                        *(
-                            [
-                                "embedding:"
-                                f"{prediction.nearest_prototype}:"
-                                f"{prediction.embedding_distance:.3f}"
-                            ]
-                            if prediction.embedding_distance is not None
-                            else []
-                        ),
-                        *[
-                            f"classifier_rejection:{reason}"
-                            for reason in prediction.rejection_reasons
-                        ],
-                        *evidence,
+            event = SignEventModel(
+                frame_id=frame_id,
+                track_id=track.track_id,
+                semantic_sign_id=semantic_id,
+                meaning=meaning,
+                ocr=ocr,
+                confidence=confidence,
+                bbox=detection.bbox,
+                mask=detection.mask,
+                action=action,
+                advisory=advisory,
+                severity=severity,
+                latency_ms=(time.perf_counter() - started) * 1000,
+                device=self._runtime_device(),
+                stable=stable,
+                should_announce=should_announce,
+                evidence=[
+                    f"detector:{detection.detector}:{detection.confidence:.3f}",
+                    (
+                        f"classifier_raw:{prediction.top_k[0][0]}:{prediction.confidence:.3f}"
+                        if prediction.top_k
+                        else f"classifier_raw:unknown_sign:{prediction.confidence:.3f}"
+                    ),
+                    *(
+                        [
+                            "embedding:"
+                            f"{prediction.nearest_prototype}:"
+                            f"{prediction.embedding_distance:.3f}"
+                        ]
+                        if prediction.embedding_distance is not None
+                        else []
+                    ),
+                    *[
+                        f"classifier_rejection:{reason}"
+                        for reason in prediction.rejection_reasons
                     ],
+                    *evidence,
+                ],
+            )
+            events.append(event)
+            self._event_cache[track.track_id] = event
+
+        for track in self.tracker.tracks:
+            if (
+                track.track_id in active_ids
+                or track.missed < 1
+                or track.missed > self._display_hold_frames
+            ):
+                continue
+            previous = self._event_cache.get(track.track_id)
+            if previous is None:
+                continue
+            held_bbox = _project_track_bbox(track, image.shape[1], image.shape[0])
+            events.append(
+                previous.model_copy(
+                    update={
+                        "frame_id": frame_id,
+                        "bbox": held_bbox,
+                        "mask": None,
+                        "confidence": previous.confidence * (0.9**track.missed),
+                        "latency_ms": (time.perf_counter() - started) * 1000,
+                        "stable": False,
+                        "should_announce": False,
+                        "evidence": [*previous.evidence, f"tracker_hold:{track.missed}"],
+                    }
                 )
             )
 
@@ -305,6 +338,17 @@ class InferenceEngine:
             events=events,
             warnings=list(self.warnings),
         )
+
+
+def _project_track_bbox(track: TrackState, width: int, height: int) -> BoundingBoxModel:
+    steps = max(1, track.missed)
+    dx = track.velocity_x * steps
+    dy = track.velocity_y * steps
+    x1 = min(max(0.0, track.bbox.x1 + dx), max(0.0, width - 1.0))
+    y1 = min(max(0.0, track.bbox.y1 + dy), max(0.0, height - 1.0))
+    x2 = min(max(x1 + 1.0, track.bbox.x2 + dx), float(width))
+    y2 = min(max(y1 + 1.0, track.bbox.y2 + dy), float(height))
+    return BoundingBoxModel(x1=x1, y1=y1, x2=x2, y2=y2)
 
 
 def annotate_frame(image: UInt8Image, result: FrameResultModel) -> UInt8Image:

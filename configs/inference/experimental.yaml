@@ -4,7 +4,7 @@ detector:
   backend: deep
   model_path: models/exported/experimental/emtd_segmenter_s30.onnx
   image_size: 640
-  fallback_to_baseline: false
+  fallback_to_baseline: true
   fallback_max_detections: 1
   confidence_threshold: 0.35
   nms_iou_threshold: 0.50
@@ -26,6 +26,7 @@ tracking:
   max_center_distance: 2.0
   min_stable_frames: 3
   max_missed_frames: 12
+  display_hold_frames: 2
 semantics:
   critical_confidence_threshold: 0.88
   normal_confidence_threshold: 0.75

@@ -272,6 +272,75 @@ test("batch workflow renders inference results", async ({ page }) => {
   await expect(page.getByText("No sign detected")).toBeVisible();
 });
 
+test("image workflow displays a detection box returned by the API", async ({ page }) => {
+  await page.route("**/api/v1/infer/image", async (route) => {
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({
+        result: {
+          frame_id: 0,
+          width: 640,
+          height: 480,
+          mode: "baseline",
+          latency_ms: 7.4,
+          events: [sampleVideoEvent],
+          warnings: [],
+        },
+        annotated_jpeg_base64:
+          "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Y9Z4p8AAAAASUVORK5CYII=",
+      }),
+    });
+  });
+  await page.goto("/");
+  await page.locator('input[type="file"][accept^="image/"]').setInputFiles({
+    name: "road-sign.png",
+    mimeType: "image/png",
+    buffer: Buffer.from(
+      "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Y9Z4p8AAAAASUVORK5CYII=",
+      "base64",
+    ),
+  });
+  await expect(page.locator(".video-surface .detection-box")).toBeVisible();
+  await expect(page.getByLabel("1 detected signs")).toBeVisible();
+});
+
+test("batch workflow displays detection boxes in image previews", async ({ page }) => {
+  await page.route("**/api/v1/infer/batch", async (route) => {
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({
+        count: 1,
+        results: [
+          {
+            filename: "road-sign.png",
+            result: {
+              frame_id: 0,
+              width: 640,
+              height: 480,
+              mode: "baseline",
+              latency_ms: 7.4,
+              events: [sampleVideoEvent],
+              warnings: [],
+            },
+          },
+        ],
+      }),
+    });
+  });
+  await page.goto("/");
+  await page.getByRole("button", { name: "Batch" }).click();
+  await page.locator('input[type="file"][multiple]').setInputFiles({
+    name: "road-sign.png",
+    mimeType: "image/png",
+    buffer: Buffer.from(
+      "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Y9Z4p8AAAAASUVORK5CYII=",
+      "base64",
+    ),
+  });
+  await expect(page.locator(".batch-detection-box")).toBeVisible();
+  await expect(page.getByLabel("1 detected signs in road-sign.png")).toBeVisible();
+});
+
 test("video workflow renders processing summary", async ({ page }) => {
   await page.route("**/api/v1/infer/video", async (route) => {
     await route.fulfill({
@@ -281,6 +350,21 @@ test("video workflow renders processing summary", async ({ page }) => {
         sampled_frames: 30,
         events: 4,
         event_samples: [sampleVideoEvent],
+        fps: 30,
+        frame_results: [
+          {
+            source_frame: 0,
+            result: {
+              frame_id: 0,
+              width: 640,
+              height: 480,
+              mode: "baseline",
+              latency_ms: 14.2,
+              events: [sampleVideoEvent],
+              warnings: [],
+            },
+          },
+        ],
         representative_result: {
           frame_id: 12,
           width: 640,
@@ -304,6 +388,8 @@ test("video workflow renders processing summary", async ({ page }) => {
   await expect(page.getByText("90")).toBeVisible();
   await expect(page.getByText("30")).toBeVisible();
   await expect(page.locator(".video-summary").getByText("4", { exact: true })).toBeVisible();
+  await expect(page.locator(".video-analysis .detection-box")).toBeVisible();
+  await expect(page.getByLabel("1 detected signs in the current video frame")).toBeVisible();
   await expect(page.getByRole("heading", { name: "Side road right" })).toBeVisible();
 });
 
@@ -368,5 +454,6 @@ test("phone sender route renders camera controls", async ({ page }) => {
   await expect(page.getByText("Phone camera link")).toBeVisible();
   await expect(page.getByRole("button", { name: "Start stream", exact: true })).toBeVisible();
   await expect(page.getByLabel("Phone camera controls")).toContainText("Rear camera");
+  await expect(page.getByLabel("Resolution")).toHaveValue("4096");
   await expect(page.getByLabel("Phone stream metrics")).toContainText("Quality");
 });

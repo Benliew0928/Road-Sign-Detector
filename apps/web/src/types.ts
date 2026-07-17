@@ -94,8 +94,15 @@ export interface VideoInferenceResponse {
   frames_read: number;
   sampled_frames: number;
   events: number;
+  fps?: number;
+  frame_results?: VideoFrameResult[];
   event_samples: SignEvent[];
   representative_result: FrameResult | null;
+}
+
+export interface VideoFrameResult {
+  source_frame: number;
+  result: FrameResult;
 }
 
 export interface PhoneConnectionResponse {

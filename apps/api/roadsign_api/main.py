@@ -338,111 +338,6 @@ def _ensure_host_client(request: Request) -> None:
         )
 
 
-def _jpeg_dimensions(data: bytes) -> tuple[int, int] | None:
-    if len(data) < 4 or data[:2] != b"\xff\xd8":
-        return None
-    index = 2
-    standalone_markers = {0x01, *range(0xD0, 0xD9)}
-    size_markers = {
-        0xC0,
-        0xC1,
-        0xC2,
-        0xC3,
-        0xC5,
-        0xC6,
-        0xC7,
-        0xC9,
-        0xCA,
-        0xCB,
-        0xCD,
-        0xCE,
-        0xCF,
-    }
-    while index < len(data) - 9:
-        if data[index] != 0xFF:
-            index += 1
-            continue
-        while index < len(data) and data[index] == 0xFF:
-            index += 1
-        if index >= len(data):
-            return None
-        marker = data[index]
-        index += 1
-        if marker in standalone_markers:
-            continue
-        if index + 2 > len(data):
-            return None
-        segment_length = int.from_bytes(data[index : index + 2], "big")
-        if segment_length < 2 or index + segment_length > len(data):
-            return None
-        if marker in size_markers and segment_length >= 7:
-            height = int.from_bytes(data[index + 3 : index + 5], "big")
-            width = int.from_bytes(data[index + 5 : index + 7], "big")
-            if width > 0 and height > 0:
-                return width, height
-            return None
-        index += segment_length
-    return None
-
-
-def _png_dimensions(data: bytes) -> tuple[int, int] | None:
-    if len(data) < 24 or data[:8] != b"\x89PNG\r\n\x1a\n":
-        return None
-    width = int.from_bytes(data[16:20], "big")
-    height = int.from_bytes(data[20:24], "big")
-    if width > 0 and height > 0:
-        return width, height
-    return None
-
-
-def _image_dimensions(data: bytes) -> tuple[int, int]:
-    dimensions = _jpeg_dimensions(data) or _png_dimensions(data)
-    if dimensions is not None:
-        return dimensions
-    image = decode_image(data)
-    return image.shape[1], image.shape[0]
-
-
-def _empty_frame_result(
-    engine_mode: InferenceMode,
-    warnings: list[str],
-    frame_id: int,
-    width: int,
-    height: int,
-    latency_ms: float,
-) -> FrameResultModel:
-    return FrameResultModel(
-        frame_id=frame_id,
-        width=width,
-        height=height,
-        mode=engine_mode,
-        latency_ms=latency_ms,
-        events=[],
-        warnings=warnings,
-    )
-
-
-def _ack_result_for_frame(
-    latest_result: FrameResultModel | None,
-    engine_mode: InferenceMode,
-    warnings: list[str],
-    frame_id: int,
-    width: int,
-    height: int,
-    latency_ms: float,
-) -> FrameResultModel:
-    if latest_result is None:
-        return _empty_frame_result(engine_mode, warnings, frame_id, width, height, latency_ms)
-    return latest_result.model_copy(
-        update={
-            "frame_id": frame_id,
-            "width": width,
-            "height": height,
-            "latency_ms": latency_ms,
-        }
-    )
-
-
 class ImageInferenceResponse(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
@@ -515,12 +410,27 @@ class BatchInferenceResponse(BaseModel):
     results: list[BatchInferenceItem]
 
 
+class VideoFrameResult(BaseModel):
+    """Inference result for one source frame in an uploaded video."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    source_frame: int = Field(ge=0)
+    result: FrameResultModel
+
+
+def _empty_video_frame_results() -> list[VideoFrameResult]:
+    return []
+
+
 class VideoInferenceResponse(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     frames_read: int = Field(ge=0)
     sampled_frames: int = Field(ge=0)
     events: int = Field(ge=0)
+    fps: float = Field(gt=0)
+    frame_results: list[VideoFrameResult] = Field(default_factory=_empty_video_frame_results)
     event_samples: list[SignEventModel] = Field(default_factory=_empty_sign_events)
     representative_result: FrameResultModel | None = None
 
@@ -592,16 +502,6 @@ class PhoneStreamState:
 class PhoneStreamHandle:
     stream_id: str
     token: str
-
-
-@dataclass(frozen=True)
-class PhoneFrame:
-    frame_id: int
-    frame_seq: int
-    data: bytes
-    width: int
-    height: int
-    received_at: float
 
 
 class PhoneStreamLimitError(RuntimeError):
@@ -955,34 +855,39 @@ def create_app() -> FastAPI:
             temp_path.unlink(missing_ok=True)
             raise HTTPException(status_code=400, detail="Unable to decode video")
         engine = get_engine().new_session()
+        reported_fps = float(capture.get(cv2.CAP_PROP_FPS))
+        fps = reported_fps if reported_fps > 0 else 30.0
         frames = 0
         event_count = 0
+        frame_results: list[VideoFrameResult] = []
         event_samples: list[SignEventModel] = []
         representative_result: FrameResultModel | None = None
         try:
-            while frames < 300:
+            while True:
                 success, frame = capture.read()
                 if not success:
                     break
-                if frames % 3 == 0:
-                    result = await asyncio.to_thread(
-                        engine.process_frame,
-                        cast(UInt8Image, frame),
-                    )
-                    frame_events = result.events
-                    event_count += len(frame_events)
-                    if frame_events:
-                        event_samples.extend(frame_events)
-                        event_samples = event_samples[-40:]
-                        representative_result = result
+                result = await asyncio.to_thread(
+                    engine.process_frame,
+                    cast(UInt8Image, frame),
+                )
+                frame_results.append(VideoFrameResult(source_frame=frames, result=result))
+                frame_events = result.events
+                event_count += len(frame_events)
+                if frame_events:
+                    event_samples.extend(frame_events)
+                    event_samples = event_samples[-40:]
+                    representative_result = result
                 frames += 1
         finally:
             capture.release()
             temp_path.unlink(missing_ok=True)
         return VideoInferenceResponse(
             frames_read=frames,
-            sampled_frames=(frames + 2) // 3,
+            sampled_frames=len(frame_results),
             events=event_count,
+            fps=fps,
+            frame_results=frame_results,
             event_samples=event_samples,
             representative_result=representative_result,
         )
@@ -1009,57 +914,9 @@ def create_app() -> FastAPI:
             await websocket.close(code=1013)
             return
         engine = get_engine().new_session()
-        latest_frame: PhoneFrame | None = None
-        latest_result: FrameResultModel | None = None
-        latest_lock = asyncio.Lock()
-        inference_event = asyncio.Event()
         frame_seq = 0
-
-        async def inference_loop() -> None:
-            nonlocal latest_result
-            while True:
-                await inference_event.wait()
-                inference_event.clear()
-                async with latest_lock:
-                    frame = latest_frame
-                if frame is None:
-                    continue
-                await PHONE_STREAMS.set_inference_pending(
-                    stream_handle.stream_id,
-                    stream_handle.token,
-                    True,
-                )
-                try:
-                    image = await asyncio.to_thread(decode_image, frame.data)
-                    result = await asyncio.to_thread(engine.process_frame, image)
-                except ValueError as exc:
-                    LOGGER.warning("Phone inference skipped a bad frame: %s", exc)
-                    await PHONE_STREAMS.set_inference_pending(
-                        stream_handle.stream_id,
-                        stream_handle.token,
-                        False,
-                    )
-                    continue
-                result = result.model_copy(
-                    update={
-                        "frame_id": frame.frame_id,
-                        "width": frame.width,
-                        "height": frame.height,
-                    }
-                )
-                async with latest_lock:
-                    latest_result = result
-                await PHONE_STREAMS.update_inference_result(
-                    stream_handle.stream_id,
-                    stream_handle.token,
-                    result,
-                    frame.frame_seq,
-                )
-
-        inference_task = asyncio.create_task(inference_loop())
         try:
             while True:
-                started = time.perf_counter()
                 data = await asyncio.wait_for(
                     websocket.receive_bytes(),
                     timeout=PHONE_STREAM_IDLE_TIMEOUT_SECONDS,
@@ -1068,51 +925,37 @@ def create_app() -> FastAPI:
                     await websocket.send_json({"error": "Frame exceeds 20 MB"})
                     continue
                 try:
-                    width, height = _image_dimensions(data)
+                    image = await asyncio.to_thread(decode_image, data)
                 except ValueError as exc:
                     await websocket.send_json({"error": str(exc)})
                     continue
 
                 frame_seq += 1
                 frame_id = frame_seq - 1
-                async with latest_lock:
-                    ack_result = _ack_result_for_frame(
-                        latest_result,
-                        engine.mode,
-                        list(engine.warnings),
-                        frame_id,
-                        width,
-                        height,
-                        (time.perf_counter() - started) * 1000,
-                    )
-                    latest_frame = PhoneFrame(
-                        frame_id=frame_id,
-                        frame_seq=frame_seq,
-                        data=data,
-                        width=width,
-                        height=height,
-                        received_at=time.time(),
-                    )
-                await websocket.send_json(ack_result.model_dump(mode="json"))
+                result = await asyncio.to_thread(engine.process_frame, image)
+                result = result.model_copy(update={"frame_id": frame_id})
                 await PHONE_STREAMS.update_live_frame(
                     stream_handle.stream_id,
                     stream_handle.token,
                     data,
                     frame_seq,
-                    width,
-                    height,
-                    ack_result,
+                    result.width,
+                    result.height,
+                    result,
                 )
-                inference_event.set()
+                await PHONE_STREAMS.update_inference_result(
+                    stream_handle.stream_id,
+                    stream_handle.token,
+                    result,
+                    frame_seq,
+                )
+                await websocket.send_json(result.model_dump(mode="json"))
         except TimeoutError:
             LOGGER.info("Camera WebSocket closed after %.1f seconds without frames", PHONE_STREAM_IDLE_TIMEOUT_SECONDS)
             await websocket.close(code=1001)
         except WebSocketDisconnect:
             LOGGER.info("Camera WebSocket disconnected")
         finally:
-            inference_task.cancel()
-            with suppress(asyncio.CancelledError):
-                await inference_task
             await PHONE_STREAMS.unregister(stream_handle.stream_id, stream_handle.token)
 
     @application.websocket("/api/v1/ws/phone/monitor")

@@ -297,7 +297,10 @@ async def test_video_inference_contract(tmp_path: Path) -> None:
     assert response.status_code == 200
     body = response.json()
     assert body["frames_read"] == 3
-    assert body["sampled_frames"] == 1
+    assert body["sampled_frames"] == 3
+    assert body["fps"] == 10.0
+    assert [item["source_frame"] for item in body["frame_results"]] == [0, 1, 2]
+    assert body["frame_results"][0]["result"]["width"] == 64
     assert body["events"] == 0
     assert body["event_samples"] == []
     assert body["representative_result"] is None

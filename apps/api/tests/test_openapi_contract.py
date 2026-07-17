@@ -49,7 +49,7 @@ def test_openapi_contains_runtime_fields_used_by_react() -> None:
         "ocr_load_error",
     ):
         assert field in model_status
-    for field in ("event_samples", "representative_result"):
+    for field in ("fps", "frame_results", "event_samples", "representative_result"):
         assert field in video_status
     for field in (
         "session_id",

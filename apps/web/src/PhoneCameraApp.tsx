@@ -68,10 +68,10 @@ export default function PhoneCameraApp() {
   const [deviceId] = useState(() => deviceIdForSession(sessionFromUrl()));
   const [accessToken] = useState(accessTokenFromUrl);
   const [facingMode, setFacingMode] = useState<PhoneFacingMode>("environment");
-  const [maxWidth, setMaxWidth] = useState(960);
+  const [maxWidth, setMaxWidth] = useState(4096);
   const previewRef = useRef<HTMLElement>(null);
   const [mediaBox, setMediaBox] = useState<CSSProperties | null>(null);
-  const { videoRef, status, error, result, events, stats, start, stop } = usePhoneCameraStream({
+  const { videoRef, frameUrl, status, error, result, events, stats, start, stop } = usePhoneCameraStream({
     sessionId,
     deviceId,
     accessToken,
@@ -144,7 +144,19 @@ export default function PhoneCameraApp() {
       <section ref={previewRef} className="phone-preview" aria-label="Phone camera preview">
         {sessionId ? (
           <div className="phone-video-space" style={mediaBox ?? { inset: 0 }}>
-            <video ref={videoRef} muted playsInline className="phone-video" />
+            <video
+              ref={videoRef}
+              muted
+              playsInline
+              className={frameUrl ? "phone-capture-video" : "phone-video"}
+            />
+            {frameUrl ? (
+              <img
+                src={frameUrl}
+                alt="Synchronized phone camera frame"
+                className="phone-video"
+              />
+            ) : null}
             {result ? (
               <div className="phone-overlay-layer" aria-label={`${result.events.length} detected signs`}>
                 {result.events.map((event) => (
@@ -216,6 +228,8 @@ export default function PhoneCameraApp() {
             <option value={640}>640 px</option>
             <option value={960}>960 px</option>
             <option value={1280}>1280 px</option>
+            <option value={1920}>1920 px</option>
+            <option value={4096}>Device maximum</option>
           </select>
         </label>
         <div className="phone-command-row">
