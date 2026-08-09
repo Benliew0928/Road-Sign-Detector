@@ -47,8 +47,10 @@ describe("App", () => {
   it("renders the operational dashboard", async () => {
     render(<App />);
     expect(screen.getByRole("heading", { name: "RoadSign Assist" })).toBeInTheDocument();
-    expect(screen.getByText("Checking pipeline")).toBeInTheDocument();
     expect(await screen.findByText("System ready")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Start with a road-sign image" })).toBeInTheDocument();
+    expect(screen.queryByText("Live metrics")).not.toBeInTheDocument();
+    expect(screen.getByText("Recent analyses")).toBeInTheDocument();
     expect(screen.getByRole("option", { name: "中文" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Choose image" })).toBeEnabled();
     expect(screen.getByRole("button", { name: "Batch" })).toBeEnabled();

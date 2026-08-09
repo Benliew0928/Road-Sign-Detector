@@ -1,4 +1,4 @@
-import { AlertTriangle, Files, ScanLine } from "lucide-react";
+import { AlertTriangle, ChevronRight, Files, ScanLine } from "lucide-react";
 import type { CSSProperties } from "react";
 
 import { advisoryHeadline } from "../advisoryDisplay";
@@ -14,6 +14,7 @@ export interface BatchDisplayItem {
 interface BatchResultsProps {
   items: BatchDisplayItem[];
   busy: boolean;
+  onOpenItem: (item: BatchDisplayItem) => void;
 }
 
 const PREVIEW_WIDTH = 76;
@@ -40,7 +41,7 @@ function previewMediaBox(result: FrameResult): CSSProperties {
   };
 }
 
-export function BatchResults({ items, busy }: BatchResultsProps) {
+export function BatchResults({ items, busy, onOpenItem }: BatchResultsProps) {
   if (!items.length) {
     return (
       <section className="batch-empty" aria-label="Batch results">
@@ -66,6 +67,7 @@ export function BatchResults({ items, busy }: BatchResultsProps) {
           <span role="columnheader">Signs</span>
           <span role="columnheader">Runtime</span>
           <span role="columnheader">Result</span>
+          <span className="sr-only" role="columnheader">Details</span>
         </div>
         {items.map((item) => {
           const result = item.result ?? null;
@@ -119,6 +121,15 @@ export function BatchResults({ items, busy }: BatchResultsProps) {
                   </>
                 )}
               </div>
+              <button
+                className="batch-open-button"
+                type="button"
+                disabled={!result || Boolean(item.error)}
+                onClick={() => onOpenItem(item)}
+                aria-label={result ? `Open details for ${item.filename}` : `${item.filename} is still processing`}
+              >
+                <ChevronRight size={18} aria-hidden="true" />
+              </button>
             </div>
           );
         })}

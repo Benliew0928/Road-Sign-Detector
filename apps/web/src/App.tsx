@@ -6,6 +6,7 @@ import {
   Files,
   Film,
   Gauge,
+  History,
   ImagePlus,
   Languages,
   Maximize2,
@@ -22,10 +23,11 @@ import {
 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { advisoryInstruction, targetSummary } from "./advisoryDisplay";
+import { advisoryHeadline, advisoryInstruction, targetSummary } from "./advisoryDisplay";
 import { getHealth, inferBatch, inferImage, inferVideo } from "./api";
 import { BatchResults, type BatchDisplayItem } from "./components/BatchResults";
 import { EventTimeline } from "./components/EventTimeline";
+import { ImageAnalysisWorkspace } from "./components/ImageAnalysisWorkspace";
 import { PhoneConnectPanel } from "./components/PhoneConnectPanel";
 import { SignPanel } from "./components/SignPanel";
 import { VideoSurface } from "./components/VideoSurface";
@@ -99,6 +101,13 @@ function revokeObjectUrl(url: string | null): void {
   if (url?.startsWith("blob:")) URL.revokeObjectURL(url);
 }
 
+interface AnalysisHistoryItem {
+  id: string;
+  previewUrl: string;
+  result: FrameResult;
+  source: "image" | "batch";
+}
+
 export default function App() {
   const [health, setHealth] = useState<HealthResponse | null>(null);
   const [healthError, setHealthError] = useState<string | null>(null);
@@ -109,6 +118,8 @@ export default function App() {
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
   const [videoSummary, setVideoSummary] = useState<VideoInferenceResponse | null>(null);
   const [batchItems, setBatchItems] = useState<BatchDisplayItem[]>([]);
+  const [openedBatchItem, setOpenedBatchItem] = useState<BatchDisplayItem | null>(null);
+  const [analysisHistory, setAnalysisHistory] = useState<AnalysisHistoryItem[]>([]);
   const [history, setHistory] = useState<SignEvent[]>([]);
   const [busy, setBusy] = useState(false);
   const [muted, setMuted] = useState(false);
@@ -117,7 +128,7 @@ export default function App() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const batchInputRef = useRef<HTMLInputElement>(null);
   const videoInputRef = useRef<HTMLInputElement>(null);
-  const batchItemsRef = useRef<BatchDisplayItem[]>([]);
+  const analysisObjectUrlsRef = useRef(new Set<string>());
 
   const handleResult = useCallback((next: FrameResult) => {
     setResult(next);
@@ -163,23 +174,13 @@ export default function App() {
 
   useEffect(() => {
     return () => {
-      revokeObjectUrl(imageUrl);
-    };
-  }, [imageUrl]);
-
-  useEffect(() => {
-    return () => {
       revokeObjectUrl(videoUrl);
     };
   }, [videoUrl]);
 
-  useEffect(() => {
-    batchItemsRef.current = batchItems;
-  }, [batchItems]);
-
   useEffect(
     () => () => {
-      batchItemsRef.current.forEach((item) => URL.revokeObjectURL(item.previewUrl));
+      analysisObjectUrlsRef.current.forEach((url) => URL.revokeObjectURL(url));
     },
     [],
   );
@@ -198,6 +199,7 @@ export default function App() {
       if (mode !== "camera") camera.stop();
       setSourceMode(mode);
       setResult(null);
+      setOpenedBatchItem(null);
       setOperationError(null);
     },
     [camera, publicNetworkHost],
@@ -208,20 +210,24 @@ export default function App() {
       camera.stop();
       setSourceMode("image");
       setBusy(true);
+      setResult(null);
+      setOpenedBatchItem(null);
       setOperationError(null);
       const nextUrl = URL.createObjectURL(file);
-      setImageUrl((current) => {
-        revokeObjectUrl(current);
-        return nextUrl;
-      });
+      analysisObjectUrlsRef.current.add(nextUrl);
+      setImageUrl(nextUrl);
       try {
         const response = await inferImage(file);
-        const annotatedUrl = `data:image/jpeg;base64,${response.annotated_jpeg_base64}`;
-        setImageUrl((current) => {
-          revokeObjectUrl(current);
-          return annotatedUrl;
-        });
         handleResult(response.result);
+        setAnalysisHistory((current) => [
+          {
+            id: `image-${Date.now()}`,
+            previewUrl: nextUrl,
+            result: response.result,
+            source: "image" as const,
+          },
+          ...current,
+        ].slice(0, 8));
       } catch (cause) {
         setOperationError(cause instanceof Error ? cause.message : "Image analysis failed.");
       } finally {
@@ -237,23 +243,36 @@ export default function App() {
       setSourceMode("batch");
       setBusy(true);
       setResult(null);
+      setOpenedBatchItem(null);
       setOperationError(null);
       const selected = files.slice(0, 100);
-      const pending: BatchDisplayItem[] = selected.map((file) => ({
-        filename: file.name,
-        previewUrl: URL.createObjectURL(file),
-      }));
-      batchItemsRef.current.forEach((item) => URL.revokeObjectURL(item.previewUrl));
+      const pending: BatchDisplayItem[] = selected.map((file) => {
+        const previewUrl = URL.createObjectURL(file);
+        analysisObjectUrlsRef.current.add(previewUrl);
+        return { filename: file.name, previewUrl };
+      });
       setBatchItems(pending);
       try {
         const response = await inferBatch(selected);
-        setBatchItems((current) =>
-          current.map((item, index) => ({
-            ...item,
-            result: response.results[index]?.result,
-            error: response.results[index]?.error,
-          })),
-        );
+        const completed = pending.map((item, index) => ({
+          ...item,
+          result: response.results[index]?.result,
+          error: response.results[index]?.error,
+        }));
+        setBatchItems(completed);
+        const completedHistory: AnalysisHistoryItem[] = completed.flatMap((item, index) =>
+          item.result
+            ? [{
+                id: `batch-${Date.now()}-${index}`,
+                previewUrl: item.previewUrl,
+                result: item.result,
+                source: "batch" as const,
+              }]
+            : [],
+        ).slice(0, 8);
+        if (completedHistory.length) {
+          setAnalysisHistory((current) => [...completedHistory, ...current].slice(0, 8));
+        }
         const firstResult = response.results.find((item) => item.result)?.result ?? null;
         if (firstResult) handleResult(firstResult);
       } catch (cause) {
@@ -297,6 +316,24 @@ export default function App() {
     [camera],
   );
 
+  const openBatchItem = useCallback((item: BatchDisplayItem) => {
+    if (!item.result || item.error) return;
+    setOpenedBatchItem(item);
+    setOperationError(null);
+  }, []);
+
+  const openAnalysisHistory = useCallback(
+    (item: AnalysisHistoryItem) => {
+      camera.stop();
+      setSourceMode("image");
+      setOpenedBatchItem(null);
+      setImageUrl(item.previewUrl);
+      setResult(item.result);
+      setOperationError(null);
+    },
+    [camera],
+  );
+
   const primaryEvent = useMemo(() => choosePrimaryEvent(result), [result]);
   const modelWarnings = health?.models.warnings ?? [];
   const backendOnline = health?.status === "ok" && !healthError;
@@ -311,6 +348,10 @@ export default function App() {
   const classifierModelPath = profileString(health?.models.classifier_profile, "model_path");
   const detectorRuntime = detectorProfileSummary(health?.models.detector_profile);
   const classifierRuntime = modelFileName(classifierModelPath ?? health?.models.classifier);
+  const analysisMode = sourceMode === "image" || sourceMode === "batch";
+  const chooseImage = () => fileInputRef.current?.click();
+  const chooseBatch = () => batchInputRef.current?.click();
+  const chooseVideo = () => videoInputRef.current?.click();
 
   return (
     <main className={`app-shell ${presenterMode ? "presenter-mode" : ""}`}>
@@ -352,7 +393,7 @@ export default function App() {
         </div>
       </header>
 
-      <div className="workspace">
+      <div className={`workspace ${analysisMode ? "analysis-workspace" : ""}`}>
         <aside className="control-rail">
           <section>
             <span className="rail-label">Input source</span>
@@ -360,6 +401,7 @@ export default function App() {
               <button
                 className={sourceMode === "camera" ? "active" : ""}
                 onClick={() => switchMode("camera")}
+                aria-pressed={sourceMode === "camera"}
                 disabled={publicNetworkHost}
                 title={
                   publicNetworkHost
@@ -373,6 +415,7 @@ export default function App() {
               <button
                 className={sourceMode === "image" ? "active" : ""}
                 onClick={() => switchMode("image")}
+                aria-pressed={sourceMode === "image"}
               >
                 <ImagePlus size={17} />
                 Image
@@ -380,6 +423,7 @@ export default function App() {
               <button
                 className={sourceMode === "batch" ? "active" : ""}
                 onClick={() => switchMode("batch")}
+                aria-pressed={sourceMode === "batch"}
               >
                 <Files size={17} />
                 Batch
@@ -387,6 +431,7 @@ export default function App() {
               <button
                 className={sourceMode === "video" ? "active" : ""}
                 onClick={() => switchMode("video")}
+                aria-pressed={sourceMode === "video"}
               >
                 <Film size={17} />
                 Video
@@ -394,12 +439,48 @@ export default function App() {
               <button
                 className={sourceMode === "phone" ? "active" : ""}
                 onClick={() => switchMode("phone")}
+                aria-pressed={sourceMode === "phone"}
               >
                 <Smartphone size={17} />
                 Phone
               </button>
             </div>
           </section>
+
+          <input
+            ref={fileInputRef}
+            className="sr-only"
+            type="file"
+            accept="image/png,image/jpeg,image/webp,image/bmp"
+            onChange={(event) => {
+              const file = event.target.files?.[0];
+              if (file) void handleImage(file);
+              event.target.value = "";
+            }}
+          />
+          <input
+            ref={batchInputRef}
+            className="sr-only"
+            type="file"
+            multiple
+            accept="image/png,image/jpeg,image/webp,image/bmp"
+            onChange={(event) => {
+              const files = Array.from(event.target.files ?? []);
+              if (files.length) void handleBatch(files);
+              event.target.value = "";
+            }}
+          />
+          <input
+            ref={videoInputRef}
+            className="sr-only"
+            type="file"
+            accept="video/mp4,video/webm,video/quicktime,video/x-msvideo"
+            onChange={(event) => {
+              const file = event.target.files?.[0];
+              if (file) void handleVideo(file);
+              event.target.value = "";
+            }}
+          />
 
           {sourceMode === "camera" ? (
             <section className="source-actions">
@@ -420,48 +501,31 @@ export default function App() {
               )}
             </section>
           ) : sourceMode === "image" ? (
-            <section className="source-actions">
-              <input
-                ref={fileInputRef}
-                className="sr-only"
-                type="file"
-                accept="image/png,image/jpeg,image/webp,image/bmp"
-                onChange={(event) => {
-                  const file = event.target.files?.[0];
-                  if (file) void handleImage(file);
-                  event.target.value = "";
-                }}
-              />
+            <section className="source-actions analysis-source-actions">
+              <span className="rail-label">Upload image</span>
               <button
-                className="primary-command"
-                onClick={() => fileInputRef.current?.click()}
+                className="analysis-upload-dropzone"
+                onClick={chooseImage}
                 disabled={!backendOnline || busy}
+                aria-label="Choose image"
               >
-                <Upload size={18} />
-                {busy ? "Analyzing" : "Choose image"}
+                <Upload size={30} aria-hidden="true" />
+                <strong>{busy ? "Analyzing image" : "Upload image"}</strong>
+                <span>PNG, JPG, WEBP or BMP</span>
               </button>
             </section>
           ) : sourceMode === "batch" ? (
-            <section className="source-actions">
-              <input
-                ref={batchInputRef}
-                className="sr-only"
-                type="file"
-                multiple
-                accept="image/png,image/jpeg,image/webp,image/bmp"
-                onChange={(event) => {
-                  const files = Array.from(event.target.files ?? []);
-                  if (files.length) void handleBatch(files);
-                  event.target.value = "";
-                }}
-              />
+            <section className="source-actions analysis-source-actions">
+              <span className="rail-label">Batch analysis</span>
               <button
-                className="primary-command"
-                onClick={() => batchInputRef.current?.click()}
+                className="analysis-upload-dropzone"
+                onClick={chooseBatch}
                 disabled={!backendOnline || busy}
+                aria-label="Choose images"
               >
-                <Upload size={18} />
-                {busy ? "Analyzing batch" : "Choose images"}
+                <Upload size={30} aria-hidden="true" />
+                <strong>{busy ? "Analyzing batch" : "Choose images"}</strong>
+                <span>Up to 100 image files</span>
               </button>
             </section>
           ) : sourceMode === "phone" ? (
@@ -471,20 +535,9 @@ export default function App() {
             </section>
           ) : (
             <section className="source-actions">
-              <input
-                ref={videoInputRef}
-                className="sr-only"
-                type="file"
-                accept="video/mp4,video/webm,video/quicktime,video/x-msvideo"
-                onChange={(event) => {
-                  const file = event.target.files?.[0];
-                  if (file) void handleVideo(file);
-                  event.target.value = "";
-                }}
-              />
               <button
                 className="primary-command"
-                onClick={() => videoInputRef.current?.click()}
+                onClick={chooseVideo}
                 disabled={!backendOnline || busy}
               >
                 <Upload size={18} />
@@ -520,7 +573,58 @@ export default function App() {
             </div>
           </section>
 
-          <section className="metrics-stack">
+          {analysisMode ? (
+            <section className="recent-analysis-section" aria-live="polite">
+              <span className="rail-label">Recent analyses</span>
+              {analysisHistory.length ? (
+                <div className="recent-analysis-list">
+                  {analysisHistory.map((item) => {
+                    const event = choosePrimaryEvent(item.result);
+                    return (
+                      <button
+                        className="recent-analysis-button"
+                        type="button"
+                        key={item.id}
+                        onClick={() => openAnalysisHistory(item)}
+                      >
+                        <img src={item.previewUrl} alt="" />
+                        <span>
+                          <strong>
+                            {event ? advisoryHeadline(event, language) : "No sign detected"}
+                          </strong>
+                          <small>{item.source === "batch" ? "From batch" : "Single image"}</small>
+                        </span>
+                        {item.source === "batch" ? <Files size={16} aria-hidden="true" /> : <History size={16} aria-hidden="true" />}
+                      </button>
+                    );
+                  })}
+                </div>
+              ) : (
+                <p className="recent-analysis-empty">Results from this session will appear here.</p>
+              )}
+            </section>
+          ) : null}
+
+          {analysisMode && health ? (
+            <details className="analysis-model-status">
+              <summary>
+                <span>
+                  <span className="rail-label">Pipeline status</span>
+                  <strong>{pipelineLabel(activeMode)}</strong>
+                </span>
+                {modelWarnings.length ? <small>Development mode</small> : null}
+              </summary>
+              <dl>
+                <div><dt>Runtime</dt><dd>{runtimeLabel}</dd></div>
+                <div><dt>Detector</dt><dd>{health.models.detector}</dd></div>
+                <div><dt>Classifier</dt><dd>{health.models.classifier}</dd></div>
+                <div><dt>Providers</dt><dd>{health.models.classifier_providers?.join(", ") || "CPU/default"}</dd></div>
+              </dl>
+              {modelWarnings.map((warning) => <p key={warning}>{warning}</p>)}
+            </details>
+          ) : null}
+
+          {!analysisMode ? <section className="metrics-stack">
             <span className="rail-label">Live metrics</span>
             <div className="metric-row">
               <Activity size={16} />
@@ -558,9 +662,9 @@ export default function App() {
                 {classifierRuntime}
               </strong>
             </div>
-          </section>
+          </section> : null}
 
-          {modelWarnings.length ? (
+          {!analysisMode && modelWarnings.length ? (
             <section className="model-warning">
               <strong>Development mode</strong>
               {modelWarnings.map((warning) => (
@@ -570,9 +674,35 @@ export default function App() {
           ) : null}
         </aside>
 
-        <section className="primary-work">
-          {sourceMode === "batch" ? (
-            <BatchResults items={batchItems} busy={busy} />
+        <section className={`primary-work ${analysisMode ? "analysis-primary-work" : ""}`}>
+          {sourceMode === "batch" && openedBatchItem ? (
+            <ImageAnalysisWorkspace
+              imageUrl={openedBatchItem.previewUrl}
+              result={openedBatchItem.result ?? null}
+              busy={false}
+              language={language}
+              runtimeLabel={openedBatchItem.result?.events[0]?.device ?? runtimeLabel}
+              detectorRuntime={detectorRuntime}
+              classifierRuntime={classifierRuntime}
+              modelWarnings={modelWarnings}
+              contextLabel={openedBatchItem.filename}
+              onChooseImage={chooseImage}
+              onBackToBatch={() => setOpenedBatchItem(null)}
+            />
+          ) : sourceMode === "batch" ? (
+            <BatchResults items={batchItems} busy={busy} onOpenItem={openBatchItem} />
+          ) : sourceMode === "image" ? (
+            <ImageAnalysisWorkspace
+              imageUrl={imageUrl}
+              result={result}
+              busy={busy}
+              language={language}
+              runtimeLabel={runtimeLabel}
+              detectorRuntime={detectorRuntime}
+              classifierRuntime={classifierRuntime}
+              modelWarnings={modelWarnings}
+              onChooseImage={chooseImage}
+            />
           ) : sourceMode === "phone" ? (
             <PhoneConnectPanel busy={busy} />
           ) : sourceMode === "video" ? (
@@ -590,7 +720,7 @@ export default function App() {
               {operationError || camera.error || healthError || advisoryAudio.error}
             </div>
           )}
-          <div className="work-footer">
+          {!analysisMode ? <div className="work-footer">
             <span>
               <span className={`status-dot ${camera.status === "live" ? "live" : ""}`} />
               {sourceMode === "camera"
@@ -603,10 +733,10 @@ export default function App() {
               {pipelineLabel(activeMode)}
             </span>
             <span>Frame {result?.frame_id ?? "—"}</span>
-          </div>
+          </div> : null}
         </section>
 
-        <aside className="insight-rail">
+        {!analysisMode ? <aside className="insight-rail">
           <SignPanel event={primaryEvent} language={language} />
           <section className="vehicle-panel">
             <header className="section-heading">
@@ -625,7 +755,7 @@ export default function App() {
             </div>
           </section>
           <EventTimeline events={history} language={language} />
-        </aside>
+        </aside> : null}
       </div>
     </main>
   );

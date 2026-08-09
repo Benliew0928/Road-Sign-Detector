@@ -148,7 +148,7 @@ test.beforeEach(async ({ page }) => {
         mode: "local",
         public_base_url: null,
         access_token: null,
-        operator_live_url: null,
+        operator_live_url: "/live",
       }),
     });
   });
@@ -199,9 +199,9 @@ test("dashboard shows deep runtime diagnostics from health", async ({ page }) =>
   await expect(page.getByText("System ready")).toBeVisible();
   await expect(page.getByText("Semantic AI pipeline")).toBeVisible();
   await expect(page.getByText("Development mode")).toBeVisible();
-  const bodyText = await page.evaluate(() => document.body.innerText);
-  expect(bodyText).toMatch(/cuda:0/i);
-  expect(bodyText).toContain("CUDAExecutionProvider, CPUExecutionProvider");
+  await page.getByText("Semantic AI pipeline").click();
+  await expect(page.locator(".analysis-model-status")).toContainText("cuda:0");
+  await expect(page.locator(".analysis-model-status")).toContainText("CUDAExecutionProvider, CPUExecutionProvider");
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
   expect(overflow).toBe(false);
 });
@@ -269,7 +269,7 @@ test("batch workflow renders inference results", async ({ page }) => {
     ),
   });
   await expect(page.getByRole("table", { name: "Batch inference results" })).toBeVisible();
-  await expect(page.getByText("No sign detected")).toBeVisible();
+  await expect(page.getByRole("table", { name: "Batch inference results" }).getByText("No sign detected")).toBeVisible();
 });
 
 test("image workflow displays a detection box returned by the API", async ({ page }) => {
@@ -292,7 +292,7 @@ test("image workflow displays a detection box returned by the API", async ({ pag
     });
   });
   await page.goto("/");
-  await page.locator('input[type="file"][accept^="image/"]').setInputFiles({
+  await page.locator('input[type="file"][accept^="image/"]:not([multiple])').setInputFiles({
     name: "road-sign.png",
     mimeType: "image/png",
     buffer: Buffer.from(
@@ -302,6 +302,46 @@ test("image workflow displays a detection box returned by the API", async ({ pag
   });
   await expect(page.locator(".video-surface .detection-box")).toBeVisible();
   await expect(page.getByLabel("1 detected signs")).toBeVisible();
+  await expect(page.getByText("semantic confidence")).toBeVisible();
+  await expect(page.getByText("How the result was produced")).toBeVisible();
+  await expect(page.locator(".recent-analysis-section").getByText("Single image")).toBeVisible();
+});
+
+test("image workflow distinguishes an uncertain meaning from detection confidence", async ({ page }) => {
+  await page.route("**/api/v1/infer/image", async (route) => {
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({
+        result: {
+          frame_id: 0,
+          width: 640,
+          height: 480,
+          mode: "baseline",
+          latency_ms: 8.1,
+          events: [{
+            ...sampleVideoEvent,
+            semantic_sign_id: "unknown_sign",
+            confidence: 0,
+            meaning: { en: "Unknown road sign", ms: "Papan tanda tidak diketahui", zh: "Unknown" },
+          }],
+          warnings: [],
+        },
+        annotated_jpeg_base64: "",
+      }),
+    });
+  });
+  await page.goto("/");
+  await page.locator('input[type="file"][accept^="image/"]:not([multiple])').setInputFiles({
+    name: "unknown.png",
+    mimeType: "image/png",
+    buffer: Buffer.from(
+      "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Y9Z4p8AAAAASUVORK5CYII=",
+      "base64",
+    ),
+  });
+  await expect(page.getByText("Sign detected")).toBeVisible();
+  await expect(page.getByText("Meaning uncertain")).toBeVisible();
+  await expect(page.locator(".analysis-summary-card").getByText("0%", { exact: true })).toHaveCount(0);
 });
 
 test("batch workflow displays detection boxes in image previews", async ({ page }) => {
@@ -339,6 +379,11 @@ test("batch workflow displays detection boxes in image previews", async ({ page 
   });
   await expect(page.locator(".batch-detection-box")).toBeVisible();
   await expect(page.getByLabel("1 detected signs in road-sign.png")).toBeVisible();
+  await page.getByRole("button", { name: "Open details for road-sign.png" }).click();
+  await expect(page.getByRole("button", { name: "Back to batch results" })).toBeVisible();
+  await expect(page.getByText("How the result was produced")).toBeVisible();
+  await page.getByRole("button", { name: "Back to batch results" }).click();
+  await expect(page.getByRole("table", { name: "Batch inference results" })).toBeVisible();
 });
 
 test("video workflow renders processing summary", async ({ page }) => {
