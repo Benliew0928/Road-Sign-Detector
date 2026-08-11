@@ -23,7 +23,6 @@ models/exported/
 outputs/
 
 *.dvc.tmp
-*.onnx
 *.pt
 *.pth
 *.joblib
