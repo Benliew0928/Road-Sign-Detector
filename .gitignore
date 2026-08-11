@@ -18,8 +18,6 @@ data/annotations/
 data/processed/
 data/staging/
 data/splits/
-models/checkpoints/
-models/exported/
 outputs/
 
 *.dvc.tmp
@@ -33,4 +31,4 @@ certs/
 .env.*
 !.env.example
 
-/models
+
