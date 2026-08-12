@@ -9,6 +9,7 @@ detector:
   nms_iou_threshold: 0.50
 classifier:
   backend: auto
+  release_status: no_production_classifier
   model_path: models/exported/sign_classifier.onnx
   labels_path: models/exported/sign_classifier.labels.json
   calibration_path: models/exported/sign_classifier.calibration.json

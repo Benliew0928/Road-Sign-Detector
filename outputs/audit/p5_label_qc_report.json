@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "classification_root": "data/processed/emtd_classification",
+  "total_crops": 1064,
+  "labels": 43,
+  "label_counts": {
+    "animal_crossing": 6,
+    "camera_enforcement": 18,
+    "merge_left": 34,
+    "merge_right": 13
+  },
+  "labels_not_in_p2_catalogue": [],
+  "exact_duplicate_hashes_cross_split": {},
+  "seeded_corrections": 0,
+  "owner_reviewed_crop_exceptions": true,
+  "status": "partial_owner_corrections_applied",
+  "label_qc_status": "partial_owner_corrections_applied",
+  "notes": "Concise active audit. Historical contact sheets and correction manifests are retained in the local archive; complete split/label counts are in data/processed/emtd_classification/dataset_metadata.json."
+}

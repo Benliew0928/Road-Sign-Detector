@@ -52,6 +52,7 @@ ocr = [
 ]
 data = [
   "dvc>=3.61,<4",
+  "dvc-gdrive>=3.0.1,<4",
 ]
 dev = [
   "coverage[toml]>=7.9,<8",

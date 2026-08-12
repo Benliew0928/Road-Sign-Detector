@@ -1,15 +1,5 @@
 from __future__ import annotations
 
-import base64
-import wave
-
-from scripts.generate_p16_ai_audio_assets import (
-    _extract_gemini_audio_data,
-    _gemini_prompt,
-    _is_tts_prompt_error,
-    _write_pcm_wav,
-)
-
 from roadsign_assist.audio.advisory import build_advisory_manifest
 from roadsign_assist.audio.ai_voice import (
     STYLE_PROFILES,
@@ -62,48 +52,3 @@ def test_parse_voice_map_allows_language_specific_voices() -> None:
     voices = parse_voice_map("en=Kore,ms=Puck,zh=Kore", default_voice="Kore")
 
     assert voices == {"en": "Kore", "ms": "Puck", "zh": "Kore"}
-
-
-def test_extract_gemini_audio_data_from_interactions_response() -> None:
-    encoded = base64.b64encode(b"\x00\x01\x02\x03").decode("ascii")
-
-    assert _extract_gemini_audio_data({"output_audio": {"data": encoded}}) == encoded
-    assert (
-        _extract_gemini_audio_data(
-            {"content": [{"inlineData": {"mimeType": "audio/L16", "data": encoded}}]}
-        )
-        == encoded
-    )
-
-
-def test_write_pcm_wav_wraps_gemini_pcm_audio(tmp_path) -> None:
-    path = tmp_path / "gemini.wav"
-
-    _write_pcm_wav(path, b"\x00\x00\x01\x00" * 20)
-
-    with wave.open(str(path), "rb") as wav_file:
-        assert wav_file.getnchannels() == 1
-        assert wav_file.getsampwidth() == 2
-        assert wav_file.getframerate() == 24000
-        assert wav_file.getnframes() == 40
-
-
-def test_gemini_prompt_error_detection_and_strict_prompt() -> None:
-    prompt = _gemini_prompt(
-        text="Keep left. Follow the required direction.",
-        language="en",
-        instructions="Speak like a calm ADAS assistant.",
-    )
-    strict_prompt = _gemini_prompt(
-        text="Keep left. Follow the required direction.",
-        language="en",
-        instructions="Speak like a calm ADAS assistant.",
-        strict=True,
-    )
-
-    assert prompt.startswith("Say in ")
-    assert "without adding or translating anything" in prompt
-    assert strict_prompt.startswith("Say exactly this English transcript")
-    assert _is_tts_prompt_error(
-        RuntimeError("Model tried to generate text, but it should only be used for TTS.")
-    )

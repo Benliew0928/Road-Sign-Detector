@@ -15,15 +15,22 @@ test-results/
 
 data/raw/
 data/annotations/
-data/processed/
 data/staging/
 data/splits/
-outputs/
+
+# Keep only the two concise, reproducible release/QC audits in Git.
+outputs/*
+!outputs/audit/
+outputs/audit/*
+!outputs/audit/classifier_no_controlled_variants_20260812.json
+!outputs/audit/p5_label_qc_report.json
 
 *.dvc.tmp
 *.pt
 *.pth
 *.joblib
+*.onnx
+*.pdiparams
 
 certs/
 *.log
@@ -31,4 +38,5 @@ certs/
 .env.*
 !.env.example
 
-
+# Local recovery material. Never commit or upload this archive through DVC.
+_archive/

@@ -618,6 +618,10 @@ export default function App() {
                 <div><dt>Runtime</dt><dd>{runtimeLabel}</dd></div>
                 <div><dt>Detector</dt><dd>{health.models.detector}</dd></div>
                 <div><dt>Classifier</dt><dd>{health.models.classifier}</dd></div>
+                <div>
+                  <dt>Release</dt>
+                  <dd>{health.models.classifier_release_status.replaceAll("_", " ")}</dd>
+                </div>
                 <div><dt>Providers</dt><dd>{health.models.classifier_providers?.join(", ") || "CPU/default"}</dd></div>
               </dl>
               {modelWarnings.map((warning) => <p key={warning}>{warning}</p>)}

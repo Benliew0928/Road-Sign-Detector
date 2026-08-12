@@ -1,0 +1,6 @@
+outs:
+- md5: b7039ce4d8f999104e55812bfba9a7d6.dir
+  size: 10002871
+  nfiles: 1066
+  hash: md5
+  path: emtd_classification

@@ -33,6 +33,7 @@ async def test_health_endpoint() -> None:
         assert isinstance(models["detector_loaded"], bool)
         assert "detector_device" in models
         assert isinstance(models["classifier_loaded"], bool)
+        assert isinstance(models["classifier_release_status"], str)
         assert isinstance(models["classifier_providers"], list)
         assert isinstance(models["tracker"], str)
         assert isinstance(models["ocr_loaded"], bool)
@@ -53,6 +54,7 @@ async def test_models_endpoint_contract() -> None:
         assert isinstance(body["classifier"], str)
         assert isinstance(body["classifier_available"], bool)
         assert isinstance(body["classifier_loaded"], bool)
+        assert isinstance(body["classifier_release_status"], str)
         assert isinstance(body["classifier_providers"], list)
         assert isinstance(body["tracker"], str)
         assert isinstance(body["ocr_available"], bool)

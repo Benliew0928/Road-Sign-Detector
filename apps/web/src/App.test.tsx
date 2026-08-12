@@ -19,6 +19,7 @@ vi.mock("./api", () => ({
       detector: "color_shape_baseline",
       detector_available: true,
       classifier: "unavailable",
+      classifier_release_status: "no_production_classifier",
       classifier_available: false,
       tracker: "iou+sparseOptFlow-gmc",
       ocr_available: false,

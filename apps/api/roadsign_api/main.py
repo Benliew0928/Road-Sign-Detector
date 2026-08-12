@@ -375,6 +375,7 @@ class ModelStatusResponse(BaseModel):
     detector_device: str | None
     detector_profile: dict[str, object] = Field(default_factory=dict)
     classifier: str
+    classifier_release_status: str
     classifier_available: bool
     classifier_loaded: bool
     classifier_providers: list[str] = Field(default_factory=list)

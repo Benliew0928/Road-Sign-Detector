@@ -236,7 +236,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     classifier.add_argument(
         "--data",
-        default="data/processed/emtd_classification",
+        default="data/processed/classifier_no_controlled_variants_20260812",
     )
     classifier.add_argument(
         "--architecture",
@@ -257,7 +257,7 @@ def build_parser() -> argparse.ArgumentParser:
     embedding_classifier.add_argument("--checkpoint", required=True)
     embedding_classifier.add_argument(
         "--data",
-        default="data/processed/emtd_classification",
+        default="data/processed/classifier_no_controlled_variants_20260812",
     )
     embedding_classifier.add_argument("--model-output", required=True)
     embedding_classifier.add_argument("--calibration-output", required=True)

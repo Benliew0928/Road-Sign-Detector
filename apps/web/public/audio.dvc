@@ -1,0 +1,6 @@
+outs:
+- md5: e63dbe328e1f94ccdb74dd1cd5b743b1.dir
+  size: 429292295
+  nfiles: 1106
+  hash: md5
+  path: audio

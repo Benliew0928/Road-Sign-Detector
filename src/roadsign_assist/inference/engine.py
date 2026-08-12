@@ -167,11 +167,17 @@ class InferenceEngine:
                 "fallback_max_detections": detector_settings.get("fallback_max_detections"),
             },
             "classifier": self.classifier.name,
+            "classifier_release_status": classifier_settings.get(
+                "release_status", "unspecified"
+            ),
             "classifier_available": self.classifier.available,
             "classifier_loaded": bool(getattr(self.classifier, "loaded", True)),
             "classifier_providers": classifier_providers,
             "classifier_profile": {
                 "backend": classifier_settings.get("backend"),
+                "release_status": classifier_settings.get(
+                    "release_status", "unspecified"
+                ),
                 "model_path": classifier_settings.get("model_path"),
                 "labels_path": classifier_settings.get("labels_path"),
                 "calibration_path": classifier_settings.get("calibration_path"),

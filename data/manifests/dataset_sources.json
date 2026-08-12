@@ -1,206 +1,173 @@
-﻿{
-    "schema_version":  "1.0",
-    "sources":  [
-                    {
-                        "source_id":  "emtd_zenodo_1217105",
-                        "name":  "Extended Malaysian Traffic Sign Dataset",
-                        "owner":  "Reilly, Clancy, Foy, and Madden",
-                        "publisher":  "Zenodo",
-                        "source_url":  "https://zenodo.org/records/1217105",
-                        "doi":  "10.5281/zenodo.1217105",
-                        "licence_name":  "Creative Commons Attribution 4.0 International",
-                        "licence_url":  "https://creativecommons.org/licenses/by/4.0/",
-                        "decision":  "accepted",
-                        "metadata_retrieved_on":  "2026-06-24",
-                        "downloaded_on":  null,
-                        "archive_url":  "https://zenodo.org/records/1217105/files/EMTD.zip?download=1",
-                        "archive_size_bytes":  7472788960,
-                        "expected_archive_md5":  "2e718023d82dc170ed1ae08c377e08b9",
-                        "archive_sha256":  null,
-                        "full_archive_status":  "stratified_subset_downloading",
-                        "local_metadata_files":  [
-                                                     "data/raw/emtd/metadata/GT.csv",
-                                                     "data/raw/emtd/metadata/archive_index.json"
-                                                 ],
-                        "geographic_relevance":  "Malaysia; 66 traffic-sign categories, 1,413 road-scene images, and 2,870 annotated instances.",
-                        "class_mapping_status":  "pending_manual_review",
-                        "attribution":  "Extended Malaysian Traffic Sign Dataset, Reilly, Clancy, Foy, and Madden, DOI 10.5281/zenodo.1217105, CC BY 4.0.",
-                        "restrictions":  [
-                                             "Credit the dataset creators and DOI 10.5281/zenodo.1217105.",
-                                             "Preserve original labels until the class mapping is independently reviewed."
-                                         ],
-                        "notes":  "Zenodo archive EMTD.zip; published 2018-04-11. The ground-truth CSV and ZIP central directory were extracted with verified byte ranges before the balanced image subset transfer."
-                    },
-                    {
-                        "source_id":  "roboflow_malaysia_road_sign_v1",
-                        "name":  "Malaysia Road Sign Dataset",
-                        "owner":  "Malaysia Road Sign",
-                        "publisher":  "Roboflow Universe",
-                        "source_url":  "https://universe.roboflow.com/malaysia-road-sign/malaysia-road-sign-dataset/dataset/1",
-                        "doi":  null,
-                        "licence_name":  "Creative Commons Attribution 4.0 International",
-                        "licence_url":  "https://creativecommons.org/licenses/by/4.0/",
-                        "decision":  "accepted_staged_candidate",
-                        "metadata_retrieved_on":  "2026-06-24",
-                        "downloaded_on":  "2026-06-27",
-                        "archive_url":  "Roboflow authenticated browser export: YOLOv8 zip",
-                        "archive_size_bytes":  1694634635,
-                        "expected_archive_md5":  null,
-                        "archive_sha256":  "FEACEF39DE0017069C3E67B2EEC437823EDB84114B620262C8B5418AABE95EF1",
-                        "full_archive_status":  "downloaded_and_staged_yolov8_export",
-                        "local_metadata_files":  [
-                                                     "data/raw/roboflow/malaysia_road_sign_dataset_v1/test.v1i.yolov8.zip",
-                                                     "data/raw/roboflow/malaysia_road_sign_dataset_v1/extracted_full/data.yaml",
-                                                     "data/raw/roboflow/malaysia_road_sign_dataset_v1/extracted_full/README.dataset.txt",
-                                                     "data/raw/roboflow/malaysia_road_sign_dataset_v1/extracted_full/README.roboflow.txt",
-                                                     "data/manifests/roboflow_class_mapping.csv",
-                                                     "data/manifests/roboflow_source_manifest.csv"
-                                                 ],
-                        "geographic_relevance":  "Malaysia; public project page reports 62 classes, 9,483 original images, and a 23,068-image augmented version.",
-                        "class_mapping_status":  "stage_c_conservative_mapping_applied",
-                        "attribution":  "Malaysia Road Sign Dataset, Malaysia Road Sign, Roboflow Universe, CC BY 4.0.",
-                        "restrictions":  [
-                                             "The project owner must authenticate and initiate the export.",
-                                             "Review original versus augmented images and prevent derivative leakage across splits.",
-                                             "Preserve Roboflow project attribution."
-                                         ],
-                        "notes":  "Downloaded through owner-authenticated Chrome session on 2026-06-27 as YOLOv8. Staged through scripts/import_roboflow_stage_c.py with tiny-crop, duplicate, non-sign, and noisy-source exclusions. Source labels Pass either side and Roadway diverges were excluded because visual audit showed mixed classes."
-                    },
-                    {
-                        "source_id":  "roboflow_dr_samsudin_malaysia_road_sign",
-                        "name":  "Malaysia\u0027s Road Sign",
-                        "owner":  "Dr Samsudin",
-                        "publisher":  "Roboflow Universe",
-                        "source_url":  "https://universe.roboflow.com/dr-samsudin/malaysia-s-road-sign",
-                        "doi":  null,
-                        "licence_name":  "Public Domain / CC0 1.0 according to public project metadata",
-                        "licence_url":  "https://creativecommons.org/publicdomain/zero/1.0/",
-                        "decision":  "accepted_staged_candidate",
-                        "metadata_retrieved_on":  "2026-06-27",
-                        "downloaded_on":  "2026-06-27",
-                        "archive_url":  "Roboflow authenticated browser export: folder classification zip",
-                        "archive_size_bytes":  36057906,
-                        "expected_archive_md5":  null,
-                        "archive_sha256":  "3D9D69461C2651A6FFCAE521AD258512F65FCF6DB8A74DB9EAA70FB033055C0A",
-                        "full_archive_status":  "downloaded_and_staged_folder_export",
-                        "local_metadata_files":  [
-                                                     "data/raw/roboflow/dr_samsudin_malaysia_road_sign/Malaysia-s Road Sign.v1-1.folder.zip",
-                                                     "data/raw/roboflow/dr_samsudin_malaysia_road_sign/extracted/README.dataset.txt",
-                                                     "data/raw/roboflow/dr_samsudin_malaysia_road_sign/extracted/README.roboflow.txt",
-                                                     "data/manifests/roboflow_class_mapping.csv",
-                                                     "data/manifests/roboflow_source_manifest.csv"
-                                                 ],
-                        "geographic_relevance":  "Malaysia road-sign classification dataset; public project page reports 844 images and 34 classes.",
-                        "class_mapping_status":  "stage_c_conservative_mapping_applied",
-                        "attribution":  "Malaysia\u0027s Road Sign Dataset, Dr Samsudin, Roboflow Universe, Public Domain/CC0 1.0.",
-                        "restrictions":  [
-                                             "Preserve Roboflow source metadata and public-domain citation.",
-                                             "Do not merge public mixed source data into final training without Stage D/freeze audit."
-                                         ],
-                        "notes":  "Downloaded through owner-authenticated Chrome session on 2026-06-27 as folder classification export. Selekoh class was excluded because it mixes left/right chevrons under one direction-losing label."
-                    },
-                    {
-                        "source_id":  "wikimedia_commons_stage_c_sprint_01",
-                        "name":  "Stage C Sprint 01 Curated Wikimedia Commons Top-Up",
-                        "owner":  "Per-file Wikimedia Commons contributors",
-                        "publisher":  "Wikimedia Commons",
-                        "source_url":  "https://commons.wikimedia.org/",
-                        "doi":  null,
-                        "licence_name":  "Mixed per-file licences recorded in data/manifests/stage_c_sprint_01_commons_candidates.csv",
-                        "licence_url":  null,
-                        "decision":  "accepted_staged_candidate",
-                        "metadata_retrieved_on":  "2026-06-28",
-                        "downloaded_on":  "2026-06-28",
-                        "archive_url":  "Wikimedia Commons API curated per-file downloads",
-                        "archive_size_bytes":  null,
-                        "expected_archive_md5":  null,
-                        "archive_sha256":  null,
-                        "full_archive_status":  "downloaded_candidate_files",
-                        "local_metadata_files":  [
-                                                     "data/manifests/stage_c_sprint_01_commons_candidates.csv",
-                                                     "outputs/audit/stage_c_sprint_01_commons_candidates.json",
-                                                     "outputs/audit/post_stage_c_sprint_01_gap_report.csv",
-                                                     "outputs/audit/post_stage_c_sprint_01_gap_report.json",
-                                                     "docs/STAGE_C_SPRINT_01_COMMONS_TOPUP_REPORT.md"
-                                                 ],
-                        "geographic_relevance":  "Curated public files for near-minimum Malaysian road-sign classes, including Malaysia-specific reference graphics and real Malaysian keep-right photos.",
-                        "class_mapping_status":  "stage_c_candidate_mapping_pending_stage_d_qc",
-                        "attribution":  "Use per-file Commons title, URL, licence, artist, and credit fields from data/manifests/stage_c_sprint_01_commons_candidates.csv.",
-                        "restrictions":  [
-                                             "Do not use a blanket licence statement; attribution is per file.",
-                                             "Downloaded candidates require Stage D visual QC/annotation and Stage E split freeze before final training.",
-                                             "Downloaded_excluded and failed rows in the manifest must not be counted as usable training data."
-                                         ],
-                        "notes":  "Small controlled top-up for no_overtaking, keep_right, and no_heavy_vehicle. One no_overtaking candidate was excluded after visual QC because it was heavy-vehicle no-overtaking, not generic no-overtaking."
-                    },
-                    {
-                        "source_id":  "stage_c_online_reference_sources_01",
-                        "name":  "Stage C Online Reference Sources 01",
-                        "owner":  "Per-file Wikimedia Commons contributors and HuggingFace dataset metadata",
-                        "publisher":  "Wikimedia Commons / HuggingFace",
-                        "source_url":  "https://huggingface.co/datasets/wanadzhar913/wikipedia-malaysian-road-sign-images",
-                        "doi":  null,
-                        "licence_name":  "Mixed per-file Wikimedia Commons licences recorded in data/manifests/stage_c_online_reference_sources_01.csv",
-                        "licence_url":  null,
-                        "decision":  "reference_only_not_final_realistic_coverage",
-                        "metadata_retrieved_on":  "2026-06-28",
-                        "downloaded_on":  "2026-06-28",
-                        "archive_url":  "Curated per-file Wikimedia Commons downloads via Commons API; HuggingFace rows used to identify Wikimedia-hosted Malaysian references.",
-                        "archive_size_bytes":  null,
-                        "expected_archive_md5":  null,
-                        "archive_sha256":  null,
-                        "full_archive_status":  "downloaded_reference_candidate_files",
-                        "local_metadata_files":  [
-                                                     "data/manifests/stage_c_online_reference_sources_01.csv",
-                                                     "outputs/audit/stage_c_online_reference_sources_01.json",
-                                                     "outputs/review/stage_c_online_reference_sources_01",
-                                                     "docs/STAGE_C_ONLINE_REFERENCE_SOURCES_01_REPORT.md"
-                                                 ],
-                        "geographic_relevance":  "Malaysian road-sign diagrams/SVGs from Wikimedia Commons and Wikimedia-linked HuggingFace metadata for remaining Stage C gap classes.",
-                        "class_mapping_status":  "stage_c_online_reference_mapping_pending_stage_d_qc",
-                        "attribution":  "Use per-file Commons title, URL, licence, artist, and credit fields from data/manifests/stage_c_online_reference_sources_01.csv.",
-                        "restrictions":  [
-                                             "Do not treat reference diagrams as real road-scene photo coverage.",
-                                             "Do not use a blanket licence statement; attribution is per file.",
-                                             "Use as class anchors, review references, and controlled experiment input only unless a later evaluation proves value.",
-                                             "Keep downloaded possible-mismatch rows out of final claims unless manually approved."
-                                         ],
-                        "notes":  "Downloaded 15 online reference candidates across 12 classes. High-confidence references were found for 11 classes; motor_vehicles_only was downgraded to possible mismatch after visual review. These references support class definition but still do not close realistic-photo coverage gaps by themselves."
-                    },
-                    {
-                        "source_id":  "stage_c_china_reference_sources_01",
-                        "name":  "Stage C China/GB Reference Sources 01",
-                        "owner":  "Per-file Wikimedia Commons contributors / listed public-domain authorities",
-                        "publisher":  "Wikimedia Commons",
-                        "source_url":  "https://en.wikipedia.org/wiki/Road_signs_in_China",
-                        "doi":  null,
-                        "licence_name":  "Public domain per downloaded Commons metadata, recorded per file in data/manifests/stage_c_china_reference_sources_01.csv",
-                        "licence_url":  null,
-                        "decision":  "reference_only_not_final_realistic_coverage",
-                        "metadata_retrieved_on":  "2026-06-28",
-                        "downloaded_on":  "2026-06-28",
-                        "archive_url":  "Curated per-file Wikimedia Commons downloads via Commons API.",
-                        "archive_size_bytes":  null,
-                        "expected_archive_md5":  null,
-                        "archive_sha256":  null,
-                        "full_archive_status":  "downloaded_reference_candidate_files",
-                        "local_metadata_files":  [
-                                                     "data/manifests/stage_c_china_reference_sources_01.csv",
-                                                     "outputs/audit/stage_c_china_reference_sources_01.json",
-                                                     "outputs/review/stage_c_china_reference_sources_01",
-                                                     "docs/STAGE_C_CHINA_REFERENCE_SOURCES_01_REPORT.md"
-                                                 ],
-                        "geographic_relevance":  "China/GB-style warning, prohibitory, and indicative sign diagrams that match rare assignment-style road signs not covered well by Malaysian public road-scene datasets.",
-                        "class_mapping_status":  "stage_c_china_reference_mapping_pending_stage_d_qc",
-                        "attribution":  "Use per-file Commons title, URL, licence, artist, and credit fields from data/manifests/stage_c_china_reference_sources_01.csv.",
-                        "restrictions":  [
-                                             "Do not treat reference diagrams as real road-scene photo coverage.",
-                                             "Do not use a blanket licence statement; attribution and public-domain authority are per file.",
-                                             "Use as class anchors, review references, and controlled experiment input only unless a later evaluation proves value.",
-                                             "Keep motor_vehicles_only marked as a possible style difference until compared against the assignment source image.",
-                                             "Do not force-map no_lane_changing until an exact standalone sign-board source is verified."
-                                         ],
-                        "notes":  "Downloaded 19 China/GB-style online reference candidates across 19 classes. Visual contact sheet review found 18 high-confidence class anchors and one medium-confidence possible style difference for motor_vehicles_only. These references support rare assignment-sign class definitions but still do not close realistic-photo coverage gaps by themselves."
-                    }
-                ]
+{
+  "schema_version": "2.0",
+  "sources": [
+    {
+      "source_id": "emtd_zenodo_1217105",
+      "name": "Extended Malaysian Traffic Sign Dataset",
+      "owner": "EMTD authors",
+      "publisher": "Zenodo",
+      "source_url": "https://zenodo.org/records/1217105",
+      "doi": "10.5281/zenodo.1217105",
+      "licence_name": "Creative Commons Attribution 4.0 International",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "decision": "accepted",
+      "metadata_retrieved_on": "2026-08-12",
+      "downloaded_on": null,
+      "archive_url": "https://zenodo.org/records/1217105",
+      "archive_size_bytes": null,
+      "expected_archive_md5": null,
+      "archive_sha256": null,
+      "full_archive_status": "Raw research download is retained only in the local ignored archive.",
+      "local_metadata_files": [
+        "data/processed/emtd_detection/dataset_metadata.json",
+        "data/processed/emtd_segmentation/dataset_metadata.json",
+        "data/processed/emtd_classification/dataset_metadata.json",
+        "data/manifests/classifier_release.csv"
+      ],
+      "geographic_relevance": "Primary Malaysian road-sign source.",
+      "class_mapping_status": "P5 partial owner review with crop-level exceptions.",
+      "attribution": "Cite the EMTD authors and DOI 10.5281/zenodo.1217105.",
+      "restrictions": [],
+      "notes": "Active prepared detector, segmenter, and classifier data are DVC tracked."
+    },
+    {
+      "source_id": "roboflow_malaysia_road_sign_v1",
+      "name": "Malaysia Road Sign Dataset v1",
+      "owner": "Malaysia Road Sign project",
+      "publisher": "Roboflow Universe",
+      "source_url": "https://universe.roboflow.com/malaysia-road-sign/malaysia-road-sign-dataset/dataset/1",
+      "doi": null,
+      "licence_name": "Creative Commons Attribution 4.0 according to project metadata",
+      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+      "decision": "accepted",
+      "metadata_retrieved_on": "2026-08-12",
+      "downloaded_on": null,
+      "archive_url": null,
+      "archive_size_bytes": null,
+      "expected_archive_md5": null,
+      "archive_sha256": null,
+      "full_archive_status": "Raw export and staging material are retained only in the local ignored archive.",
+      "local_metadata_files": [
+        "data/manifests/classifier_release.csv"
+      ],
+      "geographic_relevance": "Malaysian road-sign images and labels.",
+      "class_mapping_status": "Reviewed mapped crops only; mapping evidence is retained per sample.",
+      "attribution": "Preserve the Roboflow project attribution and source URL.",
+      "restrictions": [],
+      "notes": "Only accepted prepared crops are active."
+    },
+    {
+      "source_id": "roboflow_dr_samsudin_malaysia_road_sign",
+      "name": "Malaysia's Road Sign",
+      "owner": "Dr Samsudin project",
+      "publisher": "Roboflow Universe",
+      "source_url": "https://universe.roboflow.com/dr-samsudin/malaysia-s-road-sign",
+      "doi": null,
+      "licence_name": "CC0 according to project metadata; verify again before public redistribution",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "decision": "accepted",
+      "metadata_retrieved_on": "2026-08-12",
+      "downloaded_on": null,
+      "archive_url": null,
+      "archive_size_bytes": null,
+      "expected_archive_md5": null,
+      "archive_sha256": null,
+      "full_archive_status": "Raw export and staging material are retained only in the local ignored archive.",
+      "local_metadata_files": [
+        "data/manifests/classifier_release.csv"
+      ],
+      "geographic_relevance": "Malaysian road-sign images and labels.",
+      "class_mapping_status": "Reviewed mapped crops only; mapping evidence is retained per sample.",
+      "attribution": "Preserve the Roboflow project source record.",
+      "restrictions": [
+        "Recheck the live project licence before public redistribution."
+      ],
+      "notes": "Only accepted prepared crops are active."
+    },
+    {
+      "source_id": "gtsrb",
+      "name": "German Traffic Sign Recognition Benchmark",
+      "owner": "Institut fuer Neuroinformatik",
+      "publisher": "Ruhr University Bochum",
+      "source_url": "https://benchmark.ini.rub.de/gtsrb_dataset.html",
+      "doi": null,
+      "licence_name": "Research-use terms on the official dataset page",
+      "licence_url": null,
+      "decision": "review_required",
+      "metadata_retrieved_on": "2026-08-12",
+      "downloaded_on": null,
+      "archive_url": null,
+      "archive_size_bytes": null,
+      "expected_archive_md5": null,
+      "archive_sha256": null,
+      "full_archive_status": "Historical downloads are retained only in the local ignored archive.",
+      "local_metadata_files": [
+        "data/manifests/classifier_release.csv"
+      ],
+      "geographic_relevance": "Secondary visual reference; not a Malaysian source.",
+      "class_mapping_status": "Reviewed real-road crops with per-sample mapping evidence.",
+      "attribution": "Cite the GTSRB benchmark and official source page.",
+      "restrictions": [
+        "Confirm redistribution terms before publishing prepared crops."
+      ],
+      "notes": "Internal academic training is retained; redistribution requires review."
+    },
+    {
+      "source_id": "tt100k",
+      "name": "Tsinghua-Tencent 100K",
+      "owner": "Tsinghua University and Tencent",
+      "publisher": "Tsinghua University",
+      "source_url": "https://cg.cs.tsinghua.edu.cn/traffic-sign/",
+      "doi": null,
+      "licence_name": "Academic or non-commercial terms; mirror terms vary",
+      "licence_url": null,
+      "decision": "review_required",
+      "metadata_retrieved_on": "2026-08-12",
+      "downloaded_on": null,
+      "archive_url": null,
+      "archive_size_bytes": null,
+      "expected_archive_md5": null,
+      "archive_sha256": null,
+      "full_archive_status": "Historical downloads and shards are retained only in the local ignored archive.",
+      "local_metadata_files": [
+        "data/manifests/classifier_release.csv"
+      ],
+      "geographic_relevance": "Secondary Asian traffic-sign source.",
+      "class_mapping_status": "Reviewed crops with source/mirror and mapping evidence retained per sample.",
+      "attribution": "Cite TT100K and preserve the exact per-sample source URL.",
+      "restrictions": [
+        "Internal academic use only until the exact source or mirror terms are cleared."
+      ],
+      "notes": "Do not publicly redistribute the prepared rows without a terms review."
+    },
+    {
+      "source_id": "manual_public_references",
+      "name": "Curated public road photos and sign references",
+      "owner": "Multiple per-file owners",
+      "publisher": "Wikimedia Commons and other public reference sites",
+      "source_url": "https://commons.wikimedia.org/",
+      "doi": null,
+      "licence_name": "Mixed per-file licences or unstated terms",
+      "licence_url": null,
+      "decision": "review_required",
+      "metadata_retrieved_on": "2026-08-12",
+      "downloaded_on": null,
+      "archive_url": null,
+      "archive_size_bytes": null,
+      "expected_archive_md5": null,
+      "archive_sha256": null,
+      "full_archive_status": "Original and reference files are retained only in the local ignored archive.",
+      "local_metadata_files": [
+        "data/manifests/classifier_release.csv"
+      ],
+      "geographic_relevance": "Mixed; Malaysian relevance is recorded per sample.",
+      "class_mapping_status": "Manual visual review and per-sample mapping evidence.",
+      "attribution": "Use each row's source_url and license_notes fields as the authoritative record.",
+      "restrictions": [
+        "Rows with unstated or ambiguous terms are internal coursework material only.",
+        "Perform a per-file licence review before public redistribution."
+      ],
+      "notes": "This registry entry groups mixed references; the release manifest is authoritative per sample."
+    }
+  ]
 }

@@ -162,6 +162,7 @@ export interface HealthResponse {
     detector_device?: string | null;
     detector_profile?: Record<string, unknown>;
     classifier: string;
+    classifier_release_status: string;
     classifier_available: boolean;
     classifier_loaded?: boolean;
     classifier_providers?: string[];

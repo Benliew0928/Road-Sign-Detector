@@ -23,15 +23,34 @@ The setup script creates a Python 3.11 environment and installs the web
 application. The run script starts the FastAPI backend and serves the built web
 interface.
 
-To run the current unreviewed YOLO26, embedding-gated EfficientNet, and
-PP-OCRv6 experiments:
+To run the selected YOLO26 detector, the explicitly
+`legacy_synthetic_assisted` embedding-gated EfficientNet classifier, and
+PP-OCRv6:
 
 ```powershell
 .\scripts\run_experimental.ps1
 ```
 
-The experimental profile is visibly labelled and is not promoted to the
-production model registry.
+The classifier remains usable as a legacy baseline, but its release status is
+visible in API health and the UI and it is not a clean-final model.
+
+## Data and model artifacts
+
+The active project is tracked with targeted DVC pointers, including prepared
+datasets, selected model/OCR artifacts, required YOLO base weights, and the
+offline multilingual audio bundle. After the shared Google Drive remote is
+configured, restore artifacts with:
+
+```powershell
+.\scripts\setup.ps1
+.\.venv\Scripts\dvc.exe pull
+```
+
+The clean classifier dataset is
+`data/processed/classifier_no_controlled_variants_20260812` (2,976 samples,
+zero controlled variants). See [DATA_PROGRESS_TRACKER.md](./DATA_PROGRESS_TRACKER.md)
+for its coverage gaps and [docs/DVC_COLLABORATION.md](./docs/DVC_COLLABORATION.md)
+for the teammate workflow.
 
 For phone-camera streaming on a local Wi-Fi or hotspot:
 
@@ -93,7 +112,7 @@ for commands, evidence, limitations, and manual testing.
 ## Important Boundaries
 
 - Official coursework inputs live under `data/official/`.
-- Large datasets, annotations, models, and generated outputs are DVC-managed.
+- Large datasets, annotations, models, and generated audio are DVC-managed.
 - Coursework images are external acceptance data and must not be used to train
   or tune models.
 - Source filenames and folder names are never model features.

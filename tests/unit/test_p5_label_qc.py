@@ -15,7 +15,7 @@ def test_emtd_class_35_is_camera_enforcement_after_p5_owner_review() -> None:
     assert mapping["classes"]["57"]["semantic_sign_id"] == "side_road_left"
 
 
-def test_rebuilt_emtd_classification_uses_camera_enforcement_label() -> None:
+def test_rebuilt_emtd_classification_uses_owner_reviewed_labels() -> None:
     root = Path("data/processed/emtd_classification")
     labels = json.loads((root / "labels.json").read_text())
     metadata = json.loads((root / "dataset_metadata.json").read_text())
@@ -23,8 +23,10 @@ def test_rebuilt_emtd_classification_uses_camera_enforcement_label() -> None:
     assert "camera_enforcement" in labels
     assert "animal_crossing" in labels
     assert "staggered_junction" in labels
-    assert "merge_left" not in labels
-    assert "merge_right" not in labels
+    # Source classes 56/57 map to side-road signs by default, but the owner's
+    # crop-level review identified genuine merge-sign exceptions.
+    assert "merge_left" in labels
+    assert "merge_right" in labels
     assert metadata["class_mapping_status"] == "p5_partial_owner_review"
     assert metadata["classification_crops"] == 1064
     assert sum(
@@ -35,12 +37,20 @@ def test_rebuilt_emtd_classification_uses_camera_enforcement_label() -> None:
         split_counts.get("animal_crossing", 0)
         for split_counts in metadata["classification_split_label_counts"].values()
     ) == 6
+    assert sum(
+        split_counts.get("merge_left", 0)
+        for split_counts in metadata["classification_split_label_counts"].values()
+    ) == 34
+    assert sum(
+        split_counts.get("merge_right", 0)
+        for split_counts in metadata["classification_split_label_counts"].values()
+    ) == 13
 
 
 def test_p5_qc_report_has_no_catalogue_or_cross_split_duplicate_issues() -> None:
     report = json.loads(Path("outputs/audit/p5_label_qc_report.json").read_text())
 
-    assert report["label_qc_status"] == "generated_no_seeded_corrections"
+    assert report["label_qc_status"] == "partial_owner_corrections_applied"
     assert report["labels_not_in_p2_catalogue"] == []
     assert report["exact_duplicate_hashes_cross_split"] == {}
     assert report["seeded_corrections"] == 0

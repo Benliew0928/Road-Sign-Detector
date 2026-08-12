@@ -10,6 +10,7 @@ detector:
   nms_iou_threshold: 0.50
 classifier:
   backend: deep
+  release_status: legacy_synthetic_assisted
   model_path: models/exported/experimental/stage_e_current_efficientnet_v2_s_embedding_q97.onnx
   labels_path: models/exported/experimental/stage_e_current_efficientnet_v2_s.labels.json
   calibration_path: models/exported/experimental/stage_e_current_efficientnet_v2_s_embedding_q97.calibration.json

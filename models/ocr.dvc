@@ -1,0 +1,6 @@
+outs:
+- md5: b1e4c938a1fd9f485478986b248a7ff5.dir
+  size: 31532520
+  nfiles: 11
+  hash: md5
+  path: ocr

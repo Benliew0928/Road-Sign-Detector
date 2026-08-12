@@ -42,6 +42,7 @@ def test_openapi_contains_runtime_fields_used_by_react() -> None:
         "detector_device",
         "detector_profile",
         "classifier_loaded",
+        "classifier_release_status",
         "classifier_providers",
         "classifier_profile",
         "tracker",

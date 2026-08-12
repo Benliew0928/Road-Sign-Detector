@@ -1,0 +1,6 @@
+outs:
+- md5: cbb795b7632a4c27a2cb9aa0adb04ba4.dir
+  size: 2546717753
+  nfiles: 1063
+  hash: md5
+  path: emtd_segmentation

@@ -14,22 +14,20 @@ from typing import Any
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SEED = 2513
-DATASET_ID = "stage_e_current_20260702"
+DATASET_ID = "classifier_no_controlled_variants_20260812"
 
-STAGE_D_MANIFESTS = (
-    PROJECT_ROOT / "data/manifests/stage_d_zero_gap_qc_manifest.csv",
-    PROJECT_ROOT / "data/manifests/stage_d_other_zero_gap_qc_manifest.csv",
-    PROJECT_ROOT / "data/manifests/stage_d_manual_pending_qc_manifest.csv",
-    PROJECT_ROOT / "data/manifests/stage_d_steep_descent_qc_manifest.csv",
+STAGE_D_MANIFESTS: tuple[Path, ...] = (
+    PROJECT_ROOT / "data/annotations/classifier_review_decisions.csv",
 )
 
-FINAL_DATASET_MANIFEST = PROJECT_ROOT / "data/manifests/final_dataset.csv"
-FINAL_TRAIN_MANIFEST = PROJECT_ROOT / "data/manifests/final_train.csv"
-FINAL_VALIDATION_MANIFEST = PROJECT_ROOT / "data/manifests/final_validation.csv"
-FINAL_TEST_MANIFEST = PROJECT_ROOT / "data/manifests/final_test.csv"
+FINAL_DATASET_MANIFEST = PROJECT_ROOT / "data/manifests/classifier_release.csv"
 ASSIGNMENT_EXTERNAL_TEST_MANIFEST = PROJECT_ROOT / "data/manifests/assignment_external_test.csv"
-FINAL_SPLIT_AUDIT = PROJECT_ROOT / "outputs/audit/final_split_audit.json"
-CLASSIFIER_ROOT = PROJECT_ROOT / "data/processed/stage_e_classifier_current"
+FINAL_SPLIT_AUDIT = (
+    PROJECT_ROOT / "outputs/audit/classifier_no_controlled_variants_20260812.json"
+)
+CLASSIFIER_ROOT = (
+    PROJECT_ROOT / "data/processed/classifier_no_controlled_variants_20260812"
+)
 TRACKER_PATH = PROJECT_ROOT / "data/manifests/CURRENT_DATA_PROGRESS.csv"
 COURSEWORK_MANIFEST = PROJECT_ROOT / "data/manifests/coursework_manifest.csv"
 OFFICIAL_IMAGES_MANIFEST = PROJECT_ROOT / "data/manifests/official_images.csv"
@@ -80,6 +78,19 @@ def safe_reset_directory(path: Path) -> None:
     if path.exists():
         shutil.rmtree(path)
     path.mkdir(parents=True, exist_ok=True)
+
+
+def prepare_output_directory(path: Path, *, overwrite: bool) -> None:
+    root = PROJECT_ROOT.resolve()
+    resolved = path.resolve()
+    if resolved == root or root not in resolved.parents:
+        raise RuntimeError(f"Refusing to prepare output outside project root: {resolved}")
+    if path.exists() and not overwrite:
+        raise FileExistsError(
+            f"Release output already exists: {project_rel(path)}. "
+            "Choose a new release ID/output or pass --overwrite explicitly."
+        )
+    safe_reset_directory(path)
 
 
 def stable_fraction(value: str, seed: int = SEED) -> float:
@@ -318,9 +329,9 @@ def manifest_row(sample: FrozenSample, split: str, dataset_image_path: Path) -> 
         "leakage_group": sample.leakage_group,
         "base_variant_group": sample.base_variant_group,
         "is_controlled_variant": "true" if sample.is_controlled_variant else "false",
-        "is_synthetic": "false",
+        "is_synthetic": "true" if sample.is_controlled_variant else "false",
         "annotation_status": "stage_d_minimum_qc_accepted",
-        "review_notes": "Frozen into Stage E current classifier dataset.",
+        "review_notes": f"Frozen into classifier release {DATASET_ID}.",
     }
 
 
@@ -436,14 +447,18 @@ def write_classifier_metadata(
     split_rows: dict[str, list[dict[str, str]]],
     audit: dict[str, Any],
 ) -> None:
+    must_coverage_gaps = audit["must_minimum_coverage_gaps"]
     metadata = {
         "schema_version": "1.0",
         "dataset_id": DATASET_ID,
         "created_at_utc": datetime.now(UTC).isoformat(),
-        "source_stage": "Stage E current classifier freeze",
+        "source_stage": "versioned classifier release freeze",
         "annotation_status": "approved",
+        "release_status": (
+            "coverage_gaps_block_final" if must_coverage_gaps else "clean_final_candidate"
+        ),
         "training_scope": (
-            "current_stage_e_classifier_training; Stage D accepted crops only; "
+            "versioned_classifier_training; reviewed accepted crops only; "
             "coursework assignment images excluded"
         ),
         "coursework_images_included": 0,
@@ -499,6 +514,26 @@ def target_class_gaps(labels: set[str]) -> dict[str, Any]:
     }
 
 
+def minimum_coverage_gaps(all_rows: list[dict[str, str]]) -> list[dict[str, Any]]:
+    counts = Counter(row["semantic_sign_id"] for row in all_rows)
+    gaps: list[dict[str, Any]] = []
+    for row in read_csv(TRACKER_PATH):
+        minimum = int(row.get("minimum_clean_crops", "0") or 0)
+        actual = counts.get(row["semantic_sign_id"], 0)
+        if actual >= minimum:
+            continue
+        gaps.append(
+            {
+                "semantic_sign_id": row["semantic_sign_id"],
+                "priority": row.get("priority", ""),
+                "minimum_clean_crops": minimum,
+                "clean_samples": actual,
+                "gap_to_minimum": minimum - actual,
+            }
+        )
+    return gaps
+
+
 def write_audit(
     all_rows: list[dict[str, str]],
     split_rows: dict[str, list[dict[str, str]]],
@@ -529,10 +564,19 @@ def write_audit(
             "current training freeze; exact Stage D crop-level dedupe groups do not cross."
         )
     below = target_class_gaps(set(labels))
+    coverage_gaps = minimum_coverage_gaps(all_rows)
+    must_coverage_gaps = [gap for gap in coverage_gaps if gap["priority"] == "must"]
     if below["target_classes_without_stage_e_samples"]:
         limitations.append(
             "Some target should/optional classes have no Stage E samples and are ignored "
             "for this current training dataset."
+        )
+    if must_coverage_gaps:
+        limitations.append(
+            f"{len(must_coverage_gaps)} must-have classes are below the clean "
+            "real/reference-data minimum after controlled synthetic variants and exact "
+            "duplicates were excluded; this release is training-ready but cannot support "
+            "a clean-final classifier claim."
         )
     audit: dict[str, Any] = {
         "schema_version": "1.0",
@@ -542,9 +586,6 @@ def write_audit(
         "source_stage_d_manifests": [project_rel(path) for path in STAGE_D_MANIFESTS],
         "outputs": {
             "final_dataset": project_rel(FINAL_DATASET_MANIFEST),
-            "final_train": project_rel(FINAL_TRAIN_MANIFEST),
-            "final_validation": project_rel(FINAL_VALIDATION_MANIFEST),
-            "final_test": project_rel(FINAL_TEST_MANIFEST),
             "assignment_external_test": project_rel(ASSIGNMENT_EXTERNAL_TEST_MANIFEST),
             "classifier_folder_dataset": project_rel(CLASSIFIER_ROOT),
         },
@@ -556,6 +597,11 @@ def write_audit(
         "class_counts": label_counts(all_rows),
         "priority_counts": below["priority_counts"],
         "target_classes_without_stage_e_samples": below["target_classes_without_stage_e_samples"],
+        "minimum_coverage_gaps": coverage_gaps,
+        "must_minimum_coverage_gaps": must_coverage_gaps,
+        "release_status": (
+            "coverage_gaps_block_final" if must_coverage_gaps else "clean_final_candidate"
+        ),
         "controlled_variant_samples": sum(
             1 for row in all_rows if row["is_controlled_variant"] == "true"
         ),
@@ -571,6 +617,7 @@ def write_audit(
         "skipped_stage_d_rows": skipped,
         "limitations": limitations,
         "completion_checks": {
+            "clean_final_claim_allowed": not must_coverage_gaps,
             "no_assignment_training_leakage": True,
             "no_strict_dedupe_group_cross_split": len(strict_leakage_crossings) == 0,
             "all_included_labels_in_train": not missing_by_split["train"],
@@ -593,7 +640,16 @@ def write_audit(
 
 
 def freeze_stage_e() -> dict[str, Any]:
-    safe_reset_directory(CLASSIFIER_ROOT)
+    return freeze_classifier_release(overwrite=False)
+
+
+def freeze_classifier_release(
+    *,
+    overwrite: bool,
+    expected_samples: int | None = None,
+    expected_controlled_variants: int | None = None,
+) -> dict[str, Any]:
+    prepare_output_directory(CLASSIFIER_ROOT, overwrite=overwrite)
     samples, skipped = load_stage_d_samples()
     if not samples:
         raise RuntimeError("No Stage D accepted samples were found for Stage E")
@@ -610,10 +666,27 @@ def freeze_stage_e() -> dict[str, Any]:
     for rows in split_rows.values():
         rows.sort(key=lambda row: (row["semantic_sign_id"], row["sample_id"]))
 
+    controlled_count = sum(
+        1 for row in all_rows if row["is_controlled_variant"] == "true"
+    )
+    if expected_samples is not None and len(all_rows) != expected_samples:
+        raise RuntimeError(
+            f"Expected {expected_samples} samples, found {len(all_rows)}; refusing release."
+        )
+    if (
+        expected_controlled_variants is not None
+        and controlled_count != expected_controlled_variants
+    ):
+        raise RuntimeError(
+            "Expected "
+            f"{expected_controlled_variants} controlled variants, found {controlled_count}; "
+            "refusing release."
+        )
+    if FINAL_DATASET_MANIFEST.exists() and not overwrite:
+        raise FileExistsError(
+            f"Release manifest already exists: {project_rel(FINAL_DATASET_MANIFEST)}"
+        )
     write_csv(FINAL_DATASET_MANIFEST, all_rows, STAGE_E_FIELDNAMES)
-    write_csv(FINAL_TRAIN_MANIFEST, split_rows["train"], STAGE_E_FIELDNAMES)
-    write_csv(FINAL_VALIDATION_MANIFEST, split_rows["validation"], STAGE_E_FIELDNAMES)
-    write_csv(FINAL_TEST_MANIFEST, split_rows["test"], STAGE_E_FIELDNAMES)
     assignment_rows, assignment_missing = write_assignment_external_test()
     audit = write_audit(all_rows, split_rows, skipped, assignment_rows, assignment_missing)
     labels = sorted({row["semantic_sign_id"] for row in all_rows})
@@ -622,17 +695,65 @@ def freeze_stage_e() -> dict[str, Any]:
 
 
 def main() -> None:
+    global ASSIGNMENT_EXTERNAL_TEST_MANIFEST
+    global CLASSIFIER_ROOT
+    global DATASET_ID
+    global FINAL_DATASET_MANIFEST
+    global FINAL_SPLIT_AUDIT
+    global STAGE_D_MANIFESTS
+
     parser = argparse.ArgumentParser(
-        description="Freeze the current Stage D accepted crops into Stage E classifier splits."
+        description="Create a versioned classifier release from accepted review rows."
     )
-    parser.parse_args()
-    audit = freeze_stage_e()
-    print(f"Stage E dataset: {audit['dataset_id']}")
+    parser.add_argument(
+        "--release-id",
+        default="classifier_no_controlled_variants_20260812",
+    )
+    parser.add_argument(
+        "--output-root",
+        default="data/processed/classifier_no_controlled_variants_20260812",
+    )
+    parser.add_argument(
+        "--manifest",
+        default="data/manifests/classifier_release.csv",
+    )
+    parser.add_argument(
+        "--audit",
+        default="outputs/audit/classifier_no_controlled_variants_20260812.json",
+    )
+    parser.add_argument(
+        "--assignment-manifest",
+        default="data/manifests/assignment_external_test.csv",
+    )
+    parser.add_argument(
+        "--stage-d-manifest",
+        action="append",
+        dest="stage_d_manifests",
+        default=None,
+        help="Accepted/rejected review manifest; repeat for multiple inputs.",
+    )
+    parser.add_argument("--expected-samples", type=int, default=None)
+    parser.add_argument("--expected-controlled-variants", type=int, default=None)
+    parser.add_argument("--overwrite", action="store_true")
+    args = parser.parse_args()
+
+    DATASET_ID = args.release_id
+    CLASSIFIER_ROOT = project_path(args.output_root)
+    FINAL_DATASET_MANIFEST = project_path(args.manifest)
+    FINAL_SPLIT_AUDIT = project_path(args.audit)
+    ASSIGNMENT_EXTERNAL_TEST_MANIFEST = project_path(args.assignment_manifest)
+    if args.stage_d_manifests:
+        STAGE_D_MANIFESTS = tuple(project_path(path) for path in args.stage_d_manifests)
+
+    audit = freeze_classifier_release(
+        overwrite=args.overwrite,
+        expected_samples=args.expected_samples,
+        expected_controlled_variants=args.expected_controlled_variants,
+    )
+    print(f"Classifier release: {audit['dataset_id']}")
     print(f"Samples: {audit['samples']} across {audit['labels']} labels")
     print(f"Splits: {audit['split_samples']}")
-    print(f"Final train: {project_rel(FINAL_TRAIN_MANIFEST)}")
-    print(f"Final validation: {project_rel(FINAL_VALIDATION_MANIFEST)}")
-    print(f"Final test: {project_rel(FINAL_TEST_MANIFEST)}")
+    print(f"Canonical manifest: {project_rel(FINAL_DATASET_MANIFEST)}")
     print(f"Classifier folder: {project_rel(CLASSIFIER_ROOT)}")
     print(f"Audit: {project_rel(FINAL_SPLIT_AUDIT)}")
 
