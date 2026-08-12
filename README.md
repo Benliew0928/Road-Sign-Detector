@@ -50,7 +50,8 @@ The clean classifier dataset is
 `data/processed/classifier_no_controlled_variants_20260812` (2,976 samples,
 zero controlled variants). See [DATA_PROGRESS_TRACKER.md](./DATA_PROGRESS_TRACKER.md)
 for its coverage gaps and [docs/DVC_COLLABORATION.md](./docs/DVC_COLLABORATION.md)
-for the teammate workflow.
+for the maintainer workflow. New contributors should follow the
+[step-by-step DVC getting-started guide](./docs/TEAMMATE_DVC_GETTING_STARTED.md).
 
 For phone-camera streaming on a local Wi-Fi or hotspot:
 

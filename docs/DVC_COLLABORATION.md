@@ -4,6 +4,9 @@ Git stores code, manifests, and `.dvc` pointer files. DVC stores the active
 prepared datasets, selected model artifacts, and offline runtime audio. The
 local `_archive/` folder is never pushed.
 
+New teammates should follow the full
+[clone-and-pull guide](./TEAMMATE_DVC_GETTING_STARTED.md).
+
 ## One-time Google Drive setup
 
 As of 2026-08-12, Google blocks DVC's shared built-in OAuth application. Create
