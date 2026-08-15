@@ -1,9 +1,10 @@
 param(
-    [string]$Config = "configs/inference/default.yaml",
+    [string]$Config = "configs/inference/experimental.yaml",
     [int]$Port = 8443,
     [string]$PhoneHost = "",
     [switch]$ListAddresses,
-    [switch]$RegenerateCert
+    [switch]$RegenerateCert,
+    [switch]$SkipBuild
 )
 
 $ErrorActionPreference = "Stop"
@@ -77,7 +78,7 @@ if (
     @($IpAddress) | Set-Content -LiteralPath $CertHostsPath -Encoding UTF8
 }
 
-if (-not (Test-Path "apps\web\dist")) {
+if (-not $SkipBuild -and -not (Test-Path "apps\web\dist")) {
     Push-Location apps\web
     try {
         npm run build
@@ -92,8 +93,8 @@ if ($Candidates.Count -gt 0) {
 }
 Write-Host "Laptop URL: https://127.0.0.1:$Port"
 Write-Host "Phone URL:  https://$IpAddress`:$Port/phone"
-Write-Host "List addresses: .\scripts\run_phone.ps1 -ListAddresses"
-Write-Host "Manual IP:       .\scripts\run_phone.ps1 -PhoneHost <your-laptop-wifi-ip> -Config $Config"
+Write-Host "List addresses: .\scripts\run.ps1 -ListAddresses"
+Write-Host "Manual IP:       .\scripts\run.ps1 -PhoneHost <your-laptop-wifi-ip>"
 Write-Host "If the phone warns about the certificate, install/trust certs\roadsign-local.crt for this local demo."
 
 & $ProjectPython -m roadsign_assist.cli serve `

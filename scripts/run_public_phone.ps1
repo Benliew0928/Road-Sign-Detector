@@ -1,5 +1,5 @@
 param(
-    [string]$Config = "configs/inference/default.yaml",
+    [string]$Config = "configs/inference/experimental.yaml",
     [int]$Port = 8443,
     [ValidateSet("cloudflare", "ngrok", "manual")]
     [string]$Provider = "cloudflare",

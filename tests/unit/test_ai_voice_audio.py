@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from roadsign_assist.audio.advisory import build_advisory_manifest
+from roadsign_assist.audio.advisory import LanguageCode, build_advisory_manifest
 from roadsign_assist.audio.ai_voice import (
     STYLE_PROFILES,
     available_sample_phrase_ids,
@@ -11,7 +11,11 @@ from roadsign_assist.audio.ai_voice import (
 
 def test_ai_voice_manifest_rewrites_assets_with_fallback_sources() -> None:
     base = build_advisory_manifest()
-    voices = {"en": "marin", "ms": "marin", "zh": "cedar"}
+    voices: dict[LanguageCode, str] = {
+        "en": "marin",
+        "ms": "marin",
+        "zh": "cedar",
+    }
     manifest = rewrite_manifest_for_ai_pack(
         base,
         public_audio_root="/audio/p16_ai",

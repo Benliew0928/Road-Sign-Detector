@@ -18,9 +18,9 @@ detection:
 
 classification:
   image_size: 224
-  confidence_threshold: 0.72
+  confidence_threshold: 0.47700026631355286
   unknown_distance_threshold: 0.40
-  model_path: models/exported/sign_classifier.onnx
+  model_path: models/exported/runtime/sign_classifier.onnx
 
 ocr:
   enabled: true

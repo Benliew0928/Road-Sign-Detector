@@ -45,7 +45,7 @@ presented as approved. Missing production models cause a safe baseline and
 
 ### Experimental Deep Profile
 
-`scripts/run_experimental.ps1` starts:
+`scripts/run.ps1` starts:
 
 ```text
 YOLO26s-seg ONNX
@@ -707,7 +707,7 @@ cd C:\MiniProject
 
 ```powershell
 cd C:\MiniProject
-.\scripts\run_experimental.ps1
+.\scripts\run.ps1
 ```
 
 Open:

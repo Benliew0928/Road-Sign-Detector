@@ -138,7 +138,7 @@ export function PhoneConnectPanel({ busy }: PhoneConnectPanelProps) {
           </div>
           <div>
             <ShieldAlert size={18} aria-hidden="true" />
-            <span>Use HTTPS for phone camera permission. Run scripts\run_phone.ps1 for local TLS.</span>
+            <span>Use HTTPS for phone camera permission. Run scripts\run.ps1 for the complete local website.</span>
           </div>
         </div>
       </div>

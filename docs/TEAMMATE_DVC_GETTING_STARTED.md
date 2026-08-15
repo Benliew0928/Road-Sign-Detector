@@ -140,7 +140,7 @@ You do **not** download image files manually from Drive. Folder names such as
 ```powershell
 .\.venv\Scripts\dvc.exe status
 .\.venv\Scripts\roadsign-assist.exe doctor
-.\scripts\run_experimental.ps1
+.\scripts\run.ps1
 ```
 
 `dvc status` should not report missing local artifacts. The last command starts

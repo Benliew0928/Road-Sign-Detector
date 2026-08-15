@@ -75,7 +75,9 @@ def collect_diagnostics() -> DiagnosticReport:
         probe.unlink(missing_ok=True)
 
     segmenter = PROJECT_ROOT / "models" / "exported" / "sign_segmenter.onnx"
-    classifier = PROJECT_ROOT / "models" / "exported" / "sign_classifier.onnx"
+    classifier = (
+        PROJECT_ROOT / "models" / "exported" / "runtime" / "sign_classifier.onnx"
+    )
     experimental_root = PROJECT_ROOT / "models" / "exported" / "experimental"
     return DiagnosticReport(
         python=sys.version.split()[0],

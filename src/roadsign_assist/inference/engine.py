@@ -130,11 +130,11 @@ class InferenceEngine:
             settings["model_path"],
             settings.get(
                 "labels_path",
-                "models/exported/sign_classifier.labels.json",
+                "models/exported/runtime/sign_classifier.labels.json",
             ),
             calibration_path=settings.get(
                 "calibration_path",
-                "models/exported/sign_classifier.calibration.json",
+                "models/exported/runtime/sign_classifier.calibration.json",
             ),
             confidence_threshold=float(settings["confidence_threshold"]),
             image_size=int(settings.get("image_size", 224)),

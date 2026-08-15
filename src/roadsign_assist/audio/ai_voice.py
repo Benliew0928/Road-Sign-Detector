@@ -86,7 +86,9 @@ def language_list(value: str) -> list[LanguageCode]:
 
 
 def parse_voice_map(value: str, *, default_voice: str) -> dict[LanguageCode, str]:
-    voices = {language: default_voice for language in LANGUAGES}
+    voices: dict[LanguageCode, str] = {
+        language: default_voice for language in LANGUAGES
+    }
     if not value.strip():
         return voices
     for item in value.split(","):

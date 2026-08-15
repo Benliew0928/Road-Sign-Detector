@@ -246,9 +246,39 @@ def build_parser() -> argparse.ArgumentParser:
     classifier.add_argument("--epochs", type=int, default=40)
     classifier.add_argument("--batch", type=int, default=32)
     classifier.add_argument("--imgsz", type=int, default=224)
+    classifier.add_argument("--learning-rate", type=float, default=3e-4)
+    classifier.add_argument("--weight-decay", type=float, default=1e-4)
+    classifier.add_argument("--label-smoothing", type=float, default=0.05)
+    classifier.add_argument("--seed", type=int, default=2513)
+    classifier.add_argument("--workers", type=int, default=4)
+    classifier.add_argument("--confidence-threshold", type=float, default=0.72)
+    classifier.add_argument("--tune-confidence-threshold", action="store_true")
+    classifier.add_argument("--target-selective-accuracy", type=float, default=0.80)
+    classifier.add_argument(
+        "--evaluate-test",
+        action="store_true",
+        help="Evaluate the locked test split after configuration selection.",
+    )
+    classifier.add_argument("--overwrite", action="store_true")
     classifier.add_argument("--device", default="auto")
     classifier.add_argument("--name", default="malaysia_sign_classifier")
     classifier.add_argument("--experimental", action="store_true")
+
+    promote_classifier = subparsers.add_parser(
+        "promote-classifier",
+        help="Promote a reviewed, test-evaluated classifier candidate into the runtime bundle.",
+    )
+    promote_classifier.add_argument("--run", required=True)
+    promote_classifier.add_argument("--overwrite", action="store_true")
+
+    evaluate_classifier = subparsers.add_parser(
+        "evaluate-classifier-candidate",
+        help="Tune the threshold on validation and run the selected candidate on locked test.",
+    )
+    evaluate_classifier.add_argument("--run", required=True)
+    evaluate_classifier.add_argument("--target-selective-accuracy", type=float, default=0.98)
+    evaluate_classifier.add_argument("--fixed-threshold", action="store_true")
+    evaluate_classifier.add_argument("--overwrite", action="store_true")
 
     embedding_classifier = subparsers.add_parser(
         "finalize-classifier-embeddings",
@@ -648,6 +678,39 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 0
 
+    if args.command == "promote-classifier":
+        from roadsign_assist.classification.folder_training import (
+            promote_classifier_candidate,
+        )
+
+        manifest = promote_classifier_candidate(args.run, overwrite=args.overwrite)
+        print(
+            "Classifier promotion complete: "
+            f"run={manifest['source_run']}, "
+            f"release={manifest['release_status']}, "
+            f"clean_final={manifest['clean_final']}"
+        )
+        return 0
+
+    if args.command == "evaluate-classifier-candidate":
+        from roadsign_assist.classification.folder_training import (
+            evaluate_classifier_candidate,
+        )
+
+        report = evaluate_classifier_candidate(
+            args.run,
+            tune_confidence_threshold=not args.fixed_threshold,
+            target_selective_accuracy=args.target_selective_accuracy,
+            overwrite=args.overwrite,
+        )
+        print(
+            "Locked classifier test complete: "
+            f"accuracy={report['accuracy_percent']:.2f}%, "
+            f"macro-F1={report['macro_f1_all_labels_percent']:.2f}%, "
+            f"coverage={report['selective_coverage']:.3f}"
+        )
+        return 0
+
     if args.command == "train-classifier":
         from pathlib import Path
 
@@ -663,9 +726,19 @@ def main(argv: list[str] | None = None) -> int:
                 image_size=args.imgsz,
                 epochs=args.epochs,
                 batch_size=args.batch,
+                learning_rate=args.learning_rate,
+                weight_decay=args.weight_decay,
+                label_smoothing=args.label_smoothing,
+                workers=args.workers,
                 device=args.device,
+                seed=args.seed,
                 run_name=args.name,
+                confidence_threshold=args.confidence_threshold,
                 allow_unreviewed_experiment=args.experimental,
+                tune_confidence_threshold=args.tune_confidence_threshold,
+                target_selective_accuracy=args.target_selective_accuracy,
+                evaluate_test=args.evaluate_test,
+                overwrite=args.overwrite,
             )
         )
         return 0

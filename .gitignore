@@ -32,6 +32,9 @@ outputs/audit/*
 *.onnx
 *.pdiparams
 
+# Local classifier tuning artifacts. Only models/exported/runtime is DVC-published.
+models/candidates/
+
 certs/
 *.log
 .env

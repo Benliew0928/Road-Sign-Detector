@@ -9,12 +9,12 @@ detector:
   nms_iou_threshold: 0.50
 classifier:
   backend: auto
-  release_status: no_production_classifier
-  model_path: models/exported/sign_classifier.onnx
-  labels_path: models/exported/sign_classifier.labels.json
-  calibration_path: models/exported/sign_classifier.calibration.json
+  release_status: coverage_gaps_block_final
+  model_path: models/exported/runtime/sign_classifier.onnx
+  labels_path: models/exported/runtime/sign_classifier.labels.json
+  calibration_path: models/exported/runtime/sign_classifier.calibration.json
   image_size: 224
-  confidence_threshold: 0.72
+  confidence_threshold: 0.47700026631355286
 ocr:
   enabled: true
   languages: [latin, chinese]

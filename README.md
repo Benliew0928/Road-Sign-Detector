@@ -19,20 +19,12 @@ The verified P0-P14 implementation notes and manual instructions are in
 .\scripts\run.ps1
 ```
 
-The setup script creates a Python 3.11 environment and installs the web
-application. The run script starts the FastAPI backend and serves the built web
-interface.
-
-To run the selected YOLO26 detector, the explicitly
-`legacy_synthetic_assisted` embedding-gated EfficientNet classifier, and
-PP-OCRv6:
-
-```powershell
-.\scripts\run_experimental.ps1
-```
-
-The classifier remains usable as a legacy baseline, but its release status is
-visible in API health and the UI and it is not a clean-final model.
+Setup is needed once. After that, `.\scripts\run.ps1` is the single command:
+it builds the current frontend, starts the complete HTTPS-capable FastAPI
+runtime, and opens the dashboard. Image, video, laptop camera, phone camera,
+multi-phone live wall, OCR, tracking, and offline advisory audio are all in the
+same site. See the [website guide](./docs/WEBSITE_GUIDE.md) for operation,
+public-tunnel options, and troubleshooting.
 
 ## Data and model artifacts
 
@@ -48,30 +40,18 @@ configured, restore artifacts with:
 
 The clean classifier dataset is
 `data/processed/classifier_no_controlled_variants_20260812` (2,976 samples,
-zero controlled variants). See [DATA_PROGRESS_TRACKER.md](./DATA_PROGRESS_TRACKER.md)
+zero controlled variants). The selected website candidate achieved 94.59%
+locked-test accuracy and remains labelled `coverage_gaps_block_final`. See
+[the model-run inventory](./docs/MODEL_RUN_INVENTORY.md) for every completed
+candidate and artifact location,
+[DATA_PROGRESS_TRACKER.md](./DATA_PROGRESS_TRACKER.md)
 for its coverage gaps and [docs/DVC_COLLABORATION.md](./docs/DVC_COLLABORATION.md)
 for the maintainer workflow. New contributors should follow the
 [step-by-step DVC getting-started guide](./docs/TEAMMATE_DVC_GETTING_STARTED.md).
 
-For phone-camera streaming on a local Wi-Fi or hotspot:
-
-```powershell
-.\scripts\run_phone.ps1
-```
-
-Then open the dashboard, choose **Phone**, and scan the QR code. Mobile camera
-permission requires HTTPS, so trust the generated local certificate if the phone
-browser asks.
-
-For phone-camera streaming through a trusted public HTTPS tunnel:
-
-```powershell
-.\scripts\run_public_phone.ps1 -Config configs\inference\experimental.yaml -Port 8443
-```
-
-Use this when local Wi-Fi blocks phone-to-laptop access. The local/offline path
-above remains available; see [docs/P15_PUBLIC_TUNNEL.md](./docs/P15_PUBLIC_TUNNEL.md)
-for tunnel setup and operator-token behavior.
+Phone-camera streaming is available from the same dashboard. Scan its QR code
+on local Wi-Fi/hotspot, or start the same launcher with `-Public` when the
+network blocks peer-to-peer access.
 
 ## Development
 
@@ -100,8 +80,9 @@ npm run dev
   development-laptop test images.
 - Classical comparison: six SVM/Random-Forest feature experiments; best
   macro-F1 0.570.
-- EfficientNetV2-S test macro-F1: 0.706.
-- Embedding-gated EfficientNet selective accuracy: 0.829 at 0.745 coverage.
+- Clean EfficientNetV2-S locked-test accuracy: 0.946 (437/462; 95% CI
+  0.921-0.963) and macro-F1: 0.929 across all 78 labels.
+- Clean EfficientNetV2-S external assignment accuracy: 0.702 on all 84 images.
 - Offline PP-OCRv6 synthetic multilingual smoke CER: 0.000.
 - 84/84 coursework images produce candidates under two seconds with the
   YOLO26s hybrid profile on the development RTX laptop; draft semantic exact

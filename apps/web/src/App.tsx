@@ -620,7 +620,10 @@ export default function App() {
                 <div><dt>Classifier</dt><dd>{health.models.classifier}</dd></div>
                 <div>
                   <dt>Release</dt>
-                  <dd>{health.models.classifier_release_status.replaceAll("_", " ")}</dd>
+                  <dd>
+                    {health.models.classifier_release_status?.replaceAll("_", " ") ??
+                      "unspecified"}
+                  </dd>
                 </div>
                 <div><dt>Providers</dt><dd>{health.models.classifier_providers?.join(", ") || "CPU/default"}</dd></div>
               </dl>

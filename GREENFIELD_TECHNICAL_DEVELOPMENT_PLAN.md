@@ -995,7 +995,7 @@ internet access when local device-to-device traffic is blocked.
 
 | ID | Task | Status | Owner | Deliverable or evidence |
 |---|---|---:|---|---|
-| P15.1 | Define local hotspot/Wi-Fi setup | `[x]` | Codex | `docs/P15_PHONE_CAMERA_STREAMING.md` |
+| P15.1 | Define local hotspot/Wi-Fi setup | `[x]` | Codex | `docs/WEBSITE_GUIDE.md` |
 | P15.2 | Generate local HTTPS certificate | `[x]` | Codex | `scripts/create_phone_cert.py`; local ignored `certs/roadsign-local.crt` and `.key` generated |
 | P15.3 | Create QR-code connection flow | `[x]` | Codex | Laptop Phone source with offline QR generation and copyable LAN URL |
 | P15.4 | Request phone camera permission | `[x]` | Codex | `/phone?session=...` sender route with `getUserMedia` start flow |
@@ -1009,9 +1009,9 @@ internet access when local device-to-device traffic is blocked.
 | P15.12 | Test iPhone browser when available | `[x]` | User | User-tested phone browser flow passed on 2026-06-30 |
 | P15.13 | Run 30-minute offline soak test | `[ ]` |  | Soak report |
 | P15.14 | Decide public tunnel provider | `[x]` | Codex | Cloudflare Quick Tunnel primary; ngrok and manual HTTPS tunnel fallback documented |
-| P15.15 | Define public tunnel threat model | `[x]` | Codex | `docs/P15_PUBLIC_TUNNEL.md` covers public URL exposure, consent, no recording, and demo-only scope |
+| P15.15 | Define public tunnel threat model | `[x]` | Codex | `docs/WEBSITE_GUIDE.md` covers public URL exposure, consent, no recording, and demo-only scope |
 | P15.16 | Add tunnel runtime configuration | `[x]` | Codex | `ROADSIGN_PUBLIC_BASE_URL`, `ROADSIGN_TUNNEL_MODE`, `ROADSIGN_DEMO_SECRET`, `ROADSIGN_OPERATOR_TOKEN` |
-| P15.17 | Add public tunnel launch script | `[x]` | Codex | `scripts/run_public_phone.ps1` starts app plus Cloudflare/ngrok/manual tunnel and prints URLs |
+| P15.17 | Add public tunnel launch script | `[x]` | Codex | `scripts/run.ps1 -Public` starts app plus Cloudflare/ngrok/manual tunnel and prints URLs |
 | P15.18 | Add password or demo access token gate | `[x]` | Codex | Public phone, camera WebSocket, live wall, stream API, and monitor WebSocket require signed or operator tokens |
 | P15.19 | Harden public live-wall access | `[x]` | Codex | `/live` remains local-host-only locally and operator-token-only over public tunnel |
 | P15.20 | Add tunnel-aware QR generation | `[x]` | Codex | QR uses trusted public HTTPS URL when `ROADSIGN_PUBLIC_BASE_URL` is active; local candidates remain available |
@@ -1020,11 +1020,11 @@ internet access when local device-to-device traffic is blocked.
 | P15.23 | Add public-mode rate/session limits | `[x]` | Codex | Max connected phones default 12, max frame bytes 20 MB, signed phone TTL 6h, operator token per run |
 | P15.24 | Preserve no-recording privacy behavior | `[x]` | Codex | Live frames remain latest-frame in-memory snapshots; runbook documents no footage recording |
 | P15.25 | Add public-mode consent notice | `[x]` | Codex | Phone page states live camera frames stream to the laptop operator and are not recorded |
-| P15.26 | Add tunnel provider setup documentation | `[x]` | Codex | `docs/P15_PUBLIC_TUNNEL.md`; README and P15 phone-streaming docs link to it |
+| P15.26 | Add tunnel provider setup documentation | `[x]` | Codex | `docs/WEBSITE_GUIDE.md`; README links to the consolidated website guide |
 | P15.27 | Test school Wi-Fi blocked-LAN scenario | `[ ]` |  | Phone connects through public HTTPS tunnel while local school Wi-Fi peer access is blocked |
 | P15.28 | Test mobile-data remote scenario | `[ ]` |  | Phone connects from mobile data or different network through the tunnel |
 | P15.29 | Run 30-minute public tunnel soak test | `[ ]` |  | Soak report with live FPS, AI FPS, latency, reconnects, and error count |
-| P15.30 | Add final demo tunnel fallback checklist | `[x]` | Codex | `docs/P15_PUBLIC_TUNNEL.md` documents local hotspot first, public tunnel fallback, and stop/teardown steps |
+| P15.30 | Add final demo tunnel fallback checklist | `[x]` | Codex | `docs/WEBSITE_GUIDE.md` documents local hotspot first, public tunnel fallback, and stop/teardown steps |
 
 ## Public Tunnel Extension Plan
 
@@ -1097,7 +1097,7 @@ traffic between the phone and the local server.
    - warning banner when public mode is active.
 
 7. Keep offline mode intact:
-   - `scripts/run_phone.ps1` remains the local/offline LAN path;
+   - `scripts/run.ps1` is the consolidated local/offline LAN and website path;
    - tunnel mode must not become required for phone streaming;
    - final demo can still use hotspot if internet is unavailable.
 
@@ -1530,8 +1530,8 @@ data collection and model improvement rather than expanding unsupported claims.
 | Laptop live | 2026-06-25 | Uncommitted greenfield tree | Held-out EMTD image | YOLO26s experimental ONNX | RTX 4050 | 10-point mask; speed 30 recognized; advisory `SET_TARGET_SPEED`; 1,147 ms HTTP | `outputs/evaluation/live_api_s30_speed30.json` |
 | Live embedding profile | 2026-06-26 | Uncommitted greenfield tree | Held-out EMTD image | YOLO26s + EfficientNet embedding ONNX + PP-OCRv6 | RTX 4050 CUDAExecutionProvider | Health loaded detector/classifier/OCR; API evidence includes `embedding:<label>:<distance>` and `classifier_rejection:confidence` | `GET /api/v1/health`; `POST /api/v1/infer/image` smoke |
 | P11 synthetic tracking motion | 2026-06-30 | Uncommitted P11 tracker update | Synthetic generated frames | BoT-SORT/GMC adapter plus sparseOptFlow IoU fallback | CPU | 5/5 scenarios pass; 0 ID switches; first stable frame <= 2 | `outputs/evaluation/tracking_motion/summary.json`; `docs/P11_TRACKING_MOTION_REPORT.md` |
-| P15 phone QR/mobile browser UI | 2026-06-30 | Uncommitted P15 phone-camera update | Mock API contracts | Local WebSocket camera route | Chromium desktop/mobile | API contract 21 passed; Playwright desktop/mobile 14 passed; phone sender physical-device test pending | `apps/api/tests/test_api.py`; `apps/web/tests/dashboard.spec.ts`; `docs/P15_PHONE_CAMERA_STREAMING.md` |
-| P16 offline advisory audio | 2026-06-30 | Uncommitted P16 audio update | Current 103-entry sign catalogue plus generated parameter variants | Baseline offline Windows SAPI WAV pack and React audio playback | Windows laptop/browser | 182 advisory phrases, 546 WAV files, EN/MS/ZH manifest coverage pass; AI-generated human-like replacement pack pending | `apps/web/public/audio/p16/advisory_audio_manifest.json`; `tests/unit/test_advisory_audio.py`; `docs/P16_OFFLINE_ADVISORY_AUDIO.md` |
+| P15 phone QR/mobile browser UI | 2026-06-30 | Uncommitted P15 phone-camera update | Mock API contracts | Local WebSocket camera route | Chromium desktop/mobile | API contract 21 passed; Playwright desktop/mobile 14 passed; phone sender physical-device test pending | `apps/api/tests/test_api.py`; `apps/web/tests/dashboard.spec.ts`; `docs/WEBSITE_GUIDE.md` |
+| P16 offline advisory audio | 2026-06-30 | Uncommitted P16 audio update | Current 103-entry sign catalogue plus generated parameter variants | Baseline offline Windows SAPI WAV pack and React audio playback | Windows laptop/browser | 182 advisory phrases, 546 WAV files, EN/MS/ZH manifest coverage pass; AI-generated human-like replacement pack pending | `apps/web/public/audio/p16/advisory_audio_manifest.json`; `tests/unit/test_advisory_audio.py`; `docs/WEBSITE_GUIDE.md` |
 | Stage F detector hardening | 2026-07-02 | Uncommitted Stage F update | EMTD detector test + no-sign negatives | YOLO26s ONNX deep-only conf 0.35 fallback off | RTX laptop | Recall 0.6509, precision 0.8629, no-sign false boxes 17.5/100; fallback disabled for live app | `outputs/evaluation/stage_f_detector/stage_f_selection_report.json` |
 | Stage G classifier selection | 2026-07-02 | Uncommitted Stage G update | Stage E current 3,178 crops, 78 labels + assignment external 84 | EfficientNetV2-S q97 embedding ONNX | CUDA/CPU ONNX Runtime | Frozen accepted accuracy 0.9765 at 0.9474 coverage; assignment accepted accuracy 0.9107 at 0.6667 coverage | `outputs/evaluation/stage_g_classifier/stage_g_selection_report.json` |
 | Stage H app integration | 2026-07-02 | Uncommitted Stage H update | Live app contracts and advisory events | Selected Stage F/G profile + PP-OCRv6 + P16 audio | pytest/Vitest/build | Backend/API tests 10 passed, audio tests 3 passed, web tests 10 passed, production build passed | `DATA_TO_FINAL_MODEL_FLOW.md`; `apps/web/src/advisoryDisplay.ts`; `src/roadsign_assist/semantics/rules.py` |
