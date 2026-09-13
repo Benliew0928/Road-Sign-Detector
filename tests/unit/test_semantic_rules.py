@@ -1,7 +1,20 @@
+from roadsign_assist.catalogue.models import ActionCode, Severity
 from roadsign_assist.catalogue.repository import load_default_catalogue
 from roadsign_assist.inference.models import BoundingBoxModel, OCRModel
 from roadsign_assist.semantics.rules import SemanticRuleEngine
 from roadsign_assist.tracking.iou_tracker import TrackState
+
+
+def test_safety_profile_blocks_strong_directional_actions() -> None:
+    rules = SemanticRuleEngine(directional_strong_actions_enabled=False)
+
+    meaning, severity, action = rules.action_for("turn_left", 0.99, OCRModel())
+    advisory = rules.advisory_for("turn_left", meaning, 0.99, action)
+
+    assert rules.directional_action_blocked("turn_left") is True
+    assert action.code is ActionCode.UNKNOWN_CAUTION
+    assert severity is Severity.CAUTION
+    assert advisory.safe_to_announce is False
 
 
 def test_speed_limit_uses_ocr_parameter() -> None:

@@ -1,5 +1,0 @@
-outs:
-- md5: 9f9df23eb27d6ab64512bb670cd0ae96
-  size: 6719965
-  hash: md5
-  path: yolo26n-seg.pt

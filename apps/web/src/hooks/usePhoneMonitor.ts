@@ -13,7 +13,9 @@ interface PhoneMonitorState {
 }
 
 function sortStreams(streams: PhoneStreamSnapshot[]): PhoneStreamSnapshot[] {
-  return [...streams].sort((first, second) => first.connected_at - second.connected_at);
+  return [...streams].sort(
+    (first, second) => first.connected_at - second.connected_at,
+  );
 }
 
 function parseMonitorMessage(data: unknown): PhoneMonitorMessage {
@@ -40,6 +42,7 @@ export function usePhoneMonitor(): PhoneMonitorState {
   const pendingUpdatesRef = useRef<Map<string, PhoneStreamSnapshot>>(new Map());
   const reconnectAttempts = useRef(0);
   const intentionalStop = useRef(false);
+  const snapshotRevision = useRef(0);
   const connectRef = useRef<() => void>(() => undefined);
 
   const [streams, setStreams] = useState<PhoneStreamSnapshot[]>([]);
@@ -48,11 +51,18 @@ export function usePhoneMonitor(): PhoneMonitorState {
 
   const refresh = useCallback(async () => {
     try {
-      const response = await getPhoneStreams(undefined, operatorTokenRef.current);
+      const response = await getPhoneStreams(
+        undefined,
+        operatorTokenRef.current,
+      );
       setStreams(sortStreams(response.streams));
       setError(null);
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : "Unable to refresh live camera streams.");
+      setError(
+        cause instanceof Error
+          ? cause.message
+          : "Unable to refresh live camera streams.",
+      );
     }
   }, []);
 
@@ -62,7 +72,9 @@ export function usePhoneMonitor(): PhoneMonitorState {
     const updates = Array.from(pendingUpdatesRef.current.values());
     pendingUpdatesRef.current.clear();
     setStreams((current) => {
-      const byStream = new Map(current.map((stream) => [stream.stream_id, stream]));
+      const byStream = new Map(
+        current.map((stream) => [stream.stream_id, stream]),
+      );
       updates.forEach((stream) => byStream.set(stream.stream_id, stream));
       return sortStreams(Array.from(byStream.values()));
     });
@@ -72,7 +84,8 @@ export function usePhoneMonitor(): PhoneMonitorState {
     (stream: PhoneStreamSnapshot) => {
       pendingUpdatesRef.current.set(stream.stream_id, stream);
       if (flushFrameRef.current === null) {
-        flushFrameRef.current = window.requestAnimationFrame(flushPendingUpdates);
+        flushFrameRef.current =
+          window.requestAnimationFrame(flushPendingUpdates);
       }
     },
     [flushPendingUpdates],
@@ -81,7 +94,9 @@ export function usePhoneMonitor(): PhoneMonitorState {
   const connect = useCallback(() => {
     intentionalStop.current = false;
     setStatus(reconnectAttempts.current ? "reconnecting" : "connecting");
-    const socket = new WebSocket(phoneMonitorSocketUrl(operatorTokenRef.current));
+    const socket = new WebSocket(
+      phoneMonitorSocketUrl(operatorTokenRef.current),
+    );
     socketRef.current = socket;
 
     socket.onopen = () => {
@@ -99,6 +114,7 @@ export function usePhoneMonitor(): PhoneMonitorState {
         return;
       }
       if (payload.type === "snapshot") {
+        snapshotRevision.current += 1;
         pendingUpdatesRef.current.clear();
         if (flushFrameRef.current !== null) {
           window.cancelAnimationFrame(flushFrameRef.current);
@@ -115,7 +131,9 @@ export function usePhoneMonitor(): PhoneMonitorState {
     };
 
     socket.onclose = () => {
-      if (socketRef.current === socket) socketRef.current = null;
+      // A disposed connection must not schedule retries for its replacement.
+      if (socketRef.current !== socket) return;
+      socketRef.current = null;
       if (intentionalStop.current) return;
       reconnectAttempts.current += 1;
       const publicMonitor = Boolean(operatorTokenRef.current);
@@ -126,12 +144,17 @@ export function usePhoneMonitor(): PhoneMonitorState {
         return;
       }
       setStatus("reconnecting");
-      setError(`Reconnecting live wall (${reconnectAttempts.current}/${maxReconnectAttempts})...`);
+      setError(
+        `Reconnecting live wall (${reconnectAttempts.current}/${maxReconnectAttempts})...`,
+      );
       const reconnectBaseDelay = publicMonitor ? 1200 : 700;
       const reconnectMaxDelay = publicMonitor ? 12000 : 5000;
       reconnectTimerRef.current = window.setTimeout(
         () => connectRef.current(),
-        Math.min(reconnectMaxDelay, reconnectBaseDelay * reconnectAttempts.current),
+        Math.min(
+          reconnectMaxDelay,
+          reconnectBaseDelay * reconnectAttempts.current,
+        ),
       );
     };
   }, [queueStreamUpdate]);
@@ -142,11 +165,24 @@ export function usePhoneMonitor(): PhoneMonitorState {
 
   useEffect(() => {
     const controller = new AbortController();
+    const initialRevision = snapshotRevision.current;
     const pendingUpdates = pendingUpdatesRef.current;
     void getPhoneStreams(controller.signal, operatorTokenRef.current)
-      .then((response) => setStreams(sortStreams(response.streams)))
+      .then((response) => {
+        if (
+          controller.signal.aborted ||
+          initialRevision !== snapshotRevision.current
+        )
+          return;
+        setStreams(sortStreams(response.streams));
+      })
       .catch((cause: unknown) => {
-        setError(cause instanceof Error ? cause.message : "Unable to load live camera streams.");
+        if (controller.signal.aborted) return;
+        setError(
+          cause instanceof Error
+            ? cause.message
+            : "Unable to load live camera streams.",
+        );
       });
     connectRef.current();
     return () => {

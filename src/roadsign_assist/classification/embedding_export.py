@@ -9,23 +9,17 @@ from typing import Any, cast
 import numpy as np
 
 from roadsign_assist.classification.folder_training import CropFolderDataset
-from roadsign_assist.classification.training import Architecture, build_torchvision_model
+from roadsign_assist.classification.preprocessing import build_evaluation_transform
+from roadsign_assist.classification.training import (
+    Architecture,
+    build_torchvision_model,
+    classifier_embedding_and_logits,
+)
 from roadsign_assist.paths import project_path
 
 
 def _evaluation_transform(image_size: int) -> Any:
-    from torchvision import transforms
-
-    return transforms.Compose(
-        [
-            transforms.Resize((image_size, image_size)),
-            transforms.ToTensor(),
-            transforms.Normalize(
-                mean=(0.485, 0.456, 0.406),
-                std=(0.229, 0.224, 0.225),
-            ),
-        ]
-    )
+    return build_evaluation_transform(image_size)
 
 
 def _normalize_rows(values: np.ndarray[Any, Any]) -> np.ndarray[Any, np.dtype[np.float32]]:
@@ -89,6 +83,7 @@ def export_classifier_with_embeddings(
     batch_size: int = 64,
     workers: int = 0,
     retention_quantile: float = 0.95,
+    include_test: bool = False,
 ) -> dict[str, Any]:
     import torch
     import torch.nn as nn
@@ -129,10 +124,11 @@ def export_classifier_with_embeddings(
             self.model = model
 
         def forward(self, image: Any) -> tuple[Any, Any]:
-            features = self.model.features(image)
-            pooled = self.model.avgpool(features)
-            embedding = torch.flatten(pooled, 1)
-            logits = self.model.classifier(embedding)
+            embedding, logits = classifier_embedding_and_logits(
+                self.model,
+                architecture,
+                image,
+            )
             return logits, functional.normalize(embedding, p=2, dim=1)
 
     model = ClassifierWithEmbedding(backbone).to(selected_device).eval()
@@ -168,7 +164,7 @@ def export_classifier_with_embeddings(
 
     train_logits, train_embeddings, train_targets = collect("train")
     validation_logits, validation_embeddings, validation_targets = collect("validation")
-    test_logits, test_embeddings, test_targets = collect("test")
+    test_values = collect("test") if include_test else None
     del train_logits
 
     prototype_rows: list[np.ndarray[Any, Any]] = []
@@ -198,17 +194,32 @@ def export_classifier_with_embeddings(
 
     temperature = 1.0
     prior_calibration = project_path(
-        f"models/exported/experimental/{config['run_name']}.calibration.json"
+        f"models/candidates/{config['run_name']}/sign_classifier.calibration.json"
     )
     if prior_calibration.is_file():
         payload = json.loads(prior_calibration.read_text(encoding="utf-8"))
         temperature = float(payload.get("temperature", 1.0))
+        confidence_threshold = float(payload.get("confidence_threshold", confidence_threshold))
 
     calibration_payload: dict[str, Any] = {
         "schema_version": "2.0",
         "temperature": temperature,
         "confidence_threshold": confidence_threshold,
-        "experimental": True,
+        "runtime_threshold_authoritative": True,
+        "image_size": image_size,
+        "experimental": bool(checkpoint.get("metadata", {}).get("annotation_status") not in {
+            "approved",
+            "approved_with_internal_academic_exception",
+        }),
+        "release_status": checkpoint.get("metadata", {}).get("release_status", "unspecified"),
+        "dataset_id": checkpoint.get("metadata", {}).get("dataset_id", dataset_root.name),
+        "source_run": config.get("run_name"),
+        "internal_academic_only": bool(
+            checkpoint.get("metadata", {}).get("internal_academic_only", False)
+        ),
+        "publication_prohibited": bool(
+            checkpoint.get("metadata", {}).get("publication_prohibited", False)
+        ),
         "embedding_gate": {
             "distance_metric": "cosine",
             "distance_threshold": distance_threshold,
@@ -276,7 +287,7 @@ def export_classifier_with_embeddings(
 
     report: dict[str, Any] = {
         "schema_version": "1.0",
-        "experimental": True,
+        "experimental": calibration_payload["experimental"],
         "checkpoint": str(checkpoint_file.relative_to(project_path("."))),
         "model": str(model_file.relative_to(project_path("."))),
         "calibration": str(calibration_file.relative_to(project_path("."))),
@@ -295,20 +306,48 @@ def export_classifier_with_embeddings(
             distance_threshold=distance_threshold,
             temperature=temperature,
         ),
-        "test": _embedding_metrics(
-            logits=test_logits,
-            embeddings=test_embeddings,
-            targets=test_targets,
-            prototypes=prototypes,
-            confidence_threshold=confidence_threshold,
-            distance_threshold=distance_threshold,
-            temperature=temperature,
+        "test": (
+            _embedding_metrics(
+                logits=test_values[0],
+                embeddings=test_values[1],
+                targets=test_values[2],
+                prototypes=prototypes,
+                confidence_threshold=confidence_threshold,
+                distance_threshold=distance_threshold,
+                temperature=temperature,
+            )
+            if test_values is not None
+            else None
         ),
         "onnx_parity": parity,
         "providers": session.get_providers(),
         "unknown_auroc": None,
         "unknown_auroc_reason": "No reviewed out-of-distribution set is available.",
     }
+    source_metrics_path = project_path(f"outputs/training/{config['run_name']}/metrics.json")
+    if source_metrics_path.is_file():
+        source_metrics: dict[str, Any] = json.loads(source_metrics_path.read_text(encoding="utf-8"))
+        source_validation = source_metrics.get("validation", {})
+        base_accuracy = source_validation.get("selective_accuracy")
+        base_coverage = source_validation.get("selective_coverage")
+        gate_accuracy = report["validation"]["accepted_accuracy"]
+        gate_coverage = report["validation"]["coverage"]
+        qualified = bool(
+            isinstance(base_accuracy, (int, float))
+            and isinstance(base_coverage, (int, float))
+            and isinstance(gate_accuracy, (int, float))
+            and gate_accuracy >= float(base_accuracy) + 0.0025
+            and gate_coverage >= float(base_coverage) - 0.01
+        )
+        report["validation_qualification"] = {
+            "qualified": qualified,
+            "base_selective_accuracy": base_accuracy,
+            "base_selective_coverage": base_coverage,
+            "gate_selective_accuracy": gate_accuracy,
+            "gate_selective_coverage": gate_coverage,
+            "minimum_selective_accuracy_gain": 0.0025,
+            "maximum_coverage_loss": 0.01,
+        }
     report_file.parent.mkdir(parents=True, exist_ok=True)
     report_file.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     if not parity["passed"]:

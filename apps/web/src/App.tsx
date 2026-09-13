@@ -1,11 +1,11 @@
+import type { VideoProgress } from "./api";
+import { AnalysisLoader } from "./components/AnalysisLoader";
 import {
-  Activity,
+  ArrowUpRight,
   Camera,
   CameraOff,
-  Cpu,
-  Files,
+  ChevronRight,
   Film,
-  Gauge,
   History,
   ImagePlus,
   Languages,
@@ -13,756 +13,1080 @@ import {
   Minimize2,
   Radio,
   RotateCcw,
-  ShieldCheck,
+  RotateCw,
+  Route,
+  ScanLine,
   Smartphone,
   Upload,
   Volume2,
   VolumeX,
-  Wifi,
-  WifiOff,
+  X,
 } from "lucide-react";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-
-import { advisoryHeadline, advisoryInstruction, targetSummary } from "./advisoryDisplay";
-import { getHealth, inferBatch, inferImage, inferVideo } from "./api";
-import { BatchResults, type BatchDisplayItem } from "./components/BatchResults";
-import { EventTimeline } from "./components/EventTimeline";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
+import { getHealth, inferCloseUpImage, inferImage, inferVideo } from "./api";
+import { semanticSignName } from "./advisoryDisplay";
+import {
+  bakeImageRotation,
+  rotateQuarterTurn,
+  type QuarterTurn,
+} from "./imageOrientation";
 import { ImageAnalysisWorkspace } from "./components/ImageAnalysisWorkspace";
+import { BatchResults, type BatchDisplayItem } from "./components/BatchResults";
 import { PhoneConnectPanel } from "./components/PhoneConnectPanel";
-import { SignPanel } from "./components/SignPanel";
-import { VideoSurface } from "./components/VideoSurface";
+import { MovableDock } from "./components/MovableDock";
+import { SystemStatus } from "./components/SystemStatus";
 import { VideoResults } from "./components/VideoResults";
-import { useAdvisoryAudio } from "./hooks/useAdvisoryAudio";
+import { VideoSurface } from "./components/VideoSurface";
+import { EncounterPanel } from "./components/EncounterPanel";
+import { useEncounters } from "./hooks/useEncounters";
+import { EventTimeline } from "./components/EventTimeline";
+import LiveCameraWallApp from "./LiveCameraWallApp";
 import { useCameraStream } from "./hooks/useCameraStream";
+import { useAdvisoryAudio } from "./hooks/useAdvisoryAudio";
 import type {
   DisplayLanguage,
   FrameResult,
   HealthResponse,
-  SignEvent,
-  SourceMode,
   VideoInferenceResponse,
 } from "./types";
-
-function choosePrimaryEvent(result: FrameResult | null): SignEvent | null {
-  if (!result?.events.length) return null;
-  return [...result.events].sort((a, b) => {
-    if (a.stable !== b.stable) return a.stable ? -1 : 1;
-    return b.confidence - a.confidence;
-  })[0];
-}
-
-function pipelineLabel(mode: FrameResult["mode"] | null): string {
-  if (mode === "deep") return "Semantic AI pipeline";
-  if (mode === "baseline") return "Classical baseline";
-  if (mode === "auto") return "Automatic fallback pipeline";
-  return "Checking pipeline";
-}
-
-function profileString(
-  profile: Record<string, unknown> | undefined,
-  key: string,
-): string | null {
-  const value = profile?.[key];
-  if (typeof value === "string") return value;
-  if (typeof value === "number" || typeof value === "boolean") return String(value);
-  return null;
-}
-
-function modelFileName(pathOrName: string | null | undefined): string {
-  if (!pathOrName) return "not loaded";
-  return pathOrName.split(/[\\/]/).pop() || pathOrName;
-}
-
-function detectorProfileSummary(profile: Record<string, unknown> | undefined): string {
-  const confidence = profileString(profile, "confidence_threshold");
-  const fallback = profileString(profile, "fallback_to_baseline");
-  if (!confidence && !fallback) return "profile pending";
-  const fallbackLabel = fallback === "true" ? "fallback on" : "deep only";
-  return confidence ? `conf ${confidence}, ${fallbackLabel}` : fallbackLabel;
-}
-
-function isLocalOrPrivateHost(hostname: string): boolean {
-  const host = hostname.replace(/^\[|\]$/g, "").toLowerCase();
-  if (!host || host === "localhost" || host === "::1") return true;
-  if (host.endsWith(".local")) return true;
-  const octets = host.split(".").map((part) => Number(part));
-  if (octets.length !== 4 || octets.some((part) => !Number.isInteger(part))) return false;
-  const [first, second] = octets;
-  return (
-    first === 10 ||
-    first === 127 ||
-    first === 169 ||
-    (first === 172 && second >= 16 && second <= 31) ||
-    (first === 192 && second === 168)
-  );
-}
-
-function revokeObjectUrl(url: string | null): void {
-  if (url?.startsWith("blob:")) URL.revokeObjectURL(url);
-}
-
-interface AnalysisHistoryItem {
+type ImageType = "road_scene" | "close_up";
+type Activity = "analyze" | "live" | "recent";
+interface AnalysisItem extends BatchDisplayItem {
   id: string;
-  previewUrl: string;
-  result: FrameResult;
-  source: "image" | "batch";
+  file: File;
+  imageType: ImageType;
+  rotation: QuarterTurn;
+  runtimeLabel?: string;
+  detectorRuntime?: string;
+  classifierRuntime?: string;
+  modelWarnings?: string[];
 }
-
+const imageAccept = "image/png,image/jpeg,image/webp,image/bmp";
+function typeLabel(type: ImageType) {
+  return type === "close_up" ? "Close-up sign" : "Road scene";
+}
+function transition(action: () => void) {
+  if (
+    typeof document.startViewTransition === "function" &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    document.startViewTransition(() => flushSync(action));
+  } else action();
+}
 export default function App() {
+  const [activity, setActivity] = useState<Activity>("analyze");
+  const [mediaType, setMediaType] = useState<"image" | "video">("image");
+  const [liveSource, setLiveSource] = useState<"camera" | "phone">("phone");
   const [health, setHealth] = useState<HealthResponse | null>(null);
   const [healthError, setHealthError] = useState<string | null>(null);
-  const [sourceMode, setSourceMode] = useState<SourceMode>("image");
+  const [operationError, setOperationError] = useState<string | null>(null);
+  const [imageType, setImageType] = useState<ImageType>("road_scene");
   const [language, setLanguage] = useState<DisplayLanguage>("en");
-  const [result, setResult] = useState<FrameResult | null>(null);
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
-  const [videoUrl, setVideoUrl] = useState<string | null>(null);
-  const [videoSummary, setVideoSummary] = useState<VideoInferenceResponse | null>(null);
-  const [batchItems, setBatchItems] = useState<BatchDisplayItem[]>([]);
-  const [openedBatchItem, setOpenedBatchItem] = useState<BatchDisplayItem | null>(null);
-  const [analysisHistory, setAnalysisHistory] = useState<AnalysisHistoryItem[]>([]);
-  const [history, setHistory] = useState<SignEvent[]>([]);
-  const [busy, setBusy] = useState(false);
   const [muted, setMuted] = useState(false);
   const [presenterMode, setPresenterMode] = useState(false);
-  const [operationError, setOperationError] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const batchInputRef = useRef<HTMLInputElement>(null);
-  const videoInputRef = useRef<HTMLInputElement>(null);
-  const analysisObjectUrlsRef = useRef(new Set<string>());
-
-  const handleResult = useCallback((next: FrameResult) => {
-    setResult(next);
-    const notable = next.events.filter((event) => event.stable || next.mode === "baseline");
-    if (notable.length) {
-      setHistory((current) => [...notable.reverse(), ...current].slice(0, 40));
-    }
+  const [items, setItems] = useState<AnalysisItem[]>([]);
+  const [recent, setRecent] = useState<AnalysisItem[]>([]);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [reviewIndex, setReviewIndex] = useState(0);
+  const [preparing, setPreparing] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [videoProgress,setVideoProgress] = useState<VideoProgress | null>(null);
+  const [progress, setProgress] = useState(0);
+  const [videoUrl, setVideoUrl] = useState<string | null>(null);
+  const [videoSummary, setVideoSummary] =
+    useState<VideoInferenceResponse | null>(null);
+  const [videoFailed, setVideoFailed] = useState(false);
+  const [cameraResult, setCameraResult] = useState<FrameResult | null>(null);
+  const [showPairing, setShowPairing] = useState(false);
+  const fileInput = useRef<HTMLInputElement>(null);
+  const videoInput = useRef<HTMLInputElement>(null);
+  const objectUrls = useRef(new Set<string>());
+  const mounted = useRef(true);
+  const running = useRef(false);
+  const rememberUrl = (file: File) => {
+    const url = URL.createObjectURL(file);
+    objectUrls.current.add(url);
+    return url;
+  };
+  const handleCameraResult = useCallback((next: FrameResult) => {
+    setCameraResult(next);
   }, []);
-
-  const camera = useCameraStream(handleResult);
-  const advisoryAudio = useAdvisoryAudio({ result, language, muted });
-  const publicNetworkHost = useMemo(
-    () => !isLocalOrPrivateHost(window.location.hostname),
-    [],
+  const camera = useCameraStream(handleCameraResult);
+  const selected = items.find((item) => item.id === selectedId) ?? null;
+  const audioResult =
+    activity === "live" && liveSource === "camera"
+      ? cameraResult
+      : activity === "analyze" && mediaType === "image"
+        ? (selected?.result ?? null)
+        : null;
+  const cameraFindings = useEncounters(
+    `webcam:${camera.status}`,
+    cameraResult,
+    camera.status === "live",
   );
-
+  const audio = useAdvisoryAudio({
+    result: audioResult,
+    language,
+    muted,
+    source: activity === "live" ? cameraFindings.source : `image:${selectedId}`,
+    encounters:
+      activity === "live" && liveSource === "camera"
+        ? cameraFindings
+        : undefined,
+    enabled:
+      activity === "live"
+        ? liveSource === "camera" && camera.status === "live"
+        : mediaType === "image",
+  });
+  const online = health?.status === "ok" && !healthError;
+  const modelWarnings = health?.models.warnings ?? [];
+  const publicHost =
+    !/^(localhost$|127\.|192\.168\.|10\.|172\.(1[6-9]|2\d|3[01])\.|\[::1\]$|.*\.local$)/i.test(
+      window.location.hostname,
+    );
   const refreshHealth = useCallback(async () => {
-    const controller = new AbortController();
     try {
-      setHealthError(null);
-      setHealth(await getHealth(controller.signal));
-    } catch (cause) {
-      setHealthError(cause instanceof Error ? cause.message : "Backend unavailable");
+      const next = await getHealth();
+      if (mounted.current) {
+        setHealth(next);
+        setHealthError(null);
+      }
+    } catch (error) {
+      if (mounted.current)
+        setHealthError(
+          error instanceof Error ? error.message : "Local service unavailable",
+        );
     }
-    return () => controller.abort();
   }, []);
-
   useEffect(() => {
-    let active = true;
+    mounted.current = true;
     void getHealth()
-      .then((response) => {
-        if (active) setHealth(response);
-      })
-      .catch((cause: unknown) => {
-        if (active) {
-          setHealthError(cause instanceof Error ? cause.message : "Backend unavailable");
+      .then((next) => {
+        if (mounted.current) {
+          setHealth(next);
+          setHealthError(null);
         }
+      })
+      .catch((error: unknown) => {
+        if (mounted.current)
+          setHealthError(
+            error instanceof Error
+              ? error.message
+              : "Local service unavailable",
+          );
       });
     return () => {
-      active = false;
+      mounted.current = false;
     };
   }, []);
-
   useEffect(() => {
+    const urls = objectUrls.current;
     return () => {
-      revokeObjectUrl(videoUrl);
+      urls.forEach((url) => URL.revokeObjectURL(url));
     };
-  }, [videoUrl]);
-
+  }, []);
   useEffect(
     () => () => {
-      analysisObjectUrlsRef.current.forEach((url) => URL.revokeObjectURL(url));
+      if (videoUrl) URL.revokeObjectURL(videoUrl);
     },
-    [],
+    [videoUrl],
   );
-
-  const switchMode = useCallback(
-    (mode: SourceMode) => {
-      if (mode === "camera" && publicNetworkHost) {
-        camera.stop();
-        setSourceMode("phone");
-        setResult(null);
-        setOperationError(
-          "Direct camera streaming is disabled on public links. Use the Phone QR flow from the local dashboard so the camera connection includes its access token.",
-        );
-        return;
-      }
-      if (mode !== "camera") camera.stop();
-      setSourceMode(mode);
-      setResult(null);
-      setOpenedBatchItem(null);
-      setOperationError(null);
-    },
-    [camera, publicNetworkHost],
-  );
-
-  const handleImage = useCallback(
-    async (file: File) => {
+  function navigate(next: Activity) {
+    if (busy) return;
+    if (next !== "live") {
       camera.stop();
-      setSourceMode("image");
-      setBusy(true);
-      setResult(null);
-      setOpenedBatchItem(null);
+      setCameraResult(null);
+    }
+    transition(() => {
+      setActivity(next);
       setOperationError(null);
-      const nextUrl = URL.createObjectURL(file);
-      analysisObjectUrlsRef.current.add(nextUrl);
-      setImageUrl(nextUrl);
-      try {
-        const response = await inferImage(file);
-        handleResult(response.result);
-        setAnalysisHistory((current) => [
-          {
-            id: `image-${Date.now()}`,
-            previewUrl: nextUrl,
-            result: response.result,
-            source: "image" as const,
-          },
-          ...current,
-        ].slice(0, 8));
-      } catch (cause) {
-        setOperationError(cause instanceof Error ? cause.message : "Image analysis failed.");
-      } finally {
-        setBusy(false);
-      }
-    },
-    [camera, handleResult],
-  );
-
-  const handleBatch = useCallback(
-    async (files: File[]) => {
-      camera.stop();
-      setSourceMode("batch");
-      setBusy(true);
-      setResult(null);
-      setOpenedBatchItem(null);
-      setOperationError(null);
-      const selected = files.slice(0, 100);
-      const pending: BatchDisplayItem[] = selected.map((file) => {
-        const previewUrl = URL.createObjectURL(file);
-        analysisObjectUrlsRef.current.add(previewUrl);
-        return { filename: file.name, previewUrl };
-      });
-      setBatchItems(pending);
-      try {
-        const response = await inferBatch(selected);
-        const completed = pending.map((item, index) => ({
-          ...item,
-          result: response.results[index]?.result,
-          error: response.results[index]?.error,
-        }));
-        setBatchItems(completed);
-        const completedHistory: AnalysisHistoryItem[] = completed.flatMap((item, index) =>
-          item.result
-            ? [{
-                id: `batch-${Date.now()}-${index}`,
-                previewUrl: item.previewUrl,
-                result: item.result,
-                source: "batch" as const,
-              }]
-            : [],
-        ).slice(0, 8);
-        if (completedHistory.length) {
-          setAnalysisHistory((current) => [...completedHistory, ...current].slice(0, 8));
-        }
-        const firstResult = response.results.find((item) => item.result)?.result ?? null;
-        if (firstResult) handleResult(firstResult);
-      } catch (cause) {
-        setOperationError(cause instanceof Error ? cause.message : "Batch analysis failed.");
-      } finally {
-        setBusy(false);
-      }
-    },
-    [camera, handleResult],
-  );
-
-  const handleVideo = useCallback(
-    async (file: File) => {
-      camera.stop();
-      setSourceMode("video");
-      setBusy(true);
-      setResult(null);
-      setVideoSummary(null);
-      setHistory([]);
-      setOperationError(null);
-      const nextUrl = URL.createObjectURL(file);
-      setVideoUrl((current) => {
-        revokeObjectUrl(current);
-        return nextUrl;
-      });
-      try {
-        const response = await inferVideo(file);
-        setVideoSummary(response);
-        if (response.representative_result) {
-          setResult(response.representative_result);
-        }
-        if (response.event_samples?.length) {
-          setHistory([...response.event_samples].reverse().slice(0, 40));
-        }
-      } catch (cause) {
-        setOperationError(cause instanceof Error ? cause.message : "Video analysis failed.");
-      } finally {
-        setBusy(false);
-      }
-    },
-    [camera],
-  );
-
-  const openBatchItem = useCallback((item: BatchDisplayItem) => {
-    if (!item.result || item.error) return;
-    setOpenedBatchItem(item);
+    });
+  }
+  function uploadImages(files: File[]) {
+    if (running.current || !files.length) return;
+    if (files.length > 100) {
+      setOperationError(
+        "Choose up to 100 images at a time. No files were added.",
+      );
+      return;
+    }
+    if (files.some((file) => file.size > 20 * 1024 * 1024)) {
+      setOperationError(
+        "Each image must be 20 MB or smaller. Choose smaller files and try again.",
+      );
+      return;
+    }
+    camera.stop();
+    setActivity("analyze");
+    setMediaType("image");
     setOperationError(null);
-  }, []);
-
-  const openAnalysisHistory = useCallback(
-    (item: AnalysisHistoryItem) => {
-      camera.stop();
-      setSourceMode("image");
-      setOpenedBatchItem(null);
-      setImageUrl(item.previewUrl);
-      setResult(item.result);
-      setOperationError(null);
-    },
-    [camera],
-  );
-
-  const primaryEvent = useMemo(() => choosePrimaryEvent(result), [result]);
-  const modelWarnings = health?.models.warnings ?? [];
-  const backendOnline = health?.status === "ok" && !healthError;
-  const activeMode = result?.mode ?? health?.models.mode ?? null;
-  const runtimeLabel =
-    primaryEvent?.device ??
-    health?.models.detector_device ??
-    health?.models.classifier_providers?.[0] ??
-    activeMode ??
-    "—";
-  const detectorModelPath = profileString(health?.models.detector_profile, "model_path");
-  const classifierModelPath = profileString(health?.models.classifier_profile, "model_path");
-  const detectorRuntime = detectorProfileSummary(health?.models.detector_profile);
-  const classifierRuntime = modelFileName(classifierModelPath ?? health?.models.classifier);
-  const analysisMode = sourceMode === "image" || sourceMode === "batch";
-  const chooseImage = () => fileInputRef.current?.click();
-  const chooseBatch = () => batchInputRef.current?.click();
-  const chooseVideo = () => videoInputRef.current?.click();
-
+    setItems(
+      files.map((file, index) => ({
+        id: `${Date.now()}-${index}`,
+        filename: file.name,
+        file,
+        previewUrl: rememberUrl(file),
+        imageType,
+        rotation: 0,
+      })),
+    );
+    setSelectedId(null);
+    setReviewIndex(0);
+    setPreparing(true);
+    setProgress(0);
+  }
+  function updatePrepared(update: Partial<AnalysisItem>) {
+    setItems((current) =>
+      current.map((item, index) =>
+        index === reviewIndex ? { ...item, ...update } : item,
+      ),
+    );
+  }
+  async function analyzeImages(retry = false) {
+    if (running.current || !online) return;
+    running.current = true;
+    setBusy(true);
+    setPreparing(false);
+    setOperationError(null);
+    setProgress(0);
+    const queue = items.map((item) => ({ ...item }));
+    const pending = retry ? queue.filter((item) => item.error) : queue;
+    if (retry) setProgress(queue.length - pending.length);
+    for (const item of pending) {
+      if (!mounted.current) break;
+      try {
+        const oriented = await bakeImageRotation(item.file, item.rotation);
+        const response = await (item.imageType === "close_up"
+          ? inferCloseUpImage(oriented)
+          : inferImage(oriented));
+        if (!mounted.current) break;
+        if (oriented !== item.file) {
+          item.previewUrl = rememberUrl(oriented);
+          item.file = oriented;
+        }
+        item.rotation = 0;
+        item.result = response.result;
+        item.error = undefined;
+        item.runtimeLabel =
+          response.result.events[0]?.device ??
+          health?.models.detector_device ??
+          "Default device";
+        item.detectorRuntime =
+          item.imageType === "close_up"
+            ? "Bypassed · whole image"
+            : (health?.models.detector ?? "Unavailable");
+        item.classifierRuntime =
+          item.imageType === "close_up"
+            ? "Close-up compatibility candidate"
+            : (health?.models.classifier ?? "Unavailable");
+        item.modelWarnings = [
+          ...modelWarnings,
+          ...response.result.warnings,
+          ...(item.imageType === "close_up"
+            ? ["Close-up mode uses the isolated compatibility candidate."]
+            : []),
+        ];
+        setRecent((current) =>
+          [
+            { ...item },
+            ...current.filter((existing) => existing.id !== item.id),
+          ].slice(0, 24),
+        );
+      } catch (error) {
+        item.error =
+          error instanceof Error
+            ? error.message
+            : "Could not analyze this image.";
+      }
+      if (mounted.current) {
+        setItems(queue.map((value) => ({ ...value })));
+        setProgress((current) => current + 1);
+      }
+    }
+    if (mounted.current) {
+      setBusy(false);
+      if (queue.length === 1) {
+        setSelectedId(queue[0].id);
+        if (queue[0].error) setOperationError(queue[0].error);
+      }
+    }
+    running.current = false;
+  }
+  async function uploadVideo(file: File) {
+    if (running.current) return;
+    if (file.size > 250 * 1024 * 1024) {
+      setOperationError("Video must be 250 MB or smaller.");
+      return;
+    }
+    camera.stop();
+    setActivity("analyze");
+    setMediaType("video");
+    setBusy(true);
+    running.current = true;
+    setVideoUrl(URL.createObjectURL(file));
+    setVideoSummary(null);
+    setVideoFailed(false);
+    setOperationError(null);
+    try {
+      const response = await inferVideo(file, progress => { if(mounted.current) setVideoProgress(progress); });
+      if (mounted.current) setVideoSummary(response);
+    } catch (error) {
+      if (mounted.current) {
+        setVideoFailed(true);
+        setOperationError(
+          error instanceof Error ? error.message : "Video analysis failed.",
+        );
+      }
+    } finally {
+      running.current = false;
+      if (mounted.current) setBusy(false);
+    }
+  }
+  function openRecent(item: AnalysisItem) {
+    setItems([item]);
+    setSelectedId(item.id);
+    setPreparing(false);
+    setImageType(item.imageType);
+    setMediaType("image");
+    setActivity("analyze");
+    setOperationError(null);
+  }
+  const preparation = items[reviewIndex];
   return (
-    <main className={`app-shell ${presenterMode ? "presenter-mode" : ""}`}>
-      <header className="topbar">
-        <div className="brand">
-          <div className="brand-mark">
-            <ShieldCheck size={23} aria-hidden="true" />
-          </div>
+    <main className={`night-app ${presenterMode ? "focus-mode" : ""}`}>
+      <header className="night-header">
+        <div className="brand night-brand">
+          <span className="night-brand-mark">
+            <Route size={23} />
+          </span>
           <div>
             <h1>RoadSign Assist</h1>
-            <span>Malaysian ADAS vision</span>
+            <span>Malaysian road intelligence</span>
           </div>
         </div>
-
-        <div className="system-summary">
-          <span className={`status-pill ${backendOnline ? "online" : "offline"}`}>
-            {backendOnline ? <Wifi size={15} /> : <WifiOff size={15} />}
-            {backendOnline ? "System ready" : "Backend offline"}
+        <div className="night-header-tools">
+          <span className={`connection-state ${online ? "ready" : "offline"}`}>
+            <i />
+            {online
+              ? "System ready"
+              : healthError
+                ? "Backend offline"
+                : "Connecting"}
           </span>
-          <span className="status-pill">
-            <Cpu size={15} />
-            {health?.models.mode ?? "checking"}
+          <span className="runtime-badge">
+            {health?.models.runtime_badge ?? "CHECKING"}
           </span>
-          <button className="icon-button" onClick={() => void refreshHealth()} title="Refresh status">
-            <RotateCcw size={17} />
-            <span className="sr-only">Refresh status</span>
-          </button>
           <button
             className="icon-button"
-            onClick={() => setPresenterMode((current) => !current)}
-            title={presenterMode ? "Exit presenter mode" : "Presenter mode"}
-            aria-pressed={presenterMode}
+            onClick={() => setPresenterMode((value) => !value)}
+            aria-label={
+              presenterMode ? "Exit presenter mode" : "Presenter mode"
+            }
+            title="Focus view"
           >
-            {presenterMode ? <Minimize2 size={17} /> : <Maximize2 size={17} />}
-            <span className="sr-only">
-              {presenterMode ? "Exit presenter mode" : "Presenter mode"}
-            </span>
+            {presenterMode ? <Minimize2 size={18} /> : <Maximize2 size={18} />}
           </button>
         </div>
       </header>
-
-      <div className={`workspace ${analysisMode ? "analysis-workspace" : ""}`}>
-        <aside className="control-rail">
-          <section>
-            <span className="rail-label">Input source</span>
-            <div className="segmented-control">
-              <button
-                className={sourceMode === "camera" ? "active" : ""}
-                onClick={() => switchMode("camera")}
-                aria-pressed={sourceMode === "camera"}
-                disabled={publicNetworkHost}
-                title={
-                  publicNetworkHost
-                    ? "Use Phone mode from the local dashboard for public camera streaming"
-                    : "Camera"
-                }
-              >
-                <Camera size={17} />
-                Camera
-              </button>
-              <button
-                className={sourceMode === "image" ? "active" : ""}
-                onClick={() => switchMode("image")}
-                aria-pressed={sourceMode === "image"}
-              >
-                <ImagePlus size={17} />
-                Image
-              </button>
-              <button
-                className={sourceMode === "batch" ? "active" : ""}
-                onClick={() => switchMode("batch")}
-                aria-pressed={sourceMode === "batch"}
-              >
-                <Files size={17} />
-                Batch
-              </button>
-              <button
-                className={sourceMode === "video" ? "active" : ""}
-                onClick={() => switchMode("video")}
-                aria-pressed={sourceMode === "video"}
-              >
-                <Film size={17} />
-                Video
-              </button>
-              <button
-                className={sourceMode === "phone" ? "active" : ""}
-                onClick={() => switchMode("phone")}
-                aria-pressed={sourceMode === "phone"}
-              >
-                <Smartphone size={17} />
-                Phone
-              </button>
-            </div>
-          </section>
-
-          <input
-            ref={fileInputRef}
-            className="sr-only"
-            type="file"
-            accept="image/png,image/jpeg,image/webp,image/bmp"
-            onChange={(event) => {
-              const file = event.target.files?.[0];
-              if (file) void handleImage(file);
-              event.target.value = "";
-            }}
-          />
-          <input
-            ref={batchInputRef}
-            className="sr-only"
-            type="file"
-            multiple
-            accept="image/png,image/jpeg,image/webp,image/bmp"
-            onChange={(event) => {
-              const files = Array.from(event.target.files ?? []);
-              if (files.length) void handleBatch(files);
-              event.target.value = "";
-            }}
-          />
-          <input
-            ref={videoInputRef}
-            className="sr-only"
-            type="file"
-            accept="video/mp4,video/webm,video/quicktime,video/x-msvideo"
-            onChange={(event) => {
-              const file = event.target.files?.[0];
-              if (file) void handleVideo(file);
-              event.target.value = "";
-            }}
-          />
-
-          {sourceMode === "camera" ? (
-            <section className="source-actions">
-              {camera.status === "live" ? (
-                <button className="primary-command danger" onClick={camera.stop}>
-                  <CameraOff size={18} />
-                  Stop camera
-                </button>
-              ) : (
-                <button
-                  className="primary-command"
-                  onClick={() => void camera.start()}
-                  disabled={!backendOnline || camera.status === "connecting" || publicNetworkHost}
-                >
-                  <Radio size={18} />
-                  {camera.status === "connecting" ? "Connecting" : "Start camera"}
-                </button>
-              )}
-            </section>
-          ) : sourceMode === "image" ? (
-            <section className="source-actions analysis-source-actions">
-              <span className="rail-label">Upload image</span>
-              <button
-                className="analysis-upload-dropzone"
-                onClick={chooseImage}
-                disabled={!backendOnline || busy}
-                aria-label="Choose image"
-              >
-                <Upload size={30} aria-hidden="true" />
-                <strong>{busy ? "Analyzing image" : "Upload image"}</strong>
-                <span>PNG, JPG, WEBP or BMP</span>
-              </button>
-            </section>
-          ) : sourceMode === "batch" ? (
-            <section className="source-actions analysis-source-actions">
-              <span className="rail-label">Batch analysis</span>
-              <button
-                className="analysis-upload-dropzone"
-                onClick={chooseBatch}
-                disabled={!backendOnline || busy}
-                aria-label="Choose images"
-              >
-                <Upload size={30} aria-hidden="true" />
-                <strong>{busy ? "Analyzing batch" : "Choose images"}</strong>
-                <span>Up to 100 image files</span>
-              </button>
-            </section>
-          ) : sourceMode === "phone" ? (
-            <section className="source-actions phone-source-note">
-              <Smartphone size={18} />
-              <span>Open the QR panel and stream from a phone browser.</span>
-            </section>
-          ) : (
-            <section className="source-actions">
-              <button
-                className="primary-command"
-                onClick={chooseVideo}
-                disabled={!backendOnline || busy}
-              >
-                <Upload size={18} />
-                {busy ? "Analyzing video" : "Choose video"}
-              </button>
-            </section>
-          )}
-
-          <section>
-            <span className="rail-label">Warning language</span>
-            <div className="language-row">
-              <div className="language-control">
-              <Languages size={17} aria-hidden="true" />
+      <MovableDock>
+        <button
+          className="lens-add"
+          disabled={busy || !online}
+          aria-label="Add media"
+          onClick={() =>
+            mediaType === "video"
+              ? videoInput.current?.click()
+              : fileInput.current?.click()
+          }
+        >
+          <Upload size={20} />
+          <span>Add</span>
+        </button>
+        <button
+          aria-current={
+            activity === "analyze" && mediaType === "image" ? "page" : undefined
+          }
+          disabled={busy}
+          onClick={() =>
+            transition(() => {
+              camera.stop();
+              setCameraResult(null);
+              setOperationError(null);
+              setMediaType("image");
+              setActivity("analyze");
+            })
+          }
+        >
+          <ImagePlus size={20} />
+          <span>Images</span>
+        </button>
+        <button
+          aria-current={
+            activity === "analyze" && mediaType === "video" ? "page" : undefined
+          }
+          disabled={busy}
+          onClick={() =>
+            transition(() => {
+              camera.stop();
+              setCameraResult(null);
+              setOperationError(null);
+              setMediaType("video");
+              setActivity("analyze");
+            })
+          }
+        >
+          <Film size={20} />
+          <span>Video</span>
+        </button>
+        <button
+          aria-current={activity === "live" ? "page" : undefined}
+          disabled={busy}
+          onClick={() => navigate("live")}
+        >
+          <Radio size={20} />
+          <span>Live</span>
+        </button>
+        <button
+          aria-current={activity === "recent" ? "page" : undefined}
+          disabled={busy}
+          onClick={() => navigate("recent")}
+        >
+          <History size={20} />
+          <span>Recent</span>
+        </button>
+      </MovableDock>
+      <div className="night-body">
+        <div className="workspace-heading">
+          <div className="language-row">
+            <label className="language-control">
+              <Languages size={16} />
               <select
-                value={language}
-                onChange={(event) => setLanguage(event.target.value as DisplayLanguage)}
                 aria-label="Warning language"
+                value={language}
+                onChange={(event) =>
+                  setLanguage(event.target.value as DisplayLanguage)
+                }
               >
                 <option value="en">English</option>
                 <option value="ms">Bahasa Melayu</option>
                 <option value="zh">中文</option>
               </select>
-              </div>
+            </label>
+            <button
+              className="icon-button"
+              onClick={() => setMuted((value) => !value)}
+              aria-label={muted ? "Enable warnings" : "Mute warnings"}
+              title={muted ? "Enable warnings" : "Mute warnings"}
+            >
+              {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+            </button>
+          </div>
+        </div>
+        {(operationError ||
+          healthError ||
+          audio.error ||
+          (activity === "live" && liveSource === "camera" && camera.error)) && (
+          <div role="alert" className="error-banner">
+            {operationError || healthError || audio.error || camera.error}
+            {audio.blocked && (
+              <button onClick={audio.enable}>Enable audio</button>
+            )}
+            {healthError && (
               <button
-                className="icon-button"
-                onClick={() => setMuted((current) => !current)}
-                title={muted ? "Enable warnings" : "Mute warnings"}
-                aria-pressed={muted}
+                className="quiet-button"
+                onClick={() => void refreshHealth()}
               >
-                {muted ? <VolumeX size={17} /> : <Volume2 size={17} />}
-                <span className="sr-only">{muted ? "Enable warnings" : "Mute warnings"}</span>
+                Reconnect
               </button>
-            </div>
-          </section>
-
-          {analysisMode ? (
-            <section className="recent-analysis-section" aria-live="polite">
-              <span className="rail-label">Recent analyses</span>
-              {analysisHistory.length ? (
-                <div className="recent-analysis-list">
-                  {analysisHistory.map((item) => {
-                    const event = choosePrimaryEvent(item.result);
-                    return (
-                      <button
-                        className="recent-analysis-button"
-                        type="button"
-                        key={item.id}
-                        onClick={() => openAnalysisHistory(item)}
-                      >
-                        <img src={item.previewUrl} alt="" />
-                        <span>
-                          <strong>
-                            {event ? advisoryHeadline(event, language) : "No sign detected"}
-                          </strong>
-                          <small>{item.source === "batch" ? "From batch" : "Single image"}</small>
+            )}
+          </div>
+        )}
+        <input
+          ref={fileInput}
+          className="sr-only"
+          type="file"
+          accept={imageAccept}
+          multiple
+          disabled={busy || !online}
+          onChange={(event) => {
+            uploadImages(Array.from(event.target.files ?? []));
+            event.target.value = "";
+          }}
+        />
+        <input
+          ref={videoInput}
+          className="sr-only"
+          type="file"
+          accept="video/mp4,video/webm,video/quicktime,video/x-msvideo"
+          disabled={busy || !online}
+          onChange={(event) => {
+            const file = event.target.files?.[0];
+            if (file) void uploadVideo(file);
+            event.target.value = "";
+          }}
+        />
+        <div className="activity-transition" key={activity}>
+          {activity === "analyze" && (
+            <section
+              className="night-workspace"
+              aria-label="Analysis workspace"
+            >
+              <div className="context-toolbar">
+                {mediaType === "image" && !preparing && !selected?.result && (
+                  <div
+                    className="pill-tabs image-type-tabs"
+                    aria-label="Image analysis mode"
+                  >
+                    <button
+                      disabled={busy}
+                      aria-pressed={imageType === "road_scene"}
+                      className={imageType === "road_scene" ? "active" : ""}
+                      onClick={() => setImageType("road_scene")}
+                    >
+                      <Route size={16} />
+                      Road scene
+                    </button>
+                    <button
+                      disabled={busy}
+                      aria-pressed={imageType === "close_up"}
+                      className={imageType === "close_up" ? "active" : ""}
+                      onClick={() => setImageType("close_up")}
+                    >
+                      <ScanLine size={16} />
+                      Close-up sign
+                    </button>
+                  </div>
+                )}
+                {selected?.result && mediaType === "image" && (
+                  <span className="type-badge">
+                    {typeLabel(selected.imageType)}
+                  </span>
+                )}
+                <button
+                  className="quiet-button upload-command"
+                  disabled={busy || !online}
+                  aria-label={
+                    mediaType === "image" ? "Choose image" : "Choose video"
+                  }
+                  onClick={() =>
+                    mediaType === "image"
+                      ? fileInput.current?.click()
+                      : videoInput.current?.click()
+                  }
+                >
+                  <Upload size={16} />
+                  {mediaType === "image" ? "Add images" : "Add video"}
+                </button>
+              </div>
+              <div className="media-transition" key={mediaType}>
+                {mediaType === "video" ? (
+                  <VideoResults
+                    progress={videoProgress}
+                    videoUrl={videoUrl}
+                    summary={videoSummary}
+                    busy={busy}
+                    failed={videoFailed}
+                    muted={muted}
+                    language={language}
+                    onChoose={() => videoInput.current?.click()}
+                    disabled={!online}
+                  />
+                ) : preparing && preparation ? (
+                  <section
+                    className="prepare-workspace"
+                    aria-label="Review image orientation"
+                  >
+                    <div className="prepare-heading">
+                      <div>
+                        <span className="eyebrow">
+                          PREPARE · {reviewIndex + 1} OF {items.length}
                         </span>
-                        {item.source === "batch" ? <Files size={16} aria-hidden="true" /> : <History size={16} aria-hidden="true" />}
+                        <h3>
+                          {preparation.imageType === "close_up"
+                            ? "Make sure the sign is upright"
+                            : "Make sure the road scene is upright"}
+                        </h3>
+                        <p>
+                          Check each image’s type and orientation before
+                          analysis.
+                        </p>
+                      </div>
+                      <button
+                        className="icon-button"
+                        aria-label="Discard selection"
+                        onClick={() => {
+                          setPreparing(false);
+                          setItems([]);
+                        }}
+                      >
+                        <X size={18} />
                       </button>
-                    );
-                  })}
+                    </div>
+                    <div className="prepare-layout">
+                      <div className="orientation-review-media">
+                        <img
+                          src={preparation.previewUrl}
+                          alt={
+                            preparation.imageType === "close_up"
+                              ? "Selected close-up sign awaiting orientation confirmation"
+                              : "Selected road scene awaiting orientation confirmation"
+                          }
+                          style={{
+                            transform: `rotate(${preparation.rotation}deg)`,
+                            maxWidth:
+                              preparation.rotation % 180 ? "55%" : "90%",
+                            maxHeight: "80%",
+                          }}
+                        />
+                      </div>
+                      <aside className="prepare-inspector">
+                        <span className="eyebrow">IMAGE TYPE</span>
+                        <div className="type-cards">
+                          {(["road_scene", "close_up"] as const).map((type) => (
+                            <button
+                              key={type}
+                              className={
+                                preparation.imageType === type ? "selected" : ""
+                              }
+                              aria-pressed={preparation.imageType === type}
+                              onClick={() =>
+                                updatePrepared({ imageType: type })
+                              }
+                            >
+                              {type === "road_scene" ? (
+                                <Route size={22} />
+                              ) : (
+                                <ScanLine size={22} />
+                              )}
+                              <span>
+                                <strong>{typeLabel(type)}</strong>
+                                <small>
+                                  {type === "road_scene"
+                                    ? "Find signs in a full road photo."
+                                    : "One upright sign fills the image."}
+                                </small>
+                              </span>
+                            </button>
+                          ))}
+                        </div>
+                        <span className="eyebrow">ORIENTATION</span>
+                        <div className="orientation-review-controls">
+                          <button
+                            aria-label="Rotate left"
+                            onClick={() =>
+                              updatePrepared({
+                                rotation: rotateQuarterTurn(
+                                  preparation.rotation,
+                                  -90,
+                                ),
+                              })
+                            }
+                          >
+                            <RotateCcw size={18} />
+                          </button>
+                          <button
+                            onClick={() => updatePrepared({ rotation: 0 })}
+                            disabled={preparation.rotation === 0}
+                          >
+                            Reset
+                          </button>
+                          <button
+                            aria-label="Rotate right"
+                            onClick={() =>
+                              updatePrepared({
+                                rotation: rotateQuarterTurn(
+                                  preparation.rotation,
+                                  90,
+                                ),
+                              })
+                            }
+                          >
+                            <RotateCw size={18} />
+                          </button>
+                        </div>
+                        <p className="subtle-note">
+                          Direction signs change meaning when sideways. Check
+                          the whole image is upright.
+                        </p>
+                        <button
+                          className="analysis-primary-action"
+                          onClick={() => void analyzeImages()}
+                          disabled={!online}
+                        >
+                          <ScanLine size={17} />
+                          {items.length === 1
+                            ? "Analyze upright image"
+                            : `Analyze ${items.length} images`}
+                        </button>
+                      </aside>
+                    </div>
+                    <div className="preparation-strip">
+                      {items.map((item, index) => (
+                        <button
+                          className={reviewIndex === index ? "active" : ""}
+                          key={item.id}
+                          onClick={() => setReviewIndex(index)}
+                          aria-label={`Prepare ${item.filename}`}
+                        >
+                          <img src={item.previewUrl} alt="" />
+                          <span>
+                            {item.filename}
+                            <small>
+                              {typeLabel(item.imageType)} · {item.rotation}°
+                            </small>
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </section>
+                ) : busy ? (
+                  <div className="processing-state" role="status">
+                    <AnalysisLoader />
+                    <h3>Reading your images</h3>
+                    <p>
+                      {progress} of {items.length} processed.
+                    </p>
+                    <progress value={progress} max={items.length || 1} />
+                  </div>
+                ) : selected?.result ? (
+                  <ImageAnalysisWorkspace
+                    imageUrl={selected.previewUrl}
+                    result={selected.result}
+                    busy={false}
+                    language={language}
+                    runtimeLabel={selected.runtimeLabel ?? "Unknown"}
+                    detectorRuntime={selected.detectorRuntime ?? "Unknown"}
+                    classifierRuntime={selected.classifierRuntime ?? "Unknown"}
+                    modelWarnings={selected.modelWarnings ?? []}
+                    contextLabel={selected.filename}
+                    closeUpMode={selected.imageType === "close_up"}
+                    onChooseImage={() => fileInput.current?.click()}
+                    onBackToBatch={
+                      items.length > 1 ? () => setSelectedId(null) : undefined
+                    }
+                  />
+                ) : items.length ? (
+                  <>
+                    <BatchResults
+                      items={items}
+                      busy={false}
+                      language={language}
+                      onOpenItem={(item) =>
+                        setSelectedId((item as AnalysisItem).id)
+                      }
+                    />
+                    {items.some((item) => item.error) && (
+                      <button
+                        className="quiet-button retry-batch"
+                        disabled={!online}
+                        onClick={() => void analyzeImages(true)}
+                      >
+                        <RotateCcw size={16} />
+                        Retry failed images
+                      </button>
+                    )}
+                  </>
+                ) : (
+                  <div className="night-empty immersive-home">
+                    <div className="home-road-world" aria-hidden="true">
+                      <svg viewBox="0 0 800 900" fill="none">
+                        <defs>
+                          <linearGradient
+                            id="road-light"
+                            x1="400"
+                            y1="0"
+                            x2="400"
+                            y2="900"
+                            gradientUnits="userSpaceOnUse"
+                          >
+                            <stop stopColor="#d5ed9c" stopOpacity=".04" />
+                            <stop
+                              offset="1"
+                              stopColor="#d5ed9c"
+                              stopOpacity=".5"
+                            />
+                          </linearGradient>
+                        </defs>
+                        <path
+                          d="M390 0C390 350 20 430 90 900M450 0C450 350 730 430 740 900"
+                          stroke="url(#road-light)"
+                          strokeWidth="2"
+                        />
+                        <path
+                          d="M420 0C420 350 375 470 410 900"
+                          stroke="url(#road-light)"
+                          strokeWidth="3"
+                          strokeDasharray="36 38"
+                        />
+                        <circle
+                          cx="440"
+                          cy="320"
+                          r="190"
+                          stroke="#d5ed9c"
+                          strokeOpacity=".09"
+                        />
+                        <circle
+                          cx="440"
+                          cy="320"
+                          r="270"
+                          stroke="#d5ed9c"
+                          strokeOpacity=".05"
+                        />
+                      </svg>
+                      <div className="home-sign-object">
+                        <span>30</span>
+                        <small>km/h</small>
+                      </div>
+                      <span className="home-object-caption">
+                        A clearer view starts here.
+                      </span>
+                    </div>
+                    <span className="eyebrow">
+                      {imageType === "road_scene"
+                        ? "A WIDER PERSPECTIVE"
+                        : "A CLOSER LOOK"}
+                    </span>
+                    <h3>
+                      {imageType === "road_scene"
+                        ? "Every sign tells a story."
+                        : "One sign. A clearer meaning."}
+                    </h3>
+                    <p>
+                      {imageType === "road_scene"
+                        ? "Drop in a road photo. Discover the signs."
+                        : "One upright sign. A focused scan."}
+                    </p>
+                    <button
+                      className="analysis-primary-action"
+                      disabled={!online}
+                      onClick={() => fileInput.current?.click()}
+                    >
+                      <Upload size={18} />
+                      Choose images
+                      <ArrowUpRight size={16} />
+                    </button>
+                    <span className="file-help">
+                      JPG, PNG, WEBP, BMP · Up to 100 images · 20 MB each
+                    </span>
+                    <div className="workflow-footnotes">
+                      <span>
+                        <ImagePlus size={16} />
+                        Add one or many
+                      </span>
+                      <ChevronRight size={14} />
+                      <span>
+                        <RotateCw size={16} />
+                        Check orientation
+                      </span>
+                      <ChevronRight size={14} />
+                      <span>
+                        <ScanLine size={16} />
+                        Explore findings
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </section>
+          )}
+          {activity === "live" && (
+            <section className="night-workspace" aria-label="Live workspace">
+              <div className="context-toolbar">
+                <div className="pill-tabs">
+                  <button
+                    className={liveSource === "camera" ? "active" : ""}
+                    disabled={publicHost}
+                    onClick={() => {
+                      setLiveSource("camera");
+                      setShowPairing(false);
+                    }}
+                  >
+                    <Camera size={17} />
+                    This device
+                  </button>
+                  <button
+                    className={liveSource === "phone" ? "active" : ""}
+                    onClick={() => {
+                      camera.stop();
+                      setCameraResult(null);
+                      setLiveSource("phone");
+                    }}
+                  >
+                    <Smartphone size={17} />
+                    Connected phones
+                  </button>
                 </div>
+                {liveSource === "phone" ? (
+                  <button
+                    className="quiet-button upload-command"
+                    aria-expanded={showPairing}
+                    onClick={() => setShowPairing((value) => !value)}
+                  >
+                    <Smartphone size={17} />
+                    {showPairing ? "Close pairing" : "Add phone"}
+                  </button>
+                ) : (
+                  <button
+                    className="quiet-button upload-command"
+                    disabled={
+                      !online &&
+                      camera.status !== "live" &&
+                      camera.status !== "connecting"
+                    }
+                    onClick={() => {
+                      if (
+                        camera.status === "live" ||
+                        camera.status === "connecting"
+                      ) {
+                        camera.stop();
+                        setCameraResult(null);
+                      } else void camera.start();
+                    }}
+                  >
+                    {camera.status === "live" ||
+                    camera.status === "connecting" ? (
+                      <>
+                        <CameraOff size={17} />
+                        Stop camera
+                      </>
+                    ) : (
+                      <>
+                        <Camera size={17} />
+                        Start camera
+                      </>
+                    )}
+                  </button>
+                )}
+              </div>
+              {liveSource === "phone" ? (
+                <>
+                  {showPairing && <PhoneConnectPanel busy={false} />}
+                  <LiveCameraWallApp
+                    embedded
+                    language={language}
+                    muted={muted}
+                    onMutedChange={setMuted}
+                  />
+                </>
               ) : (
-                <p className="recent-analysis-empty">Results from this session will appear here.</p>
+                <>
+                  <div className="camera-workspace">
+                    <div className="camera-stage">
+                      <VideoSurface
+                        mode="camera"
+                        videoRef={camera.videoRef}
+                        imageUrl={null}
+                        result={cameraResult}
+                        language={language}
+                      />
+                      {camera.status !== "live" && (
+                        <div className="camera-idle">
+                          <Camera size={34} />
+                          <h3>
+                            {camera.status === "connecting"
+                              ? "Connecting your camera…"
+                              : "Your next view starts here."}
+                          </h3>
+                          <p>
+                            Allow camera access, then point it toward a road
+                            sign.
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                    <aside className="live-findings">
+                      <EncounterPanel
+                        state={cameraFindings}
+                        raw={cameraResult}
+                        language={language}
+                      />
+                      {audio.blocked && (
+                        <button onClick={audio.enable}>Enable audio</button>
+                      )}
+                      <EventTimeline
+                        events={cameraFindings.history.map((e) => e.event)}
+                        language={language}
+                      />
+                    </aside>
+                  </div>
+                  <details className="stream-details">
+                    <summary>Camera details · {camera.status}</summary>
+                    <p>
+                      Inference {camera.stats.inferenceFps} FPS ·{" "}
+                      {camera.stats.latencyMs ?? "—"} ms ·{" "}
+                      {camera.stats.framesDropped} dropped frames
+                    </p>
+                    <p>Changing source stops this device’s camera.</p>
+                  </details>
+                </>
               )}
             </section>
-          ) : null}
-
-          {analysisMode && health ? (
-            <details className="analysis-model-status">
-              <summary>
+          )}
+          {activity === "recent" && (
+            <section
+              className="night-workspace recent-workspace"
+              aria-label="Recent analyses"
+            >
+              <div className="context-toolbar">
                 <span>
-                  <span className="rail-label">Pipeline status</span>
-                  <strong>{pipelineLabel(activeMode)}</strong>
+                  <History size={17} />
+                  This session · {recent.length} images
                 </span>
-                {modelWarnings.length ? <small>Development mode</small> : null}
-              </summary>
-              <dl>
-                <div><dt>Runtime</dt><dd>{runtimeLabel}</dd></div>
-                <div><dt>Detector</dt><dd>{health.models.detector}</dd></div>
-                <div><dt>Classifier</dt><dd>{health.models.classifier}</dd></div>
-                <div>
-                  <dt>Release</dt>
-                  <dd>
-                    {health.models.classifier_release_status?.replaceAll("_", " ") ??
-                      "unspecified"}
-                  </dd>
+                {recent.length > 0 && (
+                  <button
+                    className="quiet-button upload-command"
+                    onClick={() => setRecent([])}
+                  >
+                    Clear recent
+                  </button>
+                )}
+              </div>
+              {recent.length ? (
+                <div className="recent-grid">
+                  {recent.map((item) => (
+                    <button
+                      key={item.id}
+                      className="recent-card"
+                      onClick={() => openRecent(item)}
+                    >
+                      <img src={item.previewUrl} alt="" />
+                      <span className="type-badge">
+                        {typeLabel(item.imageType)}
+                      </span>
+                      <strong>
+                        {item.result?.events[0]
+                          ? semanticSignName(item.result.events[0], language)
+                          : "No sign detected"}
+                      </strong>
+                      <small>{item.filename}</small>
+                      <span className="recent-open">
+                        View findings
+                        <ArrowUpRight size={16} />
+                      </span>
+                    </button>
+                  ))}
                 </div>
-                <div><dt>Providers</dt><dd>{health.models.classifier_providers?.join(", ") || "CPU/default"}</dd></div>
-              </dl>
-              {modelWarnings.map((warning) => <p key={warning}>{warning}</p>)}
-            </details>
-          ) : null}
-
-          {!analysisMode ? <section className="metrics-stack">
-            <span className="rail-label">Live metrics</span>
-            <div className="metric-row">
-              <Activity size={16} />
-              <span>Latency</span>
-              <strong>{result ? `${Math.round(result.latency_ms)} ms` : "—"}</strong>
-            </div>
-            <div className="metric-row">
-              <Gauge size={16} />
-              <span>FPS</span>
-              <strong>
-                {result && result.latency_ms > 0 ? (1000 / result.latency_ms).toFixed(1) : "—"}
-              </strong>
-            </div>
-            <div className="metric-row">
-              <Radio size={16} />
-              <span>Signs</span>
-              <strong>{result?.events.length ?? 0}</strong>
-            </div>
-            <div className="metric-row">
-              <Cpu size={16} />
-              <span>Runtime</span>
-              <strong>{runtimeLabel}</strong>
-            </div>
-            <div className="metric-row">
-              <Cpu size={16} />
-              <span>Detector</span>
-              <strong title={detectorModelPath ?? health?.models.detector ?? undefined}>
-                {detectorRuntime}
-              </strong>
-            </div>
-            <div className="metric-row">
-              <Cpu size={16} />
-              <span>Classifier</span>
-              <strong title={classifierModelPath ?? health?.models.classifier ?? undefined}>
-                {classifierRuntime}
-              </strong>
-            </div>
-          </section> : null}
-
-          {!analysisMode && modelWarnings.length ? (
-            <section className="model-warning">
-              <strong>Development mode</strong>
-              {modelWarnings.map((warning) => (
-                <span key={warning}>{warning}</span>
-              ))}
+              ) : (
+                <div className="night-empty compact">
+                  <History size={38} />
+                  <h3>A fresh perspective.</h3>
+                  <p>
+                    Your analyzed images will appear here during this session.
+                  </p>
+                  <button
+                    className="quiet-button"
+                    onClick={() => navigate("analyze")}
+                  >
+                    Go to Analyze
+                    <ChevronRight size={16} />
+                  </button>
+                </div>
+              )}
             </section>
-          ) : null}
-        </aside>
-
-        <section className={`primary-work ${analysisMode ? "analysis-primary-work" : ""}`}>
-          {sourceMode === "batch" && openedBatchItem ? (
-            <ImageAnalysisWorkspace
-              imageUrl={openedBatchItem.previewUrl}
-              result={openedBatchItem.result ?? null}
-              busy={false}
-              language={language}
-              runtimeLabel={openedBatchItem.result?.events[0]?.device ?? runtimeLabel}
-              detectorRuntime={detectorRuntime}
-              classifierRuntime={classifierRuntime}
-              modelWarnings={modelWarnings}
-              contextLabel={openedBatchItem.filename}
-              onChooseImage={chooseImage}
-              onBackToBatch={() => setOpenedBatchItem(null)}
-            />
-          ) : sourceMode === "batch" ? (
-            <BatchResults items={batchItems} busy={busy} onOpenItem={openBatchItem} />
-          ) : sourceMode === "image" ? (
-            <ImageAnalysisWorkspace
-              imageUrl={imageUrl}
-              result={result}
-              busy={busy}
-              language={language}
-              runtimeLabel={runtimeLabel}
-              detectorRuntime={detectorRuntime}
-              classifierRuntime={classifierRuntime}
-              modelWarnings={modelWarnings}
-              onChooseImage={chooseImage}
-            />
-          ) : sourceMode === "phone" ? (
-            <PhoneConnectPanel busy={busy} />
-          ) : sourceMode === "video" ? (
-            <VideoResults videoUrl={videoUrl} summary={videoSummary} busy={busy} />
-          ) : (
-            <VideoSurface
-              mode={sourceMode}
-              videoRef={camera.videoRef}
-              imageUrl={imageUrl}
-              result={result}
-            />
           )}
-          {(operationError || camera.error || healthError || advisoryAudio.error) && (
-            <div className="error-banner" role="alert">
-              {operationError || camera.error || healthError || advisoryAudio.error}
-            </div>
-          )}
-          {!analysisMode ? <div className="work-footer">
-            <span>
-              <span className={`status-dot ${camera.status === "live" ? "live" : ""}`} />
-              {sourceMode === "camera"
-                ? camera.status
-                : busy
-                  ? "processing"
-                  : sourceMode}
-            </span>
-            <span>
-              {pipelineLabel(activeMode)}
-            </span>
-            <span>Frame {result?.frame_id ?? "—"}</span>
-          </div> : null}
-        </section>
-
-        {!analysisMode ? <aside className="insight-rail">
-          <SignPanel event={primaryEvent} language={language} />
-          <section className="vehicle-panel">
-            <header className="section-heading">
-              <h2>Vehicle state</h2>
-              <span className="simulator-badge">SIM</span>
-            </header>
-            <div className="speed-readout">
-              <strong>{primaryEvent ? targetSummary(primaryEvent) : "50 km/h"}</strong>
-              <span>target</span>
-            </div>
-            <div className="vehicle-action">
-              <span>Advisory</span>
-              <strong>
-                {primaryEvent ? advisoryInstruction(primaryEvent, language) : "Monitor road"}
-              </strong>
-            </div>
-          </section>
-          <EventTimeline events={history} language={language} />
-        </aside> : null}
+        </div>
+        <SystemStatus health={health} refresh={() => void refreshHealth()} />
       </div>
     </main>
   );

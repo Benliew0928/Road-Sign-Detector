@@ -169,5 +169,38 @@
       ],
       "notes": "This registry entry groups mixed references; the release manifest is authoritative per sample."
     }
+    ,
+    {
+      "source_id": "internal_academic_contributor_intake_20260829",
+      "name": "Final classifier v3 contributor intake",
+      "owner": "Multiple per-row documented owners",
+      "publisher": "Recorded source pages and dataset publishers",
+      "source_url": "https://github.com/benli1234/MiniProject",
+      "doi": null,
+      "licence_name": "Internal-academic exception; not licence-cleared",
+      "licence_url": null,
+      "decision": "internal_academic_exception",
+      "metadata_retrieved_on": "2026-08-29",
+      "downloaded_on": null,
+      "archive_url": null,
+      "archive_size_bytes": null,
+      "expected_archive_md5": null,
+      "archive_sha256": null,
+      "full_archive_status": "Per-row originals, crops, hashes, URLs, and review decisions are retained in the v3 release audit; shared DVC publication is prohibited.",
+      "local_metadata_files": [
+        "data/manifests/classifier_production_78_v3_20260829.csv",
+        "outputs/audit/classifier_production_78_v3_20260829/contributor_inventory.csv",
+        "outputs/audit/classifier_production_78_v3_20260829/release_audit.json"
+      ],
+      "geographic_relevance": "Mixed international traffic-sign references used only for internal academic completion of the frozen 78-class ontology.",
+      "class_mapping_status": "Each contributor manifest has an explicit reviewed target-label mapping; raw source classes are not reused as semantic labels.",
+      "attribution": "Use the row-level source URL, source dataset, stated licence, and reviewer notes as the authoritative attribution record.",
+      "restrictions": [
+        "Internal academic use and runtime promotion only under the project-owner exception.",
+        "Do not push exception-marked image assets to the shared DVC remote.",
+        "Do not publicly redistribute the data or a model represented as trained on licence-cleared data."
+      ],
+      "notes": "This registry entry records policy status only. It does not replace per-row source and licence evidence."
+    }
   ]
 }

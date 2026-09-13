@@ -38,6 +38,27 @@ class HybridSignDetector:
         value = getattr(self.primary, "active_device", None)
         return str(value) if value is not None else None
 
+    @property
+    def task(self) -> str:
+        return str(getattr(self.primary, "task", "unknown"))
+
+    @property
+    def profile_name(self) -> str:
+        return str(getattr(self.primary, "profile_name", "legacy"))
+
+    @property
+    def artifact_sha256(self) -> str | None:
+        value = getattr(self.primary, "artifact_sha256", None)
+        return str(value) if value is not None else None
+
+    @property
+    def assignment_only(self) -> bool:
+        return bool(getattr(self.primary, "assignment_only", False))
+
+    @property
+    def mask_capable(self) -> bool:
+        return bool(getattr(self.primary, "mask_capable", False))
+
     def warmup(self) -> bool:
         return self.primary.warmup() and self.fallback.warmup()
 

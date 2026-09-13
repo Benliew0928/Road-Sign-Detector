@@ -1,160 +1,120 @@
 import { useEffect, useRef, useState } from "react";
-
 import {
-  chooseAdvisoryEvent,
-  type AdvisoryAudioManifest,
-  type AdvisoryAudioPhrase,
-} from "../audio/advisoryAudio";
+  actionSignature,
+  type EncounterState,
+  type Encounter,
+} from "../encounters";
+import { EncounterAudio } from "../audio/encounterAudio";
+import type { AdvisoryAudioManifest } from "../audio/advisoryAudio";
 import type { DisplayLanguage, FrameResult } from "../types";
-
-interface UseAdvisoryAudioOptions {
-  result: FrameResult | null;
+let manifestPromise: Promise<AdvisoryAudioManifest> | null = null;
+function loadManifest() {
+  manifestPromise ??= (async () => {
+    for (const path of ["p16_ai", "p16"]) {
+      try {
+        const response = await fetch(
+          `/audio/${path}/advisory_audio_manifest.json`,
+        );
+        if (!response.ok) continue;
+        const manifest = (await response.json()) as AdvisoryAudioManifest;
+        if (manifest.phrases && manifest.semantic_phrase_ids) return manifest;
+      } catch {
+        /* Try the local fallback pack. */
+      }
+    }
+    throw new Error("Audio manifest is unavailable.");
+  })();
+  return manifestPromise;
+}
+interface Options {
+  result?: FrameResult | null;
+  encounters?: EncounterState;
+  source?: string;
   language: DisplayLanguage;
   muted: boolean;
+  enabled?: boolean;
+  resetToken?: number;
+  skipBefore?: number;
 }
-
-interface AdvisoryAudioState {
-  ready: boolean;
-  error: string | null;
-}
-
-const MANIFEST_URLS = [
-  "/audio/p16_ai/advisory_audio_manifest.json",
-  "/audio/p16/advisory_audio_manifest.json",
-];
-
-function eventAnnouncementKey(result: FrameResult, phraseId: string, trackId: number): string {
-  return `${result.frame_id}:${trackId}:${phraseId}`;
-}
-
-export function useAdvisoryAudio({
-  result,
-  language,
-  muted,
-}: UseAdvisoryAudioOptions): AdvisoryAudioState {
-  const [manifest, setManifest] = useState<AdvisoryAudioManifest | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const currentAudioRef = useRef<HTMLAudioElement | null>(null);
-  const currentPhraseRef = useRef<AdvisoryAudioPhrase | null>(null);
-  const announcedKeysRef = useRef<Set<string>>(new Set());
-  const lastPhrasePlayedAtRef = useRef<Map<string, number>>(new Map());
-
+export function useAdvisoryAudio(options: Options) {
+  const { source = "image", resetToken = 0 } = options;
+  const [state, setState] = useState({
+    ready: false,
+    error: null as string | null,
+    blocked: false,
+  });
+  const scheduler = useRef<EncounterAudio | null>(null);
+  const latest = useRef(options);
+  useEffect(() => {
+    latest.current = options;
+  });
   useEffect(() => {
     let active = true;
-    async function loadManifest(): Promise<void> {
-      let lastError: Error | null = null;
-      for (const url of MANIFEST_URLS) {
-        try {
-          const response = await fetch(url);
-          if (!response.ok) throw new Error(`Audio manifest failed: ${response.status}`);
-          const nextManifest = (await response.json()) as AdvisoryAudioManifest;
-          if (!active) return;
-          setManifest(nextManifest);
-          setError(null);
-          return;
-        } catch (cause) {
-          lastError =
-            cause instanceof Error ? cause : new Error("Audio manifest is unavailable.");
-        }
-      }
-      if (!active) return;
-      setError(lastError?.message ?? "Audio manifest is unavailable.");
+    const cache = new Map<string, HTMLAudioElement>();
+    void loadManifest()
+      .then((manifest) => {
+        if (!active) return;
+        scheduler.current = new EncounterAudio(
+          manifest,
+          (src) => {
+            let audio = cache.get(src);
+            if (!audio) {
+              audio = new Audio(src);
+              audio.preload = "auto";
+              cache.set(src, audio);
+            }
+            audio.currentTime = 0;
+            return audio;
+          },
+          (error, blocked) => {
+            if (active) setState({ ready: true, error, blocked });
+          },
+        );
+        setState({ ready: true, error: null, blocked: false });
+        update();
+      })
+      .catch((error: Error) => {
+        if (active)
+          setState({ ready: false, error: error.message, blocked: false });
+      });
+    function update() {
+      const o = latest.current;
+      const now = o.encounters?.at ?? performance.now();
+      if (o.skipBefore !== undefined)
+        scheduler.current?.skipThrough(o.skipBefore);
+      const encounters: Encounter[] =
+        o.encounters?.history ??
+        o.result?.events
+          .filter((e) => e.should_announce)
+          .map((e) => ({
+            id: `${source}:${o.result?.frame_id}:${e.track_id}`,
+            signature: actionSignature(e),
+            event: e,
+            revision: 1,
+            confirmedAt: now,
+            lastSupportedAt: now,
+            lastSeen: false,
+          })) ??
+        [];
+      scheduler.current?.update(
+        encounters,
+        now,
+        o.language,
+        !o.muted && (o.enabled ?? true) && Boolean(o.encounters || o.result),
+        performance.now(),
+      );
     }
-    void loadManifest();
+    const timer = window.setInterval(update, 100);
     return () => {
       active = false;
+      window.clearInterval(timer);
+      scheduler.current?.dispose();
+      scheduler.current = null;
+      cache.clear();
     };
-  }, []);
-
+  }, [source, resetToken]);
   useEffect(() => {
-    if (muted) {
-      currentAudioRef.current?.pause();
-      currentAudioRef.current = null;
-      currentPhraseRef.current = null;
-    }
-  }, [muted]);
-
-  useEffect(() => {
-    if (!manifest || !result || muted) return;
-    const selected = chooseAdvisoryEvent(result.events, manifest);
-    if (!selected) return;
-
-    const announcementKey = eventAnnouncementKey(
-      result,
-      selected.phraseId,
-      selected.event.track_id,
-    );
-    if (announcedKeysRef.current.has(announcementKey)) return;
-
-    const now = performance.now();
-    const lastPlayedAt = lastPhrasePlayedAtRef.current.get(selected.phraseId);
-    if (
-      lastPlayedAt !== undefined &&
-      now - lastPlayedAt < selected.phrase.cooldown_seconds * 1000
-    ) {
-      return;
-    }
-
-    const currentAudio = currentAudioRef.current;
-    const currentPhrase = currentPhraseRef.current;
-    if (currentAudio && !currentAudio.paused && !currentAudio.ended) {
-      const canInterrupt =
-        selected.phrase.interrupts_lower_priority &&
-        selected.phrase.priority > (currentPhrase?.priority ?? 0);
-      if (!canInterrupt) return;
-      currentAudio.pause();
-    }
-
-    const asset =
-      selected.phrase.assets[language] ??
-      selected.phrase.assets.en ??
-      manifest.phrases[manifest.fallback_phrase_id]?.assets[language];
-    if (!asset?.src) return;
-
-    const sources = [asset.src, asset.fallback_src].filter(
-      (source): source is string => Boolean(source),
-    );
-    if (sources.length === 0) return;
-
-    announcedKeysRef.current.add(announcementKey);
-    lastPhrasePlayedAtRef.current.set(selected.phraseId, now);
-    const selectedPhrase = selected.phrase;
-
-    function playSource(index: number): void {
-      const source = sources[index];
-      const audio = new Audio(source);
-      audio.preload = "auto";
-      currentAudioRef.current = audio;
-      currentPhraseRef.current = selectedPhrase;
-
-      const tryFallback = (cause: unknown): void => {
-        if (currentAudioRef.current === audio) {
-          currentAudioRef.current = null;
-          currentPhraseRef.current = null;
-        }
-        if (index + 1 < sources.length) {
-          playSource(index + 1);
-          return;
-        }
-        setError(cause instanceof Error ? cause.message : "Audio warning could not be played.");
-      };
-
-      audio.onended = () => {
-        if (currentAudioRef.current === audio) {
-          currentAudioRef.current = null;
-          currentPhraseRef.current = null;
-        }
-      };
-      audio.onerror = () => {
-        tryFallback(new Error("Audio warning could not be played."));
-      };
-      void audio.play().catch((cause: unknown) => {
-        tryFallback(cause instanceof Error ? cause : new Error("Audio playback was blocked."));
-      });
-    }
-
-    playSource(0);
-  }, [language, manifest, muted, result]);
-
-  return { ready: Boolean(manifest), error };
+    if (options.muted || options.enabled === false) scheduler.current?.stop();
+  }, [options.muted, options.enabled]);
+  return { ...state, enable: () => scheduler.current?.enable() };
 }

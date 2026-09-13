@@ -1,5 +1,7 @@
 param(
-    [string]$Config = "configs/inference/experimental.yaml",
+    [string]$Config = "",
+    [ValidateSet("legacy", "candidate", "best-effort", "public-release")]
+    [string]$Profile = "public-release",
     [int]$Port = 8443,
     [string]$PhoneHost = "",
     [switch]$ListAddresses,
@@ -9,6 +11,18 @@ param(
 
 $ErrorActionPreference = "Stop"
 Set-Location -Path (Split-Path -Parent $PSScriptRoot)
+
+if (-not $Config) {
+    $Config = switch ($Profile) {
+        "legacy" { "configs/inference/legacy.yaml" }
+        "candidate" { "configs/inference/phase_e_candidate.yaml" }
+        "best-effort" { "configs/inference/best_effort.yaml" }
+        "public-release" { "configs/inference/default.yaml" }
+    }
+}
+if (-not (Test-Path -LiteralPath $Config)) {
+    throw "Selected inference config does not exist: $Config"
+}
 
 $ProjectPython = Join-Path $PWD ".venv\Scripts\python.exe"
 if (-not (Test-Path -LiteralPath $ProjectPython)) {
@@ -88,6 +102,7 @@ if (-not $SkipBuild -and -not (Test-Path "apps\web\dist")) {
 }
 
 Write-Host "RoadSign Assist phone camera server"
+Write-Host "Inference config: $Config"
 if ($Candidates.Count -gt 0) {
     Write-Host "Selected adapter: $($Candidates[0].InterfaceAlias) - $($Candidates[0].Description)"
 }

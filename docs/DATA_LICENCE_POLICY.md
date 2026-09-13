@@ -31,6 +31,19 @@ The source remains `review_required` when:
 
 Review-required data cannot enter a frozen training or evaluation release.
 
+## Approved Internal-Academic Exception
+
+The project owner may approve a narrowly scoped `internal_academic_exception`
+for an otherwise review-required contributor row. This is not a licence
+clearance and must be recorded per row in the release manifest and audit.
+
+Exception material may be used for the project's internal academic training and
+runtime promotion only when the release metadata says so explicitly. It must
+remain in local DVC storage, must not be pushed to a shared remote, and must
+not be published, redistributed, or described as licence-cleared. Every
+exception row still requires a preserved original and crop, source page,
+hashes, source/video-group evidence, and reviewer decision.
+
 ## Rejected Sources
 
 Do not import:

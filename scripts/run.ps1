@@ -1,5 +1,7 @@
 param(
-    [string]$Config = "configs/inference/experimental.yaml",
+    [string]$Config = "",
+    [ValidateSet("legacy", "candidate", "best-effort", "public-release")]
+    [string]$Profile = "public-release",
     [int]$Port = 8443,
     [switch]$Public,
     [ValidateSet("cloudflare", "ngrok", "manual")]
@@ -13,6 +15,18 @@ param(
 
 $ErrorActionPreference = "Stop"
 Set-Location -Path (Split-Path -Parent $PSScriptRoot)
+
+if (-not $Config) {
+    $Config = switch ($Profile) {
+        "legacy" { "configs/inference/legacy.yaml" }
+        "candidate" { "configs/inference/phase_e_candidate.yaml" }
+        "best-effort" { "configs/inference/best_effort.yaml" }
+        "public-release" { "configs/inference/default.yaml" }
+    }
+}
+if (-not (Test-Path -LiteralPath $Config)) {
+    throw "Selected inference config does not exist: $Config"
+}
 
 $ProjectPython = Join-Path $PWD ".venv\Scripts\python.exe"
 if (-not (Test-Path -LiteralPath $ProjectPython)) {
@@ -58,6 +72,7 @@ if ($Public) {
 }
 
 Write-Host "Starting the complete RoadSign Assist website at $DashboardUrl"
+Write-Host "Inference config: $Config"
 Write-Host "The same dashboard includes image, video, laptop camera, phone camera, live wall, OCR, tracking, and offline advisory audio."
 
 & "$PSScriptRoot\run_phone.ps1" `

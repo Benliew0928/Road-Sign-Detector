@@ -14,16 +14,38 @@ function phrase(phrase_id: string, priority: number): AdvisoryAudioPhrase {
     semantic_sign_id: phrase_id,
     audio_key: phrase_id,
     base_action: "UNKNOWN_CAUTION",
-    severity: priority >= 4 ? "critical" : priority >= 3 ? "warning" : "caution",
+    severity:
+      priority >= 4 ? "critical" : priority >= 3 ? "warning" : "caution",
     priority,
     interrupts_lower_priority: priority >= 3,
     cooldown_seconds: 8,
     parameter: null,
     text: { en: phrase_id, ms: phrase_id, zh: phrase_id },
     assets: {
-      en: { src: `/audio/${phrase_id}.wav`, sha256: null, bytes: null, duration_seconds: null, voice: null, generated: true },
-      ms: { src: `/audio/${phrase_id}.wav`, sha256: null, bytes: null, duration_seconds: null, voice: null, generated: true },
-      zh: { src: `/audio/${phrase_id}.wav`, sha256: null, bytes: null, duration_seconds: null, voice: null, generated: true },
+      en: {
+        src: `/audio/${phrase_id}.wav`,
+        sha256: null,
+        bytes: null,
+        duration_seconds: null,
+        voice: null,
+        generated: true,
+      },
+      ms: {
+        src: `/audio/${phrase_id}.wav`,
+        sha256: null,
+        bytes: null,
+        duration_seconds: null,
+        voice: null,
+        generated: true,
+      },
+      zh: {
+        src: `/audio/${phrase_id}.wav`,
+        sha256: null,
+        bytes: null,
+        duration_seconds: null,
+        voice: null,
+        generated: true,
+      },
     },
   };
 }
@@ -77,7 +99,7 @@ function event(overrides: Partial<SignEvent>): SignEvent {
     bbox: { x1: 0, y1: 0, x2: 10, y2: 10 },
     mask: null,
     action: {
-      code: "UNKNOWN_CAUTION",
+      code: "INFORMATION_ONLY",
       target_speed_kmh: null,
       restriction_value: null,
       restriction_unit: null,
@@ -90,6 +112,11 @@ function event(overrides: Partial<SignEvent>): SignEvent {
     stable: true,
     should_announce: true,
     evidence: [],
+    advisory: {
+      headline: { en: "", ms: "", zh: "" },
+      instruction: { en: "", ms: "", zh: "" },
+      safe_to_announce: true,
+    },
     ...overrides,
   };
 }
@@ -135,17 +162,28 @@ describe("advisory audio resolver", () => {
     expect(selected).toBe("height_limit_4_5_m");
   });
 
-  it("falls back safely for unknown signs", () => {
-    expect(resolveAdvisoryPhraseId(event({ semantic_sign_id: "not_in_manifest" }), manifest)).toBe(
-      "unknown_sign",
-    );
+  it("does not resolve missing classes to unknown speech", () => {
+    expect(
+      resolveAdvisoryPhraseId(
+        event({ semantic_sign_id: "not_in_manifest" }),
+        manifest,
+      ),
+    ).toBe("");
   });
 
   it("chooses the highest priority announceable event", () => {
     const selected = chooseAdvisoryEvent(
       [
-        event({ semantic_sign_id: "parking", severity: "information", confidence: 0.99 }),
-        event({ semantic_sign_id: "maximum_speed", severity: "critical", confidence: 0.8 }),
+        event({
+          semantic_sign_id: "parking",
+          severity: "information",
+          confidence: 0.99,
+        }),
+        event({
+          semantic_sign_id: "maximum_speed",
+          severity: "critical",
+          confidence: 0.8,
+        }),
       ],
       manifest,
     );
@@ -160,7 +198,11 @@ describe("advisory audio resolver", () => {
           semantic_sign_id: "maximum_speed",
           severity: "critical",
           advisory: {
-            headline: { en: "Maximum speed", ms: "Maximum speed", zh: "Maximum speed" },
+            headline: {
+              en: "Maximum speed",
+              ms: "Maximum speed",
+              zh: "Maximum speed",
+            },
             instruction: {
               en: "This sign is not confident enough for a strong command.",
               ms: "This sign is not confident enough for a strong command.",
@@ -175,4 +217,12 @@ describe("advisory audio resolver", () => {
 
     expect(selected).toBeNull();
   });
+});
+
+it("does not round a numeric limit to a neighboring recording", () => {
+  const e = event({
+    semantic_sign_id: "maximum_speed",
+    action: { ...event({}).action, target_speed_kmh: 51 },
+  });
+  expect(resolveAdvisoryPhraseId(e, manifest)).toBe("maximum_speed");
 });

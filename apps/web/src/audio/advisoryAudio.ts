@@ -1,5 +1,5 @@
+import { safeForSpeech } from "../encounters";
 import type { DisplayLanguage, SignEvent } from "../types";
-
 export interface AdvisoryAudioAsset {
   src: string;
   fallback_src?: string | null;
@@ -12,7 +12,6 @@ export interface AdvisoryAudioAsset {
   model?: string | null;
   style_profile?: string | null;
 }
-
 export interface AdvisoryAudioPhrase {
   phrase_id: string;
   semantic_sign_id: string | null;
@@ -26,7 +25,6 @@ export interface AdvisoryAudioPhrase {
   text: Record<DisplayLanguage, string>;
   assets: Record<DisplayLanguage, AdvisoryAudioAsset>;
 }
-
 export interface AdvisoryAudioManifest {
   schema_version: string;
   catalogue_version: string;
@@ -58,119 +56,103 @@ export interface AdvisoryAudioManifest {
   };
   phrases: Record<string, AdvisoryAudioPhrase>;
 }
-
 const SEVERITY_PRIORITY: Record<SignEvent["severity"], number> = {
   information: 1,
   caution: 2,
   warning: 3,
   critical: 4,
 };
-
 function normalizedValue(value: number): string {
-  return Number.isInteger(value)
-    ? String(value)
-    : String(Number(value.toFixed(2))).replace(/\.0$/, "");
+  return String(value);
 }
-
-function closestVariant(
+function exactVariant(
   variants: Record<string, string>,
   value: number | null,
-  tolerance: number,
 ): string | null {
   if (value === null) return null;
-  const exact = variants[normalizedValue(value)];
-  if (exact) return exact;
-  let bestDistance = Number.POSITIVE_INFINITY;
-  let bestPhraseId: string | null = null;
-  for (const [candidate, phraseId] of Object.entries(variants)) {
-    const numeric = Number(candidate);
-    if (!Number.isFinite(numeric)) continue;
-    const distance = Math.abs(numeric - value);
-    if (distance <= tolerance && distance < bestDistance) {
-      bestDistance = distance;
-      bestPhraseId = phraseId;
-    }
-  }
-  return bestPhraseId;
+  return variants[normalizedValue(value)] ?? null;
 }
-
 export function resolveAdvisoryPhraseId(
   event: SignEvent,
   manifest: AdvisoryAudioManifest,
 ): string {
   if (event.action.target_speed_kmh !== null) {
-    const speed = Math.round(event.action.target_speed_kmh);
+    const speed = event.action.target_speed_kmh;
     if (event.semantic_sign_id === "minimum_speed") {
-      const phraseId = closestVariant(manifest.variant_phrase_ids.minimum_speed_kmh, speed, 2);
-      if (phraseId) return phraseId;
-    }
-    if (event.semantic_sign_id === "temporary_speed_limit") {
-      const phraseId = closestVariant(
-        manifest.variant_phrase_ids.temporary_speed_limit_kmh,
+      const phraseId = exactVariant(
+        manifest.variant_phrase_ids.minimum_speed_kmh,
         speed,
-        2,
       );
       if (phraseId) return phraseId;
     }
-    const phraseId = closestVariant(manifest.variant_phrase_ids.speed_limit_kmh, speed, 2);
+    if (event.semantic_sign_id === "temporary_speed_limit") {
+      const phraseId = exactVariant(
+        manifest.variant_phrase_ids.temporary_speed_limit_kmh,
+        speed,
+      );
+      if (phraseId) return phraseId;
+    }
+    const phraseId =
+      event.semantic_sign_id === "maximum_speed"
+        ? exactVariant(manifest.variant_phrase_ids.speed_limit_kmh, speed)
+        : null;
     if (phraseId) return phraseId;
   }
-
   if (event.action.restriction_value !== null) {
     const unit = event.action.restriction_unit?.toUpperCase() ?? "";
     if (event.action.code === "HEIGHT_RESTRICTION" && unit === "M") {
-      const phraseId = closestVariant(
+      const phraseId = exactVariant(
         manifest.variant_phrase_ids.height_limit_m,
         event.action.restriction_value,
-        0.15,
       );
       if (phraseId) return phraseId;
     }
     if (event.action.code === "WIDTH_RESTRICTION" && unit === "M") {
-      const phraseId = closestVariant(
+      const phraseId = exactVariant(
         manifest.variant_phrase_ids.width_limit_m,
         event.action.restriction_value,
-        0.15,
       );
       if (phraseId) return phraseId;
     }
     if (event.action.code === "WEIGHT_RESTRICTION" && unit === "T") {
-      const phraseId = closestVariant(
+      const phraseId = exactVariant(
         manifest.variant_phrase_ids.weight_limit_t,
         event.action.restriction_value,
-        0.5,
       );
       if (phraseId) return phraseId;
     }
   }
-
   return (
     manifest.semantic_phrase_ids[event.semantic_sign_id] ??
     manifest.audio_key_phrase_ids[event.semantic_sign_id] ??
-    manifest.fallback_phrase_id
+    ""
   );
 }
-
 export function advisoryEventPriority(
   event: SignEvent,
   phrase: AdvisoryAudioPhrase | undefined,
 ): number {
   return phrase?.priority ?? SEVERITY_PRIORITY[event.severity] ?? 2;
 }
-
 export function chooseAdvisoryEvent(
   events: SignEvent[],
   manifest: AdvisoryAudioManifest,
 ): { event: SignEvent; phrase: AdvisoryAudioPhrase; phraseId: string } | null {
   const candidates = events
-    .filter((event) => event.should_announce && (event.advisory?.safe_to_announce ?? true))
+    .filter((event) => event.should_announce && safeForSpeech(event))
     .map((event) => {
       const phraseId = resolveAdvisoryPhraseId(event, manifest);
-      const phrase = manifest.phrases[phraseId] ?? manifest.phrases[manifest.fallback_phrase_id];
+      const phrase = manifest.phrases[phraseId];
       return phrase ? { event, phrase, phraseId: phrase.phrase_id } : null;
     })
-    .filter((item): item is { event: SignEvent; phrase: AdvisoryAudioPhrase; phraseId: string } =>
-      Boolean(item),
+    .filter(
+      (
+        item,
+      ): item is {
+        event: SignEvent;
+        phrase: AdvisoryAudioPhrase;
+        phraseId: string;
+      } => Boolean(item),
     );
   candidates.sort((first, second) => {
     const priorityDelta =

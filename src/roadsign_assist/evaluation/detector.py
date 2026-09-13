@@ -7,7 +7,7 @@ import statistics
 import time
 from numbers import Real
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 import numpy as np
 import yaml
@@ -16,6 +16,24 @@ from PIL import Image
 from roadsign_assist.paths import project_path
 
 IMAGE_SUFFIXES = {".bmp", ".jpeg", ".jpg", ".png", ".webp"}
+
+
+def _dataset_task(data_yaml: Path, task: str | None) -> Literal["detect", "segment"]:
+    if task == "detect":
+        return "detect"
+    if task == "segment":
+        return "segment"
+    if task is not None:
+        raise ValueError(f"Unsupported detector task: {task}")
+    metadata_path = data_yaml.parent / "dataset_metadata.json"
+    if metadata_path.is_file():
+        metadata: dict[str, Any] = json.loads(metadata_path.read_text(encoding="utf-8"))
+        recorded = str(metadata.get("task", ""))
+        if recorded == "detect":
+            return "detect"
+        if recorded in {"segment", "segmentation"}:
+            return "segment"
+    return "segment"
 
 
 def _dataset_images(data_yaml: Path, split: str) -> list[Path]:
@@ -50,6 +68,7 @@ def benchmark_detector_runtime(
     confidence: float = 0.25,
     device: str = "cpu",
     limit: int | None = None,
+    task: str | None = None,
 ) -> dict[str, Any]:
     from ultralytics import YOLO
 
@@ -63,7 +82,8 @@ def benchmark_detector_runtime(
     if limit is not None:
         images = images[: max(1, limit)]
 
-    model = YOLO(str(model_file), task="segment")
+    resolved_task = _dataset_task(data_file, task)
+    model = YOLO(str(model_file), task=resolved_task)
     model.predict(
         source=str(images[0]),
         imgsz=image_size,
@@ -75,6 +95,7 @@ def benchmark_detector_runtime(
     inference_times: list[float] = []
     postprocess_times: list[float] = []
     images_with_masks = 0
+    images_with_boxes = 0
     for image in images:
         started = time.perf_counter()
         results = model.predict(
@@ -92,6 +113,8 @@ def benchmark_detector_runtime(
         postprocess_times.append(float(postprocess if postprocess is not None else 0.0))
         if result.masks is not None and len(result.masks) > 0:
             images_with_masks += 1
+        if result.boxes is not None and len(result.boxes) > 0:
+            images_with_boxes += 1
 
     report: dict[str, Any] = {
         "schema_version": "1.0",
@@ -101,8 +124,10 @@ def benchmark_detector_runtime(
         "device": device,
         "image_size": image_size,
         "confidence": confidence,
+        "task": resolved_task,
         "images": len(images),
         "images_with_masks": images_with_masks,
+        "images_with_boxes": images_with_boxes,
         "wall_latency_ms": {
             "mean": statistics.fmean(wall_times),
             "median": statistics.median(wall_times),
@@ -135,6 +160,7 @@ def tune_detector_thresholds(
     split: str = "val",
     image_size: int = 512,
     device: str = "0",
+    task: str | None = None,
 ) -> dict[str, Any]:
     from ultralytics import YOLO
 
@@ -144,7 +170,8 @@ def tune_detector_thresholds(
         raise FileNotFoundError(model_file)
     if not data_file.is_file():
         raise FileNotFoundError(data_file)
-    model = YOLO(str(model_file), task="segment")
+    resolved_task = _dataset_task(data_file, task)
+    model = YOLO(str(model_file), task=resolved_task)
     rows: list[dict[str, float]] = []
     evaluation_root = project_path(output_path).parent / "threshold_runs"
     for threshold in thresholds:
@@ -172,28 +199,45 @@ def tune_detector_thresholds(
             if mask_precision + mask_recall
             else 0.0
         )
+        box_precision = values.get("metrics/precision(B)", 0.0)
+        box_recall = values.get("metrics/recall(B)", 0.0)
+        box_f1 = (
+            2.0 * box_precision * box_recall / (box_precision + box_recall)
+            if box_precision + box_recall
+            else 0.0
+        )
         rows.append(
             {
                 "confidence": threshold,
-                "box_precision": values.get("metrics/precision(B)", 0.0),
-                "box_recall": values.get("metrics/recall(B)", 0.0),
+                "box_precision": box_precision,
+                "box_recall": box_recall,
                 "box_map50": values.get("metrics/mAP50(B)", 0.0),
+                "box_f1": box_f1,
                 "mask_precision": mask_precision,
                 "mask_recall": mask_recall,
                 "mask_map50": values.get("metrics/mAP50(M)", 0.0),
                 "mask_f1": mask_f1,
             }
         )
-    selected = max(rows, key=lambda row: (row["mask_f1"], row["mask_recall"]))
+    if resolved_task == "detect":
+        selected = max(rows, key=lambda row: (row["box_f1"], row["box_recall"]))
+        selection_rule = "maximum box F1, then box recall"
+        selected_f1 = selected["box_f1"]
+    else:
+        selected = max(rows, key=lambda row: (row["mask_f1"], row["mask_recall"]))
+        selection_rule = "maximum mask F1, then mask recall"
+        selected_f1 = selected["mask_f1"]
     report: dict[str, Any] = {
         "schema_version": "1.0",
         "model": str(model_file.relative_to(project_path("."))),
         "dataset": str(data_file.relative_to(project_path("."))),
         "split": split,
         "device": device,
+        "task": resolved_task,
         "image_size": image_size,
-        "selection_rule": "maximum mask F1, then mask recall",
+        "selection_rule": selection_rule,
         "selected_confidence": selected["confidence"],
+        "selected_f1": selected_f1,
         "selected": selected,
         "runs": rows,
     }
@@ -214,13 +258,15 @@ def evaluate_detector_recall_slices(
     device: str = "0",
     match_iou: float = 0.50,
     small_area_ratio: float = 0.01,
+    task: str | None = None,
 ) -> dict[str, Any]:
     from ultralytics import YOLO
 
     model_file = project_path(model_path)
     data_file = project_path(data_yaml)
     images = _dataset_images(data_file, split)
-    model = YOLO(str(model_file), task="segment")
+    resolved_task = _dataset_task(data_file, task)
+    model = YOLO(str(model_file), task=resolved_task)
     slice_counts = {
         "all": {"ground_truth": 0, "matched": 0},
         "small": {"ground_truth": 0, "matched": 0},
@@ -274,6 +320,7 @@ def evaluate_detector_recall_slices(
         "dataset": str(data_file.relative_to(project_path("."))),
         "split": split,
         "device": device,
+        "task": resolved_task,
         "image_size": image_size,
         "confidence": confidence,
         "match_iou": match_iou,
@@ -303,11 +350,27 @@ def _read_ground_truth_boxes(
     height: int,
 ) -> list[np.ndarray[Any, np.dtype[np.float64]]]:
     boxes: list[np.ndarray[Any, np.dtype[np.float64]]] = []
-    for line in label_path.read_text(encoding="utf-8").splitlines():
+    for line_number, line in enumerate(
+        label_path.read_text(encoding="utf-8").splitlines(), start=1
+    ):
         values = [float(value) for value in line.split()]
         coordinates = values[1:]
-        if len(coordinates) < 6 or len(coordinates) % 2:
+        if len(coordinates) == 4:
+            center_x, center_y, box_width, box_height = coordinates
+            boxes.append(
+                np.asarray(
+                    [
+                        (center_x - box_width / 2) * width,
+                        (center_y - box_height / 2) * height,
+                        (center_x + box_width / 2) * width,
+                        (center_y + box_height / 2) * height,
+                    ],
+                    dtype=np.float64,
+                )
+            )
             continue
+        if len(coordinates) < 6 or len(coordinates) % 2:
+            raise ValueError(f"Malformed YOLO label {label_path}:{line_number}")
         x_values = np.asarray(coordinates[0::2], dtype=np.float64) * width
         y_values = np.asarray(coordinates[1::2], dtype=np.float64) * height
         boxes.append(
@@ -341,6 +404,22 @@ def greedy_box_matches(
     predicted: np.ndarray[Any, np.dtype[np.float64]],
     threshold: float,
 ) -> set[int]:
+    return {
+        ground_truth_index
+        for ground_truth_index, _prediction_index in greedy_box_match_pairs(
+            np.asarray(ground_truth, dtype=np.float64).reshape((-1, 4)),
+            predicted,
+            threshold,
+        )
+    }
+
+
+def greedy_box_match_pairs(
+    ground_truth: np.ndarray[Any, np.dtype[np.float64]],
+    predicted: np.ndarray[Any, np.dtype[np.float64]],
+    threshold: float,
+) -> list[tuple[int, int]]:
+    """Return deterministic one-to-one ground-truth/prediction matches."""
     candidates = sorted(
         (
             (
@@ -355,6 +434,7 @@ def greedy_box_matches(
     )
     matched_ground_truth: set[int] = set()
     matched_predictions: set[int] = set()
+    pairs: list[tuple[int, int]] = []
     for iou, ground_truth_index, prediction_index in candidates:
         if iou < threshold:
             break
@@ -362,4 +442,5 @@ def greedy_box_matches(
             continue
         matched_ground_truth.add(ground_truth_index)
         matched_predictions.add(prediction_index)
-    return matched_ground_truth
+        pairs.append((ground_truth_index, prediction_index))
+    return pairs

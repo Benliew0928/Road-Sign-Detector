@@ -1,19 +1,19 @@
-import { AlertTriangle, Gauge, Languages, Navigation, ShieldAlert } from "lucide-react";
-
-import { advisoryHeadline, advisoryInstruction, targetSummary } from "../advisoryDisplay";
+import { AlertTriangle, Gauge, Navigation, ShieldAlert } from "lucide-react";
+import {
+  advisoryInstruction,
+  semanticSignName,
+  targetSummary,
+} from "../advisoryDisplay";
 import type { DisplayLanguage, SignEvent } from "../types";
-
 interface SignPanelProps {
   event: SignEvent | null;
   language: DisplayLanguage;
 }
-
 const languageLabel: Record<DisplayLanguage, string> = {
   en: "English",
   ms: "Bahasa Melayu",
   zh: "中文",
 };
-
 export function SignPanel({ event, language }: SignPanelProps) {
   if (!event) {
     return (
@@ -26,18 +26,18 @@ export function SignPanel({ event, language }: SignPanelProps) {
       </section>
     );
   }
-
   const target = targetSummary(event);
+  const directionalActionBlocked = event.evidence.includes(
+    "safety:directional_action_blocked",
+  );
   return (
     <section className={`sign-panel severity-panel-${event.severity}`}>
       <header className="sign-heading">
         <div>
           <span className="eyebrow">Current sign</span>
-          <h2>{advisoryHeadline(event, language)}</h2>
+          <h2>{semanticSignName(event, language)}</h2>
         </div>
-        <span className="confidence">{Math.round(event.confidence * 100)}%</span>
       </header>
-
       <dl className="sign-facts">
         <div>
           <dt>
@@ -45,24 +45,21 @@ export function SignPanel({ event, language }: SignPanelProps) {
           </dt>
           <dd>{advisoryInstruction(event, language)}</dd>
         </div>
-        <div>
-          <dt>
-            <Gauge size={16} aria-hidden="true" /> Target
-          </dt>
-          <dd>{target}</dd>
-        </div>
-        <div>
-          <dt>
-            <Languages size={16} aria-hidden="true" /> OCR
-          </dt>
-          <dd className="ocr-value">
-            <span>{event.ocr.text || "No text"}</span>
-            <small>{event.ocr.language}</small>
-          </dd>
-        </div>
+        {target !== "Advisory" && (
+          <div>
+            <dt>
+              <Gauge size={16} aria-hidden="true" /> Target
+            </dt>
+            <dd>{target}</dd>
+          </div>
+        )}
       </dl>
-
-      {!event.stable ? (
+      {directionalActionBlocked || event.advisory?.safe_to_announce !== true ? (
+        <div className="stability-notice">
+          <AlertTriangle size={16} aria-hidden="true" />
+          Verify visually: driving guidance unavailable
+        </div>
+      ) : !event.stable ? (
         <div className="stability-notice">
           <AlertTriangle size={16} aria-hidden="true" />
           Verifying across frames

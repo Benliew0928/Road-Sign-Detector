@@ -5,12 +5,12 @@ import json
 import time
 from pathlib import Path
 from statistics import mean
-from typing import Any, cast
+from typing import Any
 
 import cv2
 
-from roadsign_assist.baseline.models import UInt8Image
 from roadsign_assist.inference.engine import InferenceEngine, annotate_frame
+from roadsign_assist.inference.preprocessing import load_image_file
 from roadsign_assist.paths import OFFICIAL_ROOT, project_path
 
 
@@ -40,10 +40,7 @@ def evaluate_coursework_images(
     results: list[dict[str, Any]] = []
     for index, row in enumerate(rows, start=1):
         path = OFFICIAL_ROOT / "assignment_images" / row["relative_path"]
-        raw_image: Any = cv2.imread(str(path))
-        if raw_image is None:
-            raise ValueError(f"Unable to read coursework image: {path}")
-        image = cast(UInt8Image, raw_image)
+        image = load_image_file(path)
         started = time.perf_counter()
         result = engine.new_session().process_frame(image, assume_stable=True)
         elapsed_ms = (time.perf_counter() - started) * 1000

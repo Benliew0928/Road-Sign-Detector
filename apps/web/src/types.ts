@@ -155,6 +155,12 @@ export interface HealthResponse {
     healthy: boolean;
   };
   models: {
+    runtime_badge: "LEGACY" | "CANDIDATE" | "SHADOW";
+    config_name: string;
+    config_path: string;
+    config_sha256: string;
+    preprocessing_version: string;
+    bundle_identity: Record<string, unknown>;
     mode: InferenceMode;
     detector: string;
     detector_available: boolean;

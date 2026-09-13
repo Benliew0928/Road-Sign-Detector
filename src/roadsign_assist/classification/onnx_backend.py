@@ -6,11 +6,11 @@ import json
 from pathlib import Path
 from typing import Any
 
-import cv2
 import numpy as np
 
 from roadsign_assist.baseline.models import UInt8Image
 from roadsign_assist.classification.embedding import EmbeddingGate
+from roadsign_assist.classification.preprocessing import preprocess_classifier_numpy
 from roadsign_assist.inference.models import ClassificationModel
 from roadsign_assist.paths import project_path
 
@@ -33,12 +33,14 @@ class ONNXSignClassifier:
         )
         self.confidence_threshold = confidence_threshold
         self.image_size = image_size
+        self.configured_image_size = image_size
         self.providers = providers
         self._session: Any | None = None
         self._labels: list[str] = []
         self._temperature = 1.0
         self._embedding_gate: EmbeddingGate | None = None
         self._active_providers: list[str] = []
+        self._runtime_metadata: dict[str, Any] = {}
 
     @property
     def name(self) -> str:
@@ -56,6 +58,14 @@ class ONNXSignClassifier:
     def active_providers(self) -> tuple[str, ...]:
         return tuple(self._active_providers)
 
+    @property
+    def runtime_metadata(self) -> dict[str, Any]:
+        return dict(self._runtime_metadata)
+
+    @property
+    def embedding_gate_active(self) -> bool:
+        return self._embedding_gate is not None
+
     def _load(self) -> Any:
         if self._session is None:
             if not self.available:
@@ -71,10 +81,16 @@ class ONNXSignClassifier:
             self._labels = list(json.loads(self.labels_path.read_text(encoding="utf-8")))
             if self.calibration_path is not None and self.calibration_path.is_file():
                 calibration = json.loads(self.calibration_path.read_text(encoding="utf-8"))
+                self._runtime_metadata = calibration
                 self._temperature = max(
                     0.05,
                     min(10.0, float(calibration.get("temperature", 1.0))),
                 )
+                if calibration.get("runtime_threshold_authoritative") is True:
+                    self.confidence_threshold = max(
+                        0.0,
+                        min(1.0, float(calibration.get("confidence_threshold", self.confidence_threshold))),
+                    )
                 embedding_payload = calibration.get("embedding_gate")
                 if isinstance(embedding_payload, dict):
                     self._embedding_gate = EmbeddingGate.from_payload(embedding_payload)
@@ -88,6 +104,11 @@ class ONNXSignClassifier:
                 selected = ["CPUExecutionProvider"]
             self._session = ort.InferenceSession(str(self.model_path), providers=selected)
             self._active_providers = list(self._session.get_providers())
+            input_shape = self._session.get_inputs()[0].shape
+            if len(input_shape) == 4 and isinstance(input_shape[2], int) and isinstance(input_shape[3], int):
+                if input_shape[2] != input_shape[3]:
+                    raise ValueError("Classifier ONNX input must be square")
+                self.image_size = input_shape[2]
         return self._session
 
     def warmup(self) -> bool:
@@ -103,11 +124,7 @@ class ONNXSignClassifier:
         return True
 
     def _preprocess(self, crop: UInt8Image) -> np.ndarray[Any, np.dtype[np.float32]]:
-        rgb = cv2.cvtColor(crop, cv2.COLOR_BGR2RGB)
-        resized = cv2.resize(rgb, (self.image_size, self.image_size), interpolation=cv2.INTER_AREA)
-        tensor = resized.astype(np.float32) / 255.0
-        tensor = (tensor - np.asarray([0.485, 0.456, 0.406])) / np.asarray([0.229, 0.224, 0.225])
-        return np.transpose(tensor, (2, 0, 1))[None].astype(np.float32)
+        return preprocess_classifier_numpy(crop, self.image_size)
 
     def classify(self, crop: UInt8Image) -> ClassificationModel:
         session = self._load()

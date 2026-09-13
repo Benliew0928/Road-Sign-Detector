@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState, type RefObject } from "react"
 
 import { cameraSocketUrl } from "../api";
 import type { FrameResult, SignEvent } from "../types";
-import { parseCameraMessage, type CameraMessage } from "./useCameraStream";
+import { encodeCameraFrame, parseCameraMessage, type CameraMessage } from "./useCameraStream";
 
 export type PhoneCameraStatus = "idle" | "requesting" | "connecting" | "live" | "error";
 export type PhoneFacingMode = "environment" | "user";
@@ -30,7 +30,6 @@ export interface PhoneStreamStats {
 
 interface PhoneCameraStream {
   videoRef: RefObject<HTMLVideoElement | null>;
-  frameUrl: string | null;
   status: PhoneCameraStatus;
   error: string | null;
   result: FrameResult | null;
@@ -42,36 +41,13 @@ interface PhoneCameraStream {
 
 const TARGET_60_FPS_INTERVAL_MS = 1000 / 60;
 const TARGET_30_FPS_INTERVAL_MS = 1000 / 30;
-const LOCAL_MAX_IN_FLIGHT_FRAMES = 1;
-const PUBLIC_MAX_IN_FLIGHT_FRAMES = 1;
-const INITIAL_JPEG_QUALITY = 0.6;
-const PUBLIC_INITIAL_JPEG_QUALITY = 0.5;
-const MIN_JPEG_QUALITY = 0.38;
-const PUBLIC_MIN_JPEG_QUALITY = 0.32;
+const LOCAL_MAX_IN_FLIGHT_FRAMES = 2;
+const PUBLIC_MAX_IN_FLIGHT_FRAMES = 2;
 const MAX_JPEG_QUALITY = 0.78;
 const PUBLIC_MAX_JPEG_QUALITY = 0.72;
 
-function qualityBounds(publicMode?: boolean): { min: number; max: number } {
-  return publicMode
-    ? { min: PUBLIC_MIN_JPEG_QUALITY, max: PUBLIC_MAX_JPEG_QUALITY }
-    : { min: MIN_JPEG_QUALITY, max: MAX_JPEG_QUALITY };
-}
-
 function initialQuality(publicMode?: boolean): number {
-  return publicMode ? PUBLIC_INITIAL_JPEG_QUALITY : INITIAL_JPEG_QUALITY;
-}
-
-function nextQuality(
-  current: number,
-  latencyMs: number,
-  droppedFrames: number,
-  publicMode?: boolean,
-): number {
-  const bounds = qualityBounds(publicMode);
-  if (latencyMs > 220 || droppedFrames > 6) return Math.max(bounds.min, current - 0.08);
-  if (latencyMs > 120 || droppedFrames > 2) return Math.max(bounds.min, current - 0.04);
-  if (latencyMs < 70 && droppedFrames === 0) return Math.min(bounds.max, current + 0.015);
-  return current;
+  return publicMode ? PUBLIC_MAX_JPEG_QUALITY : MAX_JPEG_QUALITY;
 }
 
 function nextFrameInterval(
@@ -106,11 +82,11 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const inFlightFrames = useRef(0);
   const encodingFrame = useRef(false);
-  const pendingFrameStartedAt = useRef<number[]>([]);
-  const pendingPreviewUrls = useRef<string[]>([]);
+  const pendingFrameStartedAt = useRef(new Map<number, number>());
+  const nextFrameSeq = useRef(0);
   const intentionalStop = useRef(false);
   const reconnectAttempts = useRef(0);
-  const jpegQuality = useRef(INITIAL_JPEG_QUALITY);
+  const jpegQuality = useRef(initialQuality(options.publicMode));
   const targetFrameInterval = useRef(TARGET_60_FPS_INTERVAL_MS);
   const lastFrameSentAt = useRef(0);
   const sentSamples = useRef<number[]>([]);
@@ -122,7 +98,6 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
   const [status, setStatus] = useState<PhoneCameraStatus>("idle");
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<FrameResult | null>(null);
-  const [frameUrl, setFrameUrl] = useState<string | null>(null);
   const [events, setEvents] = useState<SignEvent[]>([]);
   const [stats, setStats] = useState<PhoneStreamStats>({
     framesSent: 0,
@@ -155,16 +130,10 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
     }
     inFlightFrames.current = 0;
     encodingFrame.current = false;
-    pendingFrameStartedAt.current = [];
-    pendingPreviewUrls.current.forEach((url) => URL.revokeObjectURL(url));
-    pendingPreviewUrls.current = [];
+    pendingFrameStartedAt.current.clear();
     sentSamples.current = [];
     ackSamples.current = [];
     droppedSinceLastAck.current = 0;
-    setFrameUrl((current) => {
-      if (current) URL.revokeObjectURL(current);
-      return null;
-    });
     setStatus("idle");
   }, []);
 
@@ -200,10 +169,11 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
       (blob) => {
         encodingFrame.current = false;
         if (!blob || socket.readyState !== WebSocket.OPEN) return;
+        const frameSeq = nextFrameSeq.current;
+        nextFrameSeq.current += 1;
         inFlightFrames.current += 1;
-        pendingFrameStartedAt.current.push(performance.now());
-        pendingPreviewUrls.current.push(URL.createObjectURL(blob));
-        socket.send(blob);
+        pendingFrameStartedAt.current.set(frameSeq, performance.now());
+        socket.send(encodeCameraFrame(blob, frameSeq));
         const sendFps = recordWindowFps(sentSamples.current, performance.now());
         setStats((current) => ({
           ...current,
@@ -253,18 +223,40 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
       animationFrameRef.current = window.requestAnimationFrame(frameLoopRef.current);
     };
     socket.onmessage = (message) => {
+      let cameraMessage: CameraMessage;
+      try {
+        cameraMessage = parseCameraMessage(message.data);
+      } catch {
+        setError("Phone stream response could not be decoded.");
+        return;
+      }
+      if ("error" in cameraMessage) {
+        if (cameraMessage.frame_seq !== undefined) {
+          pendingFrameStartedAt.current.delete(cameraMessage.frame_seq);
+          inFlightFrames.current = Math.max(0, inFlightFrames.current - 1);
+        }
+        setError(cameraMessage.error);
+        setStats((current) => ({ ...current, inFlight: inFlightFrames.current }));
+        return;
+      }
+      if ("type" in cameraMessage) {
+        pendingFrameStartedAt.current.delete(cameraMessage.frame_seq);
+        inFlightFrames.current = Math.max(0, inFlightFrames.current - 1);
+        setStats((current) => ({
+          ...current,
+          framesDropped: current.framesDropped + 1,
+          inFlight: inFlightFrames.current,
+        }));
+        return;
+      }
       inFlightFrames.current = Math.max(0, inFlightFrames.current - 1);
-      const startedAt = pendingFrameStartedAt.current.shift() ?? performance.now();
-      const latencyMs = Math.round(performance.now() - startedAt);
-      const ackFps = recordWindowFps(ackSamples.current, performance.now());
+      const startedAt = pendingFrameStartedAt.current.get(cameraMessage.frame_id) ?? performance.now();
+      pendingFrameStartedAt.current.delete(cameraMessage.frame_id);
+      const now = performance.now();
+      const latencyMs = Math.round(now - startedAt);
+      const ackFps = recordWindowFps(ackSamples.current, now);
       const droppedFrames = droppedSinceLastAck.current;
       droppedSinceLastAck.current = 0;
-      jpegQuality.current = nextQuality(
-        jpegQuality.current,
-        latencyMs,
-        droppedFrames,
-        options.publicMode,
-      );
       targetFrameInterval.current = nextFrameInterval(
         targetFrameInterval.current,
         latencyMs,
@@ -280,27 +272,6 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
         targetFps: Math.round(1000 / targetFrameInterval.current),
         inFlight: inFlightFrames.current,
       }));
-
-      let cameraMessage: CameraMessage;
-      const previewUrl = pendingPreviewUrls.current.shift() ?? null;
-      try {
-        cameraMessage = parseCameraMessage(message.data);
-      } catch {
-        if (previewUrl) URL.revokeObjectURL(previewUrl);
-        setError("Phone stream response could not be decoded.");
-        return;
-      }
-      if ("error" in cameraMessage) {
-        if (previewUrl) URL.revokeObjectURL(previewUrl);
-        setError(cameraMessage.error);
-        return;
-      }
-      if (previewUrl) {
-        setFrameUrl((current) => {
-          if (current) URL.revokeObjectURL(current);
-          return previewUrl;
-        });
-      }
       setResult(cameraMessage);
       const notable = cameraMessage.events.filter(
         (event) => event.stable || cameraMessage.mode === "baseline",
@@ -311,17 +282,13 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
     };
     socket.onerror = () => {
       inFlightFrames.current = 0;
-      pendingFrameStartedAt.current = [];
-      pendingPreviewUrls.current.forEach((url) => URL.revokeObjectURL(url));
-      pendingPreviewUrls.current = [];
+      pendingFrameStartedAt.current.clear();
       socket.close();
     };
     socket.onclose = () => {
       if (socketRef.current === socket) socketRef.current = null;
       inFlightFrames.current = 0;
-      pendingFrameStartedAt.current = [];
-      pendingPreviewUrls.current.forEach((url) => URL.revokeObjectURL(url));
-      pendingPreviewUrls.current = [];
+      pendingFrameStartedAt.current.clear();
       if (animationFrameRef.current !== null) {
         window.cancelAnimationFrame(animationFrameRef.current);
         animationFrameRef.current = null;
@@ -365,8 +332,9 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
     jpegQuality.current = startingQuality;
     targetFrameInterval.current = TARGET_60_FPS_INTERVAL_MS;
     inFlightFrames.current = 0;
+    nextFrameSeq.current = 0;
     encodingFrame.current = false;
-    pendingFrameStartedAt.current = [];
+    pendingFrameStartedAt.current.clear();
     sentSamples.current = [];
     ackSamples.current = [];
     droppedSinceLastAck.current = 0;
@@ -421,5 +389,5 @@ export function usePhoneCameraStream(options: PhoneCameraOptions): PhoneCameraSt
     };
   }, [stop]);
 
-  return { videoRef, frameUrl, status, error, result, events, stats, start, stop };
+  return { videoRef, status, error, result, events, stats, start, stop };
 }

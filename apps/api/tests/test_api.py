@@ -10,7 +10,7 @@ import numpy as np
 import pytest
 from fastapi.testclient import TestClient
 
-from roadsign_api.main import MAX_UPLOAD_BYTES, app
+from roadsign_api.main import MAX_UPLOAD_BYTES, app, decode_camera_frame_message
 from roadsign_assist.paths import OFFICIAL_ROOT, PROJECT_ROOT
 
 
@@ -29,6 +29,11 @@ async def test_health_endpoint() -> None:
         assert body["diagnostics"]["healthy"] is True
         assert body["diagnostics"]["project_root"]
         models = body["models"]
+        assert models["runtime_badge"] in {"LEGACY", "CANDIDATE", "SHADOW"}
+        assert isinstance(models["config_name"], str)
+        assert len(models["config_sha256"]) == 64
+        assert models["preprocessing_version"] == "roadsign_raw_bgr_v1"
+        assert isinstance(models["bundle_identity"], dict)
         assert models["mode"] in {"baseline", "deep", "auto"}
         assert isinstance(models["detector_loaded"], bool)
         assert "detector_device" in models
@@ -46,6 +51,11 @@ async def test_models_endpoint_contract() -> None:
         response = await client.get("/api/v1/models")
         assert response.status_code == 200
         body = response.json()
+        assert body["runtime_badge"] in {"LEGACY", "CANDIDATE", "SHADOW"}
+        assert isinstance(body["config_name"], str)
+        assert len(body["config_sha256"]) == 64
+        assert body["preprocessing_version"] == "roadsign_raw_bgr_v1"
+        assert isinstance(body["bundle_identity"], dict)
         assert body["mode"] in {"baseline", "deep", "auto"}
         assert isinstance(body["detector"], str)
         assert isinstance(body["detector_available"], bool)
@@ -108,6 +118,17 @@ async def test_image_upload_size_limit() -> None:
     assert response.json()["detail"] == "Image exceeds 20 MB"
 
 
+async def test_close_up_upload_size_limit() -> None:
+    transport = httpx.ASGITransport(app=app)
+    async with httpx.AsyncClient(transport=transport, base_url="http://test") as client:
+        response = await client.post(
+            "/api/v1/infer/close-up",
+            files={"file": ("large.jpg", b"0" * (MAX_UPLOAD_BYTES + 1), "image/jpeg")},
+        )
+    assert response.status_code == 413
+    assert response.json()["detail"] == "Image exceeds 20 MB"
+
+
 async def test_batch_rejects_more_than_100_images() -> None:
     image = _sample_image_bytes()
     files = [("files", (f"sample-{index}.png", image, "image/png")) for index in range(101)]
@@ -128,6 +149,38 @@ def test_camera_websocket_contract() -> None:
         assert body["frame_id"] == 0
         assert body["width"] > 0
         assert "events" in body
+
+
+def test_camera_frame_envelope_preserves_full_jpeg_payload() -> None:
+    jpeg = b"\xff\xd8full-resolution-jpeg\xff\xd9"
+    framed = b"RSA1" + (42).to_bytes(4, byteorder="big") + jpeg
+
+    frame_seq, decoded = decode_camera_frame_message(framed, fallback_frame_seq=7)
+    assert frame_seq == 42
+    assert decoded == jpeg
+
+    fallback_seq, legacy = decode_camera_frame_message(jpeg, fallback_frame_seq=7)
+    assert fallback_seq == 7
+    assert legacy == jpeg
+
+
+def test_camera_websocket_acknowledges_every_sequenced_frame_without_backlog() -> None:
+    image = _sample_image_bytes()
+    with (
+        TestClient(app) as client,
+        client.websocket_connect("/api/v1/ws/camera/latest-frame-session") as websocket,
+    ):
+        for frame_seq in range(3):
+            websocket.send_bytes(b"RSA1" + frame_seq.to_bytes(4, byteorder="big") + image)
+
+        messages = [websocket.receive_json() for _ in range(3)]
+
+    acknowledged = [
+        message["frame_seq"] if message.get("type") == "dropped" else message["frame_id"]
+        for message in messages
+    ]
+    assert sorted(acknowledged) == [0, 1, 2]
+    assert any("frame_id" in message for message in messages)
 
 
 def test_camera_websocket_recovers_after_bad_frame() -> None:
@@ -454,3 +507,41 @@ async def test_invalid_video_upload_is_cleaned_up() -> None:
     assert response.status_code == 400
     assert response.json()["detail"] == "Unable to decode video"
     assert after == before
+async def test_video_live_progress(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    import asyncio
+    import threading
+    import uuid
+    from roadsign_api import main
+
+    path = tmp_path / "progress.avi"
+    writer = cv2.VideoWriter(str(path), cv2.VideoWriter.fourcc(*"MJPG"), 10.0, (64, 64))
+    assert writer.isOpened()
+    for _ in range(3):
+        writer.write(np.zeros((64, 64, 3), dtype=np.uint8))
+    writer.release()
+    real_engine = main.get_engine().new_session()
+    entered = threading.Event()
+    release = threading.Event()
+    class PausedEngine:
+        def new_session(self):
+            return self
+        def process_frame(self, frame):
+            entered.set()
+            assert release.wait(10)
+            return real_engine.process_frame(frame)
+    monkeypatch.setattr(main, "get_engine", lambda: PausedEngine())
+    progress_id = str(uuid.uuid4())
+    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url="http://test") as client:
+        task = asyncio.create_task(client.post(f"/api/v1/infer/video?progress_id={progress_id}", files={"file": ("progress.avi", path.read_bytes(), "video/x-msvideo")}))
+        try:
+            assert await asyncio.to_thread(entered.wait, 5)
+            progress = (await client.get(f"/api/v1/infer/video/progress/{progress_id}")).json()
+            assert progress["stage"] == "analyzing"
+            assert progress["total"] == 3
+            assert progress["processed"] == 0
+            assert progress["eta_seconds"] is None
+        finally:
+            release.set()
+            response = await task
+        assert response.status_code == 200
+        assert response.json()["frames_read"] == 3

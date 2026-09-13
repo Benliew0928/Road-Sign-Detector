@@ -24,6 +24,7 @@ outputs/*
 outputs/audit/*
 !outputs/audit/classifier_no_controlled_variants_20260812.json
 !outputs/audit/p5_label_qc_report.json
+!outputs/audit/teammate_ultimate_classifier_integration_20260826.json
 
 *.dvc.tmp
 *.pt

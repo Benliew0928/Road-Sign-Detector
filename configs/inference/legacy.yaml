@@ -1,0 +1,46 @@
+config_name: legacy_retained_v1
+runtime_badge: LEGACY
+preprocessing_version: roadsign_raw_bgr_v1
+experimental: false
+catalogue_path: configs/catalogue/malaysia_signs.v1.json
+crop_padding: 0.06
+detector:
+  backend: deep
+  task: segment
+  model_path: models/exported/experimental/emtd_segmenter_s30.onnx
+  device: auto
+  sha256: 7c53e7877c1006a504aec92004eaf9f52b69b58c29839fe8e325b07e71f45c3f
+  verify_artifact_hash: true
+  image_size: 640
+  fallback_to_baseline: true
+  fallback_max_detections: 1
+  confidence_threshold: 0.35
+  nms_iou_threshold: 0.50
+classifier:
+  backend: deep
+  release_status: legacy_retained
+  model_path: models/exported/legacy_runtime_20260829/sign_classifier.onnx
+  labels_path: models/exported/legacy_runtime_20260829/sign_classifier.labels.json
+  calibration_path: models/exported/legacy_runtime_20260829/sign_classifier.calibration.json
+  image_size: 320
+  confidence_threshold: 0.696052074432373
+  verify_artifact_hash: true
+  sha256: 330148d353766f9218ff85a3fb12385a6015765c22566f61bfcbd13bfe633fe8
+  labels_sha256: 64332c13f020150a66da05d7df420b67d4f27b60517d34e1cabd106f8c9dc155
+  calibration_sha256: 404b5981d75092a0bae5adcbd7de4b5daea9d78f65dc8888dedecdbd764ccdbb
+  internal_academic_only: true
+ocr:
+  enabled: true
+  languages: [latin, chinese]
+tracking:
+  backend: auto
+  tracker_config_path: configs/tracking/botsort.yaml
+  gmc_method: sparseOptFlow
+  match_iou: 0.30
+  max_center_distance: 2.0
+  min_stable_frames: 3
+  max_missed_frames: 12
+  display_hold_frames: 2
+semantics:
+  critical_confidence_threshold: 0.88
+  normal_confidence_threshold: 0.75

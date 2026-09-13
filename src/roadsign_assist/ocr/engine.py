@@ -20,14 +20,24 @@ from roadsign_assist.ocr.normalization import (
 from roadsign_assist.paths import project_path
 
 
+NUMERIC_SIGN_RANGES: dict[str, tuple[float, float]] = {
+    "maximum_speed": (5.0, 160.0),
+    "height_restriction": (0.5, 10.0),
+    "width_restriction": (0.5, 10.0),
+    "weight_restriction": (0.5, 100.0),
+}
+
+
 class MultilingualOCREngine:
     def __init__(
         self,
         enabled: bool = True,
         model_root: str | Path = "models/ocr",
+        numeric_second_pass: bool = False,
     ) -> None:
         self.enabled = enabled
         self.model_root = project_path(model_root)
+        self.numeric_second_pass = numeric_second_pass
         self._engine: Any | None = None
         self._load_attempted = False
         self.load_error: str | None = None
@@ -145,11 +155,35 @@ class MultilingualOCREngine:
         )
         return cast(UInt8Image, cv2.cvtColor(sharpened, cv2.COLOR_GRAY2BGR))
 
-    def recognize(self, crop: UInt8Image) -> OCRModel:
-        self._ensure_loaded()
+    @staticmethod
+    def numeric_view(rectified: UInt8Image) -> UInt8Image:
+        """Build one high-contrast view for numeric signs without changing source pixels."""
+        import numpy as np
+
+        height, width = rectified.shape[:2]
+        scale = max(1.0, 224.0 / max(1, min(height, width)))
+        enlarged = cv2.resize(
+            rectified,
+            (round(width * scale), round(height * scale)),
+            interpolation=cv2.INTER_CUBIC,
+        )
+        gray = cv2.cvtColor(enlarged, cv2.COLOR_BGR2GRAY)
+        blurred = cv2.GaussianBlur(gray, (3, 3), 0)
+        binary = cv2.adaptiveThreshold(
+            blurred,
+            255,
+            cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+            cv2.THRESH_BINARY,
+            31,
+            7,
+        )
+        padded = cv2.copyMakeBorder(binary, 24, 24, 24, 24, cv2.BORDER_CONSTANT, value=255)
+        return cast(UInt8Image, cv2.cvtColor(padded, cv2.COLOR_GRAY2BGR))
+
+    def _recognize_view(self, image: UInt8Image) -> OCRModel:
         if self._engine is None:
             return OCRModel()
-        result = self._engine.predict(self.rectify(crop))
+        result = self._engine.predict(image)
         texts: list[str] = []
         scores: list[float] = []
         for item in result:
@@ -172,3 +206,51 @@ class MultilingualOCREngine:
             unit=numeric.unit if numeric else None,
             semantic_sign_id=matched_sign.semantic_sign_id if matched_sign else None,
         )
+
+    @staticmethod
+    def _plausible_numeric(result: OCRModel, semantic_hint: str) -> bool:
+        limits = NUMERIC_SIGN_RANGES.get(semantic_hint)
+        return (
+            limits is not None
+            and result.numeric_value is not None
+            and limits[0] <= result.numeric_value <= limits[1]
+        )
+
+    @staticmethod
+    def _normalize_numeric_for_hint(result: OCRModel, semantic_hint: str) -> OCRModel:
+        """Repair a dropped decimal only where an integer cannot be a plausible dimension."""
+        value = result.numeric_value
+        if (
+            semantic_hint in {"height_restriction", "width_restriction"}
+            and value is not None
+            and 10.0 < value <= 99.0
+            and "." not in result.text
+            and "," not in result.text
+        ):
+            return result.model_copy(update={"numeric_value": value / 10.0})
+        return result
+
+    def recognize(self, crop: UInt8Image, *, semantic_hint: str | None = None) -> OCRModel:
+        self._ensure_loaded()
+        if self._engine is None:
+            return OCRModel()
+        rectified = self.rectify(crop)
+        primary = self._recognize_view(rectified)
+        if not self.numeric_second_pass or semantic_hint not in NUMERIC_SIGN_RANGES:
+            return primary
+
+        primary = self._normalize_numeric_for_hint(primary, semantic_hint)
+        secondary = self._normalize_numeric_for_hint(
+            self._recognize_view(self.numeric_view(rectified)), semantic_hint
+        )
+        primary_valid = self._plausible_numeric(primary, semantic_hint)
+        secondary_valid = self._plausible_numeric(secondary, semantic_hint)
+        if primary_valid and secondary_valid:
+            if abs(float(primary.numeric_value) - float(secondary.numeric_value)) <= 0.05:
+                return primary if primary.confidence >= secondary.confidence else secondary
+            # Conflicting numeric readings are unsafe. Preserve the text for diagnosis,
+            # but suppress the value so semantic rules cannot emit a restriction action.
+            return primary.model_copy(update={"numeric_value": None, "unit": None})
+        if secondary_valid:
+            return secondary
+        return primary

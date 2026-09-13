@@ -37,7 +37,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
-from roadsign_api.dependencies import get_engine
+from roadsign_api.dependencies import get_close_up_engine, get_engine
 from roadsign_assist import __version__
 from roadsign_assist.baseline.models import UInt8Image
 from roadsign_assist.catalogue.models import SignCatalogue
@@ -55,8 +55,18 @@ OPERATOR_ACCESS_TTL_SECONDS = 12 * 60 * 60
 PHONE_STREAM_IDLE_TIMEOUT_SECONDS = 15.0
 PHONE_DEVICE_ID_MAX_LENGTH = 96
 DEFAULT_MAX_PHONE_STREAMS = 12
+CAMERA_FRAME_MAGIC = b"RSA1"
+CAMERA_FRAME_HEADER_BYTES = 8
 GENERATED_DEMO_SECRET = secrets.token_urlsafe(32)
 GENERATED_OPERATOR_TOKEN = secrets.token_urlsafe(24)
+
+
+def decode_camera_frame_message(data: bytes, fallback_frame_seq: int) -> tuple[int, bytes]:
+    """Decode an optional frame sequence envelope while accepting legacy raw JPEG frames."""
+    if len(data) >= CAMERA_FRAME_HEADER_BYTES and data.startswith(CAMERA_FRAME_MAGIC):
+        frame_seq = int.from_bytes(data[4:8], byteorder="big", signed=False)
+        return frame_seq, data[CAMERA_FRAME_HEADER_BYTES:]
+    return fallback_frame_seq, data
 
 
 def _empty_sign_events() -> list[SignEventModel]:
@@ -368,6 +378,12 @@ class DiagnosticsResponse(BaseModel):
 class ModelStatusResponse(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
+    runtime_badge: Literal["LEGACY", "CANDIDATE", "SHADOW"]
+    config_name: str
+    config_path: str
+    config_sha256: str
+    preprocessing_version: str
+    bundle_identity: dict[str, object] = Field(default_factory=dict)
     mode: InferenceMode
     detector: str
     detector_available: bool
@@ -816,6 +832,22 @@ def create_app() -> FastAPI:
         except ValueError as exc:
             raise HTTPException(status_code=400, detail=str(exc)) from exc
 
+    @application.post("/api/v1/infer/close-up", response_model=ImageInferenceResponse)
+    async def infer_close_up(file: Annotated[UploadFile, File()]) -> ImageInferenceResponse:
+        """Classify one upright sign that occupies most of the supplied image."""
+        data = await file.read(MAX_UPLOAD_BYTES + 1)
+        if len(data) > MAX_UPLOAD_BYTES:
+            raise HTTPException(status_code=413, detail="Image exceeds 20 MB")
+        try:
+            image = decode_image(data)
+            engine = get_close_up_engine().new_session()
+            result = await asyncio.to_thread(engine.process_close_up, image)
+            annotated = annotate_frame(image, result)
+            encoded = base64.b64encode(encode_jpeg(annotated)).decode("ascii")
+            return ImageInferenceResponse(result=result, annotated_jpeg_base64=encoded)
+        except ValueError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+
     @application.post("/api/v1/infer/batch", response_model=BatchInferenceResponse)
     async def infer_batch(files: Annotated[list[UploadFile], File()]) -> BatchInferenceResponse:
         if not files or len(files) > 100:
@@ -841,8 +873,14 @@ def create_app() -> FastAPI:
                 results.append(BatchInferenceItem(filename=file.filename, error=str(exc)))
         return BatchInferenceResponse(count=len(results), results=results)
 
+    video_progress: dict[str, dict[str, float | int | str | None]] = {}
+
+    @application.get("/api/v1/infer/video/progress/{progress_id}")
+    async def get_video_progress(progress_id: uuid.UUID) -> dict[str, float | int | str | None]:
+        return video_progress.get(str(progress_id), {"stage": "uploading", "processed": 0, "total": None, "eta_seconds": None})
+
     @application.post("/api/v1/infer/video", response_model=VideoInferenceResponse)
-    async def infer_video(file: Annotated[UploadFile, File()]) -> VideoInferenceResponse:
+    async def infer_video(file: Annotated[UploadFile, File()], progress_id: uuid.UUID | None = None) -> VideoInferenceResponse:
         suffix = Path(file.filename or "upload.mp4").suffix or ".mp4"
         temp_root = PROJECT_ROOT / "outputs" / "uploads"
         temp_root.mkdir(parents=True, exist_ok=True)
@@ -855,9 +893,18 @@ def create_app() -> FastAPI:
         if not capture.isOpened():
             temp_path.unlink(missing_ok=True)
             raise HTTPException(status_code=400, detail="Unable to decode video")
+        orientation_auto = getattr(cv2, "CAP_PROP_ORIENTATION_AUTO", None)
+        if orientation_auto is not None:
+            capture.set(orientation_auto, 1)
         engine = get_engine().new_session()
         reported_fps = float(capture.get(cv2.CAP_PROP_FPS))
         fps = reported_fps if reported_fps > 0 else 30.0
+        progress_key = str(progress_id) if progress_id else None
+        total_frames = max(0, int(capture.get(cv2.CAP_PROP_FRAME_COUNT)))
+        started = time.monotonic()
+        # Keep only active jobs; final response owns completion state.
+        if progress_key:
+            video_progress[progress_key] = {"stage": "analyzing", "processed": 0, "total": total_frames or None, "eta_seconds": None}
         frames = 0
         event_count = 0
         frame_results: list[VideoFrameResult] = []
@@ -880,7 +927,12 @@ def create_app() -> FastAPI:
                     event_samples = event_samples[-40:]
                     representative_result = result
                 frames += 1
+                if progress_key:
+                    elapsed = time.monotonic() - started
+                    video_progress[progress_key] = {"stage": "analyzing", "processed": frames, "total": total_frames or None, "eta_seconds": max(0.0, (total_frames - frames) * elapsed / frames) if total_frames >= frames and frames >= 5 and elapsed >= 2 else None}
         finally:
+            if progress_key:
+                video_progress.pop(progress_key, None)
             capture.release()
             temp_path.unlink(missing_ok=True)
         return VideoInferenceResponse(
@@ -915,48 +967,119 @@ def create_app() -> FastAPI:
             await websocket.close(code=1013)
             return
         engine = get_engine().new_session()
-        frame_seq = 0
-        try:
-            while True:
-                data = await asyncio.wait_for(
-                    websocket.receive_bytes(),
-                    timeout=PHONE_STREAM_IDLE_TIMEOUT_SECONDS,
-                )
-                if len(data) > MAX_UPLOAD_BYTES:
-                    await websocket.send_json({"error": "Frame exceeds 20 MB"})
-                    continue
-                try:
-                    image = await asyncio.to_thread(decode_image, data)
-                except ValueError as exc:
-                    await websocket.send_json({"error": str(exc)})
-                    continue
+        pending_frames: asyncio.Queue[tuple[int, bytes, bool]] = asyncio.Queue(maxsize=1)
+        send_lock = asyncio.Lock()
+        fallback_frame_seq = 0
 
-                frame_seq += 1
-                frame_id = frame_seq - 1
-                result = await asyncio.to_thread(engine.process_frame, image)
-                result = result.model_copy(update={"frame_id": frame_id})
-                await PHONE_STREAMS.update_live_frame(
-                    stream_handle.stream_id,
-                    stream_handle.token,
-                    data,
-                    frame_seq,
-                    result.width,
-                    result.height,
-                    result,
+        async def send_payload(payload: dict[str, object]) -> None:
+            async with send_lock:
+                await websocket.send_json(payload)
+
+        async def receive_frames() -> None:
+            nonlocal fallback_frame_seq
+            while True:
+                try:
+                    data = await asyncio.wait_for(
+                        websocket.receive_bytes(),
+                        timeout=PHONE_STREAM_IDLE_TIMEOUT_SECONDS,
+                    )
+                except WebSocketDisconnect:
+                    LOGGER.info("Camera WebSocket disconnected")
+                    return
+                except TimeoutError:
+                    LOGGER.info(
+                        "Camera WebSocket closed after %.1f seconds without frames",
+                        PHONE_STREAM_IDLE_TIMEOUT_SECONDS,
+                    )
+                    await websocket.close(code=1001)
+                    return
+                explicitly_sequenced = (
+                    len(data) >= CAMERA_FRAME_HEADER_BYTES and data.startswith(CAMERA_FRAME_MAGIC)
                 )
-                await PHONE_STREAMS.update_inference_result(
-                    stream_handle.stream_id,
-                    stream_handle.token,
-                    result,
-                    frame_seq,
-                )
-                await websocket.send_json(result.model_dump(mode="json"))
-        except TimeoutError:
-            LOGGER.info("Camera WebSocket closed after %.1f seconds without frames", PHONE_STREAM_IDLE_TIMEOUT_SECONDS)
-            await websocket.close(code=1001)
+                frame_seq, jpeg_bytes = decode_camera_frame_message(data, fallback_frame_seq)
+                if explicitly_sequenced:
+                    fallback_frame_seq = max(fallback_frame_seq, frame_seq + 1)
+                if len(jpeg_bytes) > MAX_UPLOAD_BYTES:
+                    await send_payload(
+                        {
+                            "error": "Frame exceeds 20 MB",
+                            "frame_seq": frame_seq,
+                        }
+                    )
+                    continue
+                if pending_frames.full():
+                    superseded_seq, _, _ = pending_frames.get_nowait()
+                    pending_frames.task_done()
+                    await send_payload(
+                        {
+                            "type": "dropped",
+                            "frame_seq": superseded_seq,
+                            "reason": "superseded_by_newer_frame",
+                        }
+                    )
+                pending_frames.put_nowait((frame_seq, jpeg_bytes, explicitly_sequenced))
+
+        async def process_latest_frames() -> None:
+            nonlocal fallback_frame_seq
+            while True:
+                frame_seq, jpeg_bytes, explicitly_sequenced = await pending_frames.get()
+                try:
+                    try:
+                        image = await asyncio.to_thread(decode_image, jpeg_bytes)
+                    except ValueError as exc:
+                        await send_payload(
+                            {
+                                "error": str(exc),
+                                "frame_seq": frame_seq,
+                            }
+                        )
+                        continue
+
+                    if not explicitly_sequenced:
+                        fallback_frame_seq += 1
+                    result = await asyncio.to_thread(engine.process_frame, image)
+                    result = result.model_copy(update={"frame_id": frame_seq})
+                    await PHONE_STREAMS.update_live_frame(
+                        stream_handle.stream_id,
+                        stream_handle.token,
+                        jpeg_bytes,
+                        frame_seq + 1,
+                        result.width,
+                        result.height,
+                        result,
+                    )
+                    await PHONE_STREAMS.update_inference_result(
+                        stream_handle.stream_id,
+                        stream_handle.token,
+                        result,
+                        frame_seq + 1,
+                    )
+                    await send_payload(result.model_dump(mode="json"))
+                finally:
+                    pending_frames.task_done()
+
+        receiver = asyncio.create_task(receive_frames())
+        processor = asyncio.create_task(process_latest_frames())
+        try:
+            done, _ = await asyncio.wait(
+                {receiver, processor},
+                return_when=asyncio.FIRST_COMPLETED,
+            )
+            for task in done:
+                if task.cancelled():
+                    continue
+                exception = task.exception()
+                if exception is not None:
+                    raise exception
+        except asyncio.CancelledError:
+            LOGGER.info("Camera WebSocket task cancelled during disconnect")
         except WebSocketDisconnect:
             LOGGER.info("Camera WebSocket disconnected")
         finally:
+            receiver.cancel()
+            processor.cancel()
+            with suppress(asyncio.CancelledError):
+                await asyncio.gather(receiver, processor, return_exceptions=True)
             await PHONE_STREAMS.unregister(stream_handle.stream_id, stream_handle.token)
 
     @application.websocket("/api/v1/ws/phone/monitor")

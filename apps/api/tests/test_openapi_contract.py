@@ -21,6 +21,7 @@ def test_openapi_exposes_typed_p13_http_contracts() -> None:
         ("/api/v1/phone/connection", "get"): "#/components/schemas/PhoneConnectionResponse",
         ("/api/v1/phone/streams", "get"): "#/components/schemas/PhoneStreamsResponse",
         ("/api/v1/infer/image", "post"): "#/components/schemas/ImageInferenceResponse",
+        ("/api/v1/infer/close-up", "post"): "#/components/schemas/ImageInferenceResponse",
         ("/api/v1/infer/batch", "post"): "#/components/schemas/BatchInferenceResponse",
         ("/api/v1/infer/video", "post"): "#/components/schemas/VideoInferenceResponse",
     }
@@ -38,6 +39,12 @@ def test_openapi_contains_runtime_fields_used_by_react() -> None:
     phone_stream = schemas["PhoneStreamSnapshot"]["properties"]
     assert "healthy" in diagnostics
     for field in (
+        "runtime_badge",
+        "config_name",
+        "config_path",
+        "config_sha256",
+        "preprocessing_version",
+        "bundle_identity",
         "detector_loaded",
         "detector_device",
         "detector_profile",

@@ -8,6 +8,7 @@ from pydantic import BaseModel, ConfigDict, Field, HttpUrl, model_validator
 
 class LicenceDecision(StrEnum):
     ACCEPTED = "accepted"
+    INTERNAL_ACADEMIC_EXCEPTION = "internal_academic_exception"
     REJECTED = "rejected"
     REVIEW_REQUIRED = "review_required"
 

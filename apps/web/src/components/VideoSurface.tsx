@@ -1,17 +1,28 @@
 import { ImageIcon, ScanLine } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-import { advisoryHeadline } from "../advisoryDisplay";
-import type { FrameResult, SourceMode } from "../types";
+import { semanticConfidenceText, semanticSignName } from "../advisoryDisplay";
+import type { DisplayLanguage, FrameResult, SourceMode } from "../types";
 
 interface VideoSurfaceProps {
+  language?: DisplayLanguage;
+  onSelectSign?: (trackId: number) => void;
+  selectedTrackId?: number;
   mode: SourceMode;
   videoRef: React.RefObject<HTMLVideoElement | null>;
   imageUrl: string | null;
   result: FrameResult | null;
 }
 
-export function VideoSurface({ mode, videoRef, imageUrl, result }: VideoSurfaceProps) {
+export function VideoSurface({
+  mode,
+  videoRef,
+  imageUrl,
+  result,
+  language = "en",
+  onSelectSign,
+  selectedTrackId,
+}: VideoSurfaceProps) {
   const hasMedia = mode === "camera" || (mode === "image" && imageUrl);
   const surfaceRef = useRef<HTMLElement>(null);
   const [mediaBox, setMediaBox] = useState<React.CSSProperties>({});
@@ -46,20 +57,28 @@ export function VideoSurface({ mode, videoRef, imageUrl, result }: VideoSurfaceP
       }
     };
     update();
+    if (typeof ResizeObserver === "undefined") return;
     const observer = new ResizeObserver(update);
     observer.observe(surface);
     return () => observer.disconnect();
   }, [result]);
 
   return (
-    <section ref={surfaceRef} className="video-surface" aria-label="Live road sign view">
+    <section
+      ref={surfaceRef}
+      className="video-surface"
+      aria-label="Live road sign view"
+    >
       {!hasMedia ? (
         <div className="empty-media">
           <ImageIcon size={34} aria-hidden="true" />
           <span>Select an image</span>
         </div>
       ) : (
-        <div className="media-coordinate-space" style={result ? mediaBox : { inset: 0 }}>
+        <div
+          className="media-coordinate-space"
+          style={result ? mediaBox : { inset: 0 }}
+        >
           {mode === "camera" ? (
             <video
               ref={videoRef}
@@ -87,7 +106,9 @@ export function VideoSurface({ mode, videoRef, imageUrl, result }: VideoSurfaceP
                     <polygon
                       key={`mask-${event.frame_id}-${event.track_id}`}
                       className={`segmentation-mask severity-${event.severity}`}
-                      points={event.mask.points.map(([x, y]) => `${x},${y}`).join(" ")}
+                      points={event.mask.points
+                        .map(([x, y]) => `${x},${y}`)
+                        .join(" ")}
                     />
                   ) : null,
                 )}
@@ -98,7 +119,24 @@ export function VideoSurface({ mode, videoRef, imageUrl, result }: VideoSurfaceP
               >
                 {result.events.map((event) => (
                   <div
-                    className={`detection-box severity-${event.severity}`}
+                    className={`detection-box severity-${event.severity} ${selectedTrackId === event.track_id ? "selected-detection" : ""}`}
+                    role={onSelectSign ? "button" : undefined}
+                    tabIndex={onSelectSign ? 0 : undefined}
+                    aria-label={
+                      onSelectSign
+                        ? `Inspect ${semanticSignName(event, language)}`
+                        : undefined
+                    }
+                    onClick={() => onSelectSign?.(event.track_id)}
+                    onKeyDown={(key) => {
+                      if (
+                        onSelectSign &&
+                        (key.key === "Enter" || key.key === " ")
+                      ) {
+                        key.preventDefault();
+                        onSelectSign(event.track_id);
+                      }
+                    }}
                     key={`${event.frame_id}-${event.track_id}`}
                     style={{
                       left: `${(event.bbox.x1 / result.width) * 100}%`,
@@ -108,8 +146,8 @@ export function VideoSurface({ mode, videoRef, imageUrl, result }: VideoSurfaceP
                     }}
                   >
                     <span className="detection-label">
-                      #{event.track_id} {advisoryHeadline(event, "en")}{" "}
-                      {Math.round(event.confidence * 100)}%
+                      #{event.track_id} {semanticSignName(event, language)}{" "}
+                      {semanticConfidenceText(event)}
                     </span>
                   </div>
                 ))}

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "catalogue_version": "0.4-p2-approved-pending-archive",
+  "catalogue_version": "0.5-v4-oku-accessibility",
   "entries": [
     {
       "semantic_sign_id": "stop",
@@ -1587,6 +1587,35 @@
         "reference_id": "jkr_atj_2a_85_2019",
         "document": "JKR ATJ 2A/85 (Pindaan 2019)",
         "section": "Service signs",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "approved"
+    },
+    {
+      "semantic_sign_id": "oku_accessibility",
+      "category": "information",
+      "names": {
+        "en": "Accessible parking and access",
+        "ms": "Tempat letak kereta dan akses OKU",
+        "zh": "无障碍停车与通行"
+      },
+      "aliases": [
+        "OKU",
+        "AKSES OKU",
+        "PARKIR OKU",
+        "ACCESSIBLE PARKING",
+        "WHEELCHAIR ACCESS"
+      ],
+      "visual_family": "rectangle",
+      "base_action": "INFORMATION_ONLY",
+      "severity": "information",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "oku_accessibility",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Service and parking signs",
         "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
       },
       "review_status": "approved"

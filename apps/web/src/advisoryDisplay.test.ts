@@ -4,6 +4,8 @@ import {
   advisoryHeadline,
   advisoryInstruction,
   formatActionCode,
+  semanticConfidenceText,
+  semanticSignName,
   targetSummary,
 } from "./advisoryDisplay";
 import type { SignEvent } from "./types";
@@ -74,5 +76,23 @@ describe("advisory display helpers", () => {
     expect(advisoryHeadline(sign, "en")).toBe("Maximum speed");
     expect(advisoryInstruction(sign, "en")).toBe("Set Target Speed");
     expect(formatActionCode("UNKNOWN_CAUTION")).toBe("Unknown Caution");
+  });
+
+  it("keeps the exact semantic class separate from the advisory headline", () => {
+    const sign = event();
+
+    expect(semanticSignName(sign, "en")).toBe("Maximum speed");
+    expect(advisoryHeadline(sign, "en")).toBe("Speed limit 50 km/h");
+    expect(semanticConfidenceText(sign)).toBe("96%");
+  });
+
+  it("does not present unknown confidence as a definite class percentage", () => {
+    const sign = event({
+      semantic_sign_id: "unknown_sign",
+      meaning: { en: "Unknown road sign", ms: "Unknown", zh: "Unknown" },
+    });
+
+    expect(semanticSignName(sign, "en")).toBe("Unknown road sign");
+    expect(semanticConfidenceText(sign)).toBeNull();
   });
 });

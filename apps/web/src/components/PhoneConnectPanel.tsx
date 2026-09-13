@@ -1,8 +1,15 @@
-import { Copy, QrCode, RefreshCw, ShieldAlert, Smartphone, Wifi } from "lucide-react";
+import {
+  Copy,
+  MonitorPlay,
+  QrCode,
+  RefreshCw,
+  ShieldAlert,
+  Smartphone,
+  Wifi,
+} from "lucide-react";
 import QRCode from "qrcode";
 import { useCallback, useEffect, useState } from "react";
 
-import liveStreamAsset from "../assets/live-stream.png";
 import { getPhoneConnection } from "../api";
 import type { PhoneConnectionResponse } from "../types";
 
@@ -11,11 +18,15 @@ interface PhoneConnectPanelProps {
 }
 
 function operatorTokenFromUrl(): string | undefined {
-  return new URLSearchParams(window.location.search).get("operator") ?? undefined;
+  return (
+    new URLSearchParams(window.location.search).get("operator") ?? undefined
+  );
 }
 
 export function PhoneConnectPanel({ busy }: PhoneConnectPanelProps) {
-  const [connection, setConnection] = useState<PhoneConnectionResponse | null>(null);
+  const [connection, setConnection] = useState<PhoneConnectionResponse | null>(
+    null,
+  );
   const [qrUrl, setQrUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
@@ -35,15 +46,16 @@ export function PhoneConnectPanel({ busy }: PhoneConnectPanelProps) {
           margin: 2,
           width: 260,
           color: {
-            dark: "#07110d",
-            light: "#f5fff9",
+            dark: "#10151b",
+            light: "#ffffff",
           },
         }),
       );
     } catch (cause) {
       setConnection(null);
       setQrUrl(null);
-      const message = cause instanceof Error ? cause.message : "Unable to create phone link.";
+      const message =
+        cause instanceof Error ? cause.message : "Unable to create phone link.";
       setError(
         message === "Operator access token is required."
           ? "Public QR creation requires the host/operator link. Open the local dashboard on this PC, or use the public link that includes the operator token."
@@ -65,7 +77,9 @@ export function PhoneConnectPanel({ busy }: PhoneConnectPanelProps) {
       await navigator.clipboard.writeText(connection.phone_url);
       setCopied(true);
     } catch {
-      setError("Clipboard is unavailable. Select and copy the phone link manually.");
+      setError(
+        "Clipboard is unavailable. Select and copy the phone link manually.",
+      );
     }
   }, [connection]);
 
@@ -89,9 +103,13 @@ export function PhoneConnectPanel({ busy }: PhoneConnectPanelProps) {
             </span>
           ) : null}
           {liveWallHref ? (
-            <a className="live-stream-button" href={liveWallHref} title="Open host live camera wall">
-              <img src={liveStreamAsset} alt="" />
-              <span className="sr-only">Open host live camera wall</span>
+            <a
+              className="live-stream-button"
+              href={liveWallHref}
+              title="Open host live camera wall"
+            >
+              <MonitorPlay size={18} />
+              <span>Open host live camera wall</span>
             </a>
           ) : (
             <button
@@ -100,11 +118,15 @@ export function PhoneConnectPanel({ busy }: PhoneConnectPanelProps) {
               disabled
               title="Use the operator dashboard link printed by the public runner"
             >
-              <img src={liveStreamAsset} alt="" />
+              <MonitorPlay size={18} />
               <span className="sr-only">Open host live camera wall</span>
             </button>
           )}
-          <button className="icon-button" onClick={() => void refresh()} disabled={loading || busy}>
+          <button
+            className="icon-button"
+            onClick={() => void refresh()}
+            disabled={loading || busy}
+          >
             <RefreshCw size={17} />
             <span className="sr-only">Refresh phone QR</span>
           </button>
@@ -134,11 +156,16 @@ export function PhoneConnectPanel({ busy }: PhoneConnectPanelProps) {
           </div>
           <div>
             <Smartphone size={18} aria-hidden="true" />
-            <span>Scan the QR, allow camera access, then tap Start stream.</span>
+            <span>
+              Scan the QR, allow camera access, then tap Start stream.
+            </span>
           </div>
           <div>
             <ShieldAlert size={18} aria-hidden="true" />
-            <span>Use HTTPS for phone camera permission. Run scripts\run.ps1 for the complete local website.</span>
+            <span>
+              Phone cameras need a trusted HTTPS connection. Connection help is
+              below.
+            </span>
           </div>
         </div>
       </div>
@@ -152,7 +179,11 @@ export function PhoneConnectPanel({ busy }: PhoneConnectPanelProps) {
                 ? `${connection.public_base_url} phone link ready`
                 : connection.phone_url}
           </span>
-          <button className="icon-button" onClick={() => void copyLink()} title="Copy phone link">
+          <button
+            className="icon-button"
+            onClick={() => void copyLink()}
+            title="Copy phone link"
+          >
             <Copy size={16} />
             <span className="sr-only">Copy phone link</span>
           </button>
@@ -161,14 +192,18 @@ export function PhoneConnectPanel({ busy }: PhoneConnectPanelProps) {
 
       {connection && !connection.https ? (
         <div className="phone-connect-warning">
-          This server is using HTTP. Desktop testing works, but most phones require HTTPS before
-          camera permission is available.
+          This server is using HTTP. Desktop testing works, but most phones
+          require HTTPS before camera permission is available.
         </div>
       ) : null}
 
       {connection?.candidate_urls.length ? (
         <details className="phone-candidates">
-          <summary>Network candidates</summary>
+          <summary>Connection help & network addresses</summary>
+          <p>
+            Use the same Wi-Fi or hotspot. If camera permission is blocked,
+            trust the local certificate on your phone, then reopen this link.
+          </p>
           {connection.candidate_urls.map((url) => (
             <span key={url}>{url}</span>
           ))}

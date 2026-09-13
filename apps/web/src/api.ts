@@ -27,6 +27,14 @@ export async function inferImage(file: File): Promise<ImageInferenceResponse> {
   );
 }
 
+export async function inferCloseUpImage(file: File): Promise<ImageInferenceResponse> {
+  const body = new FormData();
+  body.append("file", file);
+  return parseJson<ImageInferenceResponse>(
+    await fetch("/api/v1/infer/close-up", { method: "POST", body }),
+  );
+}
+
 export async function inferBatch(files: File[]): Promise<BatchInferenceResponse> {
   const body = new FormData();
   files.forEach((file) => body.append("files", file));
@@ -35,12 +43,23 @@ export async function inferBatch(files: File[]): Promise<BatchInferenceResponse>
   );
 }
 
-export async function inferVideo(file: File): Promise<VideoInferenceResponse> {
-  const body = new FormData();
-  body.append("file", file);
-  return parseJson<VideoInferenceResponse>(
-    await fetch("/api/v1/infer/video", { method: "POST", body }),
-  );
+export interface VideoProgress { stage: string; processed: number; total: number | null; eta_seconds: number | null }
+export async function inferVideo(file: File, onProgress?: (progress: VideoProgress) => void): Promise<VideoInferenceResponse> {
+  const body = new FormData(); body.append("file", file);
+  const id = crypto.randomUUID();
+  let done = false;
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const controller = new AbortController();
+  const poll = async () => {
+    try {
+      const response = await fetch(`/api/v1/infer/video/progress/${id}`, { signal: controller.signal });
+      if(response.ok) { const progress = await response.json() as VideoProgress; if(!done) onProgress?.(progress); }
+    } catch { /* Progress is optional; the inference response remains authoritative. */ }
+    if(!done) timer = setTimeout(() => void poll(), 700);
+  };
+  if(onProgress) { onProgress({stage:"uploading",processed:0,total:null,eta_seconds:null}); timer=setTimeout(()=>void poll(),300); }
+  try { return await parseJson<VideoInferenceResponse>(await fetch(`/api/v1/infer/video?progress_id=${id}`, { method:"POST",body })); }
+  finally {done=true;clearTimeout(timer);controller.abort();}
 }
 
 export async function getPhoneConnection(operatorToken?: string): Promise<PhoneConnectionResponse> {

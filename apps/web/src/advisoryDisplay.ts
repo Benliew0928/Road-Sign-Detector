@@ -21,6 +21,16 @@ export function advisoryHeadline(event: SignEvent, language: DisplayLanguage): s
   return localizedText(event.advisory?.headline, language, localizedText(event.meaning, language));
 }
 
+export function semanticSignName(event: SignEvent, language: DisplayLanguage): string {
+  return localizedText(event.meaning, language, "Unknown road sign");
+}
+
+export function semanticConfidenceText(event: SignEvent): string | null {
+  return event.semantic_sign_id === "unknown_sign"
+    ? null
+    : `${Math.round(event.confidence * 100)}%`;
+}
+
 export function advisoryInstruction(event: SignEvent, language: DisplayLanguage): string {
   return localizedText(
     event.advisory?.instruction,

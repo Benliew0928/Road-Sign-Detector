@@ -21,6 +21,7 @@ class TrackState:
     velocity_x: float = 0.0
     velocity_y: float = 0.0
     semantic_scores: dict[str, float] = field(default_factory=dict)
+    semantic_weight: float = 0.0
     last_announced_at: float | None = None
 
     def predicted_bbox(

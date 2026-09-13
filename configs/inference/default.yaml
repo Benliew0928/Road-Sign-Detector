@@ -1,20 +1,47 @@
+config_name: public_release_option1_fusion_v4_20260913
+runtime_badge: CANDIDATE
+preprocessing_version: roadsign_raw_bgr_v1
+experimental: true
 catalogue_path: configs/catalogue/malaysia_signs.v1.json
+crop_padding: 0.06
 detector:
-  backend: auto
-  model_path: models/exported/sign_segmenter.onnx
+  backend: fusion
+  task: detect
+  requires_cuda: true
+  verify_artifact_hash: true
   image_size: 640
-  fallback_to_baseline: true
-  fallback_max_detections: 3
-  confidence_threshold: 0.25
   nms_iou_threshold: 0.50
+  fallback_to_baseline: false
+  members:
+    - name: candidate01
+      model_path: outputs/training/local_recovery_week1_phase5_20260909/detector_candidate01_yolo26s_s640_from_v12_s2513/weights/best.pt
+      device: "0"
+      sha256: 78880a62be0a6b00b602e78939dcbf62c69bad1b1f212ee28ecf8017823361a0
+      image_size: 640
+      confidence_threshold: 0.37
+      nms_iou_threshold: 0.50
+      assignment_only: true
+    - name: v12
+      model_path: outputs/training/recovery_v12/full_20260905T185534Z/checkpoints/detectors/yolo26s_640_s2513/weights/best.pt
+      device: "0"
+      sha256: 4782d7003d5aa8a9973b3b34dafbbbb5f147d1c69b318b36c7f6f0e1da62a497
+      image_size: 640
+      confidence_threshold: 0.45
+      nms_iou_threshold: 0.50
+      assignment_only: true
 classifier:
-  backend: auto
-  release_status: coverage_gaps_block_final
+  backend: deep
+  release_status: human_adjudicated_full_scene_gate_passed_v4
   model_path: models/exported/runtime/sign_classifier.onnx
   labels_path: models/exported/runtime/sign_classifier.labels.json
   calibration_path: models/exported/runtime/sign_classifier.calibration.json
-  image_size: 224
-  confidence_threshold: 0.47700026631355286
+  image_size: 320
+  confidence_threshold: 0.72
+  verify_artifact_hash: true
+  sha256: 13e290ab8159e6d1190ca9e2fd93b7635985e41b92454fd49b50e98e24630144
+  labels_sha256: 37839f68641dabf42107b51002febe99a0b8ca62bfeb6483c0038a5d852eff90
+  calibration_sha256: 6800c48baf0104e6bda91cb6758dfa52de80e33819b2aaa070755a885217da88
+  internal_academic_only: true
 ocr:
   enabled: true
   languages: [latin, chinese]

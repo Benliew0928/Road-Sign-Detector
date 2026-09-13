@@ -36,11 +36,21 @@ class SemanticRuleEngine:
         critical_confidence: float = 0.88,
         normal_confidence: float = 0.75,
         duplicate_warning_seconds: float = 8.0,
+        directional_strong_actions_enabled: bool = True,
     ) -> None:
         self.catalogue = catalogue_by_id()
         self.critical_confidence = critical_confidence
         self.normal_confidence = normal_confidence
         self.duplicate_warning_seconds = duplicate_warning_seconds
+        self.directional_strong_actions_enabled = directional_strong_actions_enabled
+
+    def directional_action_blocked(self, semantic_sign_id: str) -> bool:
+        definition = self.catalogue.get(semantic_sign_id)
+        return bool(
+            definition
+            and definition.parameter_type is ParameterType.DIRECTION
+            and not self.directional_strong_actions_enabled
+        )
 
     def requires_ocr(self, semantic_sign_id: str) -> bool:
         definition = self.catalogue.get(semantic_sign_id)
@@ -93,6 +103,12 @@ class SemanticRuleEngine:
             else self.normal_confidence
         )
         if confidence < threshold:
+            return (
+                definition.names,
+                Severity.CAUTION,
+                ADASActionModel(code=ActionCode.UNKNOWN_CAUTION),
+            )
+        if self.directional_action_blocked(semantic_sign_id):
             return (
                 definition.names,
                 Severity.CAUTION,

@@ -49,16 +49,29 @@ are temporary and must never be stored as a "current link" in source control.
 
 ## Website functions
 
+The local website uses the **Night Signal** dark interface. There is no account,
+login, registration, or cloud-storage workflow. Navigate between **Analyze**,
+**Live**, and **Recent**. Page transitions crossfade where supported, with a
+short CSS entrance fallback; reduced-motion preferences disable motion.
+
 | Function | How to use it |
 | --- | --- |
-| Image analysis | Choose **Image**, upload one or more images, and inspect detections, text, recommendations, and batch results. |
-| Video analysis | Choose **Video**, select a file, and use the annotated video surface and event timeline. |
-| Laptop camera | Choose **Laptop camera**, allow browser permission, and start live inference. |
-| Phone camera | Choose **Phone**, scan the QR code, trust `certs\roadsign-local.crt` on the phone when using LAN HTTPS, then start the rear or front camera. |
-| Multi-phone live wall | Open the live-wall control from an operator dashboard to monitor connected phone streams. |
+| Image analysis | Choose **Analyze → Images**, add one or more images, set **Road scene** or **Close-up sign** for each, check orientation and analyze. Click a sign box or finding to inspect it. |
+| Batch analysis | Add several images in Images. Review each thumbnail's type and orientation. Results include per-file failures and **Retry failed images**; successful items are retained. Maximum 100 images, 20 MB each. |
+| Video analysis | Choose **Analyze → Video**, add a file (up to 250 MB), and use the annotated video and **Explore sign moments**. Findings and warning language follow playback. |
+| Laptop camera | Choose **Live → This device**, allow browser permission, and start the camera. Changing source stops this device's camera. |
+| Phone camera | Choose **Live → Connected phones → Add phone**, scan the QR, trust `certs\roadsign-local.crt` on the phone when using LAN HTTPS, then start the stream. Rear/front and resolution controls are under **Camera settings**. |
+| Multi-phone live wall | Connected phones appear directly in Live. Select a tile to focus it; Escape closes focus. The standalone wall remains available from the pairing panel. Stale frames and delayed analysis are labeled separately. |
+| Recent | Reopen up to 24 image results from this browser session. Each retains its image type and runtime description. Reloading clears this history; no account or persistent library is created. |
 | OCR and tracking | These run inside the same analysis pipeline when enabled by the selected inference profile. |
 | Advisory audio | Choose English, Bahasa Melayu, or Mandarin and unmute. Warnings play from bundled local audio without an online TTS call. |
 | Model health | The status area names the detector, classifier, release status, and active profile so an experimental or coverage-blocked model is not presented as clean-final. |
+
+**System details** contains model profiles, bundle identity and diagnostics.
+Image batches dispatch sequentially to the appropriate existing single-image
+endpoint; the progress count represents completed requests, including failed
+items. The video endpoint returns at completion, so video uses indeterminate
+processing feedback. The existing batch API remains available to API clients.
 
 The selected classifier is the clean-data EfficientNetV2-S candidate
 `clean_b2_effnetv2s_224_e40_b32_s2513`. It scored 437/462 (94.59%) on the
