@@ -1,3 +1,4 @@
+import { useLiveDisplay } from "./hooks/useLiveDisplay";
 import { useEncounters } from "./hooks/useEncounters";
 import { useAdvisoryAudio } from "./hooks/useAdvisoryAudio";
 
@@ -82,13 +83,8 @@ export default function PhoneCameraApp() {
     enabled: live,
   });
   const busy = status === "requesting" || status === "connecting";
-  const primary =
-    live &&
-    findings.primary &&
-    !findings.primary.lastSeen &&
-    findings.primary.event.semantic_sign_id !== "unknown_sign"
-      ? findings.primary.event
-      : null;
+  const displayed = useLiveDisplay(findings);
+  const primary = live ? (displayed?.event ?? null) : null;
   return (
     <main className="phone-immersive" data-live={live}>
       <section className="phone-live-stage" aria-label="Phone camera preview">
@@ -147,7 +143,7 @@ export default function PhoneCameraApp() {
             <Radio size={22} />
           </span>
           <div>
-            <small>IN VIEW</small>
+            <small>{displayed?.lastSeen ? "RECENTLY SEEN" : "IN VIEW"}</small>
             <h2>{semanticSignName(primary, language)}</h2>
             <p>{advisoryInstruction(primary, language)}</p>
           </div>

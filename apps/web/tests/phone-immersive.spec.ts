@@ -1,6 +1,6 @@
 import {test,expect} from '@playwright/test';
 test('immersive live camera fills phone and iPad viewports',async({page})=>{
- await page.addInitScript(()=>{navigator.mediaDevices.getUserMedia=async()=>{const canvas=document.createElement('canvas');canvas.width=1280;canvas.height=720;const ctx=canvas.getContext('2d')!;ctx.fillStyle='#344b32';ctx.fillRect(0,0,1280,720);ctx.fillStyle='#869b74';ctx.fillRect(0,420,1280,300);return canvas.captureStream(10);};});
+ await page.addInitScript(()=>{navigator.mediaDevices.getUserMedia=()=>{const canvas=document.createElement('canvas');canvas.width=1280;canvas.height=720;const ctx=canvas.getContext('2d')!;ctx.fillStyle='#344b32';ctx.fillRect(0,0,1280,720);ctx.fillStyle='#869b74';ctx.fillRect(0,420,1280,300);return Promise.resolve(canvas.captureStream(10));};});
  await page.routeWebSocket('**/api/v1/ws/camera/**',()=>{});
  await page.goto('/phone?session=preview');await page.getByRole('button',{name:'Start stream',exact:true}).click();
  await expect(page.getByText('Streaming',{exact:true})).toBeVisible();

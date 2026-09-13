@@ -1,3 +1,4 @@
+import { useLiveDisplay } from "../hooks/useLiveDisplay";
 import type { EncounterState } from "../encounters";
 import type { DisplayLanguage, FrameResult } from "../types";
 import { semanticSignName } from "../advisoryDisplay";
@@ -12,12 +13,11 @@ export function EncounterPanel({
   language: DisplayLanguage;
   raw?: FrameResult | null;
 }) {
+  const primary = useLiveDisplay(state);
   return (
     <div className="encounter-panel">
-      {state.primary?.lastSeen && (
-        <span className="subtle-note">Last seen</span>
-      )}
-      <SignPanel event={state.primary?.event ?? null} language={language} />
+      {primary?.lastSeen && <span className="subtle-note">Last seen</span>}
+      <SignPanel event={primary?.event ?? null} language={language} />
       {state.checking && (
         <p className="subtle-note" role="status">
           Checking sign…
@@ -26,7 +26,7 @@ export function EncounterPanel({
       {state.active.length > 1 && (
         <ul aria-label="Other confirmed signs">
           {state.active
-            .filter((e) => e.id !== state.primary?.id)
+            .filter((e) => e.id !== primary?.id)
             .map((e) => (
               <li key={e.id}>{semanticSignName(e.event, language)}</li>
             ))}
