@@ -2104,9 +2104,41 @@ body,
   object-fit: cover;
   display: block;
 }
+.phone-live-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.phone-live-detection rect {
+  fill: #d5ed9c14;
+  stroke: #d5ed9c;
+  stroke-width: 3px;
+  filter: drop-shadow(0 0 4px #000c);
+}
+.phone-live-detection.severity-critical rect {
+  fill: #ff5d5717;
+  stroke: #ff6a64;
+}
+.phone-live-detection.severity-information rect {
+  fill: #70bfff17;
+  stroke: #70bfff;
+}
+.phone-live-detection text {
+  fill: #fff;
+  stroke: #081008;
+  stroke-width: 3px;
+  paint-order: stroke fill;
+  font-size: 16px;
+  font-weight: 700;
+}
 .phone-live-shade {
   position: absolute;
   inset: 0;
+  z-index: 2;
   pointer-events: none;
   background: linear-gradient(
     #05090599,
@@ -2252,6 +2284,8 @@ body,
 }
 .phone-live-guidance {
   position: absolute;
+  /* Guidance must occlude detection boxes so its text always remains legible. */
+  z-index: 4;
   bottom: calc(118px + env(safe-area-inset-bottom));
   left: 20px;
   right: 20px;

@@ -74,6 +74,17 @@ p {
 select {
   color: var(--text);
   background: var(--surface-2);
+  color-scheme: dark;
+}
+
+select option {
+  color: #f5f8f3;
+  background-color: #121a16;
+}
+
+select option:checked {
+  color: #10150f;
+  background-color: #d5ed9c;
 }
 .eyebrow {
   color: var(--muted);

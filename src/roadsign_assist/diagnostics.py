@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import os
 import platform
 import shutil
 import subprocess
@@ -32,7 +33,11 @@ class DiagnosticReport:
 
     @property
     def healthy(self) -> bool:
-        return self.official_image_count == 84 and self.writable
+        coursework_required = os.getenv(
+            "ROADSIGN_REQUIRE_COURSEWORK_HEALTH", "1"
+        ).strip().lower() not in {"0", "false", "no", "off"}
+        coursework_ready = self.official_image_count == 84 or not coursework_required
+        return coursework_ready and self.writable
 
 
 def _cuda_available() -> bool:

@@ -74,6 +74,7 @@ class SemanticRuleEngine:
         if label in self.catalogue:
             evidence.append(f"classifier:{label}:{confidence:.3f}")
         else:
+            evidence.append(f"catalogue_unmapped:{classifier_label}")
             label = "unknown_sign"
         if ocr.semantic_sign_id in self.catalogue and ocr.confidence >= 0.65:
             evidence.append(f"ocr_alias:{ocr.semantic_sign_id}:{ocr.confidence:.3f}")
@@ -157,6 +158,16 @@ class SemanticRuleEngine:
         confidence: float,
         action: ADASActionModel,
     ) -> ADASAdvisoryModel:
+        if semantic_sign_id == "direction_board" and action.code is ActionCode.INFORMATION_ONLY:
+            return ADASAdvisoryModel(
+                headline=meaning,
+                instruction=_localized(
+                    "Direction and destination information. Read the board to confirm your route.",
+                    "Maklumat arah dan destinasi. Baca papan tanda untuk mengesahkan laluan.",
+                    "方向和目的地信息。请阅读指示牌确认路线。",
+                ),
+                safe_to_announce=False,
+            )
         if action.code is ActionCode.UNKNOWN_CAUTION:
             if semantic_sign_id == "unknown_sign" or semantic_sign_id not in self.catalogue:
                 return ADASAdvisoryModel(

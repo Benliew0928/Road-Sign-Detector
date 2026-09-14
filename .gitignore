@@ -44,3 +44,17 @@ certs/
 
 # Local recovery material. Never commit or upload this archive through DVC.
 _archive/
+
+# Codex and presentation-generation working files.
+/.codex_build/
+/.codex-finalizer/
+
+# Locally generated reports, slide decks, previews, and media deliverables.
+/deliverables/
+
+# One-off local video inspection artifacts.
+/.video_analysis/
+/analyze_video.py
+
+# Generated cloud deployment bundle. Rebuild locally when required.
+/deploy/

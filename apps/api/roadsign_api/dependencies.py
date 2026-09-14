@@ -18,10 +18,9 @@ def get_engine() -> InferenceEngine:
 
 @lru_cache(maxsize=1)
 def get_close_up_engine() -> InferenceEngine:
-    """Load the isolated close-up classifier profile without changing road inference."""
-    return InferenceEngine(
-        os.environ.get(
-            "ROADSIGN_CLOSE_UP_CONFIG",
-            "configs/inference/local_recovery_week1/close-up-repaired-v1.yaml",
-        )
-    )
+    """Use a fresh deployed-model session, or an explicitly configured close-up profile."""
+    config = os.environ.get("ROADSIGN_CLOSE_UP_CONFIG")
+    if config:
+        return InferenceEngine(config)
+    # Whole-image inference already bypasses detection; share deployed model weights.
+    return get_engine().new_session()

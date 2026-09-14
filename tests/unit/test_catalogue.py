@@ -21,7 +21,8 @@ def test_catalogue_is_valid_and_broad() -> None:
 
 def test_p2_catalogue_entries_are_owner_approved() -> None:
     catalogue = load_catalogue()
-    assert all(entry.review_status == "approved" for entry in catalogue.entries)
+    assert all(entry.review_status == "approved" for entry in catalogue.entries if entry.semantic_sign_id != "direction_board")
+    assert catalogue_by_id()["direction_board"].review_status == "draft"
 
 
 def test_alias_matching_is_case_insensitive() -> None:
@@ -121,3 +122,24 @@ def test_unresolved_coursework_mappings_are_explicit_review_items() -> None:
         if not value["semantic_sign_id"]
     }
     assert unresolved == set()
+
+def test_deployed_classifier_labels_have_semantic_mappings() -> None:
+    labels_path = project_path("models/exported/runtime/sign_classifier.labels.json")
+    if not labels_path.exists():
+        import pytest
+        pytest.skip("Deployed artifact not installed")
+    labels = json.loads(labels_path.read_text(encoding="utf-8"))
+    assert not set(labels) - catalogue_by_id().keys()
+
+
+def test_direction_board_is_information_without_route_command() -> None:
+    from roadsign_assist.semantics.rules import SemanticRuleEngine
+    from roadsign_assist.inference.models import OCRModel
+    rules = SemanticRuleEngine()
+    label, confidence, _ = rules.resolve_label("direction_board", .998, OCRModel())
+    assert label == "direction_board"
+    meaning, _, action = rules.action_for(label, confidence, OCRModel())
+    assert action.code == "INFORMATION_ONLY"
+    assert action.direction is None
+    assert meaning.en == "Direction / destination board"
+    assert not rules.advisory_for(label, meaning, confidence, action).safe_to_announce

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { advanceEncounters, emptyEncounters } from "../encounters";
 import type { FrameResult } from "../types";
 
@@ -7,6 +7,7 @@ export function useEncounters(
   result: FrameResult | null,
   enabled = true,
 ) {
+  const emptyState = useMemo(() => emptyEncounters(source), [source]);
   const [state, setState] = useState(() => emptyEncounters(source));
   useEffect(() => {
     // Ingest an external inference observation; the timer below handles expiry without new frames.
@@ -15,12 +16,12 @@ export function useEncounters(
       const current =
         previous.source === source && enabled
           ? previous
-          : emptyEncounters(source);
+          : emptyState;
       return result && enabled
         ? advanceEncounters(current, performance.now(), result)
         : current;
     });
-  }, [source, result, enabled]);
+  }, [source, result, enabled, emptyState]);
   useEffect(() => {
     if (!enabled) return;
     const timer = window.setInterval(
@@ -30,5 +31,5 @@ export function useEncounters(
     );
     return () => window.clearInterval(timer);
   }, [enabled]);
-  return state.source === source && enabled ? state : emptyEncounters(source);
+  return state.source === source && enabled ? state : emptyState;
 }

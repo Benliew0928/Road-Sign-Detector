@@ -14,3 +14,9 @@ test('immersive live camera fills phone and iPad viewports',async({page})=>{
  }
  await page.getByRole('button',{name:'Stop stream',exact:true}).click();await expect(page.getByRole('button',{name:'Start stream',exact:true})).toBeVisible();
 });
+
+test('trailing slash keeps the immersive phone camera route', async ({ page }) => {
+  await page.goto('/phone/?session=preview');
+  await expect(page.locator('.phone-immersive')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Start stream', exact: true })).toBeVisible();
+});

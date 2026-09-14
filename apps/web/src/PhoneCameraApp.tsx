@@ -84,7 +84,15 @@ export default function PhoneCameraApp() {
   });
   const busy = status === "requesting" || status === "connecting";
   const displayed = useLiveDisplay(findings);
-  const primary = live ? (displayed?.event ?? null) : null;
+  const rawPrimary = result?.events
+    .filter((event) => event.semantic_sign_id !== "unknown_sign")
+    .sort((left, right) => right.confidence - left.confidence)[0] ?? null;
+  // Boxes are drawn from the current raw frame. Keep the information card in
+  // sync with them even before an encounter has met the stability gate.
+  const primary = live ? (displayed?.event ?? rawPrimary) : null;
+  const primaryLastSeen = Boolean(
+    displayed?.event === primary && displayed?.lastSeen,
+  );
   return (
     <main className="phone-immersive" data-live={live}>
       <section className="phone-live-stage" aria-label="Phone camera preview">
@@ -95,6 +103,40 @@ export default function PhoneCameraApp() {
           autoPlay
           className="phone-live-video"
         />
+        {live && result && result.events.length > 0 && (
+          <svg
+            className="phone-live-overlay"
+            viewBox={`0 0 ${result.width} ${result.height}`}
+            preserveAspectRatio="xMidYMid slice"
+            aria-label={`${result.events.length} detected signs`}
+          >
+            {result.events.map((event, index) => {
+              const width = Math.max(1, event.bbox.x2 - event.bbox.x1);
+              const height = Math.max(1, event.bbox.y2 - event.bbox.y1);
+              return (
+                <g
+                  className={`phone-live-detection severity-${event.severity}`}
+                  key={`${event.frame_id}-${event.track_id}-${index}`}
+                >
+                  <rect
+                    x={event.bbox.x1}
+                    y={event.bbox.y1}
+                    width={width}
+                    height={height}
+                    vectorEffect="non-scaling-stroke"
+                  />
+                  <text
+                    x={event.bbox.x1}
+                    y={Math.max(18, event.bbox.y1 - 7)}
+                    vectorEffect="non-scaling-stroke"
+                  >
+                    {semanticSignName(event, language)}
+                  </text>
+                </g>
+              );
+            })}
+          </svg>
+        )}
         <div className="phone-live-shade" />
       </section>
       <header className="phone-live-header">
@@ -143,7 +185,7 @@ export default function PhoneCameraApp() {
             <Radio size={22} />
           </span>
           <div>
-            <small>{displayed?.lastSeen ? "RECENTLY SEEN" : "IN VIEW"}</small>
+            <small>{primaryLastSeen ? "RECENTLY SEEN" : "IN VIEW"}</small>
             <h2>{semanticSignName(primary, language)}</h2>
             <p>{advisoryInstruction(primary, language)}</p>
           </div>

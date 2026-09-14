@@ -54,6 +54,14 @@ def test_low_confidence_action_degrades_to_caution() -> None:
     assert advisory.safe_to_announce is False
 
 
+def test_unknown_sign_has_valid_chinese_fallback_text() -> None:
+    engine = SemanticRuleEngine()
+    meaning, _, action = engine.action_for("unmapped_classifier_label", 0.99, OCRModel())
+
+    assert meaning.zh == "未知交通标志"
+    assert action.code is ActionCode.UNKNOWN_CAUTION
+
+
 def test_ocr_is_conditional_on_sign_semantics() -> None:
     engine = SemanticRuleEngine()
     assert engine.requires_ocr("maximum_speed") is True

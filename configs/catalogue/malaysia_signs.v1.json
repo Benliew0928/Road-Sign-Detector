@@ -2734,6 +2734,32 @@
       "parameter_type": "none",
       "default_parameter": null,
       "audio_key": "stop_for_checking"
+    },
+    {
+      "semantic_sign_id": "direction_board",
+      "category": "information",
+      "names": {
+        "en": "Direction / destination board",
+        "ms": "Papan tanda arah / destinasi",
+        "zh": "方向／目的地指示牌"
+      },
+      "aliases": [
+        "DIRECTION BOARD",
+        "DESTINATION BOARD"
+      ],
+      "visual_family": "rectangle",
+      "base_action": "INFORMATION_ONLY",
+      "severity": "information",
+      "parameter_type": "none",
+      "default_parameter": null,
+      "audio_key": "direction_board",
+      "standard_reference": {
+        "reference_id": "jkr_atj_2a_85_2019",
+        "document": "JKR ATJ 2A/85 (Pindaan 2019)",
+        "section": "Guide and information signs (generic board category; application mapping pending review)",
+        "url": "https://epsmg.jkr.gov.my/images/8/81/ATJ_2A.85_P_2019-WM.pdf"
+      },
+      "review_status": "draft"
     }
   ]
 }
